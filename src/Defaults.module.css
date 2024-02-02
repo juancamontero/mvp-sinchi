@@ -1,0 +1,23 @@
+.xBannerPaddings {
+    @apply px-2 sm:px-4  md:px-12 lg:px-16
+}
+
+.buttonLink {
+    @apply pt-1 text-sm font-medium text-primary-300 transition-colors duration-200 hover:text-primary-100
+}
+
+.pageDefault {
+    @apply flex min-h-screen flex-col items-center justify-start
+}
+
+.titleBanner {
+    @apply max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-text-100 sm:text-4xl sm:leading-none
+}
+
+.titleBannerFullWidth {
+    @apply font-sans text-2xl font-bold tracking-tight  text-text-100 sm:text-3xl sm:leading-tight
+}
+
+.tagsBannerProject {
+    @apply inline-block py-1 px-2 rounded bg-bg-100 text-text-200 text-xs font-medium tracking-widest cursor-pointer hover:text-primary-200 text-pretty
+}

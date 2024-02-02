@@ -1,0 +1,7 @@
+.activeItem {
+    @apply text-accent-200
+}
+
+.noActiveItem {
+    @apply text-text-200
+}
