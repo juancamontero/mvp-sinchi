@@ -24,7 +24,7 @@ export const ProjectCard = ({ id, name, idLinea }: Props) => {
       <Link
         href={`/proyecto/${id}`}
         title={name}
-        className='group relative  w-96 lg:w-[600px] sm:h-64 h-96 sm:max-w-[600px] overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out p-2 cursor-pointer'
+        className='group relative  w-72 lg:w-[600px] sm:h-64 h-80 sm:max-w-[600px] overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out p-2 cursor-pointer'
       >
         {/* Acá contenido que se ve sin hover */}
         <div className='flex flex-col  h-full justify-between'>
@@ -55,7 +55,7 @@ export const ProjectCard = ({ id, name, idLinea }: Props) => {
         {/* Acá termina contenido que se ve sin hover */}
 
         {/* Acá va el bloque que sube al hover */}
-        <div className='bg-primary-200 absolute bottom-0 inset-x-0 h-48 mt-auto px-8 py-6 translate-y-full transition duration-300 ease-in-out group-hover:translate-y-0'>
+        <div className='bg-primary-200 hidden sm:block bottom-0 inset-x-0 h-48 mt-auto px-8 py-6 translate-y-full transition duration-300 ease-in-out group-hover:translate-y-0 sm:absolute'>
           {/* <TagsGrid idProject={id} /> */}
 
           {/* Objetivo */}

@@ -28,7 +28,7 @@ export default async function ProjectPage({ params }: Props) {
     <main className={`${styles.pageDefault} relative`}>
       {/* banner start */}
       <div
-        className={`${styles.xBannerPaddings} sticky top-0 h-fit flex flex-col flex-wrap items-start bg-accent-100 w-full py-6 gap-2`}
+        className={`${styles.xBannerPaddings} sticky top-0 sm:h-fit h-dvh  flex flex-col flex-wrap items-start bg-accent-100 w-full py-6 gap-2`}
       >
         <div className='flex flex-col justify-start items-start gap-2 w-full'>
           

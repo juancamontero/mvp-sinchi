@@ -28,10 +28,10 @@ const proyectos = await getProyectosByLineaId(id) || []
   return (
     <>
       <div
-        className={`mt-4 w-full flex flex-col justify-start  items-start  bg-white py-8 ${styles.xBannerPaddings}`}
+        className={`mt-4 w-full flex flex-col justify-start  items-start bg-bg-200 py-8 ${styles.xBannerPaddings}`}
       >
         {/* Headers start */}
-        <div className='w-full bg-bg-200 p-2'>
+        <div className='w-full  p-2'>
           <span className=' text-primary-200'>
             <IconLinea id={id} />
           </span>
