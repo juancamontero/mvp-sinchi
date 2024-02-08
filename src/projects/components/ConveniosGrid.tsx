@@ -13,7 +13,7 @@ export const ConveniosGrid =  ({ idProject }: Props) => {
   const convenios = [
     {id: 1, name: "Banco Mundial"},
     {id: 2, name: "MiniTic"},
-    {id: 1, name: "PNUD"},
+    {id: 3, name: "PNUD"},
   ]
   
   if (!convenios) return <></>

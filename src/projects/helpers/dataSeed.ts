@@ -247,14 +247,98 @@ export const proyectosSeed = [
 export const projectDescription =
   'Mejorar la gobernanza y promover actividades de uso sostenible de las tierras, con el fin de reducir la deforestación y conservar la biodiversidad en las áreas del Proyecto. Para la FA2, se amplía el alcance geográfico a otros municipios de los departamentos de Caquetá, Guaviare, Meta, Putumayo, Amazonas y Guainía.'
 
-export const projectObjetivo = '<p>Brindar el apoyo t&eacute;cnico y cient&iacute;fico necesario para implementar un piloto de encadenamiento comercial entre <strong>ASMUCOCA</strong> y <strong>BIOINGRED TECH SAS</strong> mediante el prototipado y la estandarizaci&oacute;n del proceso de obtenci&oacute;n de aceite de canangucha para asegurar los par&aacute;metros requeridos de calidad del ingrediente.</p>'
+export const projectObjetivo = `<p>Reducir la deforestaci&oacute;n y la pobreza a trav&eacute;s de la promoci&oacute;n de procesos productivos sostenibles que contribuyan a mejorar la calidad de vida de las poblaciones locales, a la conservaci&oacute;n de la biodiversidad amaz&oacute;nica y al cumplimiento de la meta de deforestaci&oacute;n neta cero en el 2020.</p>
 
-export const projectProductos = `
-<p>&bull; Informe t&eacute;cnico que registra los resultados de la expedici&oacute;n en sus diferentes grupos biol&oacute;gicos registros biol&oacute;gicos,&nbsp;<br />
-listas de especies, &nbsp;posibles nuevas especies, especies end&eacute;micas, especies amenazadas o con alg&uacute;n criterio de conservaci&oacute;n.<br />
-&bull; Registros publicados en SiB Colombia bajo el est&aacute;ndar establecido (Darwin Core o Plinian Core) con sus atributos b&aacute;sicos para su publicaci&oacute;n y requeridos por usuarios especializados en temas de biodiversidad y cualquier otro tipo de usuarios.<br />
-&bull; Actas que evidencien los talleres de capacitaci&oacute;n a los miembros de comunidades locales en aspectos relacionados con los inventarios de la biodiversidad en diferentes grupos biol&oacute;gicos.<br />
-&bull; Se presentar&aacute; un banco de fotograf&iacute;as consolidado alusivo al desarrollo del proyecto que tendr&aacute; fines de divulgaci&oacute;n por parte de MINCIENCIAS.&nbsp;<br />
-&bull; Con los cabildos participantes, se concertar&aacute;n otros productos editoriales donde se plasmar&aacute;n los resultados obtenidos en la Expedici&oacute;n que sean &uacute;tiles para las comunidades locales.<br />
-&bull; Certificado de dep&oacute;sito de los ejemplares colectados; colecciones registradas ante el Registro &Uacute;nico de Colecciones (RUC) del Instituto Humboldt.</p>
+<p><br />
+El pilar 3 Acuerdos con campesinos: Suscribir acuerdos de conservaci&oacute;n de bosques y de desarrollo rural bajo en carbono con Asociaciones Campesinas ya constituidas, a cambio de la financiaci&oacute;n de proyectos productivos y actividades de inter&eacute;s de las asociaciones.</p>`
+
+export const projectProductos = `<p>&bull; Un (1) documento de s&iacute;ntesis sobre estudios ecol&oacute;gicos de la regi&oacute;n del Medio Caquet&aacute;<br />
+&bull; Un (1) documento de s&iacute;ntesis sobre an&aacute;lisis de datos meteorol&oacute;gicos de la estaci&oacute;n de La Chorrera correspondiente a los &uacute;ltimos 10 a&ntilde;os para comprender las tendencias y los cambios en las variables clim&aacute;ticas que podr&iacute;an influir en las pr&aacute;cticas de producci&oacute;n<br />
+&bull; Tres (3) equipos de coinvestigadores concertados con la comunidad para recoger, interpretar y discutir datos recogidos<br />
+&bull; Un (1) equipo preparado en la recolecci&oacute;n de datos medioambientales y meteorol&oacute;gicos<br />
+&bull; Seis (6) informes de coinvestigadores (1 informe cada 4 meses) sobre datos medioambientales y meteorol&oacute;gicos<br />
+&bull; Un (1) documento de s&iacute;ntesis sobre resultados de informes de datos medioambientales y meteorol&oacute;gicos.<br />
+&bull; Un (1) documento anal&iacute;tico<br />
+&bull; Un (1) informe de actividad y 1 registro sonoro (el n&uacute;mero de bailes observado podr&aacute; aumentar en funci&oacute;n de la cantidad de celebraciones previstas por los especialistas rituales)<br />
+&bull; Un (1) documento de s&iacute;ntesis.<br />
+&bull; Un (1) documento anal&iacute;tico de entrevistas individuales semiestructuradas con miembros de la comunidad para conocer interpretaciones de adivinanzas ya recogidas para comprender la manera como perciben las estaciones<br />
+&bull; Diez (10) adivinanzas transcritas y traducidas<br />
+&bull; 10 esquemas elaborados con coinvestigadores a partir de las adivinanzas analizadas<br />
+&bull; Un (1) informe anal&iacute;tico sobre las propuestas de calendarios clim&aacute;ticos que han sido dise&ntilde;adas en los planes de vida y en otros documentos de planeaci&oacute;n<br />
+&bull; 1 informe anal&iacute;tico sobre la Identificaci&oacute;n de los indicadores que marcan los cambios estacionales y los que caracterizan las estaciones<br />
+&bull; 1 informe anal&iacute;tico sobre los principales cambios que perciben en la duraci&oacute;n de las estaciones, los modos ceremoniales de enfrentarlos y lo efectos que tienen dichas anomal&iacute;as sobre el medio ambiente<br />
+&bull; Un (1) reporte de actividad y Un (1) registro sonoro (el n&uacute;mero de bailes observado podr&aacute; aumentar en funci&oacute;n de la cantidad de celebraciones previstas por los especialistas rituales)<br />
+&bull; 1 documento de s&iacute;ntesis Sobre la discusi&oacute;n, fuera de tiempos de celebraci&oacute;n, con celebrantes de bailes anfitriones (rafue naama) sobre causas, consecuencias y articulaciones de sus celebraciones de los &uacute;ltimos 10 a&ntilde;os.<br />
+&bull; Un (1) documento de s&iacute;ntesis Entrevistas con jefes de grupo de baile invitados (fuerama), fuera de tiempos de celebraci&oacute;n, sobre su participaci&oacute;n en los bailes a los que han sido invitados en los &uacute;ltimos 10 a&ntilde;os y sobre la percepci&oacute;n de las anomal&iacute;as estacionales<br />
+&bull; Revisi&oacute;n calendarios ecol&oacute;gicos existentes con mujeres chagreras<br />
+&bull; Un (1) informe anal&iacute;tico An&aacute;lisis con mujeres chagreras sobre las propuestas de calendarios clim&aacute;ticos que han sido dise&ntilde;adas en los planes de vida y en otros documentos de planeaci&oacute;n<br />
+&bull; Un (1) informe anal&iacute;tico Identificaci&oacute;n de los indicadores que, seg&uacute;n las mujeres chagreras, marcan los cambios estacionales y los que caracterizan las estaciones<br />
+&bull; Un (1) informe anal&iacute;tico An&aacute;lisis con las mujeres chagreras sobre los principales cambios que perciben en la duraci&oacute;n de las estaciones, los modos ceremoniales de enfrentarlos y lo efectos que tienen dichas anomal&iacute;as sobre el medio ambiente<br />
+&bull; Un (1) informe de s&iacute;ntesis y 1 registro fotogr&aacute;fico Observaciones participativas para comprender las pr&aacute;cticas de producci&oacute;n y su gesti&oacute;n comunitaria en respuesta al cambio medioambiental (enfoque en mujeres chagreras).<br />
+&bull; Un (1) informe anal&iacute;tico comparativo de biograf&iacute;a de chagras Entrevistas con mujeres chagreras de diferentes edades sobre la historia de sus chagras en los &uacute;ltimos 10 a&ntilde;os (biograf&iacute;a de chagras)<br />
+&bull; Tres (3) esquemas gr&aacute;ficos de conjuntos de chagras de los &uacute;ltimos 10 a&ntilde;os. Realizaci&oacute;n de al menos 3 esquemas gr&aacute;ficos con mujeres chagreras de al menos 3 familias diferentes sobre sus zonas de cultivo<br />
+&bull; Un (1) informe anal&iacute;tico comparativo Interpretaci&oacute;n con mujeres de saber sobre diferentes tipos de esquema y sobre experiencias de chagreras locales<br />
+&bull; &nbsp;An&aacute;lisis de cambios en la cubierta vegetal<br />
+&bull; Serie de im&aacute;genes Landasat descargadas (El n&uacute;mero y el tipo de sat&eacute;lite depender&aacute;n de la disponibilidad de im&aacute;genes en el sitio de la USGS-<br />
+&bull; Informe t&eacute;cnico que incluye im&aacute;genes preparadas para el an&aacute;lisis. Preprocesamiento de im&aacute;genes (correcciones radiom&eacute;tricas, georreferenciaci&oacute;n y recorte de la regi&oacute;n de inter&eacute;s, seg&uacute;n el caso)<br />
+&bull; Conjunto de im&aacute;genes procesadas y ajustadas al &aacute;rea de estudio<br />
+&bull; Documento cartogr&aacute;fico que muestra las &aacute;reas y los momentos y lugares de aparici&oacute;n de chagras de emergencia. Determinaci&oacute;n de las &aacute;reas de cambio en la cobertura vegetal (Matriz de transici&oacute;n para cuantificar los cambios, en los casos en que es posible)<br />
+&bull; &nbsp;Identificaci&oacute;n e interpretaci&oacute;n de los cambios en las chagras v&iacute;rgenes y de urgencia para la zona de estudio<br />
+&bull; Informe anal&iacute;tico&nbsp;<br />
+&bull; Verificaci&oacute;n de cambios identificados mediante el an&aacute;lisis de im&aacute;genes de sat&eacute;lite en el terreno con el apoyo de las mujeres entrevistadas en la etapa anterior y del equipo de coinvestigaci&oacute;n<br />
+&bull; Informe anal&iacute;tico Grupos focales para la interpretaci&oacute;n y comprender los cambios en la cobertura vegetal a lo largo del tiempo as&iacute; como para analizar los factores que contribuyen a estos cambios.<br />
+&bull; &nbsp;Presentaci&oacute;n de resultados de manera clara y concisa a la comunidad, utilizando gr&aacute;ficos y mapas para ilustrar los cambios en la cobertura vegetal a lo largo del tiempo<br />
+&bull; Informe sobre impresiones de la comunidad y de sugerencias de parte de la misma. Reuni&oacute;n con autoridades de la zona para presentar y socializar los resultados y las perspectivas del proyecto.</p>
 `
+
+export const sellosProject = [
+  {
+    id: 1,
+    order: 1,
+    name: '(ODS 6) Agua limpia y saneamiento',
+    url: '/images/sellos/ods-06.webp',
+  },
+  {
+    id: 2,
+    order: 2,
+    name: '(ODS 11) Ciudades y comunidades sostenibles',
+    url: '/images/sellos/ods-11.webp',
+  },
+  {
+    id: 3,
+    order: 3,
+    name: '(ODS 12) Producción y consumo responsables',
+    url: '/images/sellos/ods-12.webp',
+  },
+
+  {
+    id: 4,
+    order: 4,
+    name: '(ODS 15) Vida de ecosistemas terrestres',
+    url: '/images/sellos/ods-15.webp',
+  },
+  {
+    id: 5,
+    order: 5,
+    name: '(ODS 13)  Cambio climático',
+    url: '/images/sellos/ods-13.webp',
+  },
+  {
+    id: 6,
+    order: 6,
+    name: 'Sentencia 4630/2018',
+    url: '/images/sellos/sentencia.webp',
+  },
+  {
+    id: 7,
+    order: 7,
+    name: ' Impacto 1 - Ciencia e innovación transformativa para las políticas públicas',
+    url: '/images/sellos/impacto-1.webp',
+  },
+  {
+    id: 8,
+    order: 8,
+    name: ' Impacto 2 - Enfoques para la democratización de la información ambiental',
+    url: '/images/sellos/impacto-2.webp',
+  },
+]

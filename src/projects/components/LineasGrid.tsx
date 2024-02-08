@@ -12,7 +12,7 @@ export const LineasGrid = async ({ idProject }: Props) => {
 
   return (
     <Link
-      className='flex flex-col lg:mb-0 mb-2 w-1/2  bg-bg-300 bg-opacity-60 p-2'
+      className='flex flex-col lg:mb-0 mb-2 sm:w-1/2 w-full bg-bg-300 bg-opacity-60 p-2'
       href={`/programs/${linea.slug}`}
     >
       <h6 className='text-sm font-semibold text-slate-700 mb-1 lg:mb-2'>
