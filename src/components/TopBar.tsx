@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import {  CiSearch } from 'react-icons/ci'
+import {  CiLineHeight, CiSearch } from 'react-icons/ci'
 import { TopBrandWidget, VerticalMenu } from '.'
 import { IoCloseSharp,  IoPersonOutline } from 'react-icons/io5'
 import { GiArchiveResearch, GiHamburgerMenu } from 'react-icons/gi'
@@ -13,12 +13,13 @@ import { TbWorldPin } from 'react-icons/tb'
 import Link from 'next/link'
 
 const menuItems = [
-  { text: 'Inicio', path: '/', icon: <GoHome /> },
-  { text: 'Líneas de investigación', path: '/lineas', icon: <GiArchiveResearch /> },
+  { text: 'Inicio | Líneas de investigación', path: '/', icon: <GoHome /> },
+  // { text: 'Líneas de investigación', path: '/', icon: <GiArchiveResearch /> },
+  { text: 'Programas', path: '/programas', icon: <CiLineHeight />},
   { text: 'Investigadores', path: '/investigadores', icon: <IoPersonOutline />},
   { text: 'Regiones', path: '/regiones', icon: <TbWorldPin />},
-  { text: 'Programas / Asociados', path: '/programas', icon: <PiHandshakeLight /> },
-  { text: 'Glosario', path: '/glosario', icon: <IoMdBook />  },
+  { text: 'Convenios / Asociados', path: '/programas', icon: <PiHandshakeLight /> },
+  { text: 'Palabras clave', path: '/glosario', icon: <IoMdBook />  },
 ]
 
 export const TopBar = () => {

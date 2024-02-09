@@ -21,3 +21,10 @@
 .tagsBannerProject {
     @apply inline-block py-1 px-2 rounded bg-bg-100 text-text-200 text-xs font-medium tracking-widest cursor-pointer hover:text-primary-200 text-pretty
 }
+
+.truncated-text {
+    max-width: 60ch; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
