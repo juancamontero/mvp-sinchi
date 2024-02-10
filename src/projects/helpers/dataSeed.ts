@@ -332,13 +332,13 @@ export const sellosProject = [
   {
     id: 7,
     order: 7,
-    name: ' Impacto 1 - Ciencia e innovación transformativa para las políticas públicas',
+    name: 'Impacto 1 - Ciencia e innovación transformativa para las políticas públicas',
     url: '/images/sellos/impacto-1.webp',
   },
   {
     id: 8,
     order: 8,
-    name: ' Impacto 2 - Enfoques para la democratización de la información ambiental',
+    name: 'Impacto 2 - Enfoques para la democratización de la información ambiental',
     url: '/images/sellos/impacto-2.webp',
   },
 ]

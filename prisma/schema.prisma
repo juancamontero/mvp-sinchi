@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Convenio {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  Proyecto Proyecto[] @relation("ConvenioToProyecto")
+}
+
+model Autor {
+  id       Int        @id @default(autoincrement())
+  name     String
+  email    String
+  Proyecto Proyecto[]
+}
+
+model Region {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  Proyecto Proyecto[] @relation("ProyectoToRegion")
+}
+
+model Tag {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  Proyecto Proyecto[] @relation("ProyectoToTag")
+}
+
+model Sello {
+  id       Int        @id @default(autoincrement())
+  order    Int        @default(autoincrement())
+  name     String     @unique
+  url      String
+  Proyecto Proyecto[] @relation("ProyectoToSello")
+}
+
+model Programa {
+  id          Int        @id @default(autoincrement())
+  name        String     @unique @default("")
+  order       Int        @default(autoincrement())
+  description String?    @default("")
+  Project     Proyecto[]
+  Linea       Linea[]    @relation("LineaToPrograma")
+}
+
+model Linea {
+  id          Int        @id @default(autoincrement())
+  order       Int        @default(autoincrement())
+  name        String     @unique @default("")
+  description String?    @default("")
+  purpose     String?    @default("")
+  millestone1 String?    @default("")
+  millestone2 String?    @default("")
+  millestone3 String?    @default("")
+  Project     Proyecto[]
+  Programa    Programa[] @relation("LineaToPrograma")
+}
+
+model Proyecto {
+  id         Int        @id @default(autoincrement())
+  idLinea    Int?
+  idPrograma Int?
+  idAtutor   Int?
+  completed  Boolean    @default(false)
+  year       Int        @default(2022)
+  name       String
+  objetivo   String?    @default("")
+  products   String?    @default("")
+  places     String?    @default("")
+  autor      Autor?     @relation(fields: [idAtutor], references: [id])
+  linea      Linea?     @relation(fields: [idLinea], references: [id])
+  programa   Programa?  @relation(fields: [idPrograma], references: [id])
+  convenios  Convenio[] @relation("ConvenioToProyecto")
+  regions    Region[]   @relation("ProyectoToRegion")
+  sellos     Sello[]    @relation("ProyectoToSello")
+  tags       Tag[]      @relation("ProyectoToTag")
+}
