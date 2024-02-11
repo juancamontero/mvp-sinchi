@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
 }
 
 datasource db {
@@ -47,6 +48,7 @@ model Programa {
   description String?    @default("")
   Project     Proyecto[]
   Linea       Linea[]    @relation("LineaToPrograma")
+  urlImage    String?    @default("")
 }
 
 model Linea {
@@ -60,6 +62,7 @@ model Linea {
   millestone3 String?    @default("")
   Project     Proyecto[]
   Programa    Programa[] @relation("LineaToPrograma")
+  urlImage    String?    @default("")
 }
 
 model Proyecto {
@@ -80,4 +83,5 @@ model Proyecto {
   regions    Region[]   @relation("ProyectoToRegion")
   sellos     Sello[]    @relation("ProyectoToSello")
   tags       Tag[]      @relation("ProyectoToTag")
+  urlImage   String?    @default("")
 }

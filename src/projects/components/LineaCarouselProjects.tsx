@@ -1,31 +1,32 @@
 // 'use client'
 // import { useState } from 'react'
 
-import { IoCloseSharp, IoFlowerOutline } from 'react-icons/io5'
+
 
 import styles from '../../Defaults.module.css'
 import { LineaModal, ProjectsCarousel, getProyectosByLineaId } from '..'
 import { IconLinea } from './LineasIcons'
 import Link from 'next/link'
+import { Linea } from '@prisma/client'
 
-export interface LineaCarouselProps {
-  id: number
-  slug: string
-  name: string
+export interface Props {
+  linea: Linea
 }
 
 export const LineaCarouselProjects = async ({
-  id,
-  slug,
-  name,
-}: LineaCarouselProps) => {
+  linea
+}: Props) => {
   // const [isOpen, setIsOpen] = useState(false)
   const onToggle = () => {
     // setIsOpen(!isOpen)
   }
+  const { id, name } = linea
   
 const proyectos = await getProyectosByLineaId(id) || []
-  return (
+  
+
+return (
+  
     <>
       <div
         className={`mt-4 w-full flex flex-col justify-start  items-start bg-bg-200 py-8 ${styles.xBannerPaddings}`}

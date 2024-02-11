@@ -6,12 +6,16 @@ import {
   LineasGrid,
   ProgramasGrid,
   ProjectStateWidget,
+
+  ProyectosProductHtml,
+
   RegionsGrid,
   SellosGrid,
   TagsGrid,
   getProyectoById,
 } from '@/projects'
 import Link from 'next/link'
+
 
 interface Props {
   params: {
@@ -31,13 +35,11 @@ export default async function ProjectPage({ params }: Props) {
         className={`${styles.xBannerPaddings} sticky top-0 sm:h-fit h-dvh  flex flex-col flex-wrap items-start bg-accent-100 w-full py-6 gap-2`}
       >
         <div className='flex flex-col justify-start items-start gap-2 w-full'>
-          
           {/* YEAR & sellos start*/}
           <div className='flex flex-row flex-wrap sm:gap-0 gap-2 sm:flex-nowrap justify-between w-full'>
             <h3 className='text-left text-2xl sm:text-4xl leading-none font-extrabold text-text-200'>
-              2022
+              {proyecto.year}
             </h3>
-          
           </div>
           {/* YEAR & sellos end*/}
 
@@ -45,28 +47,30 @@ export default async function ProjectPage({ params }: Props) {
             <span className='text-accent-200'>PROYECTO</span>
           </h2>
           {/* TITLE */}
-          <h2 className={styles.titleBannerFullWidth}>{proyecto.name}</h2>
+          <h2 className={styles.titleBannerFullWidth}>
+            {proyecto.id} | {proyecto.name}
+          </h2>
         </div>
 
         {/* Linea y programa */}
         <div className='flex lg:flex-row lg:justify-between flex-col justify-start  w-full mt-2 gap-2'>
-          <LineasGrid idProject={id} />
-          <ProgramasGrid idProject={id} />
+          {proyecto.linea && <LineasGrid linea={proyecto.linea} />}
+          {proyecto.programa && <ProgramasGrid programa={proyecto.programa} />}
         </div>
-        <ConveniosGrid idProject={id} />
+        <ConveniosGrid convenios={proyecto.convenios} />
         {/* palabras clave y regiones */}
         <div className='flex lg:flex-row lg:justify-between flex-col justify-start  w-full p-2 mt-2'>
-          <TagsGrid idProject={id} />
-          <RegionsGrid idProject={id} />
+          <TagsGrid tags={proyecto.tags} />
+          <RegionsGrid regions={proyecto.regions} />
         </div>
 
         {/* autores */}
-        <AuthorsGrid idProject={id} />
+        {proyecto.autor && <AuthorsGrid author={proyecto.autor} />}
 
         {/* completed row  start*/}
         <div className='flex flex-row justify-between w-full'>
-        <SellosGrid idProject={id} selloSize={70} />
-          <ProjectStateWidget completed={true} />
+          <SellosGrid sellos={proyecto.sellos} selloSize={70} />
+          <ProjectStateWidget completed={proyecto.completed} />
         </div>
         {/* completed row  end*/}
         {/* TODO: Convenio */}
@@ -75,32 +79,32 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* OBJETIVO START*/}
       <div
-        className={`${styles.xBannerPaddings} sticky top-0 h-screen flex flex-col items-center justify-center bg-primary-300  gap-8`}
+        className={`${styles.xBannerPaddings} sticky top-0 h-screen flex flex-col items-center justify-center bg-primary-300  gap-8 w-full`}
       >
-        <div className='flex flex-col justify-center items-center w-full p-4 gap-4'>
+        <div className='flex flex-col justify-center items-center  p-4 gap-4'>
           <h2 className='text-4xl font-bold text-bg-200 mb-2 text-center'>
             Objetivo
           </h2>
-          <div
-            dangerouslySetInnerHTML={{ __html: projectObjetivo }}
-            className='text-bg-100 p-2'
-          />
+          {/* <p>{proyecto.objetivo}</p> */}
+          {proyecto.objetivo && (
+            <div
+              dangerouslySetInnerHTML={{ __html: proyecto.objetivo }}
+              className='text-bg-100 p-2'
+            />
+          )}
         </div>
       </div>
       {/* OBJETIVO END*/}
 
       {/* PRODUCTOS START*/}
       <div
-        className={`${styles.xBannerPaddings} sticky top-0 h-screen flex flex-col items-center justify-center bg-primary-200  gap-8`}
+        className={`${styles.xBannerPaddings} sticky top-0 h-screen flex flex-col items-center justify-center bg-primary-200  gap-8 w-full`}
       >
         <div className='flex flex-col justify-center items-center w-full p-4 gap-4 '>
           <h2 className='text-4xl font-bold text-bg-200 mb-2 text-center'>
             Producto esperados
           </h2>
-          <div
-            dangerouslySetInnerHTML={{ __html: projectProductos }}
-            className='text-bg-100 overflow-x-auto h-[450px]'
-          />
+          <ProyectosProductHtml htmlContent={proyecto.products ?? ''}/>
         </div>
       </div>
       {/* PRODUCTOS END*/}

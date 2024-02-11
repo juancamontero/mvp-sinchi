@@ -1,20 +1,16 @@
 import Link from 'next/link'
 import styles from '../../Defaults.module.css'
+import { Tag } from '@prisma/client'
 // import { getTagsByProjectId } from '..'
 
 type Props = {
-  idProject: number
+  tags: Tag[]
 }
-// export const TagsGrid = async ({ idProject }: Props) => {
-export const TagsGrid =  ({ idProject }: Props) => {
-  // const tags = await getTagsByProjectId(idProject)
-  const tags = [
-    {id: 1, name: "Ecosistema"},
-    {id: 2, name: "Plantas"},
-    {id: 3, name: "Recursos naturales"},
-  ]
 
-  if (!tags) return <></>
+export const TagsGrid =  ({ tags }: Props) => {
+
+
+  if (!tags) return <>sin tags</>
   return (
     <>
       <div className='flex flex-row flex-wrap w-full gap-1'>

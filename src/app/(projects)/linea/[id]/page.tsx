@@ -8,10 +8,20 @@ interface Props {
   }
 }
 
-export default function LineaPage({ params }: Props) {
+export default async function LineaPage({ params }: Props) {
   const { id } = params
-  const linea = getLineaById(Number(id))
-//   console.log(linea)
+  const linea = await getLineaById(Number(id))
+
+  if (!linea) {
+    return (
+      <main className={`${styles.pageDefault}`}>
+        <h1 className='text-3xl font-bold text-text-100 text-left mt-1 text-wrap'>
+          Linea no encontrada
+        </h1>
+      </main>
+    )
+  }
+
   return (
     <main className={`${styles.pageDefault}`}>
       {/* banner start */}
@@ -37,19 +47,19 @@ export default function LineaPage({ params }: Props) {
             <h4 className='text-base font-semibold text-text-100 text-left mt-1 text-wrap'>
               Hito 1
             </h4>
-            <p>{linea?.milestone1}</p>
+            <p>{linea?.millestone1}</p>
           </div>
           <div className='flex flex-col justify-start items-stretch gap-2  w-full sm:w-1/3 bg-bg-100 p-1'>            
             <h4 className='text-base font-semibold text-text-100 text-left mt-1 text-wrap'>
               Hito 2
             </h4>
-            <p>{linea?.milestone2}</p>
+            <p>{linea?.millestone2}</p>
           </div>
           <div className='flex flex-col justify-start items-stretch gap-2  w-full sm:w-1/3 bg-bg-100 p-1'>            
             <h4 className='text-base font-semibold text-text-100 text-left mt-1 text-wrap'>
               Hito 3
             </h4>
-            <p>{linea?.milestone3}</p>
+            <p>{linea?.millestone3}</p>
           </div>
         </div>
       </div>

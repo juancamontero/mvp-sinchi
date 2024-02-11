@@ -1,12 +1,60 @@
-import { sleep } from '..'
-import { proyectosSeed } from '../helpers/dataSeed'
+'use server'
+
+import prisma from '@/lib/prisma'
+
+
+
 
 export const getProyectosByLineaId = async (idLinea: number) => {
-  await sleep(0.3)
-  return proyectosSeed.filter((proyecto) => proyecto.idLinea === idLinea)
+  try {
+    const proyectos = await prisma.proyecto.findMany({
+      where: {
+        idLinea,
+      },
+      orderBy: {
+        year: 'desc',
+      },
+      include: {
+        sellos: true,
+      },
+    })
+
+
+    return proyectos
+  } catch (error) {
+    throw new Error('Error al obtener los proyectos de la línea' + error)
+  }
 }
 
-export const getProyectoById = async (id:number) => {
-  await sleep(0.3)
-  return proyectosSeed.find(project => project.id === id)
+export const getProyectoById = async (id: number) => {
+  try {
+    const proyecto = await prisma.proyecto.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        autor: true,
+        linea: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+        programa: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+        convenios: true,
+        regions: true,
+        sellos: true,
+        tags: true,
+      },
+    })
+
+    return proyecto
+  } catch (error) {
+    throw new Error('Error al obtener el proyecto' + error)
+  }
 }

@@ -1,4 +1,7 @@
-// 'use server'
+'use server'
+
+import prisma from '@/lib/prisma'
+
 import { getProyectoById } from '..'
 import { lineasSeed, proyectosSeed } from '../helpers/dataSeed'
 
@@ -10,21 +13,48 @@ export const sleep = (seconds: number = 0): Promise<boolean> => {
   })
 }
 
-export const getLineaById = (id: number) => {
-  //   await sleep(1)
+export const getLineaById = async (id: number) => {
+  try {
+    const linea = await prisma.linea.findFirst({
+      where: {
+        id,
+      },
+    })
 
-  return lineasSeed.find((linea) => linea.id === id)
+    return linea
+  } catch (error) {
+    throw new Error('Error al obtener la linea' + error)
+  }
 }
 
 export const getAllLineas = async () => {
-  sleep(0.15)
+  try {
+    const lineas = await prisma.linea.findMany({
+      orderBy: {
+        order: 'asc',
+      },
+    })
 
-  return lineasSeed
+    return lineas
+  } catch (error) {
+    throw new Error('Error al obtener las lineas ' + error)
+  }
 }
 
 export const getLineaByProyectoId = async (idProject: number) => {
-  const project = await getProyectoById(idProject)
-  
-  
-  return getLineaById(project?.idLinea || 0)
+  try {
+    const linea = await prisma.linea.findFirst({
+      where: {
+        Project: {
+          some: {
+            id: idProject,
+          },
+        },
+      },
+    })
+
+    return linea
+  } catch (error) {
+    throw new Error('Error al obtener la linea ' + error)
+  }
 }

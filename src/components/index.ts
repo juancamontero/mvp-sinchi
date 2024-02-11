@@ -1,4 +1,5 @@
 export { HomeHeroBanner } from './HomeHeroBanner'
+export { LoaderDefault } from './LoaderDefault'
 export { MenuItem } from './MenuItem'
 export { TopBar } from './TopBar'
 export { TopBrandWidget } from './TopBrandWidget'

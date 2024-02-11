@@ -252,44 +252,11 @@ export const projectObjetivo = `<p>Reducir la deforestaci&oacute;n y la pobreza 
 <p><br />
 El pilar 3 Acuerdos con campesinos: Suscribir acuerdos de conservaci&oacute;n de bosques y de desarrollo rural bajo en carbono con Asociaciones Campesinas ya constituidas, a cambio de la financiaci&oacute;n de proyectos productivos y actividades de inter&eacute;s de las asociaciones.</p>`
 
-export const projectProductos = `<p>&bull; Un (1) documento de s&iacute;ntesis sobre estudios ecol&oacute;gicos de la regi&oacute;n del Medio Caquet&aacute;<br />
-&bull; Un (1) documento de s&iacute;ntesis sobre an&aacute;lisis de datos meteorol&oacute;gicos de la estaci&oacute;n de La Chorrera correspondiente a los &uacute;ltimos 10 a&ntilde;os para comprender las tendencias y los cambios en las variables clim&aacute;ticas que podr&iacute;an influir en las pr&aacute;cticas de producci&oacute;n<br />
-&bull; Tres (3) equipos de coinvestigadores concertados con la comunidad para recoger, interpretar y discutir datos recogidos<br />
-&bull; Un (1) equipo preparado en la recolecci&oacute;n de datos medioambientales y meteorol&oacute;gicos<br />
-&bull; Seis (6) informes de coinvestigadores (1 informe cada 4 meses) sobre datos medioambientales y meteorol&oacute;gicos<br />
-&bull; Un (1) documento de s&iacute;ntesis sobre resultados de informes de datos medioambientales y meteorol&oacute;gicos.<br />
-&bull; Un (1) documento anal&iacute;tico<br />
-&bull; Un (1) informe de actividad y 1 registro sonoro (el n&uacute;mero de bailes observado podr&aacute; aumentar en funci&oacute;n de la cantidad de celebraciones previstas por los especialistas rituales)<br />
-&bull; Un (1) documento de s&iacute;ntesis.<br />
-&bull; Un (1) documento anal&iacute;tico de entrevistas individuales semiestructuradas con miembros de la comunidad para conocer interpretaciones de adivinanzas ya recogidas para comprender la manera como perciben las estaciones<br />
-&bull; Diez (10) adivinanzas transcritas y traducidas<br />
-&bull; 10 esquemas elaborados con coinvestigadores a partir de las adivinanzas analizadas<br />
-&bull; Un (1) informe anal&iacute;tico sobre las propuestas de calendarios clim&aacute;ticos que han sido dise&ntilde;adas en los planes de vida y en otros documentos de planeaci&oacute;n<br />
-&bull; 1 informe anal&iacute;tico sobre la Identificaci&oacute;n de los indicadores que marcan los cambios estacionales y los que caracterizan las estaciones<br />
-&bull; 1 informe anal&iacute;tico sobre los principales cambios que perciben en la duraci&oacute;n de las estaciones, los modos ceremoniales de enfrentarlos y lo efectos que tienen dichas anomal&iacute;as sobre el medio ambiente<br />
-&bull; Un (1) reporte de actividad y Un (1) registro sonoro (el n&uacute;mero de bailes observado podr&aacute; aumentar en funci&oacute;n de la cantidad de celebraciones previstas por los especialistas rituales)<br />
-&bull; 1 documento de s&iacute;ntesis Sobre la discusi&oacute;n, fuera de tiempos de celebraci&oacute;n, con celebrantes de bailes anfitriones (rafue naama) sobre causas, consecuencias y articulaciones de sus celebraciones de los &uacute;ltimos 10 a&ntilde;os.<br />
-&bull; Un (1) documento de s&iacute;ntesis Entrevistas con jefes de grupo de baile invitados (fuerama), fuera de tiempos de celebraci&oacute;n, sobre su participaci&oacute;n en los bailes a los que han sido invitados en los &uacute;ltimos 10 a&ntilde;os y sobre la percepci&oacute;n de las anomal&iacute;as estacionales<br />
-&bull; Revisi&oacute;n calendarios ecol&oacute;gicos existentes con mujeres chagreras<br />
-&bull; Un (1) informe anal&iacute;tico An&aacute;lisis con mujeres chagreras sobre las propuestas de calendarios clim&aacute;ticos que han sido dise&ntilde;adas en los planes de vida y en otros documentos de planeaci&oacute;n<br />
-&bull; Un (1) informe anal&iacute;tico Identificaci&oacute;n de los indicadores que, seg&uacute;n las mujeres chagreras, marcan los cambios estacionales y los que caracterizan las estaciones<br />
-&bull; Un (1) informe anal&iacute;tico An&aacute;lisis con las mujeres chagreras sobre los principales cambios que perciben en la duraci&oacute;n de las estaciones, los modos ceremoniales de enfrentarlos y lo efectos que tienen dichas anomal&iacute;as sobre el medio ambiente<br />
-&bull; Un (1) informe de s&iacute;ntesis y 1 registro fotogr&aacute;fico Observaciones participativas para comprender las pr&aacute;cticas de producci&oacute;n y su gesti&oacute;n comunitaria en respuesta al cambio medioambiental (enfoque en mujeres chagreras).<br />
-&bull; Un (1) informe anal&iacute;tico comparativo de biograf&iacute;a de chagras Entrevistas con mujeres chagreras de diferentes edades sobre la historia de sus chagras en los &uacute;ltimos 10 a&ntilde;os (biograf&iacute;a de chagras)<br />
-&bull; Tres (3) esquemas gr&aacute;ficos de conjuntos de chagras de los &uacute;ltimos 10 a&ntilde;os. Realizaci&oacute;n de al menos 3 esquemas gr&aacute;ficos con mujeres chagreras de al menos 3 familias diferentes sobre sus zonas de cultivo<br />
-&bull; Un (1) informe anal&iacute;tico comparativo Interpretaci&oacute;n con mujeres de saber sobre diferentes tipos de esquema y sobre experiencias de chagreras locales<br />
-&bull; &nbsp;An&aacute;lisis de cambios en la cubierta vegetal<br />
-&bull; Serie de im&aacute;genes Landasat descargadas (El n&uacute;mero y el tipo de sat&eacute;lite depender&aacute;n de la disponibilidad de im&aacute;genes en el sitio de la USGS-<br />
-&bull; Informe t&eacute;cnico que incluye im&aacute;genes preparadas para el an&aacute;lisis. Preprocesamiento de im&aacute;genes (correcciones radiom&eacute;tricas, georreferenciaci&oacute;n y recorte de la regi&oacute;n de inter&eacute;s, seg&uacute;n el caso)<br />
-&bull; Conjunto de im&aacute;genes procesadas y ajustadas al &aacute;rea de estudio<br />
-&bull; Documento cartogr&aacute;fico que muestra las &aacute;reas y los momentos y lugares de aparici&oacute;n de chagras de emergencia. Determinaci&oacute;n de las &aacute;reas de cambio en la cobertura vegetal (Matriz de transici&oacute;n para cuantificar los cambios, en los casos en que es posible)<br />
-&bull; &nbsp;Identificaci&oacute;n e interpretaci&oacute;n de los cambios en las chagras v&iacute;rgenes y de urgencia para la zona de estudio<br />
-&bull; Informe anal&iacute;tico&nbsp;<br />
-&bull; Verificaci&oacute;n de cambios identificados mediante el an&aacute;lisis de im&aacute;genes de sat&eacute;lite en el terreno con el apoyo de las mujeres entrevistadas en la etapa anterior y del equipo de coinvestigaci&oacute;n<br />
-&bull; Informe anal&iacute;tico Grupos focales para la interpretaci&oacute;n y comprender los cambios en la cobertura vegetal a lo largo del tiempo as&iacute; como para analizar los factores que contribuyen a estos cambios.<br />
-&bull; &nbsp;Presentaci&oacute;n de resultados de manera clara y concisa a la comunidad, utilizando gr&aacute;ficos y mapas para ilustrar los cambios en la cobertura vegetal a lo largo del tiempo<br />
-&bull; Informe sobre impresiones de la comunidad y de sugerencias de parte de la misma. Reuni&oacute;n con autoridades de la zona para presentar y socializar los resultados y las perspectivas del proyecto.</p>
-`
+export const projectProductos = `<ol>
+<li>Protocolo de articulaci&oacute;n t&eacute;cnica de los sistemas de monitoreo de bosques y coberturas existente, validado e incorporado como soporte de la continuidad en la operaci&oacute;n de SMBYC, SIATAC y SIGEA de autoridades ambientales</li>
+<li>Transferencia de Modelo de intervenci&oacute;n para Acuerdos de conservaci&oacute;n, restauraci&oacute;n y no deforestaci&oacute;n con productores rurales</li>
+<li>Acciones de conservaci&oacute;n y manejo de especies amenazadas de flora, fauna terrestre y fauna acu&aacute;tica, que contribuyan a la conectividad, en implementaci&oacute;n</li>
+</ol>`
 
 export const sellosProject = [
   {

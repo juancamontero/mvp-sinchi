@@ -1,17 +1,18 @@
+import { Linea } from '@prisma/client'
 import {
   LineaCarouselProjects,
-  LineaCarouselProps,
 } from './LineaCarouselProjects'
 
 interface Props {
-  lineas: LineaCarouselProps[]
+  lineas: Linea[]
 }
 
-export const LineasListProjectsSection = ({ lineas }: Props) => {
+export const LineasListProjectsSection = ({ lineas =[] }: Props) => {
+  if (lineas.length===0) return <h1>No hay proyectos en esa línea</h1>
   return (
     <div className='w-full flex flex-col gap-2 justify-start items-start mt-6'>
       {lineas.map((linea) => (
-        <LineaCarouselProjects key={linea.slug} {...linea} />
+        <LineaCarouselProjects key={linea.id} linea={linea} />
       ))}
     </div>
   )

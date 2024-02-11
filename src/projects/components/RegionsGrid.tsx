@@ -1,20 +1,18 @@
 import Link from 'next/link'
 import styles from '../../Defaults.module.css'
+import { Region } from '@prisma/client'
 // import { getRegionsByProjectId } from '..'
 
 type Props = {
-  idProject: number
+  regions: Region[]
 }
 
-// export const RegionsGrid = async ({ idProject }: Props) => {
-export const RegionsGrid =  ({ idProject }: Props) => {
-  // const regions = await getRegionsByProjectId(idProject)
-  const regions =  [
-    {id: 1, name: "Amazonas"},
-    {id: 2, name: "Bogotá"},
-  ]
 
-  if (!regions) return <></>
+export const RegionsGrid =  ({ regions }: Props) => {
+
+
+
+  if (!regions) return <>Sin regiones</>
   return (
     <>
       <div className='flex flex-row flex-wrap w-full gap-1 justify-end items-start'>
