@@ -1,30 +1,19 @@
-import { FaHandHoldingWater, FaPeopleCarry } from 'react-icons/fa'
-import { GiCircleForest, GiFarmer } from 'react-icons/gi'
-import { IoFlowerOutline } from 'react-icons/io5'
-import { PiBugBeetleBold, PiSunHorizon } from 'react-icons/pi'
+import Image from 'next/image'
 
 const ICON_SIZE = 40
 
-const lineasIcons = [
-  { id: 1, icon: <PiBugBeetleBold size={ICON_SIZE} /> },
-  { id: 2, icon: <FaHandHoldingWater size={ICON_SIZE} /> },
-  { id: 3, icon: <GiCircleForest size={ICON_SIZE} /> },
-  { id: 4, icon: <GiFarmer size={ICON_SIZE} /> },
-  { id: 5, icon: <PiSunHorizon size={ICON_SIZE} /> },
-  { id: 6, icon: <FaPeopleCarry size={ICON_SIZE} /> },
-]
-
 interface Props {
-  id: number
+  urlIcon?: string | null
   size?: number
+  name?: string
 }
-export const IconLinea = ({ id , size=ICON_SIZE}: Props) => {
-  
-    if (id > lineasIcons.length) return <IoFlowerOutline size={size} />
+export const IconLinea = ({
+  name = 'Línea  de investigación',
+  urlIcon = '/images/lineas/linea-1.webp',
+  size = ICON_SIZE,
+}: Props) => {
 
-    const iconObject = lineasIcons.find( icon => icon.id === id)
+const urlImage = urlIcon ? urlIcon : '/images/lineas/linea-1.webp'
 
-
-
-  return <>{iconObject?.icon}</>
+  return <Image src={urlImage} alt={name} width={size} height={size} className='mb-1'/>
 }

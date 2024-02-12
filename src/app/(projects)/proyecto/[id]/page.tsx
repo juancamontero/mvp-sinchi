@@ -5,17 +5,15 @@ import {
   ConveniosGrid,
   LineasGrid,
   ProgramasGrid,
+  ProjectBanner,
   ProjectStateWidget,
-
   ProyectosProductHtml,
-
   RegionsGrid,
   SellosGrid,
   TagsGrid,
   getProyectoById,
 } from '@/projects'
 import Link from 'next/link'
-
 
 interface Props {
   params: {
@@ -31,21 +29,22 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <main className={`${styles.pageDefault} relative`}>
       {/* banner start */}
+      <ProjectBanner
+        urlBackground={proyecto.urlImage}
+        year={proyecto.year}
+        sellos={proyecto.sellos}
+        completed={proyecto.completed}
+        name={proyecto.name}
+        tags={proyecto.tags}
+        linea={proyecto.linea}
+        programa={proyecto.programa}
+      />
       <div
         className={`${styles.xBannerPaddings} sticky top-0 sm:h-fit h-dvh  flex flex-col flex-wrap items-start bg-accent-100 w-full py-6 gap-2`}
       >
         <div className='flex flex-col justify-start items-start gap-2 w-full'>
           {/* YEAR & sellos start*/}
-          <div className='flex flex-row flex-wrap sm:gap-0 gap-2 sm:flex-nowrap justify-between w-full'>
-            <h3 className='text-left text-2xl sm:text-4xl leading-none font-extrabold text-text-200'>
-              {proyecto.year}
-            </h3>
-          </div>
-          {/* YEAR & sellos end*/}
 
-          <h2 className={styles.titleBannerFullWidth}>
-            <span className='text-accent-200'>PROYECTO</span>
-          </h2>
           {/* TITLE */}
           <h2 className={styles.titleBannerFullWidth}>
             {proyecto.id} | {proyecto.name}
@@ -53,10 +52,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
 
         {/* Linea y programa */}
-        <div className='flex lg:flex-row lg:justify-between flex-col justify-start  w-full mt-2 gap-2'>
-          {proyecto.linea && <LineasGrid linea={proyecto.linea} />}
-          {proyecto.programa && <ProgramasGrid programa={proyecto.programa} />}
-        </div>
+ 
         <ConveniosGrid convenios={proyecto.convenios} />
         {/* palabras clave y regiones */}
         <div className='flex lg:flex-row lg:justify-between flex-col justify-start  w-full p-2 mt-2'>
@@ -104,7 +100,7 @@ export default async function ProjectPage({ params }: Props) {
           <h2 className='text-4xl font-bold text-bg-200 mb-2 text-center'>
             Producto esperados
           </h2>
-          <ProyectosProductHtml htmlContent={proyecto.products ?? ''}/>
+          <ProyectosProductHtml htmlContent={proyecto.products ?? ''} />
         </div>
       </div>
       {/* PRODUCTOS END*/}

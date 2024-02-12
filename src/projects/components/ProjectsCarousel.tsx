@@ -5,6 +5,9 @@ import { ProjectCard } from '..'
 import { useRef } from 'react'
 import { TfiArrowCircleLeft, TfiArrowCircleRight } from 'react-icons/tfi'
 
+
+import buttonStyles from './Buttons.module.css'
+
 interface Props {
   proyectos: ({
     sellos: Sello[]
@@ -13,43 +16,23 @@ interface Props {
 
 export const ProjectsCarousel = ({ proyectos }: Props) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const scrollLeft = () => {
+
+  const scrollByDirection = (direction: 'left' | 'right') => {
     const scrollContainer = scrollContainerRef.current
     if (scrollContainer) {
       const scrollAmount = 500 // Adjust the scroll amount
-      const scrollDuration = 500 // Adjust the scroll duration (in milliseconds)
+      const scrollDuration = 600 // Adjust the scroll duration (in milliseconds)
 
       const start = scrollContainer.scrollLeft
-      const target = Math.max(start - scrollAmount, 0)
-      const distance = start - target
-      const startTime = performance.now()
-
-      const animateScroll = (currentTime: number) => {
-        const elapsedTime = currentTime - startTime
-        const progress = Math.min(elapsedTime / scrollDuration, 1)
-        const easing = (t: number) => t * t * t // Cubic easing function
-
-        scrollContainer.scrollLeft = start - distance * easing(progress)
-
-        if (elapsedTime < scrollDuration) {
-          requestAnimationFrame(animateScroll)
-        }
+      let target
+      if (direction === 'left') {
+        target = Math.max(start - scrollAmount, 0)
+      } else {
+        target = Math.min(
+          start + scrollAmount,
+          scrollContainer.scrollWidth - scrollContainer.clientWidth
+        )
       }
-
-      requestAnimationFrame(animateScroll)
-    }
-  }
-  const scrollRight = () => {
-    const scrollContainer = scrollContainerRef.current
-    if (scrollContainer) {
-      const scrollAmount = 500 // Adjust the scroll amount
-      const scrollDuration = 500 // Adjust the scroll duration (in milliseconds)
-
-      const start = scrollContainer.scrollLeft
-      const target = Math.min(
-        start + scrollAmount,
-        scrollContainer.scrollWidth - scrollContainer.clientWidth
-      )
       const distance = target - start
       const startTime = performance.now()
 
@@ -74,7 +57,7 @@ export const ProjectsCarousel = ({ proyectos }: Props) => {
   return (
     <>
       <div
-        className='mt-1 overflow-x-scroll w-full mx-auto snap-x snap-mandatory p-2 shadow-inner'
+        className='mt-1 overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 lg:px-8 px-2 shadow-inner'
         ref={scrollContainerRef}
       >
         <div className='flex flex-row flex-nowrap gap-5 mt-6 mb-8 w-fit'>
@@ -84,10 +67,14 @@ export const ProjectsCarousel = ({ proyectos }: Props) => {
         </div>
       </div>{' '}
       <div className='mx-auto flex flex-row justify-center gap-3 mt-4'>
-        <button onClick={scrollLeft}>
+        <button 
+        className={buttonStyles.navButton}
+        onClick={()=>scrollByDirection('left')}>
           <TfiArrowCircleLeft size={24} />
         </button>
-        <button onClick={scrollRight}>
+        <button 
+        className={buttonStyles.navButton}
+        onClick={()=>scrollByDirection('right')}>
           <TfiArrowCircleRight size={24} />
         </button>
       </div>

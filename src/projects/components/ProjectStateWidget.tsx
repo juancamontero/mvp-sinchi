@@ -1,15 +1,19 @@
+import Image from 'next/image'
 type Props = {
   completed: boolean
+  selloSize?: number
 }
-export const ProjectStateWidget = ({ completed }: Props) => {
+export const ProjectStateWidget = ({ completed,  selloSize = 48 }: Props) => {
   return (
-    <>
-      <span
-        className={`inline-block p-2 text-center rounded  font-medium tracking-widest w-12 h-12 mb-2 text-xs
-        ${completed ? ' bg-green-200' : ' bg-yellow-200 text-slate-900'}`}
-      >
-        {completed ? 'OK' : 'PEND'}
-      </span>
-    </>
+    <div className='flex flex-row flex-wrap 
+    items-start bg-bg-100 p-1 w-fit'>
+      <Image
+     
+          src={completed? '/images/sellos/terminado.webp': '/images/sellos/no-terminado.webp'}
+          alt='estado del proyecto'
+          width={selloSize}
+          height={selloSize}
+        />
+    </div>
   )
 }

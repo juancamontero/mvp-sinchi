@@ -31,7 +31,7 @@ export const TopBar = () => {
 
   return (
     <>
-      <div className='sticky z-10 top-0 h-16 border-b bg-bg-100 '>
+      <div className='sticky z-50 top-0 h-16 border-b bg-bg-100 '>
         <div className='px-6 flex items-center justify-between space-x-4'>
 
           {/* Hamburger menu starts */}

@@ -1,6 +1,15 @@
-import { IconLinea, getLineaById } from '@/projects'
+import {
+  AccordionFeature,
+  IconLinea,
+  ProjectsCarousel,
+  TermsGrid,
+  getLineaById,
+  getProyectosByLineaId,
+} from '@/projects'
 
 import styles from './../../../../Defaults.module.css'
+import { Suspense } from 'react'
+import { LoaderDefault } from '@/components'
 
 interface Props {
   params: {
@@ -11,6 +20,7 @@ interface Props {
 export default async function LineaPage({ params }: Props) {
   const { id } = params
   const linea = await getLineaById(Number(id))
+  const proyectos = (await getProyectosByLineaId(Number(id))) || []
 
   if (!linea) {
     return (
@@ -26,44 +36,60 @@ export default async function LineaPage({ params }: Props) {
     <main className={`${styles.pageDefault}`}>
       {/* banner start */}
       <div
-        className={`${styles.xBannerPaddings} sticky top-0 h-fit flex flex-col flex-wrap items-start bg-bg-300 w-full py-6 gap-2`}
+        className={`${styles.xBannerPaddings} sm:sticky sm:top-0 h-fit flex flex-col gap-2 flex-wrap items-start bg-bg-200 w-full py-6  z-10 sm:mb-4`}
       >
-        <span className='text-primary-200'>
-          <IconLinea id={Number(id)} />
-        </span>
+        <IconLinea urlIcon={linea.urlIcon} name={linea.name} size={62} />
 
-        <h2 className='text-2xl font-semibold text-text-100 text-left mt-1 text-wrap'>
+        <h2 className='text-2xl font-semibold text-primary-300 text-left mx-1 text-wrap'>
           {linea?.name}
         </h2>
-        <p>{linea?.description}</p>
-        <h3 className='text-xl font-semibold text-text-100 text-left mt-1 text-wrap'>
-          Propósito
-        </h3>
-        <p>{linea?.purpose}</p>
+        <TermsGrid
+          items={linea.Programa.map(({ id, name }) => ({ id, name }))}
+          urlBase='/programa'
+        />
+
+        <AccordionFeature
+          title={'Descripción'}
+          content={<p>{linea?.description}</p> ?? ''}
+        />
+        <AccordionFeature
+          title={'Propósito'}
+          content={<p>{linea?.purpose}</p> ?? ''}
+        />
+        <AccordionFeature
+          title={'Hitos'}
+          content={
+            (
+              <div className='flex flex-col gap-3 justify-start items-stretch w-full'>
+                <ul>
+                  {linea.millestone1 && linea.millestone1?.length > 3 && (
+                    <li className='mb-2 list-disc m-6'>
+                      <p>{linea.millestone1}</p>
+                    </li>
+                  )}
+                  {linea.millestone2 && linea.millestone2?.length > 3 && (
+                    <li className='mb-2 list-disc m-6'>
+                      <p>{linea.millestone2}</p>
+                    </li>
+                  )}
+                  {linea.millestone3 && linea.millestone3?.length > 3 && (
+                    <li className='mb-2 list-disc m-6'>
+                      <p>{linea.millestone3}</p>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            ) ?? ''
+          }
+        />
 
         {/* hitos */}
-        <div className='flex sm:flex-row flex-col gap-3 justify-start items-stretch w-full'>
-          <div className='flex flex-col justify-start items-stretch gap-2  w-full sm:w-1/3 bg-bg-100 p-1'>            
-            <h4 className='text-base font-semibold text-text-100 text-left mt-1 text-wrap'>
-              Hito 1
-            </h4>
-            <p>{linea?.millestone1}</p>
-          </div>
-          <div className='flex flex-col justify-start items-stretch gap-2  w-full sm:w-1/3 bg-bg-100 p-1'>            
-            <h4 className='text-base font-semibold text-text-100 text-left mt-1 text-wrap'>
-              Hito 2
-            </h4>
-            <p>{linea?.millestone2}</p>
-          </div>
-          <div className='flex flex-col justify-start items-stretch gap-2  w-full sm:w-1/3 bg-bg-100 p-1'>            
-            <h4 className='text-base font-semibold text-text-100 text-left mt-1 text-wrap'>
-              Hito 3
-            </h4>
-            <p>{linea?.millestone3}</p>
-          </div>
-        </div>
       </div>
       {/* banner end */}
+      <Suspense fallback={<LoaderDefault />}>
+        <ProjectsCarousel proyectos={proyectos} />
+      </Suspense>
+      {/* <ProjectsGrid proyectos={proyectos} /> */}
     </main>
   )
 }

@@ -49,6 +49,7 @@ model Programa {
   Project     Proyecto[]
   Linea       Linea[]    @relation("LineaToPrograma")
   urlImage    String?    @default("")
+  urlIcon     String?    @default("/images/programas/programa-1.webp")
 }
 
 model Linea {
@@ -63,6 +64,7 @@ model Linea {
   Project     Proyecto[]
   Programa    Programa[] @relation("LineaToPrograma")
   urlImage    String?    @default("")
+  urlIcon     String?    @default("/images/lineas/linea-1.webp")
 }
 
 model Proyecto {
@@ -83,5 +85,5 @@ model Proyecto {
   regions    Region[]   @relation("ProyectoToRegion")
   sellos     Sello[]    @relation("ProyectoToSello")
   tags       Tag[]      @relation("ProyectoToTag")
-  urlImage   String?    @default("")
+  urlImage   String?    @default("/images/background-fallback.webp")
 }

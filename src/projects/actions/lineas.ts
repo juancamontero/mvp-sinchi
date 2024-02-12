@@ -2,8 +2,7 @@
 
 import prisma from '@/lib/prisma'
 
-import { getProyectoById } from '..'
-import { lineasSeed, proyectosSeed } from '../helpers/dataSeed'
+
 
 export const sleep = (seconds: number = 0): Promise<boolean> => {
   return new Promise((resolve) => {
@@ -19,6 +18,9 @@ export const getLineaById = async (id: number) => {
       where: {
         id,
       },
+      include: {
+        Programa: true,
+      }
     })
 
     return linea

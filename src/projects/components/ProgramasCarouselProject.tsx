@@ -1,20 +1,14 @@
-// 'use client'
-// import { useState } from 'react'
-
+import { Programa } from '@prisma/client'
 import styles from '../../Defaults.module.css'
-import { ProjectsCarousel, getProyectosByLineaId } from '..'
-import { IconLinea } from './LineasIcons'
 import Link from 'next/link'
-import { Linea } from '@prisma/client'
-
-export interface Props {
-  linea: Linea
+import { IconLinea, ProjectsCarousel, getProyectosByProgramaId } from '..'
+interface Props {
+  programa: Programa
 }
 
-export const LineaCarouselProjects = async ({ linea }: Props) => {
-  const { id, name, urlIcon } = linea
-
-  const proyectos = (await getProyectosByLineaId(id)) || []
+export const ProgramasCarouselProject = async ({ programa }: Props) => {
+  const { id, name, urlIcon } = programa
+  const proyectos = await getProyectosByProgramaId(id) || []
 
   return (
     <>
@@ -30,7 +24,7 @@ export const LineaCarouselProjects = async ({ linea }: Props) => {
           </h2>
           <Link
             className={styles.buttonLink}
-            href={`/linea/${id}`}
+            href={`/programa/${id}`}
             //  onClick={onToggle}
           >
             Conocer más

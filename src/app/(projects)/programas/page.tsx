@@ -1,8 +1,21 @@
+import { HomeHeroBanner } from '@/components'
+// import { lineasSeed } from '@/projects/helpers/dataSeed'
+import {  ProgramasListProjectsSection, getAllProgramas } from '@/projects'
 
-export default function ProgramasPage() {
+
+import styles from '../../../Defaults.module.css'
+
+export default async function ProgramasPage() {
+
+  const programas = await getAllProgramas()
+
+  
+
   return (
-    <div>
-      <h1>Hello Page</h1>
-    </div>
-  );
+    // todo: Create module styles por pages
+    <main className={styles.pageDefault}>
+      <HomeHeroBanner />
+      <ProgramasListProjectsSection programas={programas} />
+    </main>
+  )
 }

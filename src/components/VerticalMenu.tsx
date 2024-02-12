@@ -17,7 +17,7 @@ export const VerticalMenu = ({menuItems}:Props) => {
       {/* title and close button */}
    
 
-      <div className='flex flex-col justify-between flex-1 mt-6'>
+      <div className='flex flex-col justify-between flex-1 mt-6 z-50'>
         {/* menu start */}
         <nav>
           {menuItems.map((item, index) => (

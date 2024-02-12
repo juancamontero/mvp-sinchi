@@ -1,0 +1,3 @@
+.navButton {
+    @apply text-bg-300 hover:text-primary-100
+}
