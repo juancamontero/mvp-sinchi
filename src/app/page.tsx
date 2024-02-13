@@ -5,6 +5,15 @@ import { LineasListProjectsSection, getAllLineas } from '@/projects'
 
 import styles from '../Defaults.module.css'
 
+
+
+export function generateMetadata() {
+  return {
+    title: `SINCHI | Líneas de investigación`,
+    description: `Líneas de investigación y sus proyectos`,
+  }
+}
+
 export default async function Home() {
 
   const lineas = await getAllLineas() 

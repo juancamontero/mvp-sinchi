@@ -65,7 +65,7 @@ export const ProjectsCarousel = ({ proyectos }: Props) => {
             <ProjectCard key={proyecto.id} proyecto={proyecto} />
           ))}
         </div>
-      </div>{' '}
+      </div>
       <div className='mx-auto flex flex-row justify-center gap-3 mt-4'>
         <button 
         className={buttonStyles.navButton}

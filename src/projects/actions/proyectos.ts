@@ -45,6 +45,74 @@ export const getProjectsByInvestigadorId = async (idAtutor: number) => {
   }
 }
 
+export const getProjectsByTagId = async (idTag: number) => {
+  try {
+    const projects = await prisma.proyecto.findMany({
+      where: {
+        tags: {
+          some: {
+            id: idTag,
+          },
+        },
+      },
+      orderBy: {
+        year: 'desc',
+      },
+      include: {
+        sellos: true,
+      },
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getProjectsByInvestigadorId ${error}`)
+  }
+}
+
+export const getProjectsByRegionId = async (idRegion: number) => {
+  try {
+    const projects = await prisma.proyecto.findMany({
+      where: {
+        regions: {
+          some: {
+            id: idRegion,
+          },
+        },
+      },
+      orderBy: {
+        year: 'desc',
+      },
+      include: {
+        sellos: true,
+      },
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getProjectsByRegionId ${error}`)
+  }
+}
+
+export const getProjectsByConvenioId = async (idConvenio: number) => {
+  try {
+    const projects = await prisma.proyecto.findMany({
+      where: {
+        convenios: {
+          some: {
+            id: idConvenio,
+          },
+        },
+      },
+      orderBy: {
+        year: 'desc',
+      },
+      include: {
+        sellos: true,
+      },
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getProjectsByConvenioId ${error}`)
+  }
+}
 
 export const getProyectosByProgramaId = async (idPrograma: number) => {
   try {

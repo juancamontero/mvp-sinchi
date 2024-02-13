@@ -24,23 +24,20 @@ export const CustomHeroBanner = ({
       {/* main content starts */}
       <div className='grid gap-5 row-gap-8 sm:grid-cols-2'>
         {/* left side starts */}
-        <div className='flex flex-col justify-center'>
-          <div className='max-w-xl'>
-            <h2 className='text-6xl text-text-100 font-black'>{preTitle}</h2>
-            <h2 className={`${styles.titleBanner}`}>
-              <span className='text-accent-200'>{title}</span>
-            </h2>
-            <h3 className='text-text-100 text-base font-bold mt-1'>
-              {postTitle}
-            </h3>
+        <div className='flex flex-col justify-center max-w-xl gap-2'>
+
+            <h2 className={`${styles.titleBanner} text-text-200 `}>{preTitle}</h2>
+            <h2 className={`${styles.titleBanner} text-accent-200 `}>{title}</h2>
+            <h2 className={`${styles.titleBanner} text-text-100 `}>{postTitle}</h2>
+
             <p className='text-base text-text-200 md:text-lg'>{description}</p>
-          </div>
+  
         </div>
 
         {/* right side starts */}
         <div className='relative sm:block hidden  my-auto'>
           <Image
-            src='/images/home-banner.png'
+            src={urlImage}
             alt='Bosque amazónico'
             width={450}
             height={400}

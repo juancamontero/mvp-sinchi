@@ -10,12 +10,30 @@ import {
 import styles from './../../../../Defaults.module.css'
 import { Suspense } from 'react'
 import { LoaderDefault } from '@/components'
+import { Metadata } from 'next'
 
 interface Props {
   params: {
     id: number
   }
 }
+
+  export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    try {
+      const { id } = params
+      const linea = await getLineaById(Number(id))
+
+      return {
+        title: `${linea?.name ??  ''}|Proyectos`,
+        description: `Proyectos de ${linea?.name ??  ''}`,
+      }
+    } catch (error) {
+      return {
+        title: `Proyectos`,
+        description: `Error : ${error}`,
+      }
+    }
+  }
 
 export default async function LineaPage({ params }: Props) {
   const { id } = params

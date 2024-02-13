@@ -1,8 +1,11 @@
 // * Actions
+export * from './actions/convenios'
 export * from './actions/lineas'
 export * from './actions/investigadores'
 export * from './actions/programas'
 export * from './actions/proyectos'
+export * from './actions/tags'
+export * from './actions/regiones'
 
 // * Components
 export { AccordionFeature } from './components/AccordionFeature'
@@ -10,6 +13,7 @@ export { AuthorsGrid } from './components/AuthorsGrid'
 export { ConveniosGrid } from './components/ConveniosGrid'
 export { IconLinea } from './components/LineasIcons'
 export { LineaCarouselProjects } from './components/LineaCarouselProjects'
+export { LineaProgramaGrid } from './components/LineaProgramaGrid'
 export { LineasGrid } from './components/LineasGrid'
 export { LineasListProjectsSection } from './components/LineasListProjectsSection'
 export { ProgramasCarouselProject } from './components/ProgramasCarouselProject'

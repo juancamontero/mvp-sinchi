@@ -10,10 +10,28 @@ import {
 import styles from './../../../../Defaults.module.css'
 import { Suspense } from 'react'
 import { LoaderDefault } from '@/components'
+import { Metadata } from 'next'
 
 interface Props {
   params: {
     id: number
+  }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  try {
+    const { id } = params
+    const programa = await getProgramaById(Number(id))
+
+    return {
+      title: `${programa?.name ??  ''}|Proyectos`,
+      description: `Proyectos de ${programa?.name ??  ''}`,
+    }
+  } catch (error) {
+    return {
+      title: `Proyectos`,
+      description: `Error : ${error}`,
+    }
   }
 }
 

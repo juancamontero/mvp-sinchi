@@ -1,36 +1,35 @@
 import { CustomHeroBanner } from '@/components'
-import { TermCard, getAllRegiones } from '@/projects'
+import { TermCard, getAllConvenios } from '@/projects'
 
 import styles from '../../../Defaults.module.css'
-import { IoMdBook } from 'react-icons/io'
 
-import { TbWorldPin } from 'react-icons/tb'
+import { PiHandshakeLight } from 'react-icons/pi'
 
 export function generateMetadata() {
   return {
-    title: `Regiones`,
-    description: `Lista de reigones y numero de proyectos`,
+    title: `Convenios | Asociados`,
+    description: `Lista de convenios/asociados y numero de proyectos`,
   }
 }
 
-export default async function RegionesPage() {
-  const regiones = await getAllRegiones()
+export default async function ConveniosPage() {
+  const convenios = await getAllConvenios()
 
   return (
     // todo: Create module styles por pages
     <main className={styles.pageDefault}>
-      <CustomHeroBanner preTitle='REGIONES' title='DEPARTAMENTOS' />
+      <CustomHeroBanner preTitle='CONVENIOS' title='| ASOCIADOS' />
 
       <div className='w-full flex flex-col gap-2 justify-start items-start mt-6 p-12'>
         <ul className='grid gap-y-8 gap-x-12 sm:grid-cols-2 lg:grid-cols-3 w-full'>
-          {regiones.map((term) => (
+          {convenios.map((term) => (
             <TermCard
               key={term.id}
-              icon={<TbWorldPin  size={88} />}
+              icon={<PiHandshakeLight size={88} />}
               title={term.name}
               projectsCount={term._count.Proyecto}
               id={term.id}
-              baseUrl='/region'
+              baseUrl='/convenio'
             />
           ))}
         </ul>

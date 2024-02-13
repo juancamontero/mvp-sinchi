@@ -1,8 +1,4 @@
-import {
-  ProjectsCarousel,
-  getInvestigadorById,
-  getProjectsByInvestigadorId,
-} from '@/projects'
+import { ProjectsCarousel, getProjectsByTagId, getTagById } from '@/projects'
 import styles from '../../../../Defaults.module.css'
 import { CustomHeroBanner, LoaderDefault } from '@/components'
 import { Suspense } from 'react'
@@ -17,11 +13,11 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { id } = params
-    const investigador = await getInvestigadorById(Number(id))
+    const tag = await getTagById(Number(id))
 
     return {
-      title: `${investigador?.name ??  ''}|Proyectos`,
-      description: `Proyectos de ${investigador?.name ??  ''}`,
+      title: `${tag?.name ?? ''} |Proyectos`,
+      description: `Proyectos de ${tag?.name ?? ''}`,
     }
   } catch (error) {
     return {
@@ -31,17 +27,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function InvestigadorPage({ params }: Props) {
+export default async function TagPage({ params }: Props) {
   const { id } = params
-  const investigador = await getInvestigadorById(Number(id))
-  const proyectos = await getProjectsByInvestigadorId(Number(id))
+  const tag = await getTagById(Number(id))
+  const proyectos = await getProjectsByTagId(Number(id))
 
   return (
     <main className={styles.pageDefault}>
       <CustomHeroBanner
         preTitle={`${proyectos.length}` ?? ''}
-        title={investigador?.name ?? 'INVESTIGADOR'}
-        postTitle='Investigador responsable'
+        title={tag?.name ?? 'PALABRA CLAVE'}
+        postTitle='Palabra clave'
       />
 
       <Suspense fallback={<LoaderDefault />}>
