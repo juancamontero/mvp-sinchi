@@ -1,3 +1,4 @@
+export { CustomHeroBanner } from './CustomHeroBanner'
 export { HomeHeroBanner } from './HomeHeroBanner'
 export { LoaderDefault } from './LoaderDefault'
 export { MenuItem } from './MenuItem'

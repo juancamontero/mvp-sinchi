@@ -4,15 +4,15 @@ import { BsPerson } from 'react-icons/bs'
 // import { getAuthorsByProjectId } from '..'
 
 type Props = {
-  author: Autor
+  author: Autor | null
 }
 
 export const AuthorsGrid = ({ author }: Props) => {
   if (!author) return <h1>Sin investigador</h1>
   return (
     <>
-      <div className='flex flex-row flex-nowrap items-start justify-between gap-1'>
-        <span className='text-text-100'>
+      <div className='flex flex-row flex-nowrap items-center justify-start gap-1 w-full p-2 bg-primary-200 bg-opacity-90'>
+        <span className='text-bg-100'>
           <BsPerson size={48} />
         </span>
         <div className='flex flex-row flex-wrap gap-1 items-start'>
@@ -22,10 +22,10 @@ export const AuthorsGrid = ({ author }: Props) => {
             key={author.id}
           >
             <div className='flex-grow flex flex-col pl-4'>
-              <span className='text-sm font-medium text-text-100  hover:text-primary-200'>
+              <span className='text-sm font-medium text-bg-100  hover:text-primary-200'>
                 {author.name}
               </span>
-              <span className='text-xs font-medium text-text-200  hover:text-primary-100'>
+              <span className='text-xs font-medium text-bg-200  hover:text-primary-100'>
                 {author.email}
               </span>
             </div>

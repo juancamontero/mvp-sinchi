@@ -26,6 +26,25 @@ export const getProyectosByLineaId = async (idLinea: number) => {
   }
 }
 
+export const getProjectsByInvestigadorId = async (idAtutor: number) => {
+  try {
+    const projects = await prisma.proyecto.findMany({
+      where: {
+       idAtutor
+      },
+      orderBy: {
+        year: 'desc',
+      },
+      include: {
+        sellos: true,
+      },
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getProjectsByInvestigadorId ${error}`)
+  }
+}
+
 
 export const getProyectosByProgramaId = async (idPrograma: number) => {
   try {

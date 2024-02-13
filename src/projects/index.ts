@@ -1,5 +1,6 @@
 // * Actions
 export * from './actions/lineas'
+export * from './actions/investigadores'
 export * from './actions/programas'
 export * from './actions/proyectos'
 
@@ -23,4 +24,5 @@ export { ProyectosProductHtml } from './components/ProyectosProductHtml'
 export { RegionsGrid } from './components/RegionsGrid'
 export { SellosGrid } from './components/SellosGrid'
 export { TagsGrid } from './components/TagsGrid'
+export { TermCard } from './components/TermCard'
 export { TermsGrid } from './components/TermsGrid'

@@ -54,7 +54,7 @@ export const ProjectCard = ({ proyecto }: Props) => {
           className='absolute inset-0 w-full h-full bg-primary-300 bg-opacity-40 backdrop-blur-[2px] group-hover:backdrop-blur-0'
         />
 
-        <div className='relative container m-auto px-6 md:px-12 lg:px-6'>
+        <div className='relative container m-auto px-1 md:px-2 lg:px-2'>
           {/* Acá contenido que se ve sin hover */}
           <div className='flex flex-col  h-full justify-start'>
             {/* year and seals starts */}
