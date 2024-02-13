@@ -11,7 +11,7 @@
 }
 
 .titleBanner {
-    @apply max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-text-100 sm:text-4xl sm:leading-none
+    @apply max-w-lg  font-sans text-3xl font-bold tracking-tight text-text-100 sm:text-4xl sm:leading-none
 }
 
 .titleBannerFullWidth {
