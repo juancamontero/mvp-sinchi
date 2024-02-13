@@ -38,40 +38,12 @@ export default async function ProjectPage({ params }: Props) {
         tags={proyecto.tags}
         linea={proyecto.linea}
         programa={proyecto.programa}
+        convenios={proyecto.convenios}
+        regiones={proyecto.regions}
+        places={proyecto.places ?? ''}
+        autor={proyecto.autor}
       />
-      <div
-        className={`${styles.xBannerPaddings} sticky top-0 sm:h-fit h-dvh  flex flex-col flex-wrap items-start bg-accent-100 w-full py-6 gap-2`}
-      >
-        <div className='flex flex-col justify-start items-start gap-2 w-full'>
-          {/* YEAR & sellos start*/}
 
-          {/* TITLE */}
-          <h2 className={styles.titleBannerFullWidth}>
-            {proyecto.id} | {proyecto.name}
-          </h2>
-        </div>
-
-        {/* Linea y programa */}
- 
-        <ConveniosGrid convenios={proyecto.convenios} />
-        {/* palabras clave y regiones */}
-        <div className='flex lg:flex-row lg:justify-between flex-col justify-start  w-full p-2 mt-2'>
-          <TagsGrid tags={proyecto.tags} />
-          <RegionsGrid regions={proyecto.regions} />
-        </div>
-
-        {/* autores */}
-        {proyecto.autor && <AuthorsGrid author={proyecto.autor} />}
-
-        {/* completed row  start*/}
-        <div className='flex flex-row justify-between w-full'>
-          <SellosGrid sellos={proyecto.sellos} selloSize={70} />
-          <ProjectStateWidget completed={proyecto.completed} />
-        </div>
-        {/* completed row  end*/}
-        {/* TODO: Convenio */}
-      </div>
-      {/* banner end */}
 
       {/* OBJETIVO START*/}
       <div

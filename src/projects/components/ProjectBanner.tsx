@@ -8,6 +8,9 @@ import {
   TermsGrid,
   LineasGrid,
   ProgramasGrid,
+  ConveniosGrid,
+  RegionsGrid,
+  AuthorsGrid,
 } from '..'
 
 interface Props {
@@ -20,8 +23,22 @@ interface Props {
     id: number
     name: string
   }[]
-  linea: { id: number; name: string ; urlIcon: string | null} | null
-  programa: { id: number; name: string ; urlIcon: string | null} | null
+  linea: { id: number; name: string; urlIcon: string | null } | null
+  programa: { id: number; name: string; urlIcon: string | null } | null
+  convenios: {
+    id: number
+    name: string
+  }[]
+  regiones: {
+    id: number
+    name: string
+  }[]
+  places: string
+  autor: {
+    id: number
+    name: string
+    email: string
+  } | null
 }
 
 export const ProjectBanner = ({
@@ -32,10 +49,14 @@ export const ProjectBanner = ({
   name,
   tags,
   linea,
-  programa
+  programa,
+  convenios,
+  regiones,
+  places,
+  autor
 }: Props) => {
   return (
-    <div className={`group relative w-full h-screen`}>
+    <div className={`group  w-full h-screen  sticky top-0`}>
       {/* backgroung image */}
       <Image
         className='absolute inset-0 w-full h-full object-cover object-center'
@@ -50,11 +71,11 @@ export const ProjectBanner = ({
 
       {/* Content  */}
       <div className={`relative ${styles.xBannerPaddings} py-6`}>
-        <div className='flex flex-col  h-full justify-start gap-2'>
+        <div className='flex flex-col  sm:h-full h-fit justify-start gap-2 md:gap-4'>
           {/* year and seals starts */}
-          <div className='flex flex-col lg:flex-row justify-between items-start w-full sm:mb-4'>
+          <div className='flex flex-col lg:flex-row justify-between items-start w-full sm:mb-1'>
             {/* year  start*/}
-            <h2 className='text-left text-6xl font-extrabold text-white leading-none'>
+            <h2 className='text-left lg:text-5xl sm:text-3xl text-4xl font-extrabold text-bg-200 leading-none'>
               {year}
             </h2>
             {/* year ends*/}
@@ -67,20 +88,18 @@ export const ProjectBanner = ({
           {/* year and seals ends */}
           <SellosGrid sellos={sellos} selloSize={52} />
           {/* Title */}
-          <h2
-            className={`${styles.titleBannerFullWidth} text-bg-100 mt-2 mb-2`}
-          >
+          <h2 className={`${styles.titleBannerFullWidth} text-bg-100`}>
             {name}
           </h2>
           <TermsGrid items={tags} urlBase='/palabra-clave' />
 
           {/* Linea y programa */}
-  
-            {linea && <LineasGrid linea={linea} />}
-            {programa && (
-              <ProgramasGrid programa={programa} />
-            )}
-  
+
+          {linea && <LineasGrid linea={linea} />}
+          {programa && <ProgramasGrid programa={programa} />}
+          <ConveniosGrid convenios={convenios} />
+          <RegionsGrid regions={regiones} places={places} />
+          <AuthorsGrid author={autor} />
         </div>
       </div>
     </div>
