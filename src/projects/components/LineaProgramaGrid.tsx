@@ -25,9 +25,9 @@ interface Props {
 
 export const LineaProgramaGrid = ({
   termino,
-  backgroundColor = 'accent-100',
   opacity = 100,
   urlBase,
+  backgroundColor = 'accent-100',
 }: Props) => {
   if (!termino) return <h1>Término no encontrado</h1>
 

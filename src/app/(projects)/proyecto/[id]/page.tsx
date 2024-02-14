@@ -1,16 +1,8 @@
 import { projectObjetivo, projectProductos } from '@/projects/helpers/dataSeed'
 import styles from './../../../../Defaults.module.css'
 import {
-  AuthorsGrid,
-  ConveniosGrid,
-  LineasGrid,
-  ProgramasGrid,
   ProjectBanner,
-  ProjectStateWidget,
   ProyectosProductHtml,
-  RegionsGrid,
-  SellosGrid,
-  TagsGrid,
   getProyectoById,
 } from '@/projects'
 import Link from 'next/link'
@@ -43,7 +35,6 @@ export default async function ProjectPage({ params }: Props) {
         places={proyecto.places ?? ''}
         autor={proyecto.autor}
       />
-
 
       {/* OBJETIVO START*/}
       <div

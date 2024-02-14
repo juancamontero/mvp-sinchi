@@ -68,40 +68,42 @@ export const ProjectBanner = ({
       />
 
       {/* overlay div */}
-      <div className='absolute inset-0 w-full h-full bg-primary-300 bg-opacity-80 backdrop-blur-[2px] group-hover:backdrop-blur-0 group-hover:bg-opacity-70' />
+      <div className='absolute inset-0 w-full h-full bg-primary-300 bg-opacity-90 backdrop-blur-[2px] group-hover:backdrop-blur-0 group-hover:bg-opacity-70' />
 
       {/* CONTENT DIV */}
       <div className={`relative ${styles.xBannerPaddings} py-2 sm:py-4 h-full lg:h-[90vh] flex flex-col justify-between `}>
 
         {/* Content full column  */}
           {/* upper section starts*/}
-          <div className='flex flex-col justify-start gap-2 md:gap-4 sm:mb-0 mb-2'>
+          <div className='flex flex-col justify-start gap-2 md:gap-2 sm:mb-0 mb-2'>
             {/* year and seals starts */}
-            <div className='flex flex-row justify-between flex-wrap sm:flex-nowrap items-center w-full sm:mb-1'>
+            <div className='flex flex-row justify-between flex-wrap sm:flex-nowrap items-center w-full'>
               {/* year  start*/}
-              <h2 className='text-left lg:text-6xl text-5xl font-extrabold text-bg-200 leading-none'>
+              <h2 className='text-left lg:text-6xl text-5xl font-extrabold text-bg-300 leading-none'>
                 {year}
               </h2>
               {/* year ends*/}
 
               {/* Project state start*/}
-              <div className='w-full flex lg:flex-row flex-nowrap justify-start sm:justify-end gap-2 lg:w-full mt-2 lg:mt-0 '>
+              <div className='w-full flex lg:flex-row flex-nowrap justify-start sm:justify-end gap-1 lg:w-full mt-1 lg:mt-0 '>
                 <ProjectStateWidget completed={completed} selloSize={52} />
                 <SellosGrid sellos={sellos} selloSize={52} />
               </div>
               {/* Project state end*/}
             </div>
 
+
+
             {/* Title */}
-            <h2 className={`${styles.titleBannerFullWidth} text-bg-100`}>
+            <TermsGrid items={tags} urlBase='/palabra-clave' />
+            <h2 className={`${styles.titleBannerFullWidth} text-bg-100 text-ellipsis  hover:h-fit h-20 ` }>
               {name}
             </h2>
-            <TermsGrid items={tags} urlBase='/palabra-clave' />
           </div>
           {/* upper section ends*/}
 
           {/* botton section starts */}
-          <div className='flex flex-col justify-start gap-2 md:gap-3'>
+          <div className='flex flex-col justify-start gap-2 md:gap-2'>
             {/* Linea y programa */}
             {linea && <LineaProgramaGrid termino={linea} urlBase={'/linea'} />}
             {programa && (
