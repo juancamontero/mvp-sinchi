@@ -3,7 +3,7 @@ type Props = {
   completed: boolean
   selloSize?: number
 }
-export const ProjectStateWidget = ({ completed,  selloSize = 48 }: Props) => {
+export const ProjectStateWidget = ({ completed,  selloSize = 42 }: Props) => {
   return (
     <div className='flex flex-row flex-wrap 
     items-start bg-bg-100 p-1 w-fit'>

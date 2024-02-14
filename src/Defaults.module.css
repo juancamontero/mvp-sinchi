@@ -1,5 +1,5 @@
 .xBannerPaddings {
-    @apply px-2 sm:px-4  md:px-12 lg:px-16
+    @apply px-3 sm:px-4  md:px-8 lg:px-6
 }
 
 .buttonLink {
@@ -11,11 +11,11 @@
 }
 
 .titleBanner {
-    @apply max-w-lg  font-sans text-3xl font-bold tracking-tight text-text-100 sm:text-4xl sm:leading-none
+    @apply max-w-lg  font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none
 }
 
 .titleBannerFullWidth {
-    @apply font-sans text-xl font-bold tracking-tight  sm:text-2xl lg:text-4xl sm:leading-relaxed
+    @apply font-sans text-2xl font-bold tracking-tight  sm:text-3xl lg:text-4xl leading-tight
 }
 
 .tagsBannerProject {
@@ -28,3 +28,15 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+.pageSectionGrid {
+    @apply w-full flex flex-col gap-2 justify-start items-start mt-6 p-12
+}
+
+.gridTerms {
+    @apply grid gap-y-8 gap-x-12 sm:grid-cols-2 lg:grid-cols-3 w-full
+}
+
+.lineaProgramProjectsSection {
+    @apply w-full flex flex-col gap-2 justify-start items-start
+}

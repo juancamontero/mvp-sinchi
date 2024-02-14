@@ -19,7 +19,7 @@ export const TermsGrid = ({items, urlBase}: TermGridProps) => {
         {items.map((item) => (
           <Link
             key={item.id}
-            className={`inline-block py-1 px-2 rounded-sm bg-bg-100 text-primary-200 text-xs font-medium tracking-widest cursor-pointer hover:text-primary-100 text-pretty shadow-sm`}
+            className={`inline-block py-1 px-2 rounded-sm bg-bg-100 text-primary-200 text-xs font-medium tracking-widest cursor-pointer text-pretty shadow-sm hover:text-primary-100 hover:bg-bg-200`}
             href={`${urlBase}/${item.id}`}
           >
             {item.name}

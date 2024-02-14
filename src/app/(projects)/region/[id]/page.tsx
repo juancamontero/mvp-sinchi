@@ -1,7 +1,8 @@
 import {
   ProjectsCarousel,
-  getInvestigadorById,
-  getProjectsByInvestigadorId,
+  getProjectsByRegionId,
+  getRegionById,
+  getTagById,
 } from '@/projects'
 import styles from '../../../../Defaults.module.css'
 import { CustomHeroBanner, LoaderDefault } from '@/components'
@@ -17,11 +18,11 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { id } = params
-    const investigador = await getInvestigadorById(Number(id))
+    const region = await getRegionById(Number(id))
 
     return {
-      title: `${investigador?.name ??  ''}|Proyectos`,
-      description: `Proyectos de ${investigador?.name ??  ''}`,
+      title: `${region?.name ?? ''} |Proyectos`,
+      description: `Proyectos en el departamento ${region?.name ?? ''}`,
     }
   } catch (error) {
     return {
@@ -31,17 +32,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function InvestigadorPage({ params }: Props) {
+export default async function RegionPage({ params }: Props) {
   const { id } = params
-  const investigador = await getInvestigadorById(Number(id))
-  const proyectos = await getProjectsByInvestigadorId(Number(id))
+  const region = await getRegionById(Number(id))
+  const proyectos = await getProjectsByRegionId(Number(id))
 
   return (
     <main className={styles.pageDefault}>
       <CustomHeroBanner
-        preTitle={`${proyectos.length}` ?? ''}
-        title={investigador?.name ?? 'INVESTIGADOR'}
-        postTitle='Investigador responsable'
+        preTitle={`${proyectos.length} proyectos` ?? ''}
+        title={region?.name ?? 'REGION'}
+     
       />
 
       <Suspense fallback={<LoaderDefault />}>

@@ -13,7 +13,7 @@ export const ConveniosGrid = ({ convenios }: Props) => {
 
   if (!convenios) return <>Sin convenios</>
   return (
-    <div className='flex flex-col lg:mb-0 mb-2 bg-accent-100 bg-opacity-60 p-2 w-full'>
+    <div className='flex flex-col lg:mb-0 mb-2 bg-accent-100 bg-opacity-80 p-2 w-full'>
       <h6 className='text-sm font-semibold text-white mb-1 lg:mb-2'>
         Convenios
       </h6>

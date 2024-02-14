@@ -1,10 +1,17 @@
 import { CustomHeroBanner } from '@/components'
-// import { lineasSeed } from '@/projects/helpers/dataSeed'
 import { TermCard, getAllInvestigadores } from '@/projects'
 
 import styles from '../../../Defaults.module.css'
-import { IoAddCircleOutline } from 'react-icons/io5'
 import { BsPerson } from 'react-icons/bs'
+
+
+
+export function generateMetadata() {
+  return {
+    title: `Investigadores responsables`,
+    description: `Lista de investigadores y numero de proyectos`,
+  }
+}
 
 export default async function InvestigadoresPage() {
   const investigadores = await getAllInvestigadores()
@@ -12,10 +19,10 @@ export default async function InvestigadoresPage() {
   return (
     // todo: Create module styles por pages
     <main className={styles.pageDefault}>
-      <CustomHeroBanner title='INVESTIGADORES' />
+      <CustomHeroBanner title='INVESTIGADORES' postTitle='RESPONSABLES' />
 
-      <div className='w-full flex flex-col gap-2 justify-start items-start mt-6 p-12'>
-        <ul className='grid gap-y-8 gap-x-12 sm:grid-cols-2 lg:grid-cols-3 w-full'>
+      <div className={styles.pageSectionGrid}>
+        <ul className={styles.gridTerms}>
           {investigadores.map((investigador) => (
             <TermCard
               key={investigador.id}

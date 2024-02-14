@@ -18,8 +18,8 @@ const menuItems = [
   { text: 'Programas', path: '/programas', icon: <CiLineHeight />},
   { text: 'Investigadores', path: '/investigadores', icon: <IoPersonOutline />},
   { text: 'Regiones', path: '/regiones', icon: <TbWorldPin />},
-  { text: 'Convenios / Asociados', path: '/programas', icon: <PiHandshakeLight /> },
-  { text: 'Palabras clave', path: '/glosario', icon: <IoMdBook />  },
+  { text: 'Convenios / Asociados', path: '/convenios', icon: <PiHandshakeLight /> },
+  { text: 'Palabras clave', path: '/palabras-clave', icon: <IoMdBook />  },
 ]
 
 export const TopBar = () => {
