@@ -1,15 +1,8 @@
-
-
-import Link from 'next/link'
 import Image from 'next/image'
 
-
 import {
-  IoBasketOutline,
   IoCalendarOutline,
   IoCheckboxOutline,
-  IoCodeWorkingOutline,
-  IoListOutline,
   IoPersonOutline,
 } from 'react-icons/io5'
 import { AdminSideBarItem, LogoutButton } from '../..'
@@ -53,31 +46,14 @@ const sidebarItems = [
 export const AdminSidebar = async () => {
   const session = await auth()
 
-
   const name = session?.user?.name ?? 'No name'
   // TODO user Role
   const userRoles = session?.user?.roles ?? ['user']
-  const urlImage =
-    session?.user?.image ??
-    '/images/dummie_user.webp'
+  const urlImage = session?.user?.image ?? '/images/dummie_user.webp'
   return (
     <>
-      <aside className='ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]'>
+      <aside className='ml-[-100%] fixed top-20 z-10 pb-3 px-6 flex flex-col justify-between h-[85vh] border-r bg-bg-300 transition duration-300 w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]'>
         <div>
-          <div className='-mx-6 px-6 py-4'>
-            {/* TODO: Next/Link hacia dashboard */}
-            <Link href='/admin' title='Admin home'>
-              {/* Next/Image */}
-              <Image
-                src='/logo_nav.png'
-                className='w-12 mx-auto'
-                alt='SINCHI logo'
-                width={48}
-                height={50}
-              />
-            </Link>
-          </div>
-
           <div className='mt-8 text-center'>
             {/* Next/Image */}
             <Image
@@ -90,7 +66,9 @@ export const AdminSidebar = async () => {
             <h5 className='hidden mt-4 text-xl font-semibold text-gray-600 lg:block'>
               {name}
             </h5>
-            <span className='hidden text-gray-400 lg:block'>{userRoles.join(', ')}</span>
+            <span className='hidden text-gray-400 lg:block'>
+              {userRoles.join(', ')}
+            </span>
           </div>
 
           <ul className='space-y-2 tracking-wide mt-8'>

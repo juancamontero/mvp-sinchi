@@ -7,7 +7,7 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <h1>Profile page</h1>
+      <h1 className='font-bold text-2xl'>Profile page</h1>
       <hr className='mb-2' />
       <div className='flex flex-col'>
         <span>{session?.user?.name ?? 'no User'}</span>

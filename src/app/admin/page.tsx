@@ -6,7 +6,7 @@ export default async function AdminPage() {
 
   return (
     <div>
-      <h1>Admin Page</h1>
+      <h1 className='font-bold text-2xl'>Admin page</h1>
       <hr />
       <div className='grid gap-6 md:grid-cols-2 grid-cols-1'>
         <div className='flex flex-col'>

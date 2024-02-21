@@ -5,6 +5,22 @@ import prisma from '@/lib/prisma'
 
 
 
+
+export const getAllProjects = async () => {
+  try {
+    const projects = await prisma.proyecto.findMany({
+      
+      orderBy: {
+        id: 'desc'
+      },
+      
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getAllProjects ${error}`)
+  }
+}
+
 export const getProyectosByLineaId = async (idLinea: number) => {
   try {
     const proyectos = await prisma.proyecto.findMany({

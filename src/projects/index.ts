@@ -1,11 +1,11 @@
 // * Actions
-export * from './actions/convenios'
-export * from './actions/lineas'
-export * from './actions/investigadores'
-export * from './actions/programas'
-export * from './actions/proyectos'
-export * from './actions/tags'
-export * from './actions/regiones'
+export * from './actions/convenios/convenios'
+export * from './actions/lineas/lineas'
+export * from './actions/investigadores/investigadores'
+export * from './actions/programas/programas'
+export * from './actions/proyectos/proyectos'
+export * from './actions/tags/tags'
+export * from './actions/regiones/regiones'
 
 // * Components
 export { AccordionFeature } from './components/AccordionFeature'

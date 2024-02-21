@@ -72,24 +72,27 @@ model Linea {
 }
 
 model Proyecto {
-  id         Int        @id @default(autoincrement())
-  idLinea    Int?
-  idPrograma Int?
-  idAtutor   Int?
-  completed  Boolean    @default(false)
-  year       Int        @default(2022)
-  name       String
-  objetivo   String?    @default("")
-  products   String?    @default("")
-  places     String?    @default("")
-  autor      Autor?     @relation(fields: [idAtutor], references: [id])
-  linea      Linea?     @relation(fields: [idLinea], references: [id])
-  programa   Programa?  @relation(fields: [idPrograma], references: [id])
-  convenios  Convenio[] @relation("ConvenioToProyecto")
-  regions    Region[]   @relation("ProyectoToRegion")
-  sellos     Sello[]    @relation("ProyectoToSello")
-  tags       Tag[]      @relation("ProyectoToTag")
-  urlImage   String?    @default("/images/background-fallback.webp")
+  id          Int        @id @default(autoincrement())
+  idLinea     Int?
+  idPrograma  Int?
+  idAtutor    Int?
+  completed   Boolean    @default(false)
+  year        Int        @default(2022)
+  name        String
+  objetivo    String?    @default("")
+  products    String?    @default("")
+  places      String?    @default("")
+  importancia String?
+  pertinencia String?
+  impacto     String?
+  autor       Autor?     @relation(fields: [idAtutor], references: [id])
+  linea       Linea?     @relation(fields: [idLinea], references: [id])
+  programa    Programa?  @relation(fields: [idPrograma], references: [id])
+  convenios   Convenio[] @relation("ConvenioToProyecto")
+  regions     Region[]   @relation("ProyectoToRegion")
+  sellos      Sello[]    @relation("ProyectoToSello")
+  tags        Tag[]      @relation("ProyectoToTag")
+  urlImage    String?    @default("/images/background-fallback.webp")
 }
 
 // * AUTH JS

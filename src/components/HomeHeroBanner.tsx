@@ -27,10 +27,10 @@ export const HomeHeroBanner = ({title, subTitle}: Props) => {
           />
         </div>
         <div className='max-w-xl'>
-          <h2 className={`${styles.titleBanner} text-center text-primary-200`}>
+          <h2 className={`${styles.titleBanner} text-center text-primary-200 leading-tight`}>
             {title}
           </h2>
-          <h3 className='text-base text-text-100 text-center font-light'>
+          <h3 className='text-base text-text-100 text-center font-light leading-tight'>
             {subTitle}
           </h3>
         </div>
