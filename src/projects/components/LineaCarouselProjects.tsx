@@ -1,7 +1,7 @@
 // 'use client'
 // import { useState } from 'react'
 
-import styles from '../../Defaults.module.css'
+
 import { LineaProgramaCarouselContainer, getProyectosByLineaId } from '..'
 
 import { Linea } from '@prisma/client'
@@ -11,7 +11,7 @@ export interface Props {
 }
 
 export const LineaCarouselProjects = async ({ linea }: Props) => {
-  const { id, name, urlIcon } = linea
+  const { id, name, urlIcon , preTitle, baseColor} = linea
 
   const proyectos = (await getProyectosByLineaId(id)) || []
 
@@ -22,6 +22,9 @@ export const LineaCarouselProjects = async ({ linea }: Props) => {
         name={name}
         baseUrl={`/linea/${id}`}
         proyectos={proyectos}
+        preTitle={preTitle}
+        baseColor={baseColor}
+        
       />
     </>
   )

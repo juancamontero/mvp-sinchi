@@ -1,0 +1,19 @@
+.scroll-container::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    
+
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #E7E6E0;
+
+
+    }
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #E7E6E0; /* Color of the scrollbar on hover */
+}

@@ -18,7 +18,7 @@ export const ProjectCard = ({ proyecto }: Props) => {
       <Link
         href={`/proyecto/${id}`}
         title={name}
-        className={`group relative  w-72 sm:w-96 lg:w-[432px]  h-72 sm:max-w-[600px] overflow-hidden rounded-sm shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out p-2 cursor-pointer bg-cover bg-center`}
+        className={`group relative w-80 h-56 overflow-hidden rounded-sm shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out p-2 cursor-pointer bg-cover bg-center`}
         // style={{ backgroundImage: `url(${finalUrlImage})` }}
       >
         {/* background image */}
@@ -33,7 +33,7 @@ export const ProjectCard = ({ proyecto }: Props) => {
         {/* Overlay */}
         <div
           aria-hidden='true'
-          className='absolute inset-0 w-full h-full bg-primary-300 bg-opacity-40 backdrop-blur-0 group-hover:backdrop-blur-sm'
+          className='absolute inset-0 w-full h-full group-hover:bg-primary-10000 group-hover:bg-opacity-40 backdrop-blur-0 group-hover:backdrop-blur-[2px]'
         />
 
         <div className='relative container m-auto px-1 md:px-2 lg:px-2'>
@@ -42,15 +42,13 @@ export const ProjectCard = ({ proyecto }: Props) => {
             {/* year and seals starts */}
             <div className='flex flex-col lg:flex-row justify-between items-start w-full'>
               {/* year  start*/}
-              <h2 className='text-left text-5xl font-black  text-bg-200 leading-none'>
-                {year}
-              </h2>
+        
               {/* year ends*/}
               {/* sellos row row  start*/}
-              <div className='flex  flex-col-reverse lg:flex-row flex-wrap justify-end gap-2 lg:w-1/2 mt-2 lg:mt-0 '>
+              {/* <div className='flex  flex-col-reverse lg:flex-row flex-wrap justify-end gap-2 lg:w-1/2 mt-2 lg:mt-0 '>
                 <SellosGrid sellos={proyecto.sellos} />
                 <ProjectStateWidget completed={proyecto.completed} />
-              </div>
+              </div> */}
               {/* sellos row end*/}
             </div>
             {/* year and seals ends */}
@@ -59,20 +57,23 @@ export const ProjectCard = ({ proyecto }: Props) => {
         </div>
 
         {/* Acá va el bloque que sube al hover */}
-        <div className='bg-bg-100 bg-opacity-50 sm:flex sm:flex-col sm:justify-between bottom-0 inset-x-0 h-full mt-auto px-4 py-2 translate-y-56 lg:translate-y-48 transition duration-300 ease-in-out group-hover:translate-y-[80px] absolute group-hover:bg-opacity-90'>
+        <div className='bg-bg-100 bg-opacity-60 sm:flex sm:flex-col sm:justify-between bottom-0 inset-x-0 h-full mt-auto px-4 py-2 translate-y-28  transition duration-300 ease-in-out group-hover:translate-y-0 absolute group-hover:bg-opacity-80'>
           {/* <TagsGrid idProject={id} /> */}
 
           {/* Objetivo */}
-          <div className='flex flex-col justify-start items-start'>
+          <div className='flex flex-col justify-start items-start '>
             {/* TITLE */}
             <h2
-              className={`text-base font-semibold text-text-100 mt-1 mb-2 h-12 whitespace-normal truncate text-ellipsis group-hover:whitespace-normal group-hover:h-fit`}
+              className={`text-base leading-tight text-text-100 mt-1 mb-2 h-14 whitespace-normal truncate text-ellipsis group-hover:whitespace-normal group-hover:h-fit `}
             >
               {name}
             </h2>
 
             {/* objetivo starts */}
-            <h3 className='text-sm text-accent-100 font-semibold mb-1'>
+            <h2 className='text-left text-2xl font-black  text-text-100 leading-none'>
+                {year}
+              </h2>
+            {/* <h3 className='text-sm text-accent-100 font-semibold mb-1'>
               Objetivo
             </h3>
             {objetivo && (
@@ -80,7 +81,7 @@ export const ProjectCard = ({ proyecto }: Props) => {
                 className={`w-full text-xs leading-relaxed mb-8 text-text-100`}
                 dangerouslySetInnerHTML={{ __html: objetivo }}
               />
-            )}
+            )} */}
             {/* Objetivo ends*/}
           </div>
         </div>

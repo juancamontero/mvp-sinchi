@@ -13,6 +13,7 @@ export function generateMetadata() {
 
 export default async function Home() {
   const lineas = await getAllLineas()
+  // console.log(lineas)
 
   return (
     // todo: Create module styles por pages

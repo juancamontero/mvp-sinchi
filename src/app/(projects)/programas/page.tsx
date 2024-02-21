@@ -18,7 +18,7 @@ export default async function ProgramasPage() {
   return (
     // todo: Create module styles por pages
     <main className={styles.pageDefault}>
-      <HomeHeroBanner />
+      <HomeHeroBanner title={'Conoce nuestros programas de investigación'} subTitle={'Proyectos agrupados por programa de 2023 a 2024'} />
       <ProgramasListProjectsSection programas={programas} />
     </main>
   )

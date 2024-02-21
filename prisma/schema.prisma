@@ -43,6 +43,8 @@ model Sello {
 
 model Programa {
   id          Int        @id @default(autoincrement())
+  preTitle    String?
+  baseColor   String?
   name        String     @unique @default("")
   order       Int        @default(autoincrement())
   description String?    @default("")
@@ -55,6 +57,8 @@ model Programa {
 model Linea {
   id          Int        @id @default(autoincrement())
   order       Int        @default(autoincrement())
+  preTitle    String?
+  baseColor   String?
   name        String     @unique @default("")
   description String?    @default("")
   purpose     String?    @default("")
