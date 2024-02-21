@@ -43,6 +43,8 @@ model Sello {
 
 model Programa {
   id          Int        @id @default(autoincrement())
+  preTitle    String?
+  baseColor   String?
   name        String     @unique @default("")
   order       Int        @default(autoincrement())
   description String?    @default("")
@@ -55,6 +57,8 @@ model Programa {
 model Linea {
   id          Int        @id @default(autoincrement())
   order       Int        @default(autoincrement())
+  preTitle    String?
+  baseColor   String?
   name        String     @unique @default("")
   description String?    @default("")
   purpose     String?    @default("")
@@ -86,4 +90,53 @@ model Proyecto {
   sellos     Sello[]    @relation("ProyectoToSello")
   tags       Tag[]      @relation("ProyectoToTag")
   urlImage   String?    @default("/images/background-fallback.webp")
+}
+
+// * AUTH JS
+model Account {
+  id                String  @id @default(uuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String?
+  password      String?
+  roles         String[]  @default(["user"])
+  isActive      Boolean   @default(true)
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }

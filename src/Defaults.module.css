@@ -2,8 +2,8 @@
     @apply px-3 sm:px-4  md:px-8 lg:px-6
 }
 
-.buttonLink {
-    @apply pt-1 text-sm font-medium text-primary-300 transition-colors duration-200 hover:text-primary-100
+.sinchiLink {
+    @apply pt-1 text-sm text-primary-200 font-extralight transition-colors duration-200 hover:text-primary-100
 }
 
 .pageDefault {
@@ -11,7 +11,7 @@
 }
 
 .titleBanner {
-    @apply max-w-lg  font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none
+    @apply max-w-lg font-semibold font-sans text-2xl 
 }
 
 .titleBannerFullWidth {
@@ -38,5 +38,5 @@
 }
 
 .lineaProgramProjectsSection {
-    @apply w-full flex flex-col gap-2 justify-start items-start
+    @apply w-full flex flex-col gap-1 justify-start items-start bg-bg-100
 }

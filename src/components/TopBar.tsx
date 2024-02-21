@@ -31,12 +31,12 @@ export const TopBar = () => {
 
   return (
     <>
-      <div className='sticky z-50 top-0 h-16 border-b bg-bg-100 '>
+      <div className='sticky z-50 top-0 h-16 bg-bg-200'>
         <div className='px-6 flex items-center justify-between space-x-4'>
 
           {/* Hamburger menu starts */}
           <button 
-          className='w-12 h-16 text-text-100 hover:text-primary-300'
+          className='w-12 h-16 text-text-100 hover:text-primary-200'
           onClick={onToggle}
           >
             <GiHamburgerMenu size={28} />
@@ -55,6 +55,8 @@ export const TopBar = () => {
           </div>
           {/* right side ends */}
         </div>
+
+
         {/* vertical menu here */}
         <aside className={`absolute top-0 flex flex-col justify-start items-center w-64 h-screen px-3 py-8 overflow-y-auto bg-white bg-opacity-90 shadow-md transition-all duration-500 ${!isOpen? '-ml-[100%]': ''}`} onClick={onToggle}>
           {/* Close button */}
