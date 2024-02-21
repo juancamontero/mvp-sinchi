@@ -2,7 +2,7 @@ import NextAuth from 'next-auth'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import prisma from '@/lib/prisma'
 
-import google from 'next-auth/providers/google'
+// import google from 'next-auth/providers/google'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { signInEmailPassword } from '.'
 
@@ -10,8 +10,8 @@ export const {
   handlers: { GET, POST },
   auth,
 } = NextAuth({
+  trustHost: true,
   providers: [
-    google,
     CredentialsProvider({
       // The name to display on the sign in form (e.g. "Sign in with...")
       name: 'Credentials',
