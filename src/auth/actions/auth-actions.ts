@@ -13,10 +13,10 @@ export const signInEmailPassword = async (email: string, password: string) => {
   if (!user) {
     // * create new
     // todo: only is email previously exists in db
-    throw new Error('User is not pre created, contact administrator')
-    // const dbUser = await createUser(email, password)
+    // throw new Error('User is not pre created, contact administrator')
+    const dbUser = await createUser(email, password)
 
-    // return dbUser
+    return dbUser
   }
 
   //si lo encuentro voy a verificar la contraseña
