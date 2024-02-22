@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import styles from '../../Defaults.module.css'
-import { Sello } from '@prisma/client'
+import { Autor, Convenio, Region, Sello } from '@prisma/client'
 import {
   SellosGrid,
   ProjectStateWidget,
@@ -26,20 +26,10 @@ interface Props {
   }[]
   linea: { id: number; name: string; urlIcon: string | null } | null
   programa: { id: number; name: string; urlIcon: string | null } | null
-  convenios: {
-    id: number
-    name: string
-  }[]
-  regiones: {
-    id: number
-    name: string
-  }[]
+  convenios: Convenio[]
+  regiones: Region[]
   places: string
-  autor: {
-    id: number
-    name: string
-    email: string
-  } | null
+  autor: Autor | null
 }
 
 export const ProjectBanner = ({
@@ -68,7 +58,7 @@ export const ProjectBanner = ({
       />
 
       {/* overlay div */}
-      <div className='absolute inset-0 w-full h-full bg-primary-300 bg-opacity-90 backdrop-blur-[2px] group-hover:backdrop-blur-0 group-hover:bg-opacity-70' />
+      <div className='absolute inset-0 w-full h-full bg-primary-300 bg-opacity-30 backdrop-blur-[2px] group-hover:backdrop-blur-0 group-hover:bg-opacity-70' />
 
       {/* CONTENT DIV */}
       <div className={`relative ${styles.xBannerPaddings} py-2 sm:py-4 h-full lg:h-[90vh] flex flex-col justify-between `}>

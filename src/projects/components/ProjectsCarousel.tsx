@@ -3,11 +3,9 @@
 import { Proyecto, Sello } from '@prisma/client'
 import { ProjectCard } from '..'
 import { useRef } from 'react'
-import { TfiArrowCircleLeft, TfiArrowCircleRight } from 'react-icons/tfi'
 
-import buttonStyles from './Buttons.module.css'
 import './scrollbar.css'
-import { TiChevronLeft, TiChevronRight } from 'react-icons/ti'
+
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 interface Props {

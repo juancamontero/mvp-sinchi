@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const ProjectCard = ({ proyecto }: Props) => {
-  const { name, urlImage, objetivo, id, year } = proyecto
+  const { name, urlImage , id, year } = proyecto
 
   return (
     <>
@@ -19,15 +19,15 @@ export const ProjectCard = ({ proyecto }: Props) => {
         href={`/proyecto/${id}`}
         title={name}
         className={`group relative w-80 h-56 overflow-hidden rounded-sm shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out p-2 cursor-pointer bg-cover bg-center`}
-        // style={{ backgroundImage: `url(${finalUrlImage})` }}
+      
       >
         {/* background image */}
         <Image
+          className='absolute inset-0 w-full h-full object-cover object-center'
           src={urlImage ?? '/images/background-fallback.webp'}
           width={600}
-          height={600}
+          height={450}
           alt='hero background image'
-          className='absolute inset-0 w-full h-full object-cover object-center'
         />
 
         {/* Overlay */}
