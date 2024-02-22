@@ -13,7 +13,10 @@ export const getAllProjects = async () => {
       orderBy: {
         id: 'desc'
       },
-      
+      include: {
+        linea: true,
+        programa: true,
+      }
     })
     return projects
   } catch (error) {

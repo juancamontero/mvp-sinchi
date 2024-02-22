@@ -10,10 +10,10 @@ dependencies:
     version: 0.27.0
   '@auth/prisma-adapter':
     specifier: ^1.4.0
-    version: 1.4.0(@prisma/client@5.10.1)
+    version: 1.4.0(@prisma/client@5.10.2)
   '@prisma/client':
-    specifier: ^5.10.1
-    version: 5.10.1(prisma@5.10.1)
+    specifier: ^5.10.2
+    version: 5.10.2(prisma@5.10.1)
   bcryptjs:
     specifier: ^2.4.3
     version: 2.4.3
@@ -112,13 +112,13 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@auth/prisma-adapter@1.4.0(@prisma/client@5.10.1):
+  /@auth/prisma-adapter@1.4.0(@prisma/client@5.10.2):
     resolution: {integrity: sha512-k5D6ajX8MZv9107WWaIpzcNmsB8+sumyc7y46lnAMbLdgBoUcwAYtxGLbwEFSvzgjDcxjWqzlB5AIAED4vioDA==}
     peerDependencies:
       '@prisma/client': '>=2.26.0 || >=3 || >=4 || >=5'
     dependencies:
       '@auth/core': 0.27.0
-      '@prisma/client': 5.10.1(prisma@5.10.1)
+      '@prisma/client': 5.10.2(prisma@5.10.1)
     transitivePeerDependencies:
       - '@simplewebauthn/browser'
       - '@simplewebauthn/server'
@@ -550,8 +550,8 @@ packages:
     dev: true
     optional: true
 
-  /@prisma/client@5.10.1(prisma@5.10.1):
-    resolution: {integrity: sha512-4R8Vp6sSwVJSnOxw8WU1WSLqE/G3WJy1xA05XvW87cINoB1hEY7endw5Ppy6TrIBCCtHQim2lqfHkbPvv+i7bQ==}
+  /@prisma/client@5.10.2(prisma@5.10.1):
+    resolution: {integrity: sha512-ef49hzB2yJZCvM5gFHMxSFL9KYrIP9udpT5rYo0CsHD4P9IKj473MbhU1gjKKftiwWBTIyrt9jukprzZXazyag==}
     engines: {node: '>=16.13'}
     requiresBuild: true
     peerDependencies:

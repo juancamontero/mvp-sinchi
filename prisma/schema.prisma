@@ -10,12 +10,16 @@ datasource db {
 
 model Convenio {
   id       Int        @id @default(autoincrement())
+  createAt DateTime?   @default(now())
+  updateAt DateTime?   @updatedAt
   name     String     @unique
   Proyecto Proyecto[] @relation("ConvenioToProyecto")
 }
 
 model Autor {
   id       Int        @id @default(autoincrement())
+  createAt DateTime?   @default(now())
+  updateAt DateTime?   @updatedAt
   name     String
   email    String
   Proyecto Proyecto[]
@@ -23,18 +27,24 @@ model Autor {
 
 model Region {
   id       Int        @id @default(autoincrement())
+  createAt DateTime?   @default(now())
+  updateAt DateTime?   @updatedAt
   name     String     @unique
   Proyecto Proyecto[] @relation("ProyectoToRegion")
 }
 
 model Tag {
   id       Int        @id @default(autoincrement())
+  createAt DateTime?   @default(now())
+  updateAt DateTime?   @updatedAt
   name     String     @unique
   Proyecto Proyecto[] @relation("ProyectoToTag")
 }
 
 model Sello {
   id       Int        @id @default(autoincrement())
+  createAt DateTime?   @default(now())
+  updateAt DateTime?   @updatedAt
   order    Int        @default(autoincrement())
   name     String     @unique
   url      String
@@ -43,6 +53,8 @@ model Sello {
 
 model Programa {
   id          Int        @id @default(autoincrement())
+  createAt    DateTime?   @default(now())
+  updateAt    DateTime?  @updatedAt
   preTitle    String?
   baseColor   String?
   name        String     @unique @default("")
@@ -56,6 +68,8 @@ model Programa {
 
 model Linea {
   id          Int        @id @default(autoincrement())
+  createAt    DateTime?   @default(now())
+  updateAt    DateTime?   @updatedAt
   order       Int        @default(autoincrement())
   preTitle    String?
   baseColor   String?
@@ -73,6 +87,8 @@ model Linea {
 
 model Proyecto {
   id          Int        @id @default(autoincrement())
+  createAt    DateTime?   @default(now())
+  updateAt    DateTime?   @updatedAt
   idLinea     Int?
   idPrograma  Int?
   idAtutor    Int?
