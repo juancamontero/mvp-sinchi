@@ -71,7 +71,7 @@ export const createUpdateProduct = async (formData: FormData) => {
         // console.log(updatedProject)
       } else {
         //* crear
-        console.log({ ...rest })
+      
         updatedProject = await prisma.proyecto.create({
           data: {
             ...rest,

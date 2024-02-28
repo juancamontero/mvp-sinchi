@@ -14,8 +14,6 @@ export const uploadImages = async (images: File[]) => {
         const buffer = await image.arrayBuffer()
         const base64Image = Buffer.from(buffer).toString('base64')
 
-        console.log(image.type)
-
         // * subo la imagen a cloudinary y me devuelve la url de la imagen
         return cloudinary.uploader
           .upload(`data:${image.type};base64,${base64Image}`)
