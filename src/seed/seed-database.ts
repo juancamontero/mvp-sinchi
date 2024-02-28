@@ -34,7 +34,6 @@ async function main() {
     data: initialData.proyectos,
   })
 
-  
 
   console.log('Seed ejecutado correctamente')
 }
