@@ -1,0 +1,9 @@
+.html-content-preview ul {
+    list-style-type: disc;
+    margin: 12px;
+  }
+
+  .html-content-preview ol {
+    list-style-type: decimal;
+    margin: 12px;
+  }

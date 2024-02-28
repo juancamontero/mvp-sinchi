@@ -1,19 +1,11 @@
-import { projectObjetivo, projectProductos } from '@/projects/helpers/dataSeed'
-import styles from './../../../../Defaults.module.css'
+
+import { getProyectoById } from '@/actions'
 import {
-  AuthorsGrid,
-  ConveniosGrid,
-  LineasGrid,
-  ProgramasGrid,
   ProjectBanner,
-  ProjectStateWidget,
   ProyectosProductHtml,
-  RegionsGrid,
-  SellosGrid,
-  TagsGrid,
-  getProyectoById,
+
 } from '@/projects'
-import Link from 'next/link'
+
 
 interface Props {
   params: {
@@ -27,10 +19,10 @@ export default async function ProjectPage({ params }: Props) {
   if (!proyecto) return <>No encontrado</>
 
   return (
-    <main className={`${styles.pageDefault} relative`}>
+    <main className={`pageDefault relative`}>
       {/* banner start */}
       <ProjectBanner
-        urlBackground={proyecto.urlImage}
+        urlBackground={proyecto.imagen?.url}
         year={proyecto.year}
         sellos={proyecto.sellos}
         completed={proyecto.completed}
@@ -44,10 +36,9 @@ export default async function ProjectPage({ params }: Props) {
         autor={proyecto.autor}
       />
 
-
       {/* OBJETIVO START*/}
       <div
-        className={`${styles.xBannerPaddings} sticky top-0 h-screen flex flex-col items-center justify-center bg-primary-300  gap-8 w-full`}
+        className={`xBannerPaddings sticky top-0 h-screen flex flex-col items-center justify-center bg-primary-300  gap-8 w-full`}
       >
         <div className='flex flex-col justify-center items-center  p-4 gap-4'>
           <h2 className='text-4xl font-bold text-bg-200 mb-2 text-center'>
@@ -66,7 +57,7 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* PRODUCTOS START*/}
       <div
-        className={`${styles.xBannerPaddings} sticky top-0 h-screen flex flex-col items-center justify-center bg-primary-200  gap-8 w-full`}
+        className={`xBannerPaddings sticky top-0 h-screen flex flex-col items-center justify-center bg-primary-200  gap-8 w-full`}
       >
         <div className='flex flex-col justify-center items-center w-full p-4 gap-4 '>
           <h2 className='text-4xl font-bold text-bg-200 mb-2 text-center'>

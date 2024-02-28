@@ -21,11 +21,15 @@
   font: inherit;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-img, video, svg {
+img,
+video,
+svg {
   display: block;
   height: auto;
   max-width: 100%;
@@ -33,20 +37,143 @@ img, video, svg {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-    margin: 0;
-    min-height: 100dvh;
+  background: white;
+  margin: 0;
+  min-height: 100dvh;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: pretty;
 }
 
 p {
   text-wrap: pretty;
+}
+
+.btn-primary {
+  @apply bg-primary-100 hover:bg-primary-200 text-white p-2 rounded transition-all;
+}
+
+/* BUTTONS */
+
+.btn-secondary {
+  @apply bg-primary-300 hover:bg-primary-200 text-white p-2 rounded transition-all;
+}
+
+.btn-disabled {
+  @apply bg-gray-600 text-white p-2 rounded transition-all;
+}
+
+.btn-danger {
+  @apply bg-accent-100 hover:bg-accent-200 text-bg-200 p-2 transition-all my-1;
+}
+
+.btn-delete {
+  @apply bg-accent-100 hover:bg-accent-200 text-bg-200 p-1 transition-all my-1;
+}
+
+/* PAGES */
+.pageDefault {
+  @apply flex min-h-screen flex-col items-center justify-start z-10;
+}
+
+.pageSectionGrid {
+  @apply w-full flex flex-col gap-2 justify-start items-start mt-6 p-12;
+}
+
+.lineaProgramProjectsSection {
+  @apply w-full flex flex-col gap-1 justify-start items-start bg-bg-100;
+}
+
+/* TABLES */
+.table-sinchi {
+  @apply min-w-full divide-y divide-gray-700;
+}
+
+.table-sinchi-head {
+  @apply bg-gray-200 border-b;
+}
+
+.table-th-header-sinchi {
+  @apply px-2 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500;
+}
+
+.table-body-sinchi {
+  @apply bg-white divide-y divide-gray-200 text-xs;
+}
+
+.row-tabla-sinchi {
+  @apply hover:bg-bg-200 h-10;
+}
+
+.table-td-sinchi {
+  @apply px-2 py-2  text-wrap text-text-100 text-ellipsis;
+}
+
+/* SCROLLS */
+
+.scroll-container-sinchi::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.scroll-container-sinchi::-webkit-scrollbar-track {
+}
+
+.scroll-container-sinchi::-webkit-scrollbar-thumb {
+  background: #e7e6e0;
+}
+
+.scroll-container-sinchi::-webkit-scrollbar-thumb:hover {
+  background: #e7e6e0; /* Color of the scrollbar on hover */
+}
+
+/* TITLES | BANNERS  */
+
+.xBannerPaddings {
+  @apply px-3 sm:px-4  md:px-8 lg:px-6;
+}
+
+.admin-title-banner {
+  @apply w-full mb-1;
+}
+
+.admin-title-banner h1 {
+  @apply font-bold font-sans text-xl   antialiased leading-tight;
+}
+.admin-title-banner h3 {
+  @apply text-sm font-light mt-1;
+}
+.titleBanner {
+  @apply max-w-lg font-semibold font-sans text-2xl;
+}
+
+.titleBannerFullWidth {
+  @apply font-sans text-2xl font-bold tracking-tight  sm:text-3xl lg:text-4xl leading-tight;
+}
+
+.sinchiLink {
+  @apply pt-1 text-sm text-primary-200 font-extralight transition-colors duration-200 hover:text-primary-100;
+}
+
+/* TERMS */
+
+.tagsBannerProject {
+  @apply inline-block py-1 px-2 rounded bg-bg-100 text-text-200 text-xs font-medium tracking-widest cursor-pointer hover:text-primary-200 text-pretty;
+}
+
+.gridTerms {
+  @apply grid gap-y-8 gap-x-12 sm:grid-cols-2 lg:grid-cols-3 w-full;
+}
+
+/* OTHERS */
+.truncated-text {
+  max-width: 60ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

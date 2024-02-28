@@ -1,0 +1,42 @@
+.xBannerPaddings {
+    @apply px-3 sm:px-4  md:px-8 lg:px-6
+}
+
+.sinchiLink {
+    @apply pt-1 text-sm text-primary-200 font-extralight transition-colors duration-200 hover:text-primary-100
+}
+
+.pageDefault {
+    @apply flex min-h-screen flex-col items-center justify-start z-10
+}
+
+.titleBanner {
+    @apply max-w-lg font-semibold font-sans text-2xl 
+}
+
+.titleBannerFullWidth {
+    @apply font-sans text-2xl font-bold tracking-tight  sm:text-3xl lg:text-4xl leading-tight
+}
+
+.tagsBannerProject {
+    @apply inline-block py-1 px-2 rounded bg-bg-100 text-text-200 text-xs font-medium tracking-widest cursor-pointer hover:text-primary-200 text-pretty
+}
+
+.truncated-text {
+    max-width: 60ch; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+.pageSectionGrid {
+    @apply w-full flex flex-col gap-2 justify-start items-start mt-6 p-12
+}
+
+.gridTerms {
+    @apply grid gap-y-8 gap-x-12 sm:grid-cols-2 lg:grid-cols-3 w-full
+}
+
+.lineaProgramProjectsSection {
+    @apply w-full flex flex-col gap-1 justify-start items-start bg-bg-100
+}
