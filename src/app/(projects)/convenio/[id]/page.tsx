@@ -1,8 +1,9 @@
-import { ProjectsCarousel, getConvenioById, getProjectsByConvenioId} from '@/projects'
-import styles from '../../../../Defaults.module.css'
+import { ProjectsCarousel } from '@/projects'
+
 import { CustomHeroBanner, LoaderDefault } from '@/components'
 import { Suspense } from 'react'
 import { Metadata } from 'next'
+import { getConvenioById, getProjectsByConvenioId } from '@/actions'
 
 interface Props {
   params: {
@@ -29,11 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ConvenioPage({ params }: Props) {
   const { id } = params
-  const convenio = await getConvenioById(Number(id))
-  const proyectos = await getProjectsByConvenioId(Number(id))
+
+  const [convenio, proyectos] = await Promise.all([
+    await getConvenioById(Number(id)),
+    await getProjectsByConvenioId(Number(id)),
+  ])
 
   return (
-    <main className={styles.pageDefault}>
+    <main className={`pageDefault`}>
       <CustomHeroBanner
         preTitle={`${proyectos.length}` ?? ''}
         title={convenio?.name ?? 'CONVENIO'}

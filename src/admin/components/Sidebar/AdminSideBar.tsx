@@ -7,6 +7,7 @@ import {
 } from 'react-icons/io5'
 import { AdminSideBarItem, LogoutButton } from '../..'
 import { auth } from '@/auth'
+import { IoMdBook } from 'react-icons/io'
 
 // import { LogoutButton, SidebarItem } from '..'
 
@@ -20,6 +21,11 @@ const sidebarItems = [
     title: 'Proyectos',
     path: '/admin/proyectos',
     icon: <IoCheckboxOutline size={30} />,
+  },
+  {
+    title: 'Palabras clave',
+    path: '/admin/palabras-clave',
+    icon: <IoMdBook size={30} />,
   },
   // {
   //   title: 'Server Actions',

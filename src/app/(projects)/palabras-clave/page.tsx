@@ -1,7 +1,7 @@
+import { getAllTags } from '@/actions'
 import { CustomHeroBanner } from '@/components'
-import { TermCard, getAllTags } from '@/projects'
+import { TermCard } from '@/projects'
 
-import styles from '../../../Defaults.module.css'
 import { IoMdBook } from 'react-icons/io'
 
 export function generateMetadata() {
@@ -16,7 +16,7 @@ export default async function GlosarioPage() {
 
   return (
     // todo: Create module styles por pages
-    <main className={styles.pageDefault}>
+    <main className={`pageDefault`}>
       <CustomHeroBanner preTitle='PALABRAS' title='CLAVE' />
 
       <div className='w-full flex flex-col gap-2 justify-start items-start mt-6 p-12'>

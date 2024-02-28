@@ -1,10 +1,8 @@
+import { getAllInvestigadores } from '@/actions'
 import { CustomHeroBanner } from '@/components'
-import { TermCard, getAllInvestigadores } from '@/projects'
+import { TermCard } from '@/projects'
 
-import styles from '../../../Defaults.module.css'
 import { BsPerson } from 'react-icons/bs'
-
-
 
 export function generateMetadata() {
   return {
@@ -18,11 +16,11 @@ export default async function InvestigadoresPage() {
 
   return (
     // todo: Create module styles por pages
-    <main className={styles.pageDefault}>
+    <main className={`pageDefault`}>
       <CustomHeroBanner title='INVESTIGADORES' postTitle='RESPONSABLES' />
 
-      <div className={styles.pageSectionGrid}>
-        <ul className={styles.gridTerms}>
+      <div className={`pageSectionGrid`}>
+        <ul className={`gridTerms`}>
           {investigadores.map((investigador) => (
             <TermCard
               key={investigador.id}

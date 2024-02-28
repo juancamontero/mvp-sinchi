@@ -1,8 +1,9 @@
-import { ProjectsCarousel, getProjectsByTagId, getTagById } from '@/projects'
-import styles from '../../../../Defaults.module.css'
+import { ProjectsCarousel } from '@/projects'
+
 import { CustomHeroBanner, LoaderDefault } from '@/components'
 import { Suspense } from 'react'
 import { Metadata } from 'next'
+import { getTagById, getProjectsByTagId } from '@/actions'
 
 interface Props {
   params: {
@@ -29,11 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TagPage({ params }: Props) {
   const { id } = params
-  const tag = await getTagById(Number(id))
-  const proyectos = await getProjectsByTagId(Number(id))
+
+  const [tag, proyectos] = await Promise.all([
+    getTagById(Number(id)),
+    getProjectsByTagId(Number(id)),
+  ])
 
   return (
-    <main className={styles.pageDefault}>
+    <main className={`pageDefault`}>
       <CustomHeroBanner
         preTitle={`${proyectos.length}` ?? ''}
         title={tag?.name ?? 'PALABRA CLAVE'}

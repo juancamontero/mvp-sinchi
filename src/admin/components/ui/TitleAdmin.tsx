@@ -1,0 +1,14 @@
+interface Props {
+  title: string
+  subTitle?: string
+  className?: string //Will be set to the <div> parent container
+}
+
+export const TitleAdmin = ({ title, subTitle, className = '' }: Props) => {
+  return (
+    <div className={`admin-title-banner ${className}`}>
+      <h1 className={``}>{title}</h1>
+      {subTitle && <h3 className={``}>{subTitle}</h3>}
+    </div>
+  )
+}
