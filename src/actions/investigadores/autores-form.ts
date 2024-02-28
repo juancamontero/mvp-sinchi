@@ -1,5 +1,7 @@
 'use server'
 
+import prisma from '@/lib/prisma'
+
 export const getAllInvestigadoresForm = async () => {
   try {
     const users = await prisma.autor.findMany({
