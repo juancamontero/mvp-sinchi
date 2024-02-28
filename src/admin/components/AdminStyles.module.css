@@ -1,0 +1,10 @@
+.form-label {
+    @apply p-2 font-bold text-sm bg-bg-200
+}
+.form-input {
+    @apply p-2 border rounded-sm bg-gray-100 w-full text-xs mb-2
+}
+
+.form-input-files {
+    @apply p-2 border rounded-sm bg-gray-200 w-full text-xs mb-2 visited:bg-primary-100 visited:text-bg-200
+}

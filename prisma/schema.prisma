@@ -10,16 +10,16 @@ datasource db {
 
 model Convenio {
   id       Int        @id @default(autoincrement())
-  createAt DateTime?   @default(now())
-  updateAt DateTime?   @updatedAt
+  createAt DateTime?  @default(now())
+  updateAt DateTime?  @updatedAt
   name     String     @unique
   Proyecto Proyecto[] @relation("ConvenioToProyecto")
 }
 
 model Autor {
   id       Int        @id @default(autoincrement())
-  createAt DateTime?   @default(now())
-  updateAt DateTime?   @updatedAt
+  createAt DateTime?  @default(now())
+  updateAt DateTime?  @updatedAt
   name     String
   email    String
   Proyecto Proyecto[]
@@ -27,24 +27,24 @@ model Autor {
 
 model Region {
   id       Int        @id @default(autoincrement())
-  createAt DateTime?   @default(now())
-  updateAt DateTime?   @updatedAt
+  createAt DateTime?  @default(now())
+  updateAt DateTime?  @updatedAt
   name     String     @unique
   Proyecto Proyecto[] @relation("ProyectoToRegion")
 }
 
 model Tag {
   id       Int        @id @default(autoincrement())
-  createAt DateTime?   @default(now())
-  updateAt DateTime?   @updatedAt
+  createAt DateTime?  @default(now())
+  updateAt DateTime?  @updatedAt
   name     String     @unique
   Proyecto Proyecto[] @relation("ProyectoToTag")
 }
 
 model Sello {
   id       Int        @id @default(autoincrement())
-  createAt DateTime?   @default(now())
-  updateAt DateTime?   @updatedAt
+  createAt DateTime?  @default(now())
+  updateAt DateTime?  @updatedAt
   order    Int        @default(autoincrement())
   name     String     @unique
   url      String
@@ -53,7 +53,7 @@ model Sello {
 
 model Programa {
   id          Int        @id @default(autoincrement())
-  createAt    DateTime?   @default(now())
+  createAt    DateTime?  @default(now())
   updateAt    DateTime?  @updatedAt
   preTitle    String?
   baseColor   String?
@@ -68,8 +68,8 @@ model Programa {
 
 model Linea {
   id          Int        @id @default(autoincrement())
-  createAt    DateTime?   @default(now())
-  updateAt    DateTime?   @updatedAt
+  createAt    DateTime?  @default(now())
+  updateAt    DateTime?  @updatedAt
   order       Int        @default(autoincrement())
   preTitle    String?
   baseColor   String?
@@ -85,30 +85,40 @@ model Linea {
   urlIcon     String?    @default("/images/lineas/linea-1.webp")
 }
 
+model Imagen {
+  id       Int        @id @default(autoincrement())
+  url      String
+  Proyecto Proyecto[]
+}
+
 model Proyecto {
-  id          Int        @id @default(autoincrement())
-  createAt    DateTime?   @default(now())
-  updateAt    DateTime?   @updatedAt
+  id          Int       @id @default(autoincrement())
+  createAt    DateTime? @default(now())
+  updateAt    DateTime? @updatedAt
   idLinea     Int?
   idPrograma  Int?
   idAtutor    Int?
-  completed   Boolean    @default(false)
-  year        Int        @default(2022)
+  idImagen    Int?
+  equipo      String?
+  completed   Boolean   @default(false)
+  year        Int       @default(2022)
   name        String
-  objetivo    String?    @default("")
-  products    String?    @default("")
-  places      String?    @default("")
+  objetivo    String?   @default("")
+  products    String?   @default("")
+  places      String?   @default("")
   importancia String?
   pertinencia String?
   impacto     String?
-  autor       Autor?     @relation(fields: [idAtutor], references: [id])
-  linea       Linea?     @relation(fields: [idLinea], references: [id])
-  programa    Programa?  @relation(fields: [idPrograma], references: [id])
-  convenios   Convenio[] @relation("ConvenioToProyecto")
-  regions     Region[]   @relation("ProyectoToRegion")
-  sellos      Sello[]    @relation("ProyectoToSello")
-  tags        Tag[]      @relation("ProyectoToTag")
-  urlImage    String?    @default("/images/background-fallback.webp")
+
+  // relations
+  autor     Autor?     @relation(fields: [idAtutor], references: [id])
+  imagen    Imagen?    @relation(fields: [idImagen], references: [id])
+  linea     Linea?     @relation(fields: [idLinea], references: [id])
+  programa  Programa?  @relation(fields: [idPrograma], references: [id])
+  convenios Convenio[] @relation("ConvenioToProyecto")
+  regions   Region[]   @relation("ProyectoToRegion")
+  sellos    Sello[]    @relation("ProyectoToSello")
+  tags      Tag[]      @relation("ProyectoToTag")
 }
 
 // * AUTH JS

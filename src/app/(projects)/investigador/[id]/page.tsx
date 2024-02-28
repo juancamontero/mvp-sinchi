@@ -1,12 +1,9 @@
-import {
-  ProjectsCarousel,
-  getInvestigadorById,
-  getProjectsByInvestigadorId,
-} from '@/projects'
-import styles from '../../../../Defaults.module.css'
+import { ProjectsCarousel } from '@/projects'
+
 import { CustomHeroBanner, LoaderDefault } from '@/components'
 import { Suspense } from 'react'
 import { Metadata } from 'next'
+import { getInvestigadorById, getProjectsByInvestigadorId } from '@/actions'
 
 interface Props {
   params: {
@@ -20,8 +17,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const investigador = await getInvestigadorById(Number(id))
 
     return {
-      title: `${investigador?.name ??  ''}|Proyectos`,
-      description: `Proyectos de ${investigador?.name ??  ''}`,
+      title: `${investigador?.name ?? ''}|Proyectos`,
+      description: `Proyectos de ${investigador?.name ?? ''}`,
     }
   } catch (error) {
     return {
@@ -33,11 +30,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function InvestigadorPage({ params }: Props) {
   const { id } = params
-  const investigador = await getInvestigadorById(Number(id))
-  const proyectos = await getProjectsByInvestigadorId(Number(id))
+  const [investigador, proyectos] = await Promise.all([
+    getInvestigadorById(Number(id)),
+    getProjectsByInvestigadorId(Number(id)),
+  ])
 
   return (
-    <main className={styles.pageDefault}>
+    <main className={`pageDefault`}>
       <CustomHeroBanner
         preTitle={`${proyectos.length}` ?? ''}
         title={investigador?.name ?? 'INVESTIGADOR'}

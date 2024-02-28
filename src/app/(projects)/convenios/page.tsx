@@ -1,7 +1,8 @@
+import { getAllConvenios } from '@/actions'
 import { CustomHeroBanner } from '@/components'
-import { TermCard, getAllConvenios } from '@/projects'
+import { TermCard } from '@/projects'
 
-import styles from '../../../Defaults.module.css'
+
 
 import { PiHandshakeLight } from 'react-icons/pi'
 
@@ -17,7 +18,7 @@ export default async function ConveniosPage() {
 
   return (
     // todo: Create module styles por pages
-    <main className={styles.pageDefault}>
+    <main className={`pageDefault`}>
       <CustomHeroBanner preTitle='CONVENIOS' title='| ASOCIADOS' />
 
       <div className='w-full flex flex-col gap-2 justify-start items-start mt-6 p-12'>

@@ -3,14 +3,12 @@ import {
   IconLinea,
   ProjectsCarousel,
   TermsGrid,
-  getProgramaById,
-  getProyectosByProgramaId,
 } from '@/projects'
 
-import styles from './../../../../Defaults.module.css'
 import { Suspense } from 'react'
 import { LoaderDefault } from '@/components'
 import { Metadata } from 'next'
+import { getProgramaById, getProyectosByProgramaId } from '@/actions'
 
 interface Props {
   params: {
@@ -24,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const programa = await getProgramaById(Number(id))
 
     return {
-      title: `${programa?.name ??  ''}|Proyectos`,
-      description: `Proyectos de ${programa?.name ??  ''}`,
+      title: `${programa?.name ?? ''}|Proyectos`,
+      description: `Proyectos de ${programa?.name ?? ''}`,
     }
   } catch (error) {
     return {
@@ -37,8 +35,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProgramaPage({ params }: Props) {
   const { id } = params
-  const programa = await getProgramaById(Number(id))
-  const proyectos = await getProyectosByProgramaId(Number(id))
+
+  const [programa, proyectos] = await Promise.all([
+    await getProgramaById(Number(id)),
+    await getProyectosByProgramaId(Number(id)),
+  ])
 
   if (!programa) {
     return (
@@ -49,10 +50,10 @@ export default async function ProgramaPage({ params }: Props) {
   }
 
   return (
-    <main className={`${styles.pageDefault}`}>
+    <main className={`pageDefault`}>
       {/* banner start */}
       <div
-        className={`${styles.xBannerPaddings} sm:sticky sm:top-0 h-fit flex flex-col gap-2 flex-wrap items-start bg-bg-200 w-full py-6  z-10 sm:mb-4`}
+        className={`xBannerPaddings sm:sticky sm:top-0 h-fit flex flex-col gap-2 flex-wrap items-start bg-bg-200 w-full py-6  z-10 sm:mb-4`}
       >
         <IconLinea urlIcon={programa.urlIcon} name={programa.name} size={62} />
 

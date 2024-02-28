@@ -1,13 +1,9 @@
-import {
-  ProjectsCarousel,
-  getProjectsByRegionId,
-  getRegionById,
-  getTagById,
-} from '@/projects'
-import styles from '../../../../Defaults.module.css'
+import { ProjectsCarousel } from '@/projects'
+
 import { CustomHeroBanner, LoaderDefault } from '@/components'
 import { Suspense } from 'react'
 import { Metadata } from 'next'
+import { getRegionById, getProjectsByRegionId } from '@/actions'
 
 interface Props {
   params: {
@@ -34,15 +30,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function RegionPage({ params }: Props) {
   const { id } = params
-  const region = await getRegionById(Number(id))
-  const proyectos = await getProjectsByRegionId(Number(id))
+
+  const [region, proyectos] = await Promise.all([
+    getRegionById(Number(id)),
+    getProjectsByRegionId(Number(id)),
+  ])
 
   return (
-    <main className={styles.pageDefault}>
+    <main className={`pageDefault`}>
       <CustomHeroBanner
         preTitle={`${proyectos.length} proyectos` ?? ''}
         title={region?.name ?? 'REGION'}
-     
       />
 
       <Suspense fallback={<LoaderDefault />}>
