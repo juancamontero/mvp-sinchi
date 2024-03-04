@@ -156,29 +156,29 @@ export const getProyectoById = async (id: number) => {
       include: {
         autor: true,
         linea: {
-          select: {
-            id: true,
-            name: true,
-            urlIcon: true,
+          include: {
+            imagen: true,
           },
         },
         programa: {
-          select: {
-            id: true,
-            name: true,
-            urlIcon: true,
+          include: {
+            imagen: true,
           },
         },
         convenios: true,
         regions: true,
-        sellos: true,
         tags: true,
         imagen: true,
+        sellos: {
+          include: {
+            imagen: true,
+          },
+        },
       },
     })
 
     return proyecto
   } catch (error) {
-    throw new Error('Error al obtener el proyecto' + error)
+    throw new Error('getProyectoById' + error)
   }
 }

@@ -56,7 +56,7 @@ export default async function LineaPage({ params }: Props) {
       <div
         className={`xBannerPaddings sm:sticky sm:top-0 h-fit flex flex-col gap-2 flex-wrap items-start bg-bg-200 w-full py-6  z-10 sm:mb-4`}
       >
-        <IconLinea urlIcon={linea.urlIcon} name={linea.name} size={62} />
+        <IconLinea urlIcon={linea.imagen?.url} name={linea.name} size={62} />
 
         <h2 className='text-2xl font-semibold text-primary-300 text-left mx-1 text-wrap'>
           {linea?.name}

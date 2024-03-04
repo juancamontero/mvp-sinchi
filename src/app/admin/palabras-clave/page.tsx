@@ -1,11 +1,10 @@
 import { getAllTagsForm } from '@/actions'
-import { TitleAdmin, ProjectTagsForm, TagsForm } from '@/admin'
-import Link from 'next/link'
+import { TitleAdmin, TagsForm } from '@/admin'
 
 export function generateMetadata() {
   return {
-    title: `Palabras Clave | edición`,
-    description: `Lista de Palabras Calves | edición`,
+    title: `Palabras Clave | Administración`,
+    description: `Lista de Palabras Clave | Administración`,
   }
 }
 
@@ -21,7 +20,7 @@ export default async function PalabrasClavePage() {
 
       <hr />
       <TagsForm tags={tags} />
-      {/* <ProjectTagsForm allTags={allTags} projectTags={projectTags} projectId={Number(id)}/> */}
+     
     </div>
   )
 }

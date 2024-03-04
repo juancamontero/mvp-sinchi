@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 
-import { Autor, Convenio, Region, Sello } from '@prisma/client'
+import { Autor, Convenio, Imagen, Linea, Programa, Region, Sello } from '@prisma/client'
 import {
   SellosGrid,
   ProjectStateWidget,
@@ -17,19 +17,20 @@ interface Props {
   name: string
   urlBackground?: string | null
   year: number
-  sellos: Sello[]
+  sellos:  (Sello & { imagen?: Imagen | null})[]
   completed: boolean
   tags: {
     id: number
     name: string
   }[]
-  linea: { id: number; name: string; urlIcon: string | null } | null
-  programa: { id: number; name: string; urlIcon: string | null } | null
+  linea: ((Linea) & {imagen?: Imagen | null})| null
+  programa:  ((Programa) & {imagen?: Imagen | null})| null
   convenios: Convenio[]
   regiones: Region[]
   places: string
   autor: Autor | null
 }
+
 
 export const ProjectBanner = ({
   urlBackground,
@@ -45,6 +46,8 @@ export const ProjectBanner = ({
   places,
   autor,
 }: Props) => {
+
+
   return (
     <div className={`group w-full sm:h-screen lg:sticky h-fit top-0`}>
       {/* backgroung image */}

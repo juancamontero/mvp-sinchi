@@ -8,6 +8,9 @@ export const getAllProgramas = async () => {
       orderBy: {
         order: 'asc',
       },
+      include: {
+        imagen: true,
+      },
     })
 
     return programas
@@ -29,6 +32,7 @@ export const getProgramaById = async (id: number) => {
             name: true,
           },
         },
+        imagen: true,
       },
     })
 

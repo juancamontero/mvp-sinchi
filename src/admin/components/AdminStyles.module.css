@@ -1,10 +1,17 @@
 .form-label {
-    @apply p-2 font-bold text-sm bg-bg-200
+  @apply p-2 font-bold text-sm bg-bg-200;
 }
 .form-input {
-    @apply p-2 border rounded-sm bg-gray-100 w-full text-xs mb-2
+  @apply p-2 border rounded-sm bg-gray-100 w-full text-xs mb-2;
 }
 
 .form-input-files {
-    @apply p-2 border rounded-sm bg-gray-200 w-full text-xs mb-2 visited:bg-primary-100 visited:text-bg-200
+  @apply p-2 border rounded-sm bg-gray-300  text-xs mb-2 visited:bg-primary-100 visited:text-bg-200;
+}
+.form-input-image {
+  @apply p-2 border rounded-sm text-xs mb-2 visited:bg-primary-100 visited:text-bg-200;
+}
+
+.form-error {
+  @apply text-accent-100 text-xs font-bold leading-none bg-bg-100 p-1;
 }

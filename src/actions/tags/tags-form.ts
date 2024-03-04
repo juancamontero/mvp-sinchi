@@ -9,6 +9,11 @@ import { z } from 'zod'
 export const getAllTagsForm = async () => {
   try {
     const tags = await prisma.tag.findMany({
+      include: {
+        _count: {
+          select: { Proyecto: true },
+        },
+      },
       orderBy: {
         name: 'asc',
       },
@@ -19,7 +24,7 @@ export const getAllTagsForm = async () => {
     throw new Error(`getAllTagsForm ${error}`)
   }
 }
-
+//*  TAGS DEL PROYECTO
 export const getTagsByProjectIdForm = async (idProject: number) => {
   try {
     const tags = await prisma.tag.findMany({
@@ -40,6 +45,8 @@ export const getTagsByProjectIdForm = async (idProject: number) => {
     throw new Error(`getTagsByProjectIdForm ${error}`)
   }
 }
+
+// * ACTUALIZAR PALABRAS CLAVE DEL PROYECTO
 
 export const updateTagsByProjectId = async (
   idProject: number,
@@ -67,6 +74,9 @@ export const updateTagsByProjectId = async (
   }
 }
 
+
+// ! ELIMINAR PALABRA CLAVE
+
 export const deleteTagById = async (id: number) => {
   try {
     const tags = await prisma.tag.delete({
@@ -81,6 +91,9 @@ export const deleteTagById = async (id: number) => {
     throw new Error(`deleteTagById ${error}`)
   }
 }
+
+
+// * CREAR PALABRA CLAVE
 
 const tagSchema = z.object({
   id: z.coerce

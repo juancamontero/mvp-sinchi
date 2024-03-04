@@ -5,21 +5,22 @@
 import { getProyectosByLineaId } from '@/actions'
 import { LineaProgramaCarouselContainer } from '../..'
 
-import { Linea } from '@prisma/client'
+import { Imagen, Linea } from '@prisma/client'
 
 export interface Props {
-  linea: Linea
+  linea: Linea & { imagen?: Imagen | null }
 }
 
 export const LineaCarouselProjects = async ({ linea }: Props) => {
-  const { id, name, urlIcon , preTitle, baseColor} = linea
+  const { id, name, imagen , preTitle, baseColor} = linea
+
 
   const proyectos = (await getProyectosByLineaId(id)) || []
 
   return (
     <>
       <LineaProgramaCarouselContainer
-        urlIcon={urlIcon}
+        urlIcon={imagen?.url ?? '/images/placeholder-img.jpeg'}
         name={name}
         baseUrl={`/linea/${id}`}
         proyectos={proyectos}

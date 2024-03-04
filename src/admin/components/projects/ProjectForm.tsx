@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -17,10 +17,14 @@ import 'react-quill/dist/quill.snow.css' // Import the styles
 
 import styles from '../AdminStyles.module.css'
 
-import { createUpdateProduct, deleteProjectImage } from '@/actions'
+import {
+  createUpdateProduct,
+  deleteProject,
+  deleteProjectImage,
+} from '@/actions'
 import { AccordionForForm, HtmlContentPreview, TitleAdmin } from '@/admin'
 
-import { LoaderDefault } from '@/components'
+import { LoaderButton } from '@/components'
 
 interface ImagenProyecto {
   id: number
@@ -57,10 +61,11 @@ export const ProjectForm = ({
   programas,
   investigadores,
 }: Props) => {
+  //use form set
   const {
     register,
     handleSubmit,
-    formState: { isValid },
+    formState: { isValid, errors, isSubmitting },
     setValue,
     watch,
   } = useForm<FormInputs>({
@@ -82,8 +87,15 @@ export const ProjectForm = ({
       image: undefined,
     },
   })
-
+  // * loader
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const router = useRouter()
+
+  // * preview image
+  const previewImage = watch('image')?.[0]
+  const previewImageUrl = previewImage
+    ? URL.createObjectURL(previewImage)
+    : project.imagen?.url ?? '/images/placeholder-img.jpeg'
 
   //* Reactquill inputs
   useEffect(() => {
@@ -102,6 +114,7 @@ export const ProjectForm = ({
   const objetivosContent = watch('objetivo')
 
   const onSubmit = async (data: FormInputs) => {
+
     const formData = new FormData()
 
     const { image, ...projectToSave } = data
@@ -130,7 +143,23 @@ export const ProjectForm = ({
     if (ok) {
       router.replace(`/admin/proyecto/${updatedProject!.id}`)
       alert('Proyecto actualizado/creado correctamente!')
-    } else alert('Error, mo se pudo crear o actualizar el producto')
+    } else alert('Error, mo se pudo crear o actualizar el proyecto')
+
+  }
+
+  const onClickDeleteProject = async () => {
+    if (!project.id) return
+    setIsLoading(true)
+
+    const confirmDelete = confirm(
+      `¿Estás seguro de que quieres eliminar el proyecto ${project.name}`
+    )
+    if (confirmDelete) {
+      const deletedProject = await deleteProject(project!.id!)
+      alert(`Proyecto con id:${deletedProject.id}`)
+    }
+    setIsLoading(false)
+    router.replace('/admin/proyectos')
   }
 
   return (
@@ -152,6 +181,9 @@ export const ProjectForm = ({
             className={`${styles['form-input']} h-full w-2/12`}
             {...register('year', { required: true })}
           />
+          {errors.year && (
+            <span className={styles['form-error']}>Requerido</span>
+          )}
         </div>
 
         {/* COMPLETED */}
@@ -175,8 +207,13 @@ export const ProjectForm = ({
           </label>
           <textarea
             className={`${styles['form-input']} h-full`}
-            {...register('name', { required: true })}
+            {...register('name', { required: true, minLength: 5 })}
           />
+          {errors.name && (
+            <span className={styles['form-error']}>
+              Requerido | Mínimo 5 letras
+            </span>
+          )}
         </div>
 
         {/* IMAGEN */}
@@ -190,15 +227,14 @@ export const ProjectForm = ({
             className={`${styles['form-input-files']}`}
             accept='image/png, image/jpeg, image/jpg, image/webp'
           />
-          <Suspense fallback={<LoaderDefault />}>
-            <Image
-              src={project.imagen?.url ?? '/images/placeholder-img.jpeg'}
-              alt={'Imagen proyecto'}
-              width={300}
-              height={250}
-              className='mx-auto py-2'
-            />
-          </Suspense>
+
+          <Image
+            src={previewImageUrl}
+            alt={'Imagen proyecto'}
+            width={300}
+            height={250}
+            className='mx-auto py-2'
+          />
 
           <button
             type='button'
@@ -209,6 +245,13 @@ export const ProjectForm = ({
           >
             Eliminar
           </button>
+          {/* <Link
+         href={`/admin/imagenes/proyecto/${project.id}`}
+       
+            className='btn-secondary w-full rounded-b-xl text-center '
+          >
+            Seleccionar imagen existente 
+          </Link> */}
         </div>
         {/* IMAGEN ENDS */}
       </div>
@@ -222,6 +265,9 @@ export const ProjectForm = ({
           className={`${styles['form-input']}`}
           {...register('idLinea', { required: true })}
         >
+          {errors.idLinea && (
+            <span className={styles['form-error']}>Requerido - {errors.idLinea.type}</span>
+          )}
           <option value=''>[Seleccione]</option>
           {lineas.map((linea) => (
             <option key={linea.id} value={linea.id}>
@@ -238,6 +284,10 @@ export const ProjectForm = ({
           className={`${styles['form-input']}`}
           {...register('idPrograma', { required: true })}
         >
+          {' '}
+          {errors.idPrograma && (
+            <span className={styles['form-error']}>Requerido</span>
+          )}
           <option value=''>[Seleccione]</option>
           {programas.map((prog) => (
             <option key={prog.id} value={prog.id}>
@@ -254,6 +304,9 @@ export const ProjectForm = ({
           className={`${styles['form-input']}`}
           {...register('idAtutor', { required: true })}
         >
+          {errors.idAtutor && (
+            <span className={styles['form-error']}>Requerido</span>
+          )}
           <option value=''>[Seleccione]</option>
           {investigadores.map((invest) => (
             <option key={invest.id} value={invest.id}>
@@ -354,7 +407,7 @@ export const ProjectForm = ({
         className='btn-primary w-full mt-2'
         onClick={handleSubmit(onSubmit)}
       >
-        Guardar
+        {isSubmitting ? <LoaderButton /> : 'Guardar'}
       </button>
       <Link
         className='btn-secondary w-full mt-2 text-center text-xs'
@@ -362,6 +415,18 @@ export const ProjectForm = ({
       >
         Editar palabras clave
       </Link>
+      <Link
+        className='btn-secondary w-full mt-2 text-center text-xs'
+        href={`/admin/convenios/proyecto/${project.id}`}
+      >
+        Editar aliados
+      </Link>
+      <button
+        className='btn-danger w-full mt-2'
+        onClick={onClickDeleteProject}
+      >
+        {isSubmitting ? <LoaderButton /> : 'Borrar proyecto'}
+      </button>
     </div>
   )
 }

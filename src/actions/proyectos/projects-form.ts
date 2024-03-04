@@ -7,8 +7,10 @@ import { Proyecto } from '@prisma/client'
 
 import { z } from 'zod'
 
-import { uploadImages } from '..'
+import { uploadImagesToStore } from '..'
 
+
+//* Validation schema
 const projectSchema = z.object({
   id: z.coerce
     .number()
@@ -42,6 +44,7 @@ const projectSchema = z.object({
   impacto: z.string().optional().nullable(),
 })
 
+// * CREAR | ACTUALIZAR PROYECTO
 export const createUpdateProduct = async (formData: FormData) => {
   const data = Object.fromEntries(formData)
 
@@ -82,7 +85,7 @@ export const createUpdateProduct = async (formData: FormData) => {
       // * carga y guardado de imagen si exists en el formulario la imagen
       if (formData.get('image')) {
         // recibo y envio arreglo
-        const images = await uploadImages([formData.get('image')] as File[])
+        const images = await uploadImagesToStore([formData.get('image')] as File[])
         // * si no se crean las imagenes, no se actualiza el proyecto
         if (!images) {
           throw new Error('No se pudo cargar la imagen, rolling back')
@@ -165,5 +168,34 @@ export const getAllProjectsForm = async () => {
     return projects
   } catch (error) {
     throw new Error(`getAllProjects ${error}`)
+  }
+}
+
+
+export const deleteProject = async (id:number) => {
+  try {
+    const deletedProject = await prisma.proyecto.delete({
+      where: {
+        id,
+      },
+      include: {
+        imagen: true
+      }
+    })
+
+    // * si se borra y tiene imagen se borra la imagen
+    if (deletedProject.imagen) {
+      await prisma.imagen.delete({
+        where: {
+          id: deletedProject.imagen.id
+        }
+      })
+    }
+
+    revalidatePath(`admin/proyectos/`)
+    revalidatePath(`/`)
+    return deletedProject
+  } catch (error) {
+    throw new Error(`deleteProject ${error}`)
   }
 }

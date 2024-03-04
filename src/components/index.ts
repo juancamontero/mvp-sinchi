@@ -1,5 +1,6 @@
 export { CustomHeroBanner } from './banners/CustomHeroBanner'
 export { HomeHeroBanner } from './banners/HomeHeroBanner'
+export { LoaderButton } from './loaders/LoaderButton'
 export { LoaderDefault } from './loaders/LoaderDefault'
 export { MenuItem } from './menus/MenuItem'
 export { TopBar } from './menus/TopBar'

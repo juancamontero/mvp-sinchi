@@ -1,8 +1,7 @@
 'use server'
 
 import prisma from '@/lib/prisma'
-
-
+import { revalidatePath } from 'next/cache'
 
 export const sleep = (seconds: number = 0): Promise<boolean> => {
   return new Promise((resolve) => {
@@ -20,7 +19,8 @@ export const getLineaById = async (id: number) => {
       },
       include: {
         Programa: true,
-      }
+        imagen: true,
+      },
     })
 
     return linea
@@ -34,6 +34,9 @@ export const getAllLineas = async () => {
     const lineas = await prisma.linea.findMany({
       orderBy: {
         order: 'asc',
+      },
+      include: {
+        imagen: true,
       },
     })
 
@@ -58,5 +61,34 @@ export const getLineaByProyectoId = async (idProject: number) => {
     return linea
   } catch (error) {
     throw new Error('Error al obtener la linea ' + error)
+  }
+}
+
+// *Borrar línea
+export const deleteLinea = async (id: number) => {
+  try {
+    const deletedLinea = await prisma.linea.delete({
+      where: {
+        id,
+      },
+      include: {
+        imagen: true,
+      },
+    })
+
+    // * si se borra y tiene imagen se borra la imagen
+    if (deletedLinea.imagen) {
+      await prisma.imagen.delete({
+        where: {
+          id: deletedLinea.imagen.id,
+        },
+      })
+    }
+
+    revalidatePath(`admin/lineas/`)
+    revalidatePath(`/`)
+    return deletedLinea
+  } catch (error) {
+    throw new Error(`deleteLinea ${error}`)
   }
 }

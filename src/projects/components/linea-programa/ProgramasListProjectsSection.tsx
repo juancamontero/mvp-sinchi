@@ -1,8 +1,8 @@
-import { Programa } from '@prisma/client'
+import { Imagen, Programa } from '@prisma/client'
 import { ProgramasCarouselProject } from '../..'
 
 interface Props {
-  programas: Programa[]
+  programas: (Programa& { imagen?: Imagen | null })[]
 }
 
 

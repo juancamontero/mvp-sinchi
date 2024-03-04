@@ -51,7 +51,16 @@ export default async function AdminProjectsPage() {
                 Actualizado en
               </th>
               <th scope='col' className='table-th-header-sinchi'>
-                Editar palabras claves
+                Palabras claves
+              </th>
+              <th scope='col' className='table-th-header-sinchi'>
+                Aliados
+              </th>
+              <th scope='col' className='table-th-header-sinchi'>
+                Departamentos
+              </th>
+              <th scope='col' className='table-th-header-sinchi'>
+                Sellos
               </th>
             </tr>
           </thead>
@@ -103,9 +112,33 @@ export default async function AdminProjectsPage() {
                   <td className='table-td-sinchi'>
                     <Link
                       href={`/admin/palabras-clave/proyecto/${proyecto.id}`}
-                      className='btn-primary text-xs'
+                      className='btn-table'
                     >
-                      Editar palabras clave
+                      Editar
+                    </Link>
+                  </td>
+                  <td className='table-td-sinchi'>
+                    <Link
+                      href={`/admin/convenios/proyecto/${proyecto.id}`}
+                      className='btn-table'
+                    >
+                      Editar
+                    </Link>
+                  </td>
+                  <td className='table-td-sinchi'>
+                    <Link
+                      href={`/admin/regiones/proyecto/${proyecto.id}`}
+                      className='btn-table'
+                    >
+                      Editar
+                    </Link>
+                  </td>
+                  <td className='table-td-sinchi'>
+                    <Link
+                      href={`/admin/sellos/proyecto/${proyecto.id}`}
+                      className='btn-table'
+                    >
+                      Editar
                     </Link>
                   </td>
                 </tr>

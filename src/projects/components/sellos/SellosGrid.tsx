@@ -1,11 +1,11 @@
 import React from 'react'
 
 import Image from 'next/image'
-import { sellosProject } from '../../helpers/dataSeed'
-import { Sello } from '@prisma/client'
+
+import { Imagen, Sello } from '@prisma/client'
 
 type Props = {
-  sellos: Sello[]
+  sellos: (Sello & { imagen?: Imagen | null })[]
   selloSize?: number
 }
 
@@ -17,8 +17,8 @@ export const SellosGrid = ({ sellos, selloSize = 42 }: Props) => {
     <div className='flex flex-row lg:flex-nowrap flex-wrap  gap-1 items-start bg-bg-100 bg-opacity-70 p-1 w-fit'>
       {sellos.map((sello) => (
         <Image
-          key={sello.url}
-          src={sello.url}
+          key={`${sello.id}-img`}
+          src={sello.imagen?.url ?? '/images/placeholder-img.jpeg'}
           alt={sello.name}
           width={selloSize}
           height={selloSize}
@@ -27,4 +27,3 @@ export const SellosGrid = ({ sellos, selloSize = 42 }: Props) => {
     </div>
   )
 }
-

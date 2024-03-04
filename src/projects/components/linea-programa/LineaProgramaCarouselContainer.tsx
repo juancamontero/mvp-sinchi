@@ -7,7 +7,7 @@ import { TiChevronRight } from 'react-icons/ti'
 import { FaChevronRight } from 'react-icons/fa'
 
 interface Props {
-  urlIcon: string | null
+  urlIcon?: string | null
   iconSize?: number
   name: string
   baseUrl: string
@@ -27,8 +27,6 @@ export const LineaProgramaCarouselContainer = ({
   preTitle = 'Conoce más',
   baseColor,
 }: Props) => {
-  const colorTest = '#3076E8'
-
   return (
     <div className='w-full flex flex-col justify-start items-start'>
       {/* Headers start */}
@@ -36,9 +34,7 @@ export const LineaProgramaCarouselContainer = ({
         className={`w-full flex flex-row justify-start items-start  bg-bg-200 py-2 lg:py-4 gap-2 xBannerPaddings`}
       >
         <div className='sm:w-20 sm:h-20 w-12'>
-          {urlIcon && (
-            <IconLinea urlIcon={urlIcon} name={name} size={iconSize} />
-          )}
+          <IconLinea urlIcon={urlIcon} name={name} size={iconSize} />
         </div>
 
         {/* text column starts */}
@@ -63,18 +59,18 @@ export const LineaProgramaCarouselContainer = ({
           >
             <span className='text-left'>{preTitle}</span>
             <span className='text-left opacity-50 saturate-200 group-hover:opacity-100 p-0 h-fit'>
-              <FaChevronRight size={18}/>
+              <FaChevronRight size={18} />
             </span>
           </Link>
         </div>
         {/* text column starts */}
       </div>
-      
+
       {/* Headers End */}
 
       {/* Acá viene carousel de proyectos */}
 
-      <ProjectsCarousel proyectos={proyectos}  baseColor={baseColor}/>
+      <ProjectsCarousel proyectos={proyectos} baseColor={baseColor} />
     </div>
   )
 }

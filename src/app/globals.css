@@ -91,6 +91,10 @@ p {
 }
 
 /* TABLES */
+
+.btn-table {
+  @apply bg-primary-100 hover:bg-primary-300 text-white p-2 transition-all text-xs leading-tight
+}
 .table-sinchi {
   @apply min-w-full divide-y divide-gray-700;
 }

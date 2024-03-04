@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { IconLinea } from './LineasIcons'
-import { url } from 'inspector'
+
 
 interface Props {
   linea: {

@@ -9,11 +9,11 @@ interface Props {
 }
 export const IconLinea = ({
   name = 'Línea  de investigación',
-  urlIcon = '/images/lineas/linea-1.webp',
+  urlIcon,
   size = ICON_SIZE,
 }: Props) => {
 
-const urlImage = urlIcon ? urlIcon : '/images/lineas/linea-1.webp'
+const urlImage = urlIcon ? urlIcon : '/images/placeholder-img.jpeg'
 
   return <Image src={urlImage} alt={name} width={size} height={size} className='mb-1'/>
 }

@@ -16,7 +16,10 @@ interface Props {
 export default async function ProjectPage({ params }: Props) {
   const { id } = params
   const proyecto = await getProyectoById(Number(id))
+
   if (!proyecto) return <>No encontrado</>
+ 
+  const sellosNew = proyecto.sellos
 
   return (
     <main className={`pageDefault relative`}>

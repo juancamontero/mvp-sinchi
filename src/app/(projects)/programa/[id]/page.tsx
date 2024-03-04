@@ -55,7 +55,7 @@ export default async function ProgramaPage({ params }: Props) {
       <div
         className={`xBannerPaddings sm:sticky sm:top-0 h-fit flex flex-col gap-2 flex-wrap items-start bg-bg-200 w-full py-6  z-10 sm:mb-4`}
       >
-        <IconLinea urlIcon={programa.urlIcon} name={programa.name} size={62} />
+        <IconLinea urlIcon={programa.imagen?.url} name={programa.name} size={62} />
 
         <h2 className='text-2xl font-semibold text-primary-300 text-left mx-1 text-wrap'>
           {programa?.name}

@@ -3,11 +3,16 @@ import Image from 'next/image'
 import {
   IoCalendarOutline,
   IoCheckboxOutline,
+  IoImageOutline,
   IoPersonOutline,
+  IoPodium,
 } from 'react-icons/io5'
 import { AdminSideBarItem, LogoutButton } from '../..'
 import { auth } from '@/auth'
 import { IoMdBook } from 'react-icons/io'
+import { PiHandshakeLight, PiPersonArmsSpreadLight, PiStamp } from 'react-icons/pi'
+import { TbWorld } from 'react-icons/tb'
+import { GoProjectSymlink } from 'react-icons/go'
 
 // import { LogoutButton, SidebarItem } from '..'
 
@@ -23,25 +28,46 @@ const sidebarItems = [
     icon: <IoCheckboxOutline size={30} />,
   },
   {
+    title: 'Líneas investigación',
+    path: '/admin/lineas',
+    icon: <GoProjectSymlink size={30} />,
+  },
+  {
+    title: 'Programas investigación',
+    path: '/admin/programas',
+    icon: <IoPodium size={30} />,
+  },
+  {
+    title: 'Investigadores ',
+    path: '/admin/investigadores',
+    icon:  <PiPersonArmsSpreadLight  size={30} />,
+  },
+  {
     title: 'Palabras clave',
     path: '/admin/palabras-clave',
     icon: <IoMdBook size={30} />,
   },
-  // {
-  //   title: 'Server Actions',
-  //   path: '/dashboard/server-todos',
-  //   icon: <IoListOutline size={30} />,
-  // },
-  // {
-  //   title: 'Cookies',
-  //   path: '/dashboard/cookies',
-  //   icon: <IoCodeWorkingOutline size={30} />,
-  // },
-  // {
-  //   title: 'Products',
-  //   path: '/dashboard/products',
-  //   icon: <IoBasketOutline size={30} />,
-  // },
+  {
+    title: 'Convenios / aliados',
+    path: '/admin/convenios',
+    icon: <PiHandshakeLight size={30} />,
+  },
+  {
+    title: 'Regiones / departamentos',
+    path: '/admin/regiones',
+    icon: <TbWorld size={30} />,
+  },
+  {
+    title: 'Imágenes',
+    path: '/admin/imagenes',
+    icon: <IoImageOutline size={30} />,
+  },
+  {
+    title: 'Sellos',
+    path: '/admin/sellos',
+    icon: <PiStamp size={30} />,
+  },
+
   {
     title: 'Profile',
     path: '/admin/profile',

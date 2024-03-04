@@ -1,7 +1,10 @@
 'use client'
 import { updateTagsByProjectId } from '@/actions'
+import { CreateUpdateTagForm } from '@/admin'
+import { LoaderButton } from '@/components'
 import { Tag } from '@prisma/client'
 import clsx from 'clsx'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 interface Props {
@@ -15,11 +18,12 @@ interface FormInputs {
 }
 
 export const ProjectTagsForm = ({ allTags, projectTags, projectId }: Props) => {
-  const allIdTags = allTags.map((tag) => tag.id)
+  // * loader
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   const projectTagsId = projectTags.map((tag) => tag.id)
 
   const {
-    register,
     handleSubmit,
     formState: { isValid },
     getValues,
@@ -37,13 +41,16 @@ export const ProjectTagsForm = ({ allTags, projectTags, projectId }: Props) => {
   }
 
   const onSubmit = async (data: FormInputs) => {
+    setIsLoading(true)
     const { ok } = await updateTagsByProjectId(projectId, data.tags)
     if (ok) {
       alert('Palabras clave actualizadas')
     } else alert('Error')
+    setIsLoading(false)
   }
   return (
-    <>
+    <div className='mt-2 w-full'>
+      <CreateUpdateTagForm />
       <div className='grid grid-cols-6 gap-1 mt-4'>
         {allTags.map((tag) => (
           <div
@@ -64,8 +71,8 @@ export const ProjectTagsForm = ({ allTags, projectTags, projectId }: Props) => {
         className='btn-primary w-full mt-2'
         onClick={handleSubmit(onSubmit)}
       >
-        Guardar
+        {isLoading ? <LoaderButton /> : 'Guardar'}
       </button>
-    </>
+    </div>
   )
 }

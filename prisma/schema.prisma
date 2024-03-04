@@ -9,10 +9,15 @@ datasource db {
 }
 
 model Convenio {
-  id       Int        @id @default(autoincrement())
-  createAt DateTime?  @default(now())
-  updateAt DateTime?  @updatedAt
-  name     String     @unique
+  id       Int       @id @default(autoincrement())
+  idImagen Int?
+  name     String    @unique
+  createAt DateTime? @default(now())
+  updateAt DateTime? @updatedAt
+
+  //relation
+
+  imagen   Imagen?    @relation(fields: [idImagen], references: [id])
   Proyecto Proyecto[] @relation("ConvenioToProyecto")
 }
 
@@ -42,53 +47,66 @@ model Tag {
 }
 
 model Sello {
-  id       Int        @id @default(autoincrement())
-  createAt DateTime?  @default(now())
-  updateAt DateTime?  @updatedAt
-  order    Int        @default(autoincrement())
-  name     String     @unique
-  url      String
+  id       Int       @id @default(autoincrement())
+  idImagen Int?
+  createAt DateTime? @default(now())
+  updateAt DateTime? @updatedAt
+  order    Int
+  name     String    @unique
+
+  // relations
   Proyecto Proyecto[] @relation("ProyectoToSello")
+  imagen   Imagen?    @relation(fields: [idImagen], references: [id])
 }
 
 model Programa {
-  id          Int        @id @default(autoincrement())
-  createAt    DateTime?  @default(now())
-  updateAt    DateTime?  @updatedAt
+  id          Int       @id @default(autoincrement())
+  idImagen    Int?
+  createAt    DateTime? @default(now())
+  updateAt    DateTime? @updatedAt
   preTitle    String?
   baseColor   String?
-  name        String     @unique @default("")
-  order       Int        @default(autoincrement())
-  description String?    @default("")
-  Project     Proyecto[]
-  Linea       Linea[]    @relation("LineaToPrograma")
-  urlImage    String?    @default("")
-  urlIcon     String?    @default("/images/programas/programa-1.webp")
+  name        String    @unique @default("")
+  order       Int
+  description String?   @default("")
+
+  // relations
+  Project Proyecto[]
+  Linea   Linea[]    @relation("LineaToPrograma")
+  imagen  Imagen?    @relation(fields: [idImagen], references: [id])
 }
 
 model Linea {
-  id          Int        @id @default(autoincrement())
-  createAt    DateTime?  @default(now())
-  updateAt    DateTime?  @updatedAt
-  order       Int        @default(autoincrement())
+  id          Int       @id @default(autoincrement())
+  idImagen    Int?
+  createAt    DateTime? @default(now())
+  updateAt    DateTime? @updatedAt
+  order       Int       @default(autoincrement())
   preTitle    String?
   baseColor   String?
-  name        String     @unique @default("")
-  description String?    @default("")
-  purpose     String?    @default("")
-  millestone1 String?    @default("")
-  millestone2 String?    @default("")
-  millestone3 String?    @default("")
-  Project     Proyecto[]
-  Programa    Programa[] @relation("LineaToPrograma")
-  urlImage    String?    @default("")
-  urlIcon     String?    @default("/images/lineas/linea-1.webp")
+  name        String    @unique @default("")
+  description String?   @default("")
+  purpose     String?   @default("")
+  millestone1 String?   @default("")
+  millestone2 String?   @default("")
+  millestone3 String?   @default("")
+
+  // relations
+  Project  Proyecto[]
+  Programa Programa[] @relation("LineaToPrograma")
+  imagen   Imagen?    @relation(fields: [idImagen], references: [id])
 }
 
 model Imagen {
   id       Int        @id @default(autoincrement())
   url      String
+
+  // relations
+  Convenio Convenio[]
   Proyecto Proyecto[]
+  Sello    Sello[]
+  Programa Programa[]
+  Linea    Linea[]
 }
 
 model Proyecto {

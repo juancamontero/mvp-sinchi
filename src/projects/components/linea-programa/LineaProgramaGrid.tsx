@@ -1,13 +1,10 @@
 import Link from 'next/link'
 
 import { IconLinea } from './LineasIcons'
+import { Imagen, Linea, Programa } from '@prisma/client'
 
 interface Props {
-  termino: {
-    id: number
-    name: string
-    urlIcon: string | null
-  }
+  termino: (Linea | Programa) & {imagen?: Imagen | null}
   backgroundColor?:
     | 'primary-100'
     | 'primary-200'
@@ -38,7 +35,7 @@ export const LineaProgramaGrid = ({
     >
       <div className='flex flex-row flex-nowrap w-full gap-1 items-center justify-start'>
         <span className='mr-2'>
-          <IconLinea name={termino.name} urlIcon={termino.urlIcon} size={48} />
+          <IconLinea name={termino.name} urlIcon={termino.imagen?.url} size={48} />
         </span>
         <h5 className='inline-block text-bg-200 text-base font-medium leading-tight w-11/12 hover:underline'>
           {termino.name}
