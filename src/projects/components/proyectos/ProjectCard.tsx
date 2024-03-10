@@ -46,14 +46,14 @@ export const ProjectCard = ({ proyecto }: Props) => {
         </div>
 
         {/* Acá va el bloque que sube al hover */}
-        <div className='bg-bg-100 bg-opacity-60 sm:flex sm:flex-col sm:justify-between bottom-0 inset-x-0 h-full mt-auto px-4 py-2 translate-y-28  transition duration-300 ease-in-out group-hover:translate-y-0 absolute group-hover:bg-opacity-80'>
+        <div className='bg-bg-100 bg-opacity-75 sm:flex sm:flex-col sm:justify-between bottom-0 inset-x-0 h-full mt-auto px-4 py-2 translate-y-28  transition duration-300 ease-in-out group-hover:translate-y-0 absolute group-hover:bg-opacity-90'>
           {/* <TagsGrid idProject={id} /> */}
 
           {/* Objetivo */}
           <div className='flex flex-col justify-start items-start '>
             {/* TITLE */}
             <h2
-              className={`text-base leading-tight text-text-100 mt-1 mb-2 h-14 whitespace-normal truncate text-ellipsis group-hover:whitespace-normal group-hover:h-fit `}
+              className={`text-base leading-[1.2] text-text-100 mt-1 mb-2 h-14 whitespace-normal truncate text-ellipsis group-hover:whitespace-normal group-hover:h-fit `}
             >
               {name}
             </h2>

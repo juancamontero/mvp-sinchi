@@ -9,7 +9,6 @@ import { z } from 'zod'
 
 import { uploadImagesToStore } from '..'
 
-
 //* Validation schema
 const projectSchema = z.object({
   id: z.coerce
@@ -42,6 +41,11 @@ const projectSchema = z.object({
   importancia: z.string().optional().nullable(),
   pertinencia: z.string().optional().nullable(),
   impacto: z.string().optional().nullable(),
+  roleInvestigador: z.string().optional().nullable(),
+  antecedentes: z.string().optional().nullable(),
+  descripcion: z.string().optional().nullable(),
+  actores: z.string().optional().nullable(),
+  beneficiarios: z.string().optional().nullable(),
 })
 
 // * CREAR | ACTUALIZAR PROYECTO
@@ -74,7 +78,7 @@ export const createUpdateProduct = async (formData: FormData) => {
         // console.log(updatedProject)
       } else {
         //* crear
-      
+
         updatedProject = await prisma.proyecto.create({
           data: {
             ...rest,
@@ -85,7 +89,9 @@ export const createUpdateProduct = async (formData: FormData) => {
       // * carga y guardado de imagen si exists en el formulario la imagen
       if (formData.get('image')) {
         // recibo y envio arreglo
-        const images = await uploadImagesToStore([formData.get('image')] as File[])
+        const images = await uploadImagesToStore([
+          formData.get('image'),
+        ] as File[])
         // * si no se crean las imagenes, no se actualiza el proyecto
         if (!images) {
           throw new Error('No se pudo cargar la imagen, rolling back')
@@ -171,24 +177,23 @@ export const getAllProjectsForm = async () => {
   }
 }
 
-
-export const deleteProject = async (id:number) => {
+export const deleteProject = async (id: number) => {
   try {
     const deletedProject = await prisma.proyecto.delete({
       where: {
         id,
       },
       include: {
-        imagen: true
-      }
+        imagen: true,
+      },
     })
 
     // * si se borra y tiene imagen se borra la imagen
     if (deletedProject.imagen) {
       await prisma.imagen.delete({
         where: {
-          id: deletedProject.imagen.id
-        }
+          id: deletedProject.imagen.id,
+        },
       })
     }
 

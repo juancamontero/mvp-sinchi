@@ -1,4 +1,4 @@
-import { getProgramaByIdForm } from '@/actions'
+import { getLineaByIdForm, getProgramaByIdForm } from '@/actions'
 import { LineaForm, TitleAdmin } from '@/admin'
 import { redirect } from 'next/navigation'
 
@@ -11,7 +11,7 @@ interface Props {
 export default async function LineaAdminPage({ params }: Props) {
   const { id } = params
 
-  const linea = id === 'new' ? null : await getProgramaByIdForm(Number(id))
+  const linea = id === 'new' ? null : await getLineaByIdForm(Number(id))
 
   // * new Projects
   if (!linea && id !== 'new') {

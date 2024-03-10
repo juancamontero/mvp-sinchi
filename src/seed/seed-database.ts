@@ -6,6 +6,7 @@ async function main() {
   await prisma.tag.createMany({
     data: initialData.tags,
   })
+  await prisma.$executeRaw`ALTER SEQUENCE "Tag_id_seq" RESTART WITH ${initialData.tags.length+1};`
   await prisma.sello.createMany({
     data: initialData.sellos,
   })
@@ -33,6 +34,7 @@ async function main() {
   await prisma.proyecto.createMany({
     data: initialData.proyectos,
   })
+// todo
 
 
   console.log('Seed ejecutado correctamente')
@@ -43,3 +45,5 @@ async function main() {
 
   main()
 })()
+
+

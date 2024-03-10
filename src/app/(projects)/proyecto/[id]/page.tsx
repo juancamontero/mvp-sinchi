@@ -1,11 +1,9 @@
-
 import { getProyectoById } from '@/actions'
 import {
   ProjectBanner,
   ProyectosProductHtml,
-
+  createSellosArray,
 } from '@/projects'
-
 
 interface Props {
   params: {
@@ -18,11 +16,16 @@ export default async function ProjectPage({ params }: Props) {
   const proyecto = await getProyectoById(Number(id))
 
   if (!proyecto) return <>No encontrado</>
- 
-  const sellosNew = proyecto.sellos
+
+  const sellosArray = createSellosArray({
+    linea: proyecto.linea,
+    programa: proyecto.programa,
+    sellos: proyecto.sellos,
+  })
 
   return (
-    <main className={`pageDefault relative`}>
+    <main className={`flex-1 w-full relative overflow-y-auto`}>
+    {/* <main className={`projectPage relative h-full`}> */}
       {/* banner start */}
       <ProjectBanner
         urlBackground={proyecto.imagen?.url}
@@ -37,21 +40,24 @@ export default async function ProjectPage({ params }: Props) {
         regiones={proyecto.regions}
         places={proyecto.places ?? ''}
         autor={proyecto.autor}
+        roleInvestigador={proyecto.roleInvestigador}
+        equipo={proyecto.equipo}
+        sellosArray={sellosArray}
       />
 
-      {/* OBJETIVO START*/}
+      {/* ANTECEDENTES START*/}
       <div
-        className={`xBannerPaddings sticky top-0 h-screen flex flex-col items-center justify-center bg-primary-300  gap-8 w-full`}
+        className={`xBannerPaddings sticky top-0 h-screen flex flex-col items-center justify-center bg-bg-200  gap-8 w-full`}
       >
         <div className='flex flex-col justify-center items-center  p-4 gap-4'>
-          <h2 className='text-4xl font-bold text-bg-200 mb-2 text-center'>
-            Objetivo
+          <h2 className='text-4xl font-bold text-primary-200 mb-2 text-center'>
+            Antecedentes
           </h2>
           {/* <p>{proyecto.objetivo}</p> */}
-          {proyecto.objetivo && (
+          {proyecto.antecedentes && (
             <div
-              dangerouslySetInnerHTML={{ __html: proyecto.objetivo }}
-              className='text-bg-100 p-2'
+              dangerouslySetInnerHTML={{ __html: proyecto.antecedentes }}
+              className='text-primary-300 p-2'
             />
           )}
         </div>

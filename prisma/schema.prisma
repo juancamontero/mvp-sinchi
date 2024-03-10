@@ -98,45 +98,91 @@ model Linea {
 }
 
 model Imagen {
-  id       Int        @id @default(autoincrement())
-  url      String
+  id  Int    @id @default(autoincrement())
+  url String
 
   // relations
-  Convenio Convenio[]
-  Proyecto Proyecto[]
-  Sello    Sello[]
-  Programa Programa[]
-  Linea    Linea[]
+  Convenio   Convenio[]
+  Proyecto   Proyecto[]
+  Sello      Sello[]
+  Programa   Programa[]
+  Linea      Linea[]
+  proyectoId Int?
+}
+
+model ImagenActores {
+  id         Int       @id @default(autoincrement())
+  title      String?
+  subTitle   String?
+  url        String
+  Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
+  proyectoId Int?
+}
+
+model MapasUbicacion {
+  id         Int       @id @default(autoincrement())
+  title      String?
+  subTitle   String?
+  url        String
+  Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
+  proyectoId Int?
+}
+
+model ImagenDescripcion {
+  id         Int       @id @default(autoincrement())
+  title      String?
+  subTitle   String?
+  url        String
+  Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
+  proyectoId Int?
+}
+
+model ImagenAntecedentes {
+  id         Int       @id @default(autoincrement())
+  title      String?
+  subTitle   String?
+  url        String
+  Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
+  proyectoId Int?
 }
 
 model Proyecto {
-  id          Int       @id @default(autoincrement())
-  createAt    DateTime? @default(now())
-  updateAt    DateTime? @updatedAt
-  idLinea     Int?
-  idPrograma  Int?
-  idAtutor    Int?
-  idImagen    Int?
-  equipo      String?
-  completed   Boolean   @default(false)
-  year        Int       @default(2022)
-  name        String
-  objetivo    String?   @default("")
-  products    String?   @default("")
-  places      String?   @default("")
-  importancia String?
-  pertinencia String?
-  impacto     String?
+  id               Int       @id @default(autoincrement())
+  createAt         DateTime? @default(now())
+  updateAt         DateTime? @updatedAt
+  idLinea          Int?
+  idPrograma       Int?
+  idAtutor         Int?
+  idImagen         Int?
+  roleInvestigador String?
+  equipo           String?
+  completed        Boolean   @default(false)
+  year             Int       @default(2022)
+  name             String
+  objetivo         String?
+  products         String?
+  places           String?
+  importancia      String?
+  pertinencia      String?
+  impacto          String?
+  antecedentes     String?
+  descripcion      String?
+  actores          String?
+  beneficiarios    String?
 
   // relations
-  autor     Autor?     @relation(fields: [idAtutor], references: [id])
-  imagen    Imagen?    @relation(fields: [idImagen], references: [id])
-  linea     Linea?     @relation(fields: [idLinea], references: [id])
-  programa  Programa?  @relation(fields: [idPrograma], references: [id])
-  convenios Convenio[] @relation("ConvenioToProyecto")
-  regions   Region[]   @relation("ProyectoToRegion")
-  sellos    Sello[]    @relation("ProyectoToSello")
-  tags      Tag[]      @relation("ProyectoToTag")
+  autor              Autor?               @relation(fields: [idAtutor], references: [id])
+  imagen             Imagen?              @relation(fields: [idImagen], references: [id])
+  linea              Linea?               @relation(fields: [idLinea], references: [id])
+  programa           Programa?            @relation(fields: [idPrograma], references: [id])
+  convenios          Convenio[]           @relation("ConvenioToProyecto")
+  regions            Region[]             @relation("ProyectoToRegion")
+  sellos             Sello[]              @relation("ProyectoToSello")
+  tags               Tag[]                @relation("ProyectoToTag")
+  imagenAntecedentes ImagenAntecedentes[]
+  imagenDescripcion  ImagenDescripcion[]
+  imagenActores      ImagenActores[]
+  mapasUbicacion     MapasUbicacion[]
 }
 
 // * AUTH JS

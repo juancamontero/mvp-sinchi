@@ -1,36 +1,45 @@
 import Image from 'next/image'
 
-
-import { Autor, Convenio, Imagen, Linea, Programa, Region, Sello } from '@prisma/client'
 import {
-  SellosGrid,
+  Autor,
+  Convenio,
+  Imagen,
+  Linea,
+  Programa,
+  Region,
+  Sello,
+} from '@prisma/client'
+import {
+  SellosRow,
   ProjectStateWidget,
   TermsGrid,
-
   ConveniosGrid,
   RegionsGrid,
   AuthorsGrid,
   LineaProgramaGrid,
+  SelloArray,
 } from '../..'
 
 interface Props {
   name: string
   urlBackground?: string | null
   year: number
-  sellos:  (Sello & { imagen?: Imagen | null})[]
+  sellos: (Sello & { imagen?: Imagen | null })[]
   completed: boolean
   tags: {
     id: number
     name: string
   }[]
-  linea: ((Linea) & {imagen?: Imagen | null})| null
-  programa:  ((Programa) & {imagen?: Imagen | null})| null
+  linea: (Linea & { imagen?: Imagen | null }) | null
+  programa: (Programa & { imagen?: Imagen | null }) | null
   convenios: Convenio[]
   regiones: Region[]
   places: string
   autor: Autor | null
+  roleInvestigador?: string | null
+  equipo?: string | null
+  sellosArray: SelloArray[]
 }
-
 
 export const ProjectBanner = ({
   urlBackground,
@@ -45,72 +54,72 @@ export const ProjectBanner = ({
   regiones,
   places,
   autor,
+  roleInvestigador,
+  equipo,
+  sellosArray,
 }: Props) => {
-
-
   return (
-    <div className={`group w-full sm:h-screen lg:sticky h-fit top-0`}>
-      {/* backgroung image */}
-      <Image
-        className='absolute inset-0 w-full h-full object-cover object-center'
-        src={urlBackground ?? '/images/placeholder-img.jpeg'}
-        width={1900}
-        height={800}
-        alt='hero background image'
-      />
-
-      {/* overlay div */}
-      <div className='absolute inset-0 w-full h-full bg-primary-300 bg-opacity-30 backdrop-blur-[2px] group-hover:backdrop-blur-0 group-hover:bg-opacity-70' />
-
+    <div className={`group w-full lg:h-full h-fit lg:sticky  top-0`}>
       {/* CONTENT DIV */}
-      <div className={`relative xBannerPaddings py-2 sm:py-4 h-full lg:h-[90vh] flex flex-col justify-between `}>
-
+      <div
+        className={`relative xBannerPaddings py-2 sm:py-8 lg:h-full h-fit  flex flex-col justify-between bg-primary-300 `}
+      >
         {/* Content full column  */}
-          {/* upper section starts*/}
-          <div className='flex flex-col justify-start gap-2 md:gap-2 sm:mb-0 mb-2'>
-            {/* year and seals starts */}
-            <div className='flex flex-row justify-between flex-wrap sm:flex-nowrap items-center w-full'>
-              {/* year  start*/}
-              <h2 className='text-left lg:text-6xl text-5xl font-extrabold text-bg-300 leading-none'>
-                {year}
-              </h2>
-              {/* year ends*/}
+        {/* upper section starts*/}
+        <div className='flex flex-col justify-start items-center gap-0'>
+          {/* ROUNDED IMAGE */}
+          <Image
+            className='sm:w-36 sm:h-36 w-28 h-28 object-cover object-center rounded-full'
+            src={urlBackground ?? '/images/placeholder-img.jpeg'}
+            width={500}
+            height={500}
+            alt='hero background image'
+          />
+          {/* Title */}
+          <h2
+            className={` text-bg-100 lg:text-[1.8rem] sm:text-2xl text-xl font-semibold lg:w-5/6 w-full text-center lg:leading-[1.15] leading-tight mt-2`}
+          >
+            {name}
+          </h2>
+          {/* year*/}
+          <h2 className='text-center text-2xl  font-normal text-bg-200 leading-none mt-2'>
+            {year}
+          </h2>
+          {/*INVESTIGADOR */}
+          <h3 className='text-center text-xl text-text-50 lg:leading-none leading-tight mt-2'>
+            Investigador responsable:{' '}
+            <span className='font-extralight'>{autor?.name}</span>
+          </h3>
+          {/* ROLE INVESTIGADOR */}
+          {roleInvestigador && (
+            <h3 className='text-center text-xl text-text-50 mt-0'>
+              {roleInvestigador}
+            </h3>
+          )}
+          {/*MAIL INVESTIGADOR */}
+          <p className='text-center text-base text-bg-100  lg:leading-none leading-tight mt-0 font-light'>
+            {autor?.email}
+          </p>
+          {/* EQUIPO */}
+          {equipo && (
+            <h4 className='text-center text-base text-bg-100  lg:leading-none leading-tight mt-1 font-light'>
+              <span className='font-medium'>Equipo técnico SINCHI: </span>
+              {equipo}
+            </h4>
+          )}
 
-              {/* Project state start*/}
-              <div className='w-full flex lg:flex-row flex-nowrap justify-start sm:justify-end gap-1 lg:w-full mt-1 lg:mt-0 '>
-                <ProjectStateWidget completed={completed} selloSize={52} />
-                <SellosGrid sellos={sellos} selloSize={52} />
-              </div>
-              {/* Project state end*/}
-            </div>
-
-
-
-            {/* Title */}
-            <TermsGrid items={tags} urlBase='/palabra-clave' />
-            <h2 className={`titleBannerFullWidth text-bg-100 text-ellipsis  hover:h-fit h-20 ` }>
-              {name}
-            </h2>
+          <div className='flex flex-row justify-between flex-wrap sm:flex-nowrap items-center w-full'>
+            {/* year ends*/}
           </div>
-          {/* upper section ends*/}
+        </div>
+        {/* upper section ends*/}
 
-          {/* botton section starts */}
-          <div className='flex flex-col justify-start gap-2 md:gap-2'>
-            {/* Linea y programa */}
-            {linea && <LineaProgramaGrid termino={linea} urlBase={'/linea'} />}
-            {programa && (
-              <LineaProgramaGrid
-                termino={programa}
-                urlBase={'/programa'}
-                opacity={90}
-              />
-            )}
-            <ConveniosGrid convenios={convenios} />
-            <RegionsGrid regions={regiones} places={places} />
-            <AuthorsGrid author={autor} />
-          </div>
-          {/* botton section ends */}
-
+        {/* bottom section starts */}
+        <div className='flex flex-col w-full lg:mt-0 mt-8 '>
+          {/* Sellos row */}
+          <SellosRow sellos={sellosArray} />
+        </div>
+        {/* botton section ends */}
       </div>
     </div>
   )

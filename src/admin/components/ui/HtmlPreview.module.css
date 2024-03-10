@@ -7,3 +7,17 @@
     list-style-type: decimal;
     margin: 12px;
   }
+
+  .productos ul {
+    list-style-type: disc;
+    margin: 24px;
+  }
+
+  .productos ol {
+    list-style-type: decimal;
+    margin: 24px;
+  }
+  
+  .productos li::marker {
+      color: black;
+  }

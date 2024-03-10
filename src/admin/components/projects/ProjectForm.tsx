@@ -52,6 +52,12 @@ interface FormInputs {
   importancia: string
   pertinencia: string
   impacto: string
+  roleInvestigador: string
+  antecedentes: string
+  descripcion: string
+  actores: string
+  beneficiarios: string
+
   image?: FileList
 }
 
@@ -83,6 +89,11 @@ export const ProjectForm = ({
       products: project.products ?? '',
       places: project.places ?? '',
       objetivo: project.objetivo ?? '',
+      roleInvestigador: project.roleInvestigador ?? '',
+      antecedentes: project.antecedentes ?? '',
+      descripcion: project.descripcion ?? '',
+      actores: project.actores ?? '',
+      beneficiarios: project.beneficiarios ?? '',
 
       image: undefined,
     },
@@ -101,20 +112,20 @@ export const ProjectForm = ({
   useEffect(() => {
     register('products', { required: false })
     register('objetivo', { required: false })
+    register('importancia', { required: false })
+    register('pertinencia', { required: false })
+    register('impacto', { required: false })
+    register('antecedentes', { required: false })
+    register('descripcion', { required: false })
+    register('actores', { required: false })
+    register('beneficiarios', { required: false })
   }, [register])
 
-  const onProductsChange = (editorState: string) => {
-    setValue('products', editorState)
+  const onHtmlChange = (fieldName: keyof FormInputs, editorState: string) => {
+    setValue(fieldName, editorState)
   }
-  const onObjetivoChange = (editorState: string) => {
-    setValue('objetivo', editorState)
-  }
-
-  const productsContent = watch('products')
-  const objetivosContent = watch('objetivo')
 
   const onSubmit = async (data: FormInputs) => {
-
     const formData = new FormData()
 
     const { image, ...projectToSave } = data
@@ -133,6 +144,11 @@ export const ProjectForm = ({
     formData.append('products', projectToSave.products)
     formData.append('places', projectToSave.places)
     formData.append('objetivo', projectToSave.objetivo)
+    formData.append('roleInvestigador', projectToSave.roleInvestigador)
+    formData.append('antecedentes', projectToSave.antecedentes)
+    formData.append('descripcion', projectToSave.descripcion)
+    formData.append('actores', projectToSave.actores)
+    formData.append('beneficiarios', projectToSave.beneficiarios)
 
     if (image && image[0]) {
       formData.append('image', image[0])
@@ -144,7 +160,6 @@ export const ProjectForm = ({
       router.replace(`/admin/proyecto/${updatedProject!.id}`)
       alert('Proyecto actualizado/creado correctamente!')
     } else alert('Error, mo se pudo crear o actualizar el proyecto')
-
   }
 
   const onClickDeleteProject = async () => {
@@ -266,7 +281,9 @@ export const ProjectForm = ({
           {...register('idLinea', { required: true })}
         >
           {errors.idLinea && (
-            <span className={styles['form-error']}>Requerido - {errors.idLinea.type}</span>
+            <span className={styles['form-error']}>
+              Requerido - {errors.idLinea.type}
+            </span>
           )}
           <option value=''>[Seleccione]</option>
           {lineas.map((linea) => (
@@ -317,10 +334,25 @@ export const ProjectForm = ({
       </div>
 
       <div className='flex flex-col mb-2 w-full gap-2'>
+        {/* ROLE INVES */}
+        <div className='flex flex-col mb-2 w-full'>
+          <label
+            htmlFor='roleInvestigador'
+            className={`${styles['form-label']}`}
+          >
+            Role investigador responsable
+          </label>
+          <input
+            type='text'
+            placeholder='min 3 / max 100 letras'
+            className={`${styles['form-input']}`}
+            {...register('roleInvestigador', { required: false, maxLength: 100, minLength: 3 })}
+          />
+        </div>
         {/* EQUIPO */}
 
         <div className='flex flex-col mb-2 w-full'>
-          <label htmlFor='name' className={`${styles['form-label']}`}>
+          <label htmlFor='equipo' className={`${styles['form-label']}`}>
             Equipo técnico SINCHI
           </label>
           <textarea
@@ -330,54 +362,86 @@ export const ProjectForm = ({
           />
         </div>
 
-        {/* LUGARES | PLACES */}
-
+        {/* ANTECEDENTES */}
         <div className='flex flex-col mb-2 w-full'>
-          <label htmlFor='name' className={`${styles['form-label']}`}>
-            Municipios | Lugares
-          </label>
-          <textarea
-            rows={2}
-            className={`${styles['form-input']}`}
-            {...register('places', { required: false })}
-          />
+          <AccordionForForm title='Antecedentes'>
+            <ReactQuill
+              theme='snow'
+              value={watch('antecedentes')}
+              onChange={(content) => onHtmlChange('antecedentes', content)}
+            />
+            <HtmlContentPreview htmlContent={watch('antecedentes')} />
+          </AccordionForForm>
+        </div>
+        {/* DESCRIPTION */}
+        <div className='flex flex-col mb-2 w-full'>
+          <AccordionForForm title='Descripción'>
+            <ReactQuill
+              theme='snow'
+              value={watch('descripcion')}
+              onChange={(content) => onHtmlChange('descripcion', content)}
+            />
+            <HtmlContentPreview htmlContent={watch('descripcion')} />
+          </AccordionForForm>
+        </div>
+
+        {/* LUGARES | PLACES */}
+        <div className='flex flex-col justify-start items-start bg-bg-300 p-2 w-full'>
+          <TitleAdmin title='Ubicación' className='text-center' />
+          <div className='flex flex-col mb-2 w-full'>
+            <label htmlFor='name' className={`${styles['form-label']}`}>
+              Municipios | Lugares
+            </label>
+            <textarea
+              rows={2}
+              className={`${styles['form-input']}`}
+              {...register('places', { required: false })}
+            />
+          </div>
+          <Link
+            className='btn-secondary w-full mt-2 text-center text-xs'
+            href={`/admin/regiones/proyecto/${project.id}`}
+          >
+            Editar regiones del proyecto
+          </Link>
         </div>
 
         {/* JUSTIFICACION (importancia | pertinenci |impacto) */}
-        <TitleAdmin title='Justificación' className='text-center' />
-        <div className='flex flex-row justify-start items-start gap-2'>
+        <div className='flex flex-col justify-start items-start bg-bg-300 p-2 w-full'>
+          <TitleAdmin title='Justificación' className='text-center' />
+
           {/* IMPORTANCIA */}
-          <div className='flex flex-col mb-2 w-1/3'>
-            <label htmlFor='importancia' className={`${styles['form-label']}`}>
-              Importancia
-            </label>
-            <textarea
-              rows={8}
-              className={`${styles['form-input']}`}
-              {...register('importancia', { required: false })}
-            />
+          <div className='flex flex-col mt-1 w-full'>
+            <AccordionForForm title='Importancia'>
+              <ReactQuill
+                theme='snow'
+                value={watch('importancia')}
+                onChange={(content) => onHtmlChange('importancia', content)}
+              />
+              <HtmlContentPreview htmlContent={watch('importancia')} />
+            </AccordionForForm>
           </div>
           {/* PERTINENCIA */}
-          <div className='flex flex-col mb-2 w-1/3'>
-            <label htmlFor='pertinencia' className={`${styles['form-label']}`}>
-              Pertinencia
-            </label>
-            <textarea
-              rows={8}
-              className={`${styles['form-input']}`}
-              {...register('pertinencia', { required: false })}
-            />
+          <div className='flex flex-col mt-1 w-full'>
+            <AccordionForForm title='Pertinencia'>
+              <ReactQuill
+                theme='snow'
+                value={watch('pertinencia')}
+                onChange={(content) => onHtmlChange('pertinencia', content)}
+              />
+              <HtmlContentPreview htmlContent={watch('pertinencia')} />
+            </AccordionForForm>
           </div>
           {/* IMPACTO */}
-          <div className='flex flex-col mb-2 w-1/3'>
-            <label htmlFor='impacto' className={`${styles['form-label']}`}>
-              Impacto
-            </label>
-            <textarea
-              rows={8}
-              className={`${styles['form-input']}`}
-              {...register('impacto', { required: false })}
-            />
+          <div className='flex flex-col mt-1 w-full'>
+            <AccordionForForm title='Impacto'>
+              <ReactQuill
+                theme='snow'
+                value={watch('impacto')}
+                onChange={(content) => onHtmlChange('impacto', content)}
+              />
+              <HtmlContentPreview htmlContent={watch('impacto')} />
+            </AccordionForForm>
           </div>
         </div>
       </div>
@@ -387,21 +451,44 @@ export const ProjectForm = ({
       <AccordionForForm title='Objetivo'>
         <ReactQuill
           theme='snow'
-          value={objetivosContent}
-          onChange={onObjetivoChange}
+          value={watch('objetivo')}
+          onChange={(content) => onHtmlChange('objetivo', content)}
         />
-        <HtmlContentPreview htmlContent={objetivosContent} />
+        <HtmlContentPreview htmlContent={watch('objetivo')} />
       </AccordionForForm>
 
       {/* Productos esperados */}
-      <AccordionForForm title='Productos esperados'>
+      <AccordionForForm title='Alcance | Productos esperados'>
         <ReactQuill
           theme='snow'
-          value={productsContent}
-          onChange={onProductsChange}
+          value={watch('products')}
+          onChange={(content) => onHtmlChange('products', content)}
         />
-        <HtmlContentPreview htmlContent={productsContent} />
+        <HtmlContentPreview htmlContent={watch('products')} />
       </AccordionForForm>
+
+      <div className='flex flex-col justify-start items-start bg-bg-300 p-2 w-full mt-1'>
+        <TitleAdmin title='Actores y beneficiarios' className='text-center' />
+        {/* ACTORES*/}
+        <AccordionForForm title='Actores'>
+          <ReactQuill
+            theme='snow'
+            value={watch('actores')}
+            onChange={(content) => onHtmlChange('actores', content)}
+          />
+          <HtmlContentPreview htmlContent={watch('actores')} />
+        </AccordionForForm>
+
+        {/* BENDEDICIARIOS */}
+        <AccordionForForm title='Beneficiarios'>
+          <ReactQuill
+            theme='snow'
+            value={watch('beneficiarios')}
+            onChange={(content) => onHtmlChange('beneficiarios', content)}
+          />
+          <HtmlContentPreview htmlContent={watch('beneficiarios')} />
+        </AccordionForForm>
+      </div>
 
       <button
         className='btn-primary w-full mt-2'
@@ -409,22 +496,26 @@ export const ProjectForm = ({
       >
         {isSubmitting ? <LoaderButton /> : 'Guardar'}
       </button>
+
       <Link
         className='btn-secondary w-full mt-2 text-center text-xs'
         href={`/admin/palabras-clave/proyecto/${project.id}`}
       >
-        Editar palabras clave
+        Editar palabras clave del proyecto
       </Link>
       <Link
         className='btn-secondary w-full mt-2 text-center text-xs'
         href={`/admin/convenios/proyecto/${project.id}`}
       >
-        Editar aliados
+        Editar aliados del proyecto
       </Link>
-      <button
-        className='btn-danger w-full mt-2'
-        onClick={onClickDeleteProject}
+      <Link
+        className='btn-secondary w-full mt-2 text-center text-xs'
+        href={`/admin/sellos/proyecto/${project.id}`}
       >
+        Editar sellos del proyecto
+      </Link>
+      <button className='btn-danger w-full mt-2' onClick={onClickDeleteProject}>
         {isSubmitting ? <LoaderButton /> : 'Borrar proyecto'}
       </button>
     </div>

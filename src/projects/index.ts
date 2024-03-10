@@ -1,5 +1,3 @@
-
-
 // * Components
 export { AccordionFeature } from './components/ui/AccordionFeature'
 export { AuthorsGrid } from './components/authors/AuthorsGrid'
@@ -7,11 +5,9 @@ export { ConveniosGrid } from './components/convenios/ConveniosGrid'
 export { IconLinea } from './components/linea-programa/LineasIcons'
 export { LineaCarouselProjects } from './components/linea-programa/LineaCarouselProjects'
 export { LineaProgramaGrid } from './components/linea-programa/LineaProgramaGrid'
-// export { LineasGrid } from './components/linea-programa/LineasGrid'
 export { LineasListProjectsSection } from './components/linea-programa/LineasListProjectsSection'
 export { LineaProgramaCarouselContainer } from './components/linea-programa/LineaProgramaCarouselContainer'
 export { ProgramasCarouselProject } from './components/linea-programa/ProgramasCarouselProject'
-// export { ProgramasGrid } from './components/linea-programa/ProgramasGrid'
 export { ProgramasListProjectsSection } from './components/linea-programa/ProgramasListProjectsSection'
 export { ProjectBanner } from './components/proyectos/ProjectBanner'
 export { ProjectCard } from './components/proyectos/ProjectCard'
@@ -19,7 +15,11 @@ export { ProjectsCarousel } from './components/proyectos/ProjectsCarousel'
 export { ProjectStateWidget } from './components/proyectos/ProjectStateWidget'
 export { ProyectosProductHtml } from './components/proyectos/ProyectosProductHtml'
 export { RegionsGrid } from './components/regiones/RegionsGrid'
-export { SellosGrid } from './components/sellos/SellosGrid'
+export { SellosRow } from './components/sellos/SellosRow'
 export { TagsGrid } from './components/tags/TagsGrid'
 export { TermCard } from './components/terms/TermCard'
 export { TermsGrid } from './components/terms/TermsGrid'
+
+// * Helpers
+
+export * from './helpers/uiHelpers'

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { getAllProgramasForm, getAllSellosForm } from '@/actions'
+import { getAllLineasForm, getAllProgramasForm, getAllSellosForm } from '@/actions'
 import { SellosForm, TitleAdmin } from '@/admin'
 
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 export default async function AdminLineasPage() {
-  const lineas = await getAllProgramasForm()
+  const lineas = await getAllLineasForm()
 
   return (
     <div className='pageDefault w-full'>

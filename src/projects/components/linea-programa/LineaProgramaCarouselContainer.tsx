@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import { IconLinea, ProjectsCarousel } from '../..'
 
-import { Sello, Proyecto, Imagen } from '@prisma/client'
-import { TbArrowBadgeRightFilled } from 'react-icons/tb'
-import { TiChevronRight } from 'react-icons/ti'
+import { Proyecto, Imagen } from '@prisma/client'
+
 import { FaChevronRight } from 'react-icons/fa'
 
 interface Props {
@@ -31,7 +30,7 @@ export const LineaProgramaCarouselContainer = ({
     <div className='w-full flex flex-col justify-start items-start'>
       {/* Headers start */}
       <div
-        className={`w-full flex flex-row justify-start items-start  bg-bg-200 py-2 lg:py-4 gap-2 xBannerPaddings`}
+        className={`w-full flex flex-row justify-start items-start  bg-bg-200 py-2  gap-2 xBannerPaddings`}
       >
         <div className='sm:w-20 sm:h-20 w-12'>
           <IconLinea urlIcon={urlIcon} name={name} size={iconSize} />
@@ -66,11 +65,11 @@ export const LineaProgramaCarouselContainer = ({
         {/* text column starts */}
       </div>
 
+      <ProjectsCarousel proyectos={proyectos} baseColor={baseColor} />
+
       {/* Headers End */}
 
       {/* Acá viene carousel de proyectos */}
-
-      <ProjectsCarousel proyectos={proyectos} baseColor={baseColor} />
     </div>
   )
 }

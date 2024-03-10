@@ -20,7 +20,7 @@ export const ProjectsCarousel = ({ proyectos , baseColor}: Props) => {
   const scrollByDirection = (direction: 'left' | 'right') => {
     const scrollContainer = scrollContainerRef.current
     if (scrollContainer) {
-      const scrollAmount = 500 // Adjust the scroll amount
+      const scrollAmount = 400 // Adjust the scroll amount
       const scrollDuration = 600 // Adjust the scroll duration (in milliseconds)
 
       const start = scrollContainer.scrollLeft
@@ -57,7 +57,7 @@ export const ProjectsCarousel = ({ proyectos , baseColor}: Props) => {
   return (
     <div className='w-full bg-bg-300'>
       <div
-        className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 lg:px-8 px-2   mt-1  scroll-container-sinchi`}
+        className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 xBannerPaddings  mt-1  scroll-container-sinchi`}
         ref={scrollContainerRef}
       >
         <div className={`flex flex-row flex-nowrap gap-3 mt-2 mb-2 w-fit`}>
