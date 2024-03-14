@@ -9,13 +9,14 @@ export * from './regiones/regiones-report'
 
 // * Actions Forms
 export * from './convenios/convenios-form'
-export * from './lineas/lineas-form'
 export * from './investigadores/investigadores-form'
+export * from './lineas/lineas-form'
+export * from './mapas/mapas-actions'
 export * from './programas/programas-form'
 export * from './proyectos/projects-form'
-export * from './tags/tags-form'
 export * from './regiones/regiones-form'
 export * from './sellos/sellos-actions'
+export * from './tags/tags-form'
 
 // * Actions images
 export * from './images/images-actions'

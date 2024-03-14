@@ -158,3 +158,27 @@ export const uploadImagesFullProcess = async (formData: FormData) => {
     }
   }
 }
+
+export const deleteImageByUrl = async (urlImage: string | undefined) => {
+  // * si no hay  url, no hago nada
+  if (!urlImage) return
+  // * si la imagen es local no hago nada
+  if (!urlImage.startsWith('http')) {
+    return {
+      ok: false,
+      error: 'No se pueden borrar imágenes estáticas',
+    }
+  }
+  // * obtengo el nombre de la imagen para usarlo en cloudynary
+  const imageName = urlImage?.split('/').pop()?.split('.')[0] ?? ''
+
+  try {
+    // * borro de cloudinary
+    const deleteImg = await cloudinary.uploader.destroy(imageName)
+    
+
+    return { ok: true, image: deleteImg }
+  } catch (error) {
+    throw new Error(`deleteImageByUrl - ${error}`)
+  }
+}

@@ -165,7 +165,11 @@ export const getProyectoById = async (id: number) => {
             imagen: true,
           },
         },
-        convenios: true,
+        convenios: {
+          include: {
+            imagen: true,
+          },
+        },
         regions: true,
         tags: true,
         imagen: true,
@@ -174,6 +178,7 @@ export const getProyectoById = async (id: number) => {
             imagen: true,
           },
         },
+        mapasUbicacion: true
       },
     })
 

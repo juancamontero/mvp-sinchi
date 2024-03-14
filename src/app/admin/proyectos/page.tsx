@@ -60,6 +60,9 @@ export default async function AdminProjectsPage() {
                 Departamentos
               </th>
               <th scope='col' className='table-th-header-sinchi'>
+                Mapas (localización geográfica)
+              </th>
+              <th scope='col' className='table-th-header-sinchi'>
                 Sellos
               </th>
             </tr>
@@ -128,6 +131,14 @@ export default async function AdminProjectsPage() {
                   <td className='table-td-sinchi'>
                     <Link
                       href={`/admin/regiones/proyecto/${proyecto.id}`}
+                      className='btn-table'
+                    >
+                      Editar
+                    </Link>
+                  </td>
+                  <td className='table-td-sinchi'>
+                    <Link
+                      href={`/admin/mapas/proyecto/${proyecto.id}`}
                       className='btn-table'
                     >
                       Editar

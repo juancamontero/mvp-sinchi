@@ -57,7 +57,7 @@ export const ProjectsCarousel = ({ proyectos , baseColor}: Props) => {
   return (
     <div className='w-full bg-bg-300'>
       <div
-        className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 xBannerPaddings  mt-1  scroll-container-sinchi`}
+        className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 xBannerPaddings  mt-1  scroll-container-sinchi-carousel`}
         ref={scrollContainerRef}
       >
         <div className={`flex flex-row flex-nowrap gap-3 mt-2 mb-2 w-fit`}>

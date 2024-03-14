@@ -114,7 +114,8 @@ model ImagenActores {
   id         Int       @id @default(autoincrement())
   title      String?
   subTitle   String?
-  url        String
+  url        String?
+  order      Int?      @default(0)
   Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
   proyectoId Int?
 }
@@ -123,7 +124,8 @@ model MapasUbicacion {
   id         Int       @id @default(autoincrement())
   title      String?
   subTitle   String?
-  url        String
+  url        String?
+  order      Int?      @default(0)
   Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
   proyectoId Int?
 }
@@ -132,7 +134,8 @@ model ImagenDescripcion {
   id         Int       @id @default(autoincrement())
   title      String?
   subTitle   String?
-  url        String
+  url        String?
+  order      Int?      @default(0)
   Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
   proyectoId Int?
 }
@@ -141,7 +144,8 @@ model ImagenAntecedentes {
   id         Int       @id @default(autoincrement())
   title      String?
   subTitle   String?
-  url        String
+  url        String?
+  order      Int?      @default(0)
   Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
   proyectoId Int?
 }

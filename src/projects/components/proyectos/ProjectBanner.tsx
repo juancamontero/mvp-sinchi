@@ -1,40 +1,12 @@
 import Image from 'next/image'
 
-import {
-  Autor,
-  Convenio,
-  Imagen,
-  Linea,
-  Programa,
-  Region,
-  Sello,
-} from '@prisma/client'
-import {
-  SellosRow,
-  ProjectStateWidget,
-  TermsGrid,
-  ConveniosGrid,
-  RegionsGrid,
-  AuthorsGrid,
-  LineaProgramaGrid,
-  SelloArray,
-} from '../..'
+import { Autor } from '@prisma/client'
+import { SellosRow, SelloArray } from '../..'
 
 interface Props {
   name: string
-  urlBackground?: string | null
+  customImage?: string | null
   year: number
-  sellos: (Sello & { imagen?: Imagen | null })[]
-  completed: boolean
-  tags: {
-    id: number
-    name: string
-  }[]
-  linea: (Linea & { imagen?: Imagen | null }) | null
-  programa: (Programa & { imagen?: Imagen | null }) | null
-  convenios: Convenio[]
-  regiones: Region[]
-  places: string
   autor: Autor | null
   roleInvestigador?: string | null
   equipo?: string | null
@@ -42,17 +14,9 @@ interface Props {
 }
 
 export const ProjectBanner = ({
-  urlBackground,
+  customImage,
   year,
-  sellos,
-  completed,
   name,
-  tags,
-  linea,
-  programa,
-  convenios,
-  regiones,
-  places,
   autor,
   roleInvestigador,
   equipo,
@@ -70,7 +34,7 @@ export const ProjectBanner = ({
           {/* ROUNDED IMAGE */}
           <Image
             className='sm:w-36 sm:h-36 w-28 h-28 object-cover object-center rounded-full'
-            src={urlBackground ?? '/images/placeholder-img.jpeg'}
+            src={customImage ?? '/images/placeholder-img.jpeg'}
             width={500}
             height={500}
             alt='hero background image'
@@ -115,7 +79,7 @@ export const ProjectBanner = ({
         {/* upper section ends*/}
 
         {/* bottom section starts */}
-        <div className='flex flex-col w-full lg:mt-0 mt-8 '>
+        <div className='flex flex-col flex-1 w-full mt-1'>
           {/* Sellos row */}
           <SellosRow sellos={sellosArray} />
         </div>

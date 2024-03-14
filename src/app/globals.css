@@ -55,30 +55,41 @@ p {
   text-wrap: pretty;
 }
 
-.btn-primary {
-  @apply bg-primary-100 hover:bg-primary-200 text-white p-2 rounded transition-all;
+/* LISTAS LONG HTML */
+
+.sinchi-list ul {
+  list-style-type: disc;
+  margin: 24px;
+}
+
+.sinchi-list ol {
+  list-style-type: decimal;
+  margin: 24px;
 }
 
 /* BUTTONS */
 
+.btn-primary {
+  @apply bg-primary-100 hover:bg-primary-200 text-white p-2 rounded-sm transition-all shadow-sm;
+}
+
 .btn-secondary {
-  @apply bg-primary-300 hover:bg-primary-200 text-white p-2 rounded transition-all;
+  @apply bg-primary-300 hover:bg-primary-200 text-white p-2 rounded-sm transition-all shadow-sm;
 }
 
 .btn-disabled {
-  @apply bg-gray-600 text-white p-2 rounded transition-all;
+  @apply bg-gray-600 text-white p-2 rounded-sm transition-all shadow-sm;
 }
 
 .btn-danger {
-  @apply bg-accent-100 hover:bg-accent-200 text-bg-200 p-2 transition-all my-1;
+  @apply bg-accent-100 hover:bg-accent-200 text-bg-200 p-2 rounded-sm transition-all shadow-sm;
 }
 
 .btn-delete {
-  @apply bg-accent-100 hover:bg-accent-200 text-bg-200 p-1 transition-all my-1;
+  @apply bg-accent-100 hover:bg-accent-200 text-bg-200 p-2 rounded-sm transition-all shadow-sm;
 }
 
 /* PAGES */
-
 
 .pageDefault {
   @apply flex min-h-screen flex-col items-center justify-start z-10;
@@ -95,7 +106,7 @@ p {
 /* TABLES */
 
 .btn-table {
-  @apply bg-primary-100 hover:bg-primary-300 text-white p-2 transition-all text-xs leading-tight
+  @apply bg-primary-100 hover:bg-primary-300 text-white p-2 transition-all text-xs leading-tight;
 }
 .table-sinchi {
   @apply min-w-full divide-y divide-gray-700;
@@ -123,19 +134,38 @@ p {
 
 /* SCROLLS */
 
-.scroll-container-sinchi::-webkit-scrollbar {
+/* Carousel projects */
+
+.scroll-container-sinchi-carousel::-webkit-scrollbar {
   width: 8px; /* Width of the scrollbar */
 }
 
-.scroll-container-sinchi::-webkit-scrollbar-track {
+.scroll-container-sinchi-carousel::-webkit-scrollbar-track {
 }
 
-.scroll-container-sinchi::-webkit-scrollbar-thumb {
+.scroll-container-sinchi-carousel::-webkit-scrollbar-thumb {
   background: #e7e6e0;
 }
 
-.scroll-container-sinchi::-webkit-scrollbar-thumb:hover {
+.scroll-container-sinchi-carousel::-webkit-scrollbar-thumb:hover {
   background: #e7e6e0; /* Color of the scrollbar on hover */
+}
+
+.scroll-sinchi::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  
+}
+.scroll-sinchi::-webkit-scrollbar-track {
+  width: 8px;
+}
+.scroll-sinchi ul {
+  list-style-type: disc;
+  margin: 24px;
+}
+
+.scroll-sinchi ol {
+  list-style-type: decimal;
+  margin: 24px;
 }
 
 /* TITLES | BANNERS  */
