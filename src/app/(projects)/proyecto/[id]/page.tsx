@@ -1,19 +1,99 @@
 import { getProyectoById } from '@/actions'
 import {
   ConveniosGrid,
+  IndicadoresSlider,
   MapasSlider,
+  MultimediaCarousel,
   ProjectBanner,
   ProjectColumnsHtml,
   ProjectPageSection,
+  RegionsGrid,
+  TagsGrid,
+  TermsGrid,
   createSellosArray,
 } from '@/projects'
-import Image from 'next/image'
+import { FaChevronDown } from 'react-icons/fa'
+import { TagsForm } from '../../../../admin/components/palabras-clave/TagsForm';
 
 interface Props {
   params: {
     id: number
   }
 }
+
+const multimedias: {
+  id: number
+  type: 'video' | 'image'
+  title: string
+  subTitle: string
+  order: number
+  url: string
+}[] = [
+  {
+    id: 1,
+    type: 'video',
+    title: 'Video 1',
+    subTitle: 'Subtitle 1',
+    order: 1,
+    url: 'https://www.youtube.com/embed/WkwTZ_ASXW0?si=t85ynL3eQH7UfVJ6',
+  },
+  {
+    id: 2,
+    type: 'image',
+    title: 'Image 1',
+    subTitle: 'Subtitle Image 1',
+    order: 2,
+    url: 'https://res.cloudinary.com/dotum0xux/image/upload/v1709099577/thi12gp3ps47z0xihlvm.webp',
+  },
+  {
+    id: 3,
+    type: 'video',
+    title: 'Video 2',
+    subTitle: 'Subtitle 1',
+    order: 3,
+    url: 'https://www.youtube.com/embed/WkwTZ_ASXW0?si=t85ynL3eQH7UfVJ6',
+  },
+  {
+    id: 4,
+    type: 'image',
+    title: 'Image test',
+    subTitle: 'Subtitle Image 1',
+    order: 4,
+    url: 'https://res.cloudinary.com/dotum0xux/image/upload/v1709099577/thi12gp3ps47z0xihlvm.webp',
+  },
+  {
+    id: 5,
+    type: 'video',
+    title: 'Video 1',
+    subTitle: 'Subtitle 1',
+    order: 1,
+    url: 'https://www.youtube.com/embed/WkwTZ_ASXW0?si=t85ynL3eQH7UfVJ6',
+  },
+  {
+    id: 6,
+    type: 'image',
+    title: 'Image 1',
+    subTitle: 'Subtitle Image 1',
+    order: 2,
+    url: 'https://res.cloudinary.com/dotum0xux/image/upload/v1709099577/thi12gp3ps47z0xihlvm.webp',
+  },
+  {
+    id: 7,
+    type: 'video',
+    title: 'Video 2',
+    subTitle: 'Subtitle 1',
+    order: 3,
+    url: 'https://www.youtube.com/embed/WkwTZ_ASXW0?si=t85ynL3eQH7UfVJ6',
+  },
+  {
+    id: 8,
+    type: 'image',
+    title: 'Image test',
+    subTitle: 'Subtitle Image 1',
+    order: 4,
+    url: 'https://res.cloudinary.com/dotum0xux/image/upload/v1709099577/thi12gp3ps47z0xihlvm.webp',
+  },
+]
 
 export default async function ProjectPage({ params }: Props) {
   const { id } = params
@@ -42,7 +122,6 @@ export default async function ProjectPage({ params }: Props) {
       />
 
       {/* ANTECEDENTES START*/}
-
       <ProjectPageSection className='bg-bg-200'>
         <div className='flex flex-col justify-start items-center  p-4 gap-4 w-full'>
           <h2 className='text-4xl font-bold text-primary-200 mb-2 text-left w-full'>
@@ -170,48 +249,80 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </ProjectPageSection>
 
-      {/* ACTORES + BENEFICIARIOS */}
-
+      {/* ACTORES + BENEFICIARIOS + DEPARTAMENTOS + PALABRAS CLAVE  */}
       <div
-        className={`sticky top-0  lg:h-full h-fit flex flex-col items-start justify-start  gap-4 w-full  bg-bg-100`}
+        className={`sticky top-0  h-fit flex flex-col items-start justify-start  gap-1 w-full  bg-bg-150`}
       >
-        {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR */}
-        <div className='xBannerPaddings grid lg:grid-cols-3 sm:grid-cols-1 gap-6 overflow-y-auto w-full lg:max-h-[80vh] bg-bg-300 text-primary-200 py-10'>
-          {/* Actores */}
-          <div className='flex flex-col justify-start items-stretch gap-4'>
-            <h3 className='text-4xl font-semibold'>Actores</h3>
-            {proyecto.actores && (
-              <div
-                dangerouslySetInnerHTML={{ __html: proyecto.actores }}
-                className='text-base text-left text-text-200 leading-snug sinchi-list'
-              />
-            )}
-          </div>
+        {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR  + FOTOS TITLE*/}
+        <div className='flex flex-col justify-start p-0 bg-bg-300 text-primary-200 w-full'>
+          {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR */}
+          <div className='xBannerPaddings grid lg:grid-cols-3 sm:grid-cols-1 gap-2 overflow-y-auto w-full lg:h-[50vh]  pt-12'>
+            {/* Actores */}
+            <div className='flex flex-col justify-start items-stretch gap-4'>
+              <h3 className='text-4xl font-semibold'>Actores</h3>
+              {proyecto.actores && (
+                <div
+                  dangerouslySetInnerHTML={{ __html: proyecto.actores }}
+                  className='text-base text-left text-text-200 leading-snug sinchi-list'
+                />
+              )}
+            </div>
 
-          {/* Beneficiarios */}
-          <div className='flex flex-col justify-start items-stretch gap-4'>
-            <h3 className='text-4xl font-semibold'>Beneficiarios</h3>
-            {proyecto.beneficiarios && (
-              <div
-                dangerouslySetInnerHTML={{ __html: proyecto.beneficiarios }}
-                className='text-base text-left text-text-200 leading-snug sinchi-list'
-              />
-            )}
+            {/* Beneficiarios */}
+            <div className='flex flex-col justify-start items-stretch gap-4'>
+              <h3 className='text-4xl font-semibold'>Beneficiarios</h3>
+              {proyecto.beneficiarios && (
+                <div
+                  dangerouslySetInnerHTML={{ __html: proyecto.beneficiarios }}
+                  className='text-base text-left text-text-200 leading-snug sinchi-list'
+                />
+              )}
+            </div>
+            {/* Imagen indicadores */}
+            <div className='flex flex-col justify-start items-stretch'>
+              <IndicadoresSlider indicadores={proyecto.imagenesIndicadores} />
+            </div>
           </div>
-          {/* Imagen indicadores */}
-          <div className='flex flex-col justify-start items-stretch px-20'>
-            <Image
-              src={'/images/indicadores-dummie.webp'}
-              alt='Imagen con indicadores del proyecto'
-              width={500}
-              height={500}
-              className='object-contain'
-            />
+          <h3 className='xBannerPaddings text-4xl font-semibold mt-2 mb-10'>
+            Fotografías y videos
+          </h3>
+        </div>
+        <MultimediaCarousel multimedias={multimedias} />
+        <div className='flex h-24 flex-col justify-center items-center bg-bg-300 w-full'>
+          <span
+            className={`text-left opacity-50 saturate-200 hover:opacity-100  text-primary-200`}
+          >
+            <FaChevronDown size={20} />
+          </span>
+        </div>
+
+        {/* DEPARTAMENTOS + PALABRAS CLAVE   */}
+        <div className='flex flex-col justify-start items-center p-0 bg-bg-150 text-primary-200 w-full h-fit'>
+          <div className='xBannerPaddings w-full py-4'>
+            <h3 className='text-4xl font-semibold w-full'>
+              Busca otros proyectos en la misma zona o de temas similares
+            </h3>
           </div>
-          <h3 className='text-4xl font-semibold my-6'>Fotografías y videos</h3>
+        </div>
+        
+        {/* DEPARTAMENTOS   */}
+        <div className='flex flex-col justify-start items-center  py-4 bg-bg-300 text-primary-200 w-full h-fit'>
+          <div className='xBannerPaddings w-full flex flex-row justify-start items-stretch'>
+            <h3 className='text-4xl font-semibold mr-8 leading-none'>Departamento</h3>
+            <TermsGrid items={proyecto.regions} urlBase='/region'/>
+     
+          </div>
+        </div>
+    
+        {/* PALABRAS CLAVE   */}
+        <div className='flex flex-col justify-start items-center  py-4 bg-bg-150 text-primary-200 w-full h-fit'>
+          <div className='xBannerPaddings w-full flex flex-row justify-start items-stretch'>
+            <h3 className='text-4xl font-semibold mr-8 leading-none'>Palabras clave</h3>
+            <TermsGrid items={proyecto.tags} urlBase='/palabra-clave'/>
+      
+          </div>
         </div>
       </div>
-      {/* </div> */}
     </main>
   )
 }

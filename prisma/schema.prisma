@@ -110,7 +110,7 @@ model Imagen {
   proyectoId Int?
 }
 
-model ImagenActores {
+model ImagenIndicadores {
   id         Int       @id @default(autoincrement())
   title      String?
   subTitle   String?
@@ -175,18 +175,18 @@ model Proyecto {
   beneficiarios    String?
 
   // relations
-  autor              Autor?               @relation(fields: [idAtutor], references: [id])
-  imagen             Imagen?              @relation(fields: [idImagen], references: [id])
-  linea              Linea?               @relation(fields: [idLinea], references: [id])
-  programa           Programa?            @relation(fields: [idPrograma], references: [id])
-  convenios          Convenio[]           @relation("ConvenioToProyecto")
-  regions            Region[]             @relation("ProyectoToRegion")
-  sellos             Sello[]              @relation("ProyectoToSello")
-  tags               Tag[]                @relation("ProyectoToTag")
-  imagenAntecedentes ImagenAntecedentes[]
-  imagenDescripcion  ImagenDescripcion[]
-  imagenActores      ImagenActores[]
-  mapasUbicacion     MapasUbicacion[]
+  autor                Autor?               @relation(fields: [idAtutor], references: [id])
+  imagen               Imagen?              @relation(fields: [idImagen], references: [id])
+  linea                Linea?               @relation(fields: [idLinea], references: [id])
+  programa             Programa?            @relation(fields: [idPrograma], references: [id])
+  convenios            Convenio[]           @relation("ConvenioToProyecto")
+  regions              Region[]             @relation("ProyectoToRegion")
+  sellos               Sello[]              @relation("ProyectoToSello")
+  tags                 Tag[]                @relation("ProyectoToTag")
+  imagenesAntecedentes ImagenAntecedentes[]
+  imagenesDescripcion  ImagenDescripcion[]
+  imagenesIndicadores  ImagenIndicadores[]
+  mapasUbicacion       MapasUbicacion[]
 }
 
 // * AUTH JS

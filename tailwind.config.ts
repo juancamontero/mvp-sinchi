@@ -21,6 +21,7 @@ const config: Config = {
         'text-100': '#244346',
         'text-200': '#0A3030',
         'bg-100': '#FFFFFF',
+        'bg-150': '#EFEDE8',
         'bg-200': '#E9E8E4',
         'bg-300': '#DFDED9',
         'bg-400': '#F1E5E3',

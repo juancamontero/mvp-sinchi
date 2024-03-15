@@ -1,5 +1,5 @@
 import { getMapaById } from '@/actions'
-import { CreateUpdateConvenioForm, MapaForm, TitleAdmin } from '@/admin'
+import {  MapaForm, TitleAdmin } from '@/admin'
 
 interface Props {
   params: {

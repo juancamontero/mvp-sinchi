@@ -19,6 +19,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'youtu.be',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.youtube.com',
+      },
     ],
   },
 }

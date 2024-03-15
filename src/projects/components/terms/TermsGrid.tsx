@@ -7,22 +7,22 @@ export interface TermGridProps {
     name: string
   
   }[]
-  urlBase: string
+  urlBase: string // solo primer slash ej:✅ '/region'  ❌ '/region/'
 }
 
 export const TermsGrid = ({items, urlBase}: TermGridProps) => {
-    if (!items || items.length === 0) return <h1>Si términos</h1>
-    items.sort((a, b) => a.id - b.id)
+    if (!items || items.length === 0) return <></>
+    items.sort((a, b) => a.name.localeCompare(b.name))
   return  (
     <>
-      <div className='flex flex-row flex-wrap w-full gap-1'>
-        {items.map((item) => (
+      <div className='flex flex-row flex-wrap items-center justify-start'>
+        {items.map((item, index) => (
           <Link
             key={item.id}
-            className={`inline-block py-1 px-2 rounded-sm bg-bg-100 text-primary-200 text-xs font-medium tracking-widest cursor-pointer text-pretty shadow-sm hover:text-primary-100 hover:bg-bg-200`}
+            className={`mr-2 leading-none text-xl hover:text-accent-100 pt-1 hover:underline`}
             href={`${urlBase}/${item.id}`}
           >
-            {item.name}
+            {item.name}{index+1<items.length?(`, `):('')}
           </Link>
         ))}
       </div>

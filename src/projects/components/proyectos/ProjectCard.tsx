@@ -62,15 +62,7 @@ export const ProjectCard = ({ proyecto }: Props) => {
             <h2 className='text-left text-2xl font-black  text-text-100 leading-none'>
               {year}
             </h2>
-            {/* <h3 className='text-sm text-accent-100 font-semibold mb-1'>
-              Objetivo
-            </h3>
-            {objetivo && (
-              <div
-                className={`w-full text-xs leading-relaxed mb-8 text-text-100`}
-                dangerouslySetInnerHTML={{ __html: objetivo }}
-              />
-            )} */}
+
             {/* Objetivo ends*/}
           </div>
         </div>

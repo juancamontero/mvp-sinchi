@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { getAllProjectsForm } from '@/actions'
 import { TitleAdmin } from '@/admin'
 
-
 export default async function AdminProjectsPage() {
   const proyectos = await getAllProjectsForm()
   return (
@@ -65,6 +64,9 @@ export default async function AdminProjectsPage() {
               <th scope='col' className='table-th-header-sinchi'>
                 Sellos
               </th>
+              <th scope='col' className='table-th-header-sinchi'>
+                Imágenes indicadores
+              </th>
             </tr>
           </thead>
           <tbody className='table-body-sinchi'>
@@ -93,7 +95,8 @@ export default async function AdminProjectsPage() {
                         proyecto.imagen?.url ?? '/images/placeholder-img.jpeg'
                       }
                       alt={'Imagen destacada proyecto'}
-                      width={64} height={64}
+                      width={64}
+                      height={64}
                     />
                   </td>
                   <td className='table-td-sinchi w-80 text-ellipsis hover:underline'>
@@ -104,11 +107,11 @@ export default async function AdminProjectsPage() {
 
                   <td className='table-td-sinchi'>{proyecto.year}</td>
                   <td className='table-td-sinchi w-60'>
-                    {proyecto.linea?.name}
+                    {proyecto.linea?.preTitle} | {proyecto.linea?.name}
                   </td>
 
                   <td className='table-td-sinchi w-60'>
-                    {proyecto.programa?.name}
+                    {proyecto.programa?.preTitle} | {proyecto.programa?.name}
                   </td>
                   <td className='table-td-sinchi'>{createAtDate}</td>
                   <td className='table-td-sinchi'>{updateAtDate}</td>
@@ -147,6 +150,14 @@ export default async function AdminProjectsPage() {
                   <td className='table-td-sinchi'>
                     <Link
                       href={`/admin/sellos/proyecto/${proyecto.id}`}
+                      className='btn-table'
+                    >
+                      Editar
+                    </Link>
+                  </td>
+                  <td className='table-td-sinchi'>
+                    <Link
+                      href={`/admin/indicadores/proyecto/${proyecto.id}`}
                       className='btn-table'
                     >
                       Editar

@@ -70,11 +70,11 @@ p {
 /* BUTTONS */
 
 .btn-primary {
-  @apply bg-primary-100 hover:bg-primary-200 text-white p-2 rounded-sm transition-all shadow-sm;
+  @apply bg-primary-300 hover:bg-primary-200 text-white p-2 rounded-sm transition-all shadow-sm;
 }
 
 .btn-secondary {
-  @apply bg-primary-300 hover:bg-primary-200 text-white p-2 rounded-sm transition-all shadow-sm;
+  @apply bg-text-200 hover:bg-primary-200 text-white p-2 rounded-sm transition-all shadow-sm;
 }
 
 .btn-disabled {
@@ -113,7 +113,7 @@ p {
 }
 
 .table-sinchi-head {
-  @apply bg-gray-200 border-b;
+  @apply bg-gray-200 border-b sticky;
 }
 
 .table-th-header-sinchi {
@@ -153,7 +153,6 @@ p {
 
 .scroll-sinchi::-webkit-scrollbar {
   width: 8px; /* Width of the scrollbar */
-  
 }
 .scroll-sinchi::-webkit-scrollbar-track {
   width: 8px;
@@ -212,4 +211,9 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* TERMS */
+.term-item {
+  @apply mr-2 leading-none text-xl hover:text-accent-100 pt-1 hover:underline;
 }

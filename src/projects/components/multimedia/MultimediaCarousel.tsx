@@ -1,20 +1,22 @@
 'use client'
 
-import { Imagen, Proyecto, Sello } from '@prisma/client'
-import { ProjectCard } from '../..'
 import { useRef } from 'react'
-
-
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { FaChevronLeft } from 'react-icons/fa'
+import { FaChevronRight } from 'react-icons/fa6'
+import { MultimediaCard } from './MultimediaCard'
 
 interface Props {
-  proyectos: ({
-    imagen: Imagen | null
-  } & Proyecto)[]
-  baseColor?: string | null
+  multimedias: {
+    id: number
+    type: 'video' | 'image'
+    title: string
+    subTitle: string
+    order: number
+    url: string
+  }[]
 }
 
-export const ProjectsCarousel = ({ proyectos , baseColor}: Props) => {
+export const MultimediaCarousel = ({ multimedias }: Props) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const scrollByDirection = (direction: 'left' | 'right') => {
@@ -51,41 +53,34 @@ export const ProjectsCarousel = ({ proyectos , baseColor}: Props) => {
     }
   }
 
-  if (proyectos.length === 0) return <h1>No hay proyectos para esa línea</h1>
+  if (multimedias.length === 0) return <></>
 
   return (
-    <div className='w-full bg-bg-300'>
+    <div className='w-full'>
       <div
         className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 xBannerPaddings  mt-1  scroll-container-sinchi-carousel`}
         ref={scrollContainerRef}
       >
         <div className={`flex flex-row flex-nowrap gap-3 mt-2 mb-2 w-fit`}>
-          {proyectos.map((proyecto) => (
-            <ProjectCard key={proyecto.id} proyecto={proyecto} />
+          {multimedias.map((multimedia) => (
+            <MultimediaCard key={multimedia.id} multimedia={multimedia} />
           ))}
         </div>
       </div>
 
-      <div className='mx-auto flex flex-row justify-center gap-4 bg-bg-300 w-full p-4'>
-
-        <button
-          style={{ color: baseColor ? baseColor : undefined }}
-          onClick={() => scrollByDirection('left')}
-        >
-               <span className={`text-left opacity-50 saturate-200 hover:opacity-100 ${
-              baseColor ? '' : 'text-primary-200'
-            }` }>
+      <div className='mx-auto flex flex-row justify-center gap-4  w-full p-4'>
+        <button onClick={() => scrollByDirection('left')}>
+          <span
+            className={`text-left opacity-50 saturate-200 hover:opacity-100  text-primary-200`}
+          >
             <FaChevronLeft size={20} />
           </span>
         </button>
 
-        <button
-          style={{ color: baseColor ? baseColor : undefined }}
-          onClick={() => scrollByDirection('right')}
-        >
-          <span className={`text-left opacity-50 saturate-200 hover:opacity-100 ${
-              baseColor ? '' : 'text-primary-200'
-            }` }>
+        <button onClick={() => scrollByDirection('right')}>
+          <span
+            className={`text-left opacity-50 saturate-200 hover:opacity-100  text-primary-200`}
+          >
             <FaChevronRight size={20} />
           </span>
         </button>

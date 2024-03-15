@@ -178,7 +178,8 @@ export const getProyectoById = async (id: number) => {
             imagen: true,
           },
         },
-        mapasUbicacion: true
+        mapasUbicacion: true,
+        imagenesIndicadores: true,
       },
     })
 

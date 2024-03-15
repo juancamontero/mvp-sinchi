@@ -346,7 +346,11 @@ export const ProjectForm = ({
             type='text'
             placeholder='min 3 / max 100 letras'
             className={`${styles['form-input']}`}
-            {...register('roleInvestigador', { required: false, maxLength: 100, minLength: 3 })}
+            {...register('roleInvestigador', {
+              required: false,
+              maxLength: 100,
+              minLength: 3,
+            })}
           />
         </div>
         {/* EQUIPO */}
@@ -404,6 +408,12 @@ export const ProjectForm = ({
           >
             Editar regiones del proyecto
           </Link>
+          <Link
+            className='btn-primary w-full mt-2 text-center text-xs'
+            href={`/admin/mapas/proyecto/${project.id}`}
+          >
+            Editar mapas del proyecto
+          </Link>
         </div>
 
         {/* JUSTIFICACION (importancia | pertinenci |impacto) */}
@@ -447,27 +457,34 @@ export const ProjectForm = ({
       </div>
       {/* TEXTOS LARGOS */}
 
-      {/*OBJETIVO*/}
-      <AccordionForForm title='Objetivo'>
-        <ReactQuill
-          theme='snow'
-          value={watch('objetivo')}
-          onChange={(content) => onHtmlChange('objetivo', content)}
+      {/*OBJETIVO + ALCANCE*/}
+      <div className='flex flex-col justify-start items-start bg-bg-300 p-2 w-full mt-2'>
+        <TitleAdmin
+          title='Objetivo, alcance / productos esperados'
+          className='text-center'
         />
-        <HtmlContentPreview htmlContent={watch('objetivo')} />
-      </AccordionForForm>
+        <AccordionForForm title='Objetivo'>
+          <ReactQuill
+            theme='snow'
+            value={watch('objetivo')}
+            onChange={(content) => onHtmlChange('objetivo', content)}
+          />
+          <HtmlContentPreview htmlContent={watch('objetivo')} />
+        </AccordionForForm>
 
-      {/* Productos esperados */}
-      <AccordionForForm title='Alcance | Productos esperados'>
-        <ReactQuill
-          theme='snow'
-          value={watch('products')}
-          onChange={(content) => onHtmlChange('products', content)}
-        />
-        <HtmlContentPreview htmlContent={watch('products')} />
-      </AccordionForForm>
+        {/* Productos esperados */}
+        <AccordionForForm title='Alcance | Productos esperados'>
+          <ReactQuill
+            theme='snow'
+            value={watch('products')}
+            onChange={(content) => onHtmlChange('products', content)}
+          />
+          <HtmlContentPreview htmlContent={watch('products')} />
+        </AccordionForForm>
+      </div>
 
-      <div className='flex flex-col justify-start items-start bg-bg-300 p-2 w-full mt-1'>
+      {/* ACTORES + BENEFICIARIOS */}
+      <div className='flex flex-col justify-start items-start bg-bg-300 p-2 w-full mt-2'>
         <TitleAdmin title='Actores y beneficiarios' className='text-center' />
         {/* ACTORES*/}
         <AccordionForForm title='Actores'>
@@ -479,7 +496,7 @@ export const ProjectForm = ({
           <HtmlContentPreview htmlContent={watch('actores')} />
         </AccordionForForm>
 
-        {/* BENDEDICIARIOS */}
+        {/* BENDEFICIARIOS */}
         <AccordionForForm title='Beneficiarios'>
           <ReactQuill
             theme='snow'
@@ -488,6 +505,12 @@ export const ProjectForm = ({
           />
           <HtmlContentPreview htmlContent={watch('beneficiarios')} />
         </AccordionForForm>
+        <Link
+          className='btn-secondary w-full mt-2 text-center text-xs'
+          href={`/admin/indicadores/proyecto/${project.id}`}
+        >
+          Editar imágenes de indicadores del proyecto
+        </Link>
       </div>
 
       <button

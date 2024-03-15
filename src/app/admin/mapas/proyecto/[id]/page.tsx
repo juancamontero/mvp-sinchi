@@ -1,4 +1,4 @@
-import { getMapasByProjectId } from '@/actions'
+import { getMapasByProjectId, getProyectoByIdSimple } from '@/actions'
 import {
   AccordionForForm,
   MapaForm,
@@ -25,7 +25,11 @@ export default async function MapasProyectoPage({ params }: Props) {
   const { id } = params
 
   const mapas = await getMapasByProjectId(Number(id))
-  const { Proyecto: project } = mapas[0]
+
+  const project =
+    mapas.length > 0
+      ? mapas[0].Proyecto
+      : await getProyectoByIdSimple(Number(id))
 
   return (
     <div>

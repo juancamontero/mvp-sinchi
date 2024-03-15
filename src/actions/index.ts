@@ -10,6 +10,7 @@ export * from './regiones/regiones-report'
 // * Actions Forms
 export * from './convenios/convenios-form'
 export * from './investigadores/investigadores-form'
+export * from './indicadores/indicadores-actions'
 export * from './lineas/lineas-form'
 export * from './mapas/mapas-actions'
 export * from './programas/programas-form'

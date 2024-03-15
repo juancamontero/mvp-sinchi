@@ -3,7 +3,7 @@
 import prisma from '@/lib/prisma'
 import { MapasUbicacion } from '@prisma/client'
 import { z } from 'zod'
-import { deleteImage, deleteImageByUrl, uploadImagesToStore } from '..'
+import {  deleteImageByUrl, uploadImagesToStore } from '..'
 import { revalidatePath } from 'next/cache'
 
 //* TODOS LOS MAPAS CON EL NOMBRE DEL PROYECTO
@@ -25,7 +25,7 @@ export const getMapasByProjectId = async (idProject: number) => {
         order: 'asc',
       },
     })
-
+    
     return mapas
   } catch (error) {
     throw new Error(`getMapasByProjectId ${error}`)
