@@ -1,5 +1,6 @@
 // * Components
 export { AccordionFeature } from './components/ui/AccordionFeature'
+export { ArrowDown } from './components/ui/ArrowDown'
 export { AuthorsGrid } from './components/authors/AuthorsGrid'
 export { ConveniosGrid } from './components/convenios/ConveniosGrid'
 export { IconLinea } from './components/linea-programa/LineasIcons'
@@ -11,6 +12,7 @@ export { LineasListProjectsSection } from './components/linea-programa/LineasLis
 export { MapasSlider } from './components/regiones/MapasSlider'
 export { MultimediaCard } from './components/multimedia/MultimediaCard'
 export { MultimediaCarousel } from './components/multimedia/MultimediaCarousel'
+export { MultimediaModalSlider } from './components/multimedia/MultimediaModalSlider'
 export { ProgramasCarouselProject } from './components/linea-programa/ProgramasCarouselProject'
 export { ProgramasListProjectsSection } from './components/linea-programa/ProgramasListProjectsSection'
 export { ProjectBanner } from './components/proyectos/ProjectBanner'

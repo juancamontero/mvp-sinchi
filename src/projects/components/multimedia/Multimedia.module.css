@@ -1,0 +1,9 @@
+.test {
+  color: blue;
+}
+
+.modalContent {
+  transform: scale(1.1);
+  transition: visibility 0.25s ease-out, opacity 0.25s ease-out, transform 0.25s ease-out;
+  color: blueviolet;
+}

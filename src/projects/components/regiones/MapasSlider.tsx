@@ -27,7 +27,7 @@ export const MapasSlider = ({ mapas }: Props) => {
   return (
     <div className='lg:h-[80vh] h-[40vh]  w-full'>
       <div className='relative mx-auto w-full overflow-hidden  p-2 sm:p-4 h-full'>
-        {/* Mapa indexﬂ */}
+        {/* Mapa index */}
         <div className='absolute lg:right-5 right-0 top-5 z-10  bg-text-100 px-2 text-center text-sm text-white p-2'>
           <span>{currentIndex}</span>/<span>{mapas.length}</span>
         </div>
@@ -51,22 +51,27 @@ export const MapasSlider = ({ mapas }: Props) => {
             <div
               key={mapa.id}
               style={{ display: index + 1 === currentIndex ? 'block' : 'none' }}
-              className='absolute top-0 w-full h-full flex flex-col justify-evenly'
+              className={`absolute top-0 w-full h-full  flex-col justify-evenly transition duration-500 `}
             >
-
               <Image
                 src={mapa.url ?? '/images/placeholder-img.jpeg'}
                 alt='image'
-                className='object-contain  mx-auto  transition-transform duration-300 h-5/6'
+                className={`object-contain  mx-auto transition duration-1000 w-full  ${
+                  index + 1 === currentIndex
+                    ? 'h-5/6'
+                    : 'h-0 blur-sm'
+                }`}
                 width={1200}
                 height={800}
               />
-              <h4 className='font-bold lg:text-xl text-base w-full text-center text-bg-100'>
-                {mapa.title}
-              </h4>
-              <h5 className='font-normal lg:text-base text-sm w-full text-center text-bg-100'>
-                {mapa.subTitle}
-              </h5>
+              <div className='flex flex-col gap-0 justify-end items-center'>
+                <h4 className='font-bold lg:text-xl text-base w-full text-center text-bg-100'>
+                  {mapa.title}
+                </h4>
+                <h5 className='font-normal lg:text-base text-sm w-full text-center text-bg-100'>
+                  {mapa.subTitle}
+                </h5>
+              </div>
             </div>
           ))}
         </div>

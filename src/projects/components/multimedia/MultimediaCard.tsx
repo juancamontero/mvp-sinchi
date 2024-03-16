@@ -1,11 +1,13 @@
 import Image from 'next/image'
-import { IoCamera, IoCameraOutline, IoVideocamOutline } from 'react-icons/io5'
+import { useContext } from 'react'
+import { IoCameraOutline, IoVideocamOutline } from 'react-icons/io5'
+import { MultimediaContext } from './MultimediaCarousel'
 interface Props {
   multimedia: {
     id: number
     type: 'video' | 'image'
     title: string
-    subTitle: string
+    subTitle?: string
     order: number
     url: string
   }
@@ -13,12 +15,21 @@ interface Props {
 
 export const MultimediaCard = ({ multimedia }: Props) => {
   const { id, type, title, subTitle, order, url } = multimedia
+  const { toggleGallery, getIndexById, setIndex, currentIndex } =
+    useContext(MultimediaContext)
+
+  const onMultimediaClick = () => {
+    const index = getIndexById(id)
+    setIndex(index)
+    toggleGallery()
+  }
 
   return (
     // * Container principal
 
     <div
       className={`group relative w-80 h-56 overflow-hidden rounded-sm shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out p-2 cursor-pointer bg-cover bg-center`}
+      onClick={() => onMultimediaClick()}
     >
       {/* background image */}
 
@@ -37,7 +48,7 @@ export const MultimediaCard = ({ multimedia }: Props) => {
       {/* Overlay */}
       <div
         aria-hidden='true'
-        className='absolute inset-0 w-full h-full group-hover:bg-primary-10000 group-hover:bg-opacity-40 backdrop-blur-0 group-hover:backdrop-blur-[2px]'
+        className='absolute inset-0 w-full h-full group-hover:bg-primary-10000 group-hover:bg-opacity-40 backdrop-blur-0 group-hover:backdrop-blur-[1px]'
       />
 
       {/* Acá contenido que se ve sin hover */}
@@ -51,14 +62,14 @@ export const MultimediaCard = ({ multimedia }: Props) => {
       {/* Acá termina contenido que se ve sin hover */}
 
       {/* Acá va el bloque que sube al hover */}
-      <div className='bg-bg-100 bg-opacity-75 sm:flex sm:flex-col sm:justify-between bottom-0 inset-x-0 h-full mt-auto px-4 py-2 translate-y-28  transition duration-300 ease-in-out group-hover:translate-y-0 absolute group-hover:bg-opacity-90'>
+      <div className='bg-bg-100 bg-opacity-85 sm:flex sm:flex-col sm:justify-between bottom-0 inset-x-0 h-full mt-auto px-4 py-2 translate-y-28  transition duration-300 ease-in-out  absolute group-hover:bg-opacity-95'>
         {/* <TagsGrid idProject={id} /> */}
 
         {/* Objetivo */}
         <div className='flex flex-col justify-start items-start '>
           {/* TITLE */}
           <h2
-            className={`text-base leading-[1.2] text-text-100 mt-1 mb-2 h-14 whitespace-normal truncate text-ellipsis group-hover:whitespace-normal group-hover:h-fit `}
+            className={`text-base leading-[1.2] text-text-200 font-medium mt-1 mb-2 h-14 whitespace-normal truncate text-ellipsis group-hover:whitespace-normal group-hover:h-fit `}
           >
             {title}
           </h2>

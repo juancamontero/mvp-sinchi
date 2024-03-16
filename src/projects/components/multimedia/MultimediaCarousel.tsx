@@ -1,20 +1,42 @@
 'use client'
 
-import { useRef } from 'react'
+import { createContext, useEffect, useRef } from 'react'
 import { FaChevronLeft } from 'react-icons/fa'
 import { FaChevronRight } from 'react-icons/fa6'
 import { MultimediaCard } from './MultimediaCard'
+import { MultimediaModalSlider } from './MultimediaModalSlider'
+
+import { useMultimedia } from './useMultimedia'
+
+export interface Multimedia {
+  id: number
+  type: 'video' | 'image'
+  title: string
+  subTitle?: string
+  order: number
+  url: string
+}
 
 interface Props {
-  multimedias: {
-    id: number
-    type: 'video' | 'image'
-    title: string
-    subTitle: string
-    order: number
-    url: string
-  }[]
+  multimedias: Multimedia[]
 }
+
+//* CREACION DE CONTEXTO
+
+export interface MultimediaContextProps {
+  isOpen: boolean
+  currentIndex: number
+  multimedias: Multimedia[]
+
+  toggleGallery: (index?: number) => void
+  previous: () => void
+  forward: () => void
+  getIndexById: (id: number) => number
+  setIndex: (index: number) => void
+}
+
+export const MultimediaContext = createContext({} as MultimediaContextProps)
+const { Provider } = MultimediaContext
 
 export const MultimediaCarousel = ({ multimedias }: Props) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -53,38 +75,69 @@ export const MultimediaCarousel = ({ multimedias }: Props) => {
     }
   }
 
+  const {
+    isOpen,
+    toggleGallery,
+    previous,
+    forward,
+    getIndexById,
+    setIndex,
+    currentIndex,
+  } = useMultimedia({
+    isOpen: false,
+    currentIndex: 1,
+    multimedias,
+  })
+
+
   if (multimedias.length === 0) return <></>
 
   return (
-    <div className='w-full'>
-      <div
-        className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 xBannerPaddings  mt-1  scroll-container-sinchi-carousel`}
-        ref={scrollContainerRef}
-      >
-        <div className={`flex flex-row flex-nowrap gap-3 mt-2 mb-2 w-fit`}>
-          {multimedias.map((multimedia) => (
-            <MultimediaCard key={multimedia.id} multimedia={multimedia} />
-          ))}
+    <Provider
+      value={{
+        isOpen,
+        currentIndex,
+        multimedias,
+        toggleGallery,
+        previous,
+        forward,
+        getIndexById,
+        setIndex,
+      }}
+    >
+      <div className='w-full'>
+        <div
+          className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 xBannerPaddings  mt-1  scroll-container-sinchi-carousel`}
+          ref={scrollContainerRef}
+        >
+          <div className={`flex flex-row flex-nowrap gap-3 mt-2 mb-2 w-fit`}>
+            {multimedias.map((multimedia) => (
+              <div key={multimedia.id} className='p-0'>
+                <MultimediaCard multimedia={multimedia} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+        <div className='mx-auto flex flex-row justify-center gap-4  w-full p-4'>
+          <button onClick={() => scrollByDirection('left')}>
+            <span
+              className={`text-left opacity-50 saturate-200 hover:opacity-100  text-primary-200`}
+            >
+              <FaChevronLeft size={20} />
+            </span>
+          </button>
 
-      <div className='mx-auto flex flex-row justify-center gap-4  w-full p-4'>
-        <button onClick={() => scrollByDirection('left')}>
-          <span
-            className={`text-left opacity-50 saturate-200 hover:opacity-100  text-primary-200`}
-          >
-            <FaChevronLeft size={20} />
-          </span>
-        </button>
+          <button onClick={() => scrollByDirection('right')}>
+            <span
+              className={`text-left opacity-50 saturate-200 hover:opacity-100  text-primary-200`}
+            >
+              <FaChevronRight size={20} />
+            </span>
+          </button>
+        </div>
 
-        <button onClick={() => scrollByDirection('right')}>
-          <span
-            className={`text-left opacity-50 saturate-200 hover:opacity-100  text-primary-200`}
-          >
-            <FaChevronRight size={20} />
-          </span>
-        </button>
+        <MultimediaModalSlider />
       </div>
-    </div>
+    </Provider>
   )
 }

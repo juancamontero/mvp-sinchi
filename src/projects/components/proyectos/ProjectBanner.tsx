@@ -1,7 +1,9 @@
 import Image from 'next/image'
 
 import { Autor } from '@prisma/client'
-import { SellosRow, SelloArray } from '../..'
+import { SellosRow, SelloArray, ArrowDown } from '../..'
+import { FaChevronDown } from 'react-icons/fa'
+import Link from 'next/link'
 
 interface Props {
   name: string
@@ -83,6 +85,15 @@ export const ProjectBanner = ({
           {/* Sellos row */}
           <SellosRow sellos={sellosArray} />
         </div>
+
+        <ArrowDown href='#antecedentes' className='text-bg-150' />
+        {/* <Link
+          href='#antecedentes'
+          className={`text-center hover:saturate-50  text-bg-150 mx-auto`}
+        >
+          <FaChevronDown size={24} />
+        </Link> */}
+
         {/* botton section ends */}
       </div>
     </div>

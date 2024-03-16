@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 import { getProyectoById } from '@/actions'
 import {
   ConveniosGrid,
@@ -7,13 +9,12 @@ import {
   ProjectBanner,
   ProjectColumnsHtml,
   ProjectPageSection,
-  RegionsGrid,
-  TagsGrid,
   TermsGrid,
   createSellosArray,
 } from '@/projects'
 import { FaChevronDown } from 'react-icons/fa'
-import { TagsForm } from '../../../../admin/components/palabras-clave/TagsForm';
+
+import { multimedias } from './multimedia-dummy'
 
 interface Props {
   params: {
@@ -21,79 +22,12 @@ interface Props {
   }
 }
 
-const multimedias: {
-  id: number
-  type: 'video' | 'image'
-  title: string
-  subTitle: string
-  order: number
-  url: string
-}[] = [
-  {
-    id: 1,
-    type: 'video',
-    title: 'Video 1',
-    subTitle: 'Subtitle 1',
-    order: 1,
-    url: 'https://www.youtube.com/embed/WkwTZ_ASXW0?si=t85ynL3eQH7UfVJ6',
-  },
-  {
-    id: 2,
-    type: 'image',
-    title: 'Image 1',
-    subTitle: 'Subtitle Image 1',
-    order: 2,
-    url: 'https://res.cloudinary.com/dotum0xux/image/upload/v1709099577/thi12gp3ps47z0xihlvm.webp',
-  },
-  {
-    id: 3,
-    type: 'video',
-    title: 'Video 2',
-    subTitle: 'Subtitle 1',
-    order: 3,
-    url: 'https://www.youtube.com/embed/WkwTZ_ASXW0?si=t85ynL3eQH7UfVJ6',
-  },
-  {
-    id: 4,
-    type: 'image',
-    title: 'Image test',
-    subTitle: 'Subtitle Image 1',
-    order: 4,
-    url: 'https://res.cloudinary.com/dotum0xux/image/upload/v1709099577/thi12gp3ps47z0xihlvm.webp',
-  },
-  {
-    id: 5,
-    type: 'video',
-    title: 'Video 1',
-    subTitle: 'Subtitle 1',
-    order: 1,
-    url: 'https://www.youtube.com/embed/WkwTZ_ASXW0?si=t85ynL3eQH7UfVJ6',
-  },
-  {
-    id: 6,
-    type: 'image',
-    title: 'Image 1',
-    subTitle: 'Subtitle Image 1',
-    order: 2,
-    url: 'https://res.cloudinary.com/dotum0xux/image/upload/v1709099577/thi12gp3ps47z0xihlvm.webp',
-  },
-  {
-    id: 7,
-    type: 'video',
-    title: 'Video 2',
-    subTitle: 'Subtitle 1',
-    order: 3,
-    url: 'https://www.youtube.com/embed/WkwTZ_ASXW0?si=t85ynL3eQH7UfVJ6',
-  },
-  {
-    id: 8,
-    type: 'image',
-    title: 'Image test',
-    subTitle: 'Subtitle Image 1',
-    order: 4,
-    url: 'https://res.cloudinary.com/dotum0xux/image/upload/v1709099577/thi12gp3ps47z0xihlvm.webp',
-  },
-]
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params
+  const proyecto = await getProyectoById(Number(id))
+  if (!proyecto) return { title: 'No encontrado' }
+  return { title: proyecto.name }
+}
 
 export default async function ProjectPage({ params }: Props) {
   const { id } = params
@@ -108,7 +42,7 @@ export default async function ProjectPage({ params }: Props) {
   })
 
   return (
-    <main className={`flex-1 w-full relative overflow-y-auto`}>
+    <main className={`flex-1 w-full relative overflow-y-auto scroll-smooth snap-y z-40`}>
       {/* <main className={`projectPage relative h-full`}> */}
       {/* banner start */}
       <ProjectBanner
@@ -122,8 +56,12 @@ export default async function ProjectPage({ params }: Props) {
       />
 
       {/* ANTECEDENTES START*/}
-      <ProjectPageSection className='bg-bg-200'>
-        <div className='flex flex-col justify-start items-center  p-4 gap-4 w-full'>
+      <ProjectPageSection 
+        className='bg-bg-200'
+        arrowRef='#description'
+        linkStyle='text-primary-100'
+      >
+        <div id='antecedentes'  className='flex flex-col justify-start items-center  p-4 gap-4 w-full'>
           <h2 className='text-4xl font-bold text-primary-200 mb-2 text-left w-full'>
             Antecedentes
           </h2>
@@ -132,18 +70,19 @@ export default async function ProjectPage({ params }: Props) {
             html={proyecto.antecedentes}
             scrollBarColor='#DFDED9'
           />
-          {/* {proyecto.antecedentes && (
-            <div
-              dangerouslySetInnerHTML={{ __html: proyecto.antecedentes }}
-              className='long-html-project-antecedentes'
-            />
-          )} */}
         </div>
       </ProjectPageSection>
 
       {/* descripcion & Aliados START*/}
-      <ProjectPageSection className='bg-text-100'>
-        <div className='flex flex-col justify-start items-start  p-2 gap-4 w-full text-bg-100'>
+      <ProjectPageSection 
+      className='bg-text-100'
+      arrowRef='#regiones'
+      linkStyle='text-bg-100'
+      >
+        <div
+          id='description'
+          className='flex flex-col justify-start items-start  p-2 gap-4 w-full text-bg-100'
+        >
           <h2 className='text-4xl font-bold mb-1 text-left w-full'>
             Descripción
           </h2>
@@ -152,12 +91,7 @@ export default async function ProjectPage({ params }: Props) {
             html={proyecto.descripcion}
             scrollBarColor='#0A3030'
           />
-          {/* {proyecto.descripcion && (
-            <div
-              dangerouslySetInnerHTML={{ __html: proyecto.descripcion }}
-              className={`long-html-project-description`}
-            />
-          )} */}
+
           <h2 className='text-4xl font-bold mb-2 text-left w-full mt-4'>
             Aliados
           </h2>
@@ -166,8 +100,12 @@ export default async function ProjectPage({ params }: Props) {
       </ProjectPageSection>
 
       {/* LOCALIZACIÓN GEOGRÁFICA START*/}
-      <ProjectPageSection className='bg-text-200'>
-        <div className='flex flex-col justify-start items-start  p-4 gap-2 w-full text-accent-50'>
+      <ProjectPageSection 
+      className='bg-text-200'
+      arrowRef='#justification'
+      linkStyle='text-accent-50'
+      >
+        <div id='regiones' className='flex flex-col justify-start items-start  py-8 gap-2 w-full text-accent-50'>
           <h2 className='text-4xl font-bold text-left w-full lg:mt-8'>
             Localización geográfica
           </h2>
@@ -181,8 +119,12 @@ export default async function ProjectPage({ params }: Props) {
       </ProjectPageSection>
 
       {/* JUSTIFICACIÓN */}
-      <ProjectPageSection className='bg-bg-400'>
-        <div className='flex flex-col justify-center items-start  p-4 gap-4 w-full text-primary-300'>
+      <ProjectPageSection 
+      className='bg-bg-400'
+      arrowRef='#objetivo'
+      linkStyle='text-primary-300'
+      >
+        <div id='justification' className='flex flex-col justify-center items-start  p-4 gap-4 w-full text-primary-300'>
           <h2 className='text-4xl font-extrabold text-left w-full mb-2'>
             Justificación
           </h2>
@@ -225,8 +167,12 @@ export default async function ProjectPage({ params }: Props) {
       </ProjectPageSection>
 
       {/* OBJETIVO + PRODUCTOS */}
-      <ProjectPageSection className='bg-accent-100'>
-        <div className='flex flex-col justify-center items-center  p-4 gap-4 w-full text-bg-100'>
+      <ProjectPageSection 
+      className='bg-accent-100'
+      arrowRef='#actores'
+      linkStyle='text-bg-100'
+      >
+        <div id='objetivo' className='flex flex-col justify-center items-center  p-4 gap-4 w-full text-bg-100'>
           <h2 className='text-4xl font-extrabold text-center w-full mb-2'>
             Objetivo general
           </h2>
@@ -251,10 +197,11 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* ACTORES + BENEFICIARIOS + DEPARTAMENTOS + PALABRAS CLAVE  */}
       <div
+      
         className={`sticky top-0  h-fit flex flex-col items-start justify-start  gap-1 w-full  bg-bg-150`}
       >
         {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR  + FOTOS TITLE*/}
-        <div className='flex flex-col justify-start p-0 bg-bg-300 text-primary-200 w-full'>
+        <div id='actores' className='flex flex-col justify-start p-0 bg-bg-300 text-primary-200 w-full'>
           {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR */}
           <div className='xBannerPaddings grid lg:grid-cols-3 sm:grid-cols-1 gap-2 overflow-y-auto w-full lg:h-[50vh]  pt-12'>
             {/* Actores */}
@@ -288,6 +235,8 @@ export default async function ProjectPage({ params }: Props) {
           </h3>
         </div>
         <MultimediaCarousel multimedias={multimedias} />
+
+        {/* FILA CON FLECHA ⬇️  */}
         <div className='flex h-24 flex-col justify-center items-center bg-bg-300 w-full'>
           <span
             className={`text-left opacity-50 saturate-200 hover:opacity-100  text-primary-200`}
@@ -304,22 +253,24 @@ export default async function ProjectPage({ params }: Props) {
             </h3>
           </div>
         </div>
-        
+
         {/* DEPARTAMENTOS   */}
         <div className='flex flex-col justify-start items-center  py-4 bg-bg-300 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full flex flex-row justify-start items-stretch'>
-            <h3 className='text-4xl font-semibold mr-8 leading-none'>Departamento</h3>
-            <TermsGrid items={proyecto.regions} urlBase='/region'/>
-     
+            <h3 className='text-4xl font-semibold mr-8 leading-none'>
+              Departamento
+            </h3>
+            <TermsGrid items={proyecto.regions} urlBase='/region' />
           </div>
         </div>
-    
+
         {/* PALABRAS CLAVE   */}
         <div className='flex flex-col justify-start items-center  py-4 bg-bg-150 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full flex flex-row justify-start items-stretch'>
-            <h3 className='text-4xl font-semibold mr-8 leading-none'>Palabras clave</h3>
-            <TermsGrid items={proyecto.tags} urlBase='/palabra-clave'/>
-      
+            <h3 className='text-4xl font-semibold mr-8 leading-none'>
+              Palabras clave
+            </h3>
+            <TermsGrid items={proyecto.tags} urlBase='/palabra-clave' />
           </div>
         </div>
       </div>
