@@ -57,11 +57,11 @@ const sidebarItems = [
     path: '/admin/regiones',
     icon: <TbWorld size={30} />,
   },
-  {
-    title: 'Imágenes',
-    path: '/admin/imagenes',
-    icon: <IoImageOutline size={30} />,
-  },
+  // {
+  //   title: 'Imágenes',
+  //   path: '/admin/imagenes',
+  //   icon: <IoImageOutline size={30} />,
+  // },
   {
     title: 'Sellos',
     path: '/admin/sellos',

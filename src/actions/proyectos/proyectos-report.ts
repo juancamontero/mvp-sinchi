@@ -180,8 +180,15 @@ export const getProyectoById = async (id: number) => {
         },
         mapasUbicacion: true,
         imagenesIndicadores: true,
+        multimedias: {
+          orderBy: {
+            order: 'asc',
+          },
+        },
       },
     })
+
+    console.log(proyecto?.multimedias)
 
     return proyecto
   } catch (error) {

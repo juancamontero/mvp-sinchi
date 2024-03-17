@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const ICON_SIZE = 40
+const ICON_SIZE = 72
 
 interface Props {
   urlIcon?: string | null
@@ -12,8 +12,17 @@ export const IconLinea = ({
   urlIcon,
   size = ICON_SIZE,
 }: Props) => {
+  const urlImage = urlIcon ? urlIcon : '/images/placeholder-img.jpeg'
 
-const urlImage = urlIcon ? urlIcon : '/images/placeholder-img.jpeg'
-
-  return <Image src={urlImage} alt={name} width={size} height={size} className='mb-1'/>
+  return (
+    <div className='sm:w-28 sm:h-28 w-12 h-12'>
+      <Image
+        src={urlImage}
+        alt={name}
+        width={120}
+        height={120}
+        className='object-center object-cover'
+      />
+    </div>
+  )
 }

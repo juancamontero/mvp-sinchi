@@ -3,8 +3,6 @@
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
-import { MapasUbicacion } from '@prisma/client'
-
 import { useForm } from 'react-hook-form'
 
 import styles from '../AdminStyles.module.css'

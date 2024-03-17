@@ -234,7 +234,7 @@ export default async function ProjectPage({ params }: Props) {
             Fotografías y videos
           </h3>
         </div>
-        <MultimediaCarousel multimedias={multimedias} />
+        <MultimediaCarousel multimedias={proyecto.multimedias} />
 
         {/* FILA CON FLECHA ⬇️  */}
         <div className='flex h-24 flex-col justify-center items-center bg-bg-300 w-full'>

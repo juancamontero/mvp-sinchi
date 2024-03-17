@@ -2,19 +2,14 @@ import Image from 'next/image'
 import { useContext } from 'react'
 import { IoCameraOutline, IoVideocamOutline } from 'react-icons/io5'
 import { MultimediaContext } from './MultimediaCarousel'
+import { Multimedia } from '@prisma/client'
+import { VideoBg } from '@/components'
 interface Props {
-  multimedia: {
-    id: number
-    type: 'video' | 'image'
-    title: string
-    subTitle?: string
-    order: number
-    url: string
-  }
+  multimedia: Multimedia
 }
 
 export const MultimediaCard = ({ multimedia }: Props) => {
-  const { id, type, title, subTitle, order, url } = multimedia
+  const { id, mediaType: type, title, url } = multimedia
   const { toggleGallery, getIndexById, setIndex, currentIndex } =
     useContext(MultimediaContext)
 
@@ -42,7 +37,12 @@ export const MultimediaCard = ({ multimedia }: Props) => {
           alt='hero background image'
         />
       ) : (
-        <VideoBg url={url} />
+        <VideoBg
+          url={url}
+          // width={300}
+          // height={230}
+          className='absolute inset-0 w-full h-full object-cover object-center my-auto'
+        />
       )}
 
       {/* Overlay */}
@@ -83,20 +83,5 @@ export const MultimediaCard = ({ multimedia }: Props) => {
         </div>
       </div>
     </div>
-  )
-}
-
-interface VideoBg {
-  url: string
-}
-const VideoBg = ({ url }: VideoBg) => {
-  return (
-    <iframe
-      className='w-80 h-56'
-      src={url}
-      title='YouTube video player'
-      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-      allowFullScreen
-    />
   )
 }

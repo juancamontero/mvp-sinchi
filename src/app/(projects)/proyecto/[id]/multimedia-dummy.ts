@@ -1,6 +1,6 @@
 export const multimedias: {
     id: number
-    type: 'video' | 'image'
+    mediaType: 'video' | 'image'
     title: string
     subTitle: string
     order: number
@@ -8,7 +8,7 @@ export const multimedias: {
   }[] = [
     {
       id: 1,
-      type: 'video',
+      mediaType: 'video',
       title: 'Expedición BIO al sistema lagunar y fluvial del bajo río Guayabero y ato río Guaviare',
       subTitle: 'Subtitle 1',
       order: 1,
@@ -17,7 +17,7 @@ export const multimedias: {
 
     {
       id: 3,
-      type: 'video',
+      mediaType: 'video',
       title: 'Expedición BIO al sistema lagunar y fluvial del bajo río Guayabero y ato río Guaviare',
       subTitle: 'Subtitle 1',
       order: 3,
@@ -25,7 +25,7 @@ export const multimedias: {
     },
     {
       id: 4,
-      type: 'image',
+      mediaType: 'image',
       title: 'Expedición BIO al sistema lagunar y fluvial del bajo río Guayabero y ato río Guaviare',
       subTitle: 'Subtitle Image 1',
       order: 4,
@@ -33,7 +33,7 @@ export const multimedias: {
     },
     {
       id: 5,
-      type: 'video',
+      mediaType: 'video',
       title: 'Expedición BIO al sistema lagunar y fluvial del bajo río Guayabero y ato río Guaviare',
       subTitle: 'Subtitle 1',
       order: 1,
@@ -41,7 +41,7 @@ export const multimedias: {
     },
     {
       id: 6,
-      type: 'image',
+      mediaType: 'image',
       title: 'Expedición BIO al sistema lagunar y fluvial del bajo río Guayabero y ato río Guaviare',
       subTitle: 'Subtitle Image 1',
       order: 2,
@@ -49,7 +49,7 @@ export const multimedias: {
     },
     {
       id: 2,
-      type: 'image',
+      mediaType: 'image',
       title: 'Expedición BIO al sistema lagunar y fluvial del bajo río Guayabero y ato río Guaviare',
       subTitle: 'Subtitle Image 1',
       order: 2,
@@ -57,7 +57,7 @@ export const multimedias: {
     },
     {
       id: 7,
-      type: 'video',
+      mediaType: 'video',
       title: 'Expedición BIO al sistema lagunar y fluvial del bajo río Guayabero y ato río Guaviare',
       subTitle: 'Subtitle 1',
       order: 3,
@@ -65,10 +65,12 @@ export const multimedias: {
     },
     {
       id: 8,
-      type: 'image',
+      mediaType: 'image',
       title: 'Expedición BIO al sistema lagunar y fluvial del bajo río Guayabero y ato río Guaviare',
       subTitle: 'Subtitle Image 1',
       order: 4,
       url: 'https://res.cloudinary.com/dotum0xux/image/upload/v1709099577/thi12gp3ps47z0xihlvm.webp',
     },
   ]
+
+

@@ -7,15 +7,9 @@ import { MultimediaCard } from './MultimediaCard'
 import { MultimediaModalSlider } from './MultimediaModalSlider'
 
 import { useMultimedia } from './useMultimedia'
+import { Multimedia } from '@prisma/client'
 
-export interface Multimedia {
-  id: number
-  type: 'video' | 'image'
-  title: string
-  subTitle?: string
-  order: number
-  url: string
-}
+
 
 interface Props {
   multimedias: Multimedia[]

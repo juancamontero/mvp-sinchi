@@ -54,8 +54,11 @@ export const MultimediaModalSlider = () => {
           {multimedias.map((multimedia, index) => (
             <div
               key={multimedia.id}
-              
-              className={`absolute top-0 w-full h-[90vh]  flex-col justify-evenly items-center transition duration-300 ${index + 1 === currentIndex ? 'block  translate-y-0 ' : 'hidden translate-y-full'}`}
+              className={`absolute top-0 w-full h-[90vh]  flex-col justify-evenly items-center transition duration-300 ${
+                index + 1 === currentIndex
+                  ? 'block  translate-y-0 '
+                  : 'hidden translate-y-full'
+              }`}
             >
               {/* TITLE + SUBTITLE */}
               <div className='flex flex-col justify-start items-center gap-0 mt-8 w-11/12 mx-auto mb-8'>
@@ -69,9 +72,13 @@ export const MultimediaModalSlider = () => {
                 )}
               </div>
               {/* IMAGEN O VIDEO */}
-              {multimedia.type === 'image' ? (
+              {multimedia.mediaType === 'image' ? (
                 <Image
-                  className={`w-full h-[75vh] object-cover object-center z-50 transition duration-1000  ${index + 1 === currentIndex ? 'block  translate-y-0 blur-0' : 'blur-md translate-y-full'}`}
+                  className={`w-full h-[75vh] object-cover object-center z-50 transition duration-1000  ${
+                    index + 1 === currentIndex
+                      ? 'block  translate-y-0 blur-0'
+                      : 'blur-md translate-y-full'
+                  }`}
                   src={multimedia.url ?? '/images/placeholder-img.jpeg'}
                   width={600}
                   height={450}
@@ -95,10 +102,11 @@ export const MultimediaModalSlider = () => {
 }
 
 interface VideoProps {
-  url: string
+  url: string | null
 }
 
 const Video = ({ url }: VideoProps) => {
+  if (!url) return <></>
   return (
     <iframe
       className=' w-full h-[70vh] z-30 '
@@ -106,6 +114,9 @@ const Video = ({ url }: VideoProps) => {
       title='YouTube video player'
       allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
       allowFullScreen
+      
+      
+      
       // width={1200}
       // height={700}
     />

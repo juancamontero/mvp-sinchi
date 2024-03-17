@@ -19,7 +19,7 @@ interface Props {
 
 export const LineaProgramaCarouselContainer = ({
   urlIcon,
-  iconSize = 72,
+  iconSize = 320,
   name,
   baseUrl,
   proyectos,
@@ -32,9 +32,7 @@ export const LineaProgramaCarouselContainer = ({
       <div
         className={`w-full flex flex-row justify-start items-start  bg-bg-200 py-2  gap-2 xBannerPaddings`}
       >
-        <div className='sm:w-20 sm:h-20 w-12'>
-          <IconLinea urlIcon={urlIcon} name={name} size={iconSize} />
-        </div>
+        <IconLinea urlIcon={urlIcon} name={name} size={iconSize} />
 
         {/* text column starts */}
         <div className='flex flex-col justify-start w-full'>

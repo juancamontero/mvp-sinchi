@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { Multimedia, MultimediaContextProps } from './MultimediaCarousel'
-import { debug } from 'console'
+
+
+import { Multimedia } from '@prisma/client'
 
 interface MultimediaGalleryProps {
   isOpen: boolean
