@@ -240,9 +240,9 @@ export default async function ProjectPage({ params }: Props) {
 
         {/* DEPARTAMENTOS   */}
         <div className='flex flex-col justify-start items-center  py-4 bg-bg-300 text-primary-200 w-full h-fit'>
-          <div className='xBannerPaddings w-full flex flex-row justify-start items-stretch'>
+          <div className='xBannerPaddings w-full flex flex-col sm:flex-row gap-1 justify-start items-stretch'>
             <h3 className='text-4xl font-semibold mr-8 leading-none'>
-              Departamento
+              Departamento (s)
             </h3>
             <TermsGrid items={proyecto.regions} urlBase='/region' />
           </div>
@@ -250,7 +250,7 @@ export default async function ProjectPage({ params }: Props) {
 
         {/* PALABRAS CLAVE   */}
         <div className='flex flex-col justify-start items-center  py-4 bg-bg-150 text-primary-200 w-full h-fit'>
-          <div className='xBannerPaddings w-full flex flex-row justify-start items-stretch'>
+          <div className='xBannerPaddings w-full flex flex-col sm:flex-row gap-1 justify-start items-stretch'>
             <h3 className='text-4xl font-semibold mr-8 leading-none'>
               Palabras clave
             </h3>

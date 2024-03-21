@@ -176,8 +176,7 @@ p {
   width: 8px; /* Width of the scrollbar */
 }
 
-.scroll-container-sinchi-carousel::-webkit-scrollbar-track {
-}
+
 
 .scroll-container-sinchi-carousel::-webkit-scrollbar-thumb {
   background: #e7e6e0;
@@ -187,18 +186,30 @@ p {
   background: #e7e6e0; /* Color of the scrollbar on hover */
 }
 
+/* safari */
 
+.scroll-container-sinchi-carousel {
+  -webkit-overflow-scrolling: touch;
+  overflow: scroll;
+}
 
 .scroll-sinchi::-webkit-scrollbar {
   width: 8px; /* Width of the scrollbar */
+  background: #ffffff00;
 }
 .scroll-sinchi::-webkit-scrollbar-track {
   width: 12px;
+  background: #ffffff00;
 }
 .scroll-sinchi::-webkit-scrollbar-thumb {
+  background: #c7c7c755;
   width: 12px;
 }
 
+.scroll-sinchi {
+  -webkit-overflow-scrolling: touch;
+  overflow: scroll;
+}
 
 .scroll-sinchi ul {
   list-style-type: disc;
