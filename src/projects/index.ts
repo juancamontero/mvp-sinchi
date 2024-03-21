@@ -18,6 +18,7 @@ export { ProgramasListProjectsSection } from './components/linea-programa/Progra
 export { ProjectBanner } from './components/proyectos/ProjectBanner'
 export { ProjectCard } from './components/proyectos/ProjectCard'
 export { ProjectColumnsHtml } from './components/proyectos/ProjectColumnsHtml'
+export { ProjectLongHtml } from './components/proyectos/ProjectLongHtml'
 export { ProjectPageSection } from './components/proyectos/ProjectPageSection'
 export { ProjectsCarousel } from './components/proyectos/ProjectsCarousel'
 export { ProjectStateWidget } from './components/proyectos/ProjectStateWidget'

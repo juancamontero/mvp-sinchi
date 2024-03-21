@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { CreateUpdateConvenioForm } from './CreateUpdateConvenioForm'
 import { deleteConvenioById } from '@/actions'
+import { AccordionForForm } from '@/admin'
 
 interface Props {
   convenios: (Convenio & { imagen: Imagen | null } & {
@@ -32,7 +33,11 @@ export const ConveniosForm = ({ convenios }: Props) => {
 
   return (
     <div className='mt-2 w-full'>
-      <CreateUpdateConvenioForm />
+
+      {/* NUEVO CONVENIO */}
+      <AccordionForForm title='Crear aliado'>
+        <CreateUpdateConvenioForm />
+      </AccordionForForm>
       <div className='grid grid-cols-4 gap-1 mt-2 w-full'>
         {convenios.map((convenio) => (
           <div

@@ -7,10 +7,19 @@ import {
 import { ProjectForm, TitleAdmin } from '@/admin'
 import { redirect } from 'next/navigation'
 
+import type { Metadata } from 'next'
+
 interface Props {
   params: {
     id: string
   }
+}
+
+export function generateMetadata({ params }: Props): Metadata {
+  const { id } = params
+  const title = id === 'new' ? 'Nuevo proyecto' : `${id} | Editar  proyecto`
+
+  return { title: title }
 }
 
 export default async function ProjectAdminPage({ params }: Props) {
@@ -40,8 +49,6 @@ export default async function ProjectAdminPage({ params }: Props) {
         programas={programas}
         investigadores={investigadores}
       />
-
-
     </div>
   )
 }

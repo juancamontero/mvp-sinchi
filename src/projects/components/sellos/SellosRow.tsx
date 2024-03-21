@@ -19,7 +19,7 @@ export const SellosRow = ({ sellos }: Props) => {
             alt={sello.title}
             width={320}
             height={320}
-            className='h-20 w-20 rounded-full'
+            className='h-24 w-24'
           />
           <h3 className='text-center text-sm leading-snug text-text-50 mt-5 font-light'>
             {sello.title}

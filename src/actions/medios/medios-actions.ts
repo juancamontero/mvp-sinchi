@@ -6,6 +6,7 @@ import { deleteImageByUrl, uploadImagesToStore } from '..'
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
 import { MediaType, Multimedia } from '@prisma/client'
+import { error } from 'console'
 
 //* TODOS LOS MEDIOS CON EL NOMBRE DEL PROYECTO
 
@@ -92,29 +93,31 @@ const medioSchema = z.object({
     .transform((val) => Number(val))
     .optional()
     .nullable(),
-  title: z.string().min(3).max(50),
-  subTitle: z.string().min(3).max(100),
-  url: z.string().min(3).max(100).optional().nullable(),
+  title: z.string().min(3).max(200),
+  subTitle: z.string().max(100).optional().nullable(),
+  url: z.string().max(100).optional().nullable(),
   mediaType: z.nativeEnum(MediaType),
 })
 
 export const createUpdateMedio = async (formData: FormData) => {
-  const data = Object.fromEntries(formData)
-  const medioParsed = medioSchema.safeParse(data)
-
-  if (!medioParsed.success) {
-    console.log(medioParsed.error)
-    return { ok: false, error: medioParsed.error }
-  }
-  const medio = medioParsed.data
-
-  const { id, url, ...rest } = medio
-
-  // * si es imagen no adiciono el url por acá
-  const dataToUpdate =
-    medio.mediaType === 'image' ? { ...rest } : { ...rest, url }
-
   try {
+    const data = Object.fromEntries(formData)
+    const medioParsed = medioSchema.safeParse(data)
+  
+
+    if (!medioParsed.success) {
+      console.log(medioParsed.error)
+      throw new Error(medioParsed.error.message) 
+    }
+    const medio = medioParsed.data
+
+    const { id, url, ...rest } = medio
+
+    // * si es imagen no adiciono el url por acá
+    const dataToUpdate =
+      medio.mediaType === 'image' ? { ...rest } : { ...rest, url }
+    //! de acá para arriba estaba fuera del try catch
+
     // * prisma transaction
     const prismaTx = await prisma.$transaction(async (tx) => {
       //Creo convenio vacío
@@ -144,7 +147,7 @@ export const createUpdateMedio = async (formData: FormData) => {
       }
 
       // * carga y guardado de imagen si existe en el formulario la imagen y el tipo es imagen
-      if (medio.mediaType === 'image' && formData.get('image') ) {
+      if (medio.mediaType === 'image' && formData.get('image')) {
         // recibo y envio arreglo
         const images = await uploadImagesToStore([
           formData.get('image'),
@@ -175,16 +178,14 @@ export const createUpdateMedio = async (formData: FormData) => {
         updatedMedio,
       }
     })
-    revalidatePath(
-      `/admin/medios/proyecto/${prismaTx.updatedMedio.proyectoId}`
-    )
+    revalidatePath(`/admin/medios/proyecto/${prismaTx.updatedMedio.proyectoId}`)
     revalidatePath(`/proyecto/${prismaTx.updatedMedio.proyectoId}`)
     return {
       ok: true,
       medio: prismaTx.updatedMedio,
     }
   } catch (error) {
-    console.log(error)
-    return { ok: false, msg: `createUpdateMedio ${error}` }
+
+    return { ok: false, error: `Error: ${error}` }
   }
 }

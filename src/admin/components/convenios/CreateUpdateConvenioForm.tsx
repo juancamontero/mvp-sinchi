@@ -54,7 +54,7 @@ export const CreateUpdateConvenioForm = ({ convenio }: Props) => {
     await createUpdateConvenio(formData)
     setValue('image', undefined)
     setValue('name', '')
-    router.refresh()
+    router.replace('/admin/convenios')
   }
 
   const onDeleteImage = async (id?: number, url?: string) => {
@@ -69,12 +69,12 @@ export const CreateUpdateConvenioForm = ({ convenio }: Props) => {
       <div className='flex flex-col gap-2 items-stretch w-full'>
         <input
           className={`${styles['form-input']}`}
-          placeholder='Aliado - Nombre a mostrar si no existe la imagen (min:3 caracteres,  max:50 caracteres)'
-          {...register('name', { required: true, minLength: 3, maxLength: 50 })}
+          placeholder='Aliado - Nombre a mostrar si no existe la imagen (min:3 caracteres,  max:100 caracteres)'
+          {...register('name', { required: true, minLength: 3, maxLength: 100 })}
         />
         {errors.name && (
           <span className={styles['form-error']}>
-            Requerido | Mínimo 3, Máximo 50 caracteres
+            Requerido | Mínimo 3, Máximo 100 caracteres
           </span>
         )}
         {/* columna imagen + botones */}
@@ -85,13 +85,13 @@ export const CreateUpdateConvenioForm = ({ convenio }: Props) => {
             className={`${styles['form-input-image']} w-2/12`}
             accept='image/png, image/jpeg, image/jpg, image/webp'
           />
-          <div className='flex flex-col'>
+          <div className='flex flex-col h-80 w-80 bg-bg-150'>
             <Image
               src={previewImageUrl}
               alt={'logo aliado'}
               width={144}
               height={144}
-              className='object-scale-down object-center my-auto'
+              className='object-scale-down object-center my-auto p-2 m-auto'
             />
             <button
               type='button'

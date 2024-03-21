@@ -188,7 +188,7 @@ export const getProyectoById = async (id: number) => {
       },
     })
 
-    console.log(proyecto?.multimedias)
+
 
     return proyecto
   } catch (error) {

@@ -8,13 +8,12 @@ import {
   MultimediaCarousel,
   ProjectBanner,
   ProjectColumnsHtml,
+  ProjectLongHtml,
   ProjectPageSection,
   TermsGrid,
   createSellosArray,
 } from '@/projects'
 import { FaChevronDown } from 'react-icons/fa'
-
-import { multimedias } from './multimedia-dummy'
 
 interface Props {
   params: {
@@ -42,7 +41,7 @@ export default async function ProjectPage({ params }: Props) {
   })
 
   return (
-    <main className={`flex-1 w-full relative overflow-y-auto scroll-smooth snap-y z-40`}>
+    <main className={`flex-1 w-full relative overflow-y-auto scroll-smooth lg:snap-y z-40`}>
       {/* <main className={`projectPage relative h-full`}> */}
       {/* banner start */}
       <ProjectBanner
@@ -134,10 +133,7 @@ export default async function ProjectPage({ params }: Props) {
             <div className='flex flex-col justify-start items-stretch gap-4'>
               <h3 className='text-3xl font-semibold'>Importancia</h3>
               {proyecto.importancia && (
-                <div
-                  dangerouslySetInnerHTML={{ __html: proyecto.importancia }}
-                  className='text-base text-left text-text-200 leading-snug'
-                />
+                <ProjectLongHtml html={proyecto.importancia} scrollBarColor='#DFDED9'/>
               )}
             </div>
 
@@ -145,10 +141,7 @@ export default async function ProjectPage({ params }: Props) {
             <div className='flex flex-col justify-start items-stretch gap-4'>
               <h3 className='text-3xl font-semibold'>Pertinencia</h3>
               {proyecto.pertinencia && (
-                <div
-                  dangerouslySetInnerHTML={{ __html: proyecto.pertinencia }}
-                  className='text-base text-left text-text-200 leading-snug'
-                />
+                <ProjectLongHtml html={proyecto.pertinencia} scrollBarColor='#DFDED9'/>
               )}
             </div>
 
@@ -156,10 +149,7 @@ export default async function ProjectPage({ params }: Props) {
             <div className='flex flex-col justify-start items-stretch gap-4'>
               <h3 className='text-3xl font-semibold'>Impacto</h3>
               {proyecto.impacto && (
-                <div
-                  dangerouslySetInnerHTML={{ __html: proyecto.impacto }}
-                  className='text-base text-left text-text-200 leading-snug'
-                />
+               <ProjectLongHtml html={proyecto.pertinencia} scrollBarColor='#DFDED9'/>
               )}
             </div>
           </div>
@@ -198,20 +188,17 @@ export default async function ProjectPage({ params }: Props) {
       {/* ACTORES + BENEFICIARIOS + DEPARTAMENTOS + PALABRAS CLAVE  */}
       <div
       
-        className={`sticky top-0  h-fit flex flex-col items-start justify-start  gap-1 w-full  bg-bg-150`}
+        className={`lg:sticky lg:top-0  h-fit flex flex-col items-start justify-start  gap-1 w-full  bg-bg-150`}
       >
         {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR  + FOTOS TITLE*/}
         <div id='actores' className='flex flex-col justify-start p-0 bg-bg-300 text-primary-200 w-full'>
           {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR */}
-          <div className='xBannerPaddings grid lg:grid-cols-3 sm:grid-cols-1 gap-2 overflow-y-auto w-full lg:h-[50vh]  pt-12'>
+          <div className='xBannerPaddings grid lg:grid-cols-3 sm:grid-cols-1 gap-4  w-full lg:h-[50vh]  pt-12'>
             {/* Actores */}
             <div className='flex flex-col justify-start items-stretch gap-4'>
               <h3 className='text-4xl font-semibold'>Actores</h3>
               {proyecto.actores && (
-                <div
-                  dangerouslySetInnerHTML={{ __html: proyecto.actores }}
-                  className='text-base text-left text-text-200 leading-snug sinchi-list'
-                />
+               <ProjectLongHtml html={proyecto.actores} scrollBarColor='#E9E8E4'/>
               )}
             </div>
 
@@ -219,10 +206,7 @@ export default async function ProjectPage({ params }: Props) {
             <div className='flex flex-col justify-start items-stretch gap-4'>
               <h3 className='text-4xl font-semibold'>Beneficiarios</h3>
               {proyecto.beneficiarios && (
-                <div
-                  dangerouslySetInnerHTML={{ __html: proyecto.beneficiarios }}
-                  className='text-base text-left text-text-200 leading-snug sinchi-list'
-                />
+                <ProjectLongHtml html={proyecto.beneficiarios} scrollBarColor='#E9E8E4'/>
               )}
             </div>
             {/* Imagen indicadores */}

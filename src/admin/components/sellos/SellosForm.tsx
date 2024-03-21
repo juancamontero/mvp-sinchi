@@ -40,19 +40,19 @@ export const SellosForm = ({ sellos }: Props) => {
             key={sello.id}
             className={`p-2 border  rounded-sm transition-all text-center bg-bg-200 flex flex-col justify-between`}
           >
-            <div className='flex flex-row-reverse gap-1 justify-between items-center mb-1'>
+            <div className='flex flex-row-reverse gap-1 justify-between items-center mb-1 p-3'>
               {/* Imagen */}
               <Image
                 src={sello.imagen?.url ?? '/images/placeholder-img.jpeg'}
                 alt={'imagen aliado'}
                 width={100}
                 height={100}
-                className='object-scale-down object-center '
+                className='object-scale-down object-center w-1/3'
               />
 
               {/* aliado + count */}
               <Link
-                className='text-xs font-semibold hover:text-primary-300 flex flex-col text-left'
+                className='text-xs font-semibold hover:text-primary-300 flex flex-col text-left w-2/3'
                 href={`/admin/sello/${sello.id}`}
                 title='Editar aliado'
               >

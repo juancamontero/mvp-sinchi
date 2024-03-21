@@ -81,18 +81,18 @@ export const MedioForm = ({ proyectoId, medio }: Props) => {
       formData.append('url', data.url)
     }
 
-console.log({data})
-    const { ok, medio: newMedio } = await createUpdateMedio(formData)
-    console.log({ newMedio })
+    const { ok, error } = await createUpdateMedio(formData)
 
     if (ok) {
-      // router.replace(`/admin/medios/proyecto/${proyectoId}`)
-      // setValue('image', undefined)
-      // setValue('order', 0)
-      // setValue('title', '')
-      // setValue('subTitle', '')
-      // setValue('mediaType', '')
-      // setValue('url', '')
+      router.replace(`/admin/medios/proyecto/${proyectoId}`)
+      setValue('image', undefined)
+      setValue('order', 0)
+      setValue('title', '')
+      setValue('subTitle', '')
+      setValue('mediaType', '')
+      setValue('url', '')
+    } else {
+      alert(error ?? 'Error!')
     }
   }
 
@@ -104,21 +104,21 @@ console.log({data})
       {/* TITLE */}
       <div className='flex flex-col gap-2 items-stretch w-full'>
         <label htmlFor='title' className={`${styles['form-label']}`}>
-          Título(min:3 caracteres, max:50 caracteres)
+          Título(min:3 caracteres, max:200 caracteres)
         </label>
         <input
           className={`${styles['form-input']}`}
-          placeholder='Título(min:3 caracteres,  max:50 caracteres)'
+          placeholder='Título(min:3 caracteres,  max:200 caracteres)'
           type='text'
           {...register('title', {
             required: true,
             minLength: 3,
-            maxLength: 50,
+            maxLength: 200,
           })}
         />
         {errors.title && (
           <span className={styles['form-error']}>
-            Requerido | Mínimo 3, Máximo 50 caracteres
+            Requerido | Mínimo 3, Máximo 200 caracteres
           </span>
         )}
 

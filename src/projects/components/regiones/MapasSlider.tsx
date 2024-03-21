@@ -28,23 +28,29 @@ export const MapasSlider = ({ mapas }: Props) => {
     <div className='lg:h-[80vh] h-[40vh]  w-full'>
       <div className='relative mx-auto w-full overflow-hidden  p-2 sm:p-4 h-full'>
         {/* Mapa index */}
-        <div className='absolute lg:right-5 right-0 top-5 z-10  bg-text-100 px-2 text-center text-sm text-white p-2'>
-          <span>{currentIndex}</span>/<span>{mapas.length}</span>
-        </div>
+        {mapas.length > 1 && (
+          <div className='absolute lg:right-5 right-0 top-5 z-10  bg-text-100 px-2 text-center text-sm text-white p-2'>
+            <span>{currentIndex}</span>/<span>{mapas.length}</span>
+          </div>
+        )}
 
-        <button
-          onClick={previous}
-          className='absolute sm:left-5 left-1 top-1/2 z-10 flex lg:h-14 lg:w-14 h-8 w-8 -translate-y-1/2 items-center justify-center hover:text-accent-100'
-        >
-          <FaChevronLeft size={48} />
-        </button>
+        {mapas.length > 1 && (
+          <button
+            onClick={previous}
+            className='absolute sm:left-5 left-1 top-1/2 z-10 flex lg:h-14 lg:w-14 h-8 w-8 -translate-y-1/2 items-center justify-center hover:text-accent-100'
+          >
+            <FaChevronLeft size={48} />
+          </button>
+        )}
 
-        <button
-          onClick={forward}
-          className='absolute sm:right-5 right-1 top-1/2 z-10 flex lg:h-14 lg:w-14 h-8 w-8 -translate-y-1/2 items-center justify-center hover:text-accent-100'
-        >
-          <FaChevronRight size={48} />
-        </button>
+        {mapas.length > 1 && (
+          <button
+            onClick={forward}
+            className='absolute sm:right-5 right-1 top-1/2 z-10 flex lg:h-14 lg:w-14 h-8 w-8 -translate-y-1/2 items-center justify-center hover:text-accent-100'
+          >
+            <FaChevronRight size={48} />
+          </button>
+        )}
 
         <div className='relative w-full h-full '>
           {mapas.map((mapa, index) => (
@@ -57,14 +63,12 @@ export const MapasSlider = ({ mapas }: Props) => {
                 src={mapa.url ?? '/images/placeholder-img.jpeg'}
                 alt='image'
                 className={`object-contain  mx-auto transition duration-1000 w-full  ${
-                  index + 1 === currentIndex
-                    ? 'h-5/6'
-                    : 'h-0 blur-sm'
+                  index + 1 === currentIndex ? 'h-5/6' : 'h-0 blur-sm'
                 }`}
                 width={1200}
                 height={800}
               />
-              <div className='flex flex-col gap-0 justify-end items-center'>
+              <div className='flex flex-col gap-0 justify-end items-center mt-2'>
                 <h4 className='font-bold lg:text-xl text-base w-full text-center text-bg-100'>
                   {mapa.title}
                 </h4>

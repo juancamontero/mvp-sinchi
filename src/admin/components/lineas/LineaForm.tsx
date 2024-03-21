@@ -78,7 +78,7 @@ export const LineaForm = ({ linea }: Props) => {
     // ! si se usa negro no se envia la info la back
     // todo: Fix
     if (data.baseColor !== '#000000') {
-      console.log(data.baseColor)
+
 
       formData.append('baseColor', lineaToSave.baseColor)
     }

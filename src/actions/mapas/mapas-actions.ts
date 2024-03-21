@@ -64,23 +64,25 @@ const mapaSchema = z.object({
     .nullable(),
   proyectoId: z.coerce.number().transform((val) => Number(val)),
   order: z.coerce.number().transform((val) => Number(val)),
-  title: z.string().min(3).max(50),
-  subTitle: z.string().min(3).max(100),
+  title: z.string().min(3).max(100),
+  subTitle: z.string().max(100).optional().nullable(),
 })
 
 export const createUpdateMapa = async (formData: FormData) => {
-  const data = Object.fromEntries(formData)
-  const mapaParsed = mapaSchema.safeParse(data)
-
-  if (!mapaParsed.success) {
-    console.log(mapaParsed.error)
-    return { ok: false, error: mapaParsed.error }
-  }
-  const mapa = mapaParsed.data
-
-  const { id, ...rest } = mapa
+ 
 
   try {
+    const data = Object.fromEntries(formData)
+    const mapaParsed = mapaSchema.safeParse(data)
+  
+    if (!mapaParsed.success) {
+      console.log(mapaParsed.error)
+      throw new Error(mapaParsed.error.message) 
+    }
+    const mapa = mapaParsed.data
+  
+    const { id, ...rest } = mapa
+      //! de acá para arriba estaba fuera del try catch
     // * prisma transaction
     const prismaTx = await prisma.$transaction(async (tx) => {
       //Creo convenio vacío
@@ -154,7 +156,7 @@ export const createUpdateMapa = async (formData: FormData) => {
     }
   } catch (error) {
     console.log(error)
-    return { ok: false, msg: `createUpdateMapa ${error}` }
+    return { ok: false, error: `Error: ${error}` }
   }
 }
 

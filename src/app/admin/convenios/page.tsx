@@ -8,7 +8,6 @@ export const metadata = {
 
 export default async function AdminConveniosPage() {
   const convenios = await getAllConveniosForm()
-  
 
   return (
     <div className='pageDefault w-full'>
@@ -16,8 +15,7 @@ export default async function AdminConveniosPage() {
         title='Edición / Eliminación de aliados'
         subTitle='Click sobre palabra para editar'
       />
-      <hr />
-      <ConveniosForm convenios={convenios} />
+        <ConveniosForm convenios={convenios} />
     </div>
   )
 }

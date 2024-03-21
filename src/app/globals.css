@@ -72,6 +72,35 @@ p {
   margin: 24px;
 }
 
+/* LONG HTML STYLES */
+
+.long-html p {
+  @apply text-base leading-snug
+}
+
+.long-html h1 {
+  @apply text-3xl leading-relaxed  font-bold
+}
+
+.long-html h1 span {
+  @apply text-3xl leading-relaxed font-bold
+}
+
+.long-html h2 {
+  @apply text-2xl leading-relaxed font-semibold
+}
+.long-html h2 span {
+  @apply text-2xl leading-relaxed font-semibold
+}
+.long-html h3 {
+  @apply text-xl leading-relaxed  font-medium
+}
+.long-html h3 span {
+  @apply text-xl leading-relaxed font-medium
+}
+
+
+
 /* BUTTONS */
 
 .btn-primary {
@@ -107,6 +136,8 @@ p {
 .lineaProgramProjectsSection {
   @apply w-full flex flex-col gap-1 justify-start items-start bg-bg-100;
 }
+
+
 
 /* TABLES */
 
@@ -156,12 +187,19 @@ p {
   background: #e7e6e0; /* Color of the scrollbar on hover */
 }
 
+
+
 .scroll-sinchi::-webkit-scrollbar {
   width: 8px; /* Width of the scrollbar */
 }
 .scroll-sinchi::-webkit-scrollbar-track {
-  width: 8px;
+  width: 12px;
 }
+.scroll-sinchi::-webkit-scrollbar-thumb {
+  width: 12px;
+}
+
+
 .scroll-sinchi ul {
   list-style-type: disc;
   margin: 24px;
@@ -171,6 +209,7 @@ p {
   list-style-type: decimal;
   margin: 24px;
 }
+
 
 /* TITLES | BANNERS  */
 

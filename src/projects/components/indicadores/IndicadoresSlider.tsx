@@ -38,9 +38,9 @@ export const IndicadoresSlider = ({ indicadores }: Props) => {
         {indicadores.length > 1 && (
           <button
             onClick={previous}
-            className='absolute left-1 top-1/2 z-10 flex lg:h-14 lg:w-14 h-6 w-6 -translate-y-1/2 items-center justify-center hover:text-accent-100'
+            className='absolute left-1 top-1/2 z-10 flex lg:h-8 lg:w-8 h-6 w-6 -translate-y-1/2 items-center justify-center hover:text-accent-100'
           >
-            <FaChevronLeft size={40} />
+            <FaChevronLeft size={24} />
           </button>
         )}
 
@@ -49,7 +49,7 @@ export const IndicadoresSlider = ({ indicadores }: Props) => {
             onClick={forward}
             className='absolute  right-1 top-1/2 z-10 flex lg:h-14 lg:w-14 h-6 w-6 -translate-y-1/2 items-center justify-center hover:text-accent-100'
           >
-            <FaChevronRight size={40} />
+            <FaChevronRight size={24} />
           </button>
         )}
 

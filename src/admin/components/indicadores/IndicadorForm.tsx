@@ -102,12 +102,12 @@ export const IndicadorForm = ({ proyectoId,  indicador }: Props) => {
         </label>
         <input
           className={`${styles['form-input']}`}
-          placeholder='Título del indicador (min:3 caracteres,  max:50 caracteres)'
+          placeholder='Título del indicador (min:3 caracteres,  max:5100 caracteres)'
           type='text'
           {...register('title', {
             required: false,
             minLength: 3,
-            maxLength: 50,
+            maxLength: 100,
           })}
         />
         {errors.title && (

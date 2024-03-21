@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import { Autor } from '@prisma/client'
 import { SellosRow, SelloArray, ArrowDown } from '../..'
-import { FaChevronDown } from 'react-icons/fa'
+
 import Link from 'next/link'
 
 interface Props {
@@ -28,14 +28,14 @@ export const ProjectBanner = ({
     <div className={`group w-full lg:h-full h-fit lg:sticky  top-0`}>
       {/* CONTENT DIV */}
       <div
-        className={`relative xBannerPaddings py-2 sm:py-8 lg:h-full h-fit  flex flex-col justify-between bg-primary-300 `}
+        className={`relative xBannerPaddings py-2 sm:py-8 lg:h-full h-fit  flex flex-col justify-between bg-primary-300 z-50`}
       >
         {/* Content full column  */}
         {/* upper section starts*/}
         <div className='flex flex-col justify-start items-center gap-0'>
           {/* ROUNDED IMAGE */}
           <Image
-            className='sm:w-36 sm:h-36 w-28 h-28 object-cover object-center rounded-full'
+            className='sm:w-60 sm:h-60 w-28 h-28 object-cover object-center rounded-full'
             src={customImage ?? '/images/placeholder-img.jpeg'}
             width={500}
             height={500}
@@ -58,12 +58,12 @@ export const ProjectBanner = ({
           </h3>
           {/* ROLE INVESTIGADOR */}
           {roleInvestigador && (
-            <h3 className='text-center text-xl text-text-50 mt-0'>
+            <h3 className='text-center text-xl text-text-50 mt-1'>
               {roleInvestigador}
             </h3>
           )}
           {/*MAIL INVESTIGADOR */}
-          <p className='text-center text-base text-bg-100  lg:leading-none leading-tight mt-0 font-light'>
+          <p className='text-center text-base text-bg-100  lg:leading-none leading-tight mt-1 font-light'>
             {autor?.email}
           </p>
           {/* EQUIPO */}

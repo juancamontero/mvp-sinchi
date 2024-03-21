@@ -1,11 +1,21 @@
 import { getLineaByIdForm, getProgramaByIdForm } from '@/actions'
 import { LineaForm, TitleAdmin } from '@/admin'
 import { redirect } from 'next/navigation'
+import type { Metadata } from 'next'
 
 interface Props {
   params: {
     id: string
   }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params
+  const linea = id === 'new' ? null : await getLineaByIdForm(Number(id))
+
+  const title = id === 'new' ? 'Nueva línea' : `Edición | ${linea?.preTitle}`
+
+  return { title }
 }
 
 export default async function LineaAdminPage({ params }: Props) {

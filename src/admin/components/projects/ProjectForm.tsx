@@ -538,6 +538,12 @@ export const ProjectForm = ({
       >
         Editar sellos del proyecto
       </Link>
+      <Link
+        className='btn-secondary w-full mt-2 text-center text-xs'
+        href={`/admin/medios/proyecto/${project.id}`}
+      >
+        Editar multimedia
+      </Link>
       <button className='btn-danger w-full mt-2' onClick={onClickDeleteProject}>
         {isSubmitting ? <LoaderButton /> : 'Borrar proyecto'}
       </button>

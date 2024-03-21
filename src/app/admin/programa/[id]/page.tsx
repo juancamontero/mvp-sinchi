@@ -6,12 +6,23 @@ import {
   getProyectoByIdSimple,
 } from '@/actions'
 import { LineaForm, ProgramaForm, ProjectForm, TitleAdmin } from '@/admin'
+import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 
 interface Props {
   params: {
     id: string
   }
+}
+
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params
+  const programa = id === 'new' ? null : await getProgramaByIdForm(Number(id))
+
+  const title = id === 'new' ? 'Nuevo programa' : `Edición | ${programa?.preTitle}`
+
+  return { title }
 }
 
 export default async function ProgramaAdminPage({ params }: Props) {

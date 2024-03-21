@@ -77,7 +77,7 @@ export const CreateUpdateSellosForm = ({ sello }: Props) => {
         </label>
         <input
           className={`${styles['form-input']}`}
-          placeholder='Aliado - Nombre a mostrar si no existe la imagen (min:3 caracteres,  max:150 caracteres)'
+          placeholder='Sello - Nombre a mostrar si no existe la imagen (min:3 caracteres,  max:150 caracteres)'
           {...register('name', {
             required: true,
             minLength: 3,

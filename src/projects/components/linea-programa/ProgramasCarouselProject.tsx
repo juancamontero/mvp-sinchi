@@ -17,6 +17,8 @@ export const ProgramasCarouselProject = async ({ programa }: Props) => {
         name={name}
         baseUrl={`/programa/${id}`}
         proyectos={proyectos}
+        preTitle={programa.preTitle}
+        baseColor={programa.baseColor}
       />
     </>
   )

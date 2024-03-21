@@ -81,7 +81,7 @@ export const MapaForm = ({ proyectoId, mapa }: Props) => {
       formData.append('image', data.image[0])
     }
 
-    const { ok } = await createUpdateMapa(formData)
+    const { ok, error } = await createUpdateMapa(formData)
 
     if (ok) {
       router.replace(`/admin/mapas/proyecto/${proyectoId}`)
@@ -89,6 +89,8 @@ export const MapaForm = ({ proyectoId, mapa }: Props) => {
       setValue('order', 0)
       setValue('title', '')
       setValue('subTitle', '')
+    } else {
+      alert( `Error al crear el mapa | ${error}`)
     }
  
   }
@@ -103,21 +105,21 @@ export const MapaForm = ({ proyectoId, mapa }: Props) => {
       {/* TITLE */}
       <div className='flex flex-col gap-2 items-stretch w-full'>
       <label htmlFor='title' className={`${styles['form-label']}`}>
-          Título del mapa (min:3 caracteres, max:50 caracteres)
+          Título del mapa (min:3 caracteres, max:100 caracteres)
         </label>
         <input
           className={`${styles['form-input']}`}
-          placeholder='Título del mapa (min:3 caracteres,  max:50 caracteres)'
+          placeholder='Título del mapa (min:3 caracteres,  max:100 caracteres)'
           type='text'
           {...register('title', {
             required: false,
             minLength: 3,
-            maxLength: 50,
+            maxLength: 100,
           })}
         />
         {errors.title && (
           <span className={styles['form-error']}>
-            Mínimo 3, Máximo 50 caracteres
+            Mínimo 3, Máximo 100 caracteres
           </span>
         )}
 

@@ -36,7 +36,7 @@ export const UploadImage = () => {
     setIsLoading(true)
     const formData = new FormData()
     formData.append('image', data.image[0])
-    console.log(formData)
+   
 
     await uploadImagesFullProcess(formData)
     setIsLoading(false)

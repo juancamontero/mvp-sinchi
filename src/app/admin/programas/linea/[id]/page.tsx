@@ -26,7 +26,7 @@ export default async function LineaProgramasPage({ params }: Props) {
     linea?.Programa.map((programa) => {
       return programa.id
     }) ?? []
-  console.log(lineaToProgramaArray)
+
 
   return (
     <div className='pageDefault w-full'>

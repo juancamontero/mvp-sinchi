@@ -76,7 +76,7 @@ const aliadoSchema = z.object({
     .transform((val) => Number(val))
     .optional()
     .nullable(),
-  name: z.string().min(3).max(50),
+  name: z.string().min(3).max(100),
 })
 export const createUpdateConvenio = async (formData: FormData) => {
   const data = Object.fromEntries(formData)

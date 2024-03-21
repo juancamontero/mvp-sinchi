@@ -2,8 +2,8 @@ import { getAllSellosForm } from '@/actions'
 import { SellosForm, TitleAdmin } from '@/admin'
 
 export const metadata = {
-  title: 'Aliados | Administración',
-  description: 'Aliados | Administración',
+  title: 'Sellos | Administración',
+  description: 'Sellos | Administración',
 }
 
 export default async function AdminSellosPage() {

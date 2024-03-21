@@ -65,8 +65,8 @@ const indicadorSchema = z.object({
     .nullable(),
   proyectoId: z.coerce.number().transform((val) => Number(val)),
   order: z.coerce.number().transform((val) => Number(val)),
-  title: z.string().min(3).max(50),
-  subTitle: z.string().min(3).max(100),
+  title: z.string().min(3).max(100),
+  subTitle: z.string().max(100).optional().nullable(),
 })
 
 export const createUpdateIndicador = async (formData: FormData) => {
