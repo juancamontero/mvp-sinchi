@@ -188,8 +188,7 @@ export const getProyectoById = async (id: number) => {
       },
     })
 
-
-
+    
     return proyecto
   } catch (error) {
     throw new Error('getProyectoById' + error)
