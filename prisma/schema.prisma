@@ -1,9 +1,14 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["relationJoins"]
+  binaryTargets   = ["native", "linux-musl", "rhel-openssl-1.0.x", "linux-musl-openssl-3.0.x"]
+
+  // * https://www.prisma.io/docs/orm/prisma-client/deployment/caveats-when-deploying-to-aws-platforms 
+  // * https://www.prisma.io/docs/orm/prisma-client/deployment/deploy-to-a-different-os
+  // engineType      = "binary"
   // binaryTargets   = ["native"]
   // binaryTargets   = ["native", "rhel-openssl-1.0.x"]
-  // binaryTargets   = ["native", "linux-musl-openssl-3.0.x"]
+  // binaryTargets   = ["native", "linux-musl-openssl-3.0.x"
 }
 
 datasource db {
@@ -110,11 +115,11 @@ model Imagen {
   url String
 
   // relations
-  Convenio   Convenio[]
-  Proyecto   Proyecto[]
-  Sello      Sello[]
-  Programa   Programa[]
-  Linea      Linea[]
+  Convenio Convenio[]
+  Proyecto Proyecto[]
+  Sello    Sello[]
+  Programa Programa[]
+  Linea    Linea[]
 }
 
 model ImagenIndicadores {
