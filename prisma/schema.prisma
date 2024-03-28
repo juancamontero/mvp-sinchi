@@ -7,7 +7,7 @@ generator client {
   // * https://www.prisma.io/docs/orm/prisma-client/deployment/caveats-when-deploying-to-aws-platforms 
   // * https://www.prisma.io/docs/orm/prisma-client/deployment/deploy-to-a-different-os
   // engineType      = "binary"
-  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
   // binaryTargets   = ["native", "rhel-openssl-1.0.x"]
   // binaryTargets   = ["native", "linux-musl-openssl-3.0.x"
 }
