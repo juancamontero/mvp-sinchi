@@ -115,7 +115,6 @@ model Imagen {
   Sello      Sello[]
   Programa   Programa[]
   Linea      Linea[]
-  proyectoId Int?
 }
 
 model ImagenIndicadores {
