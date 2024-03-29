@@ -1,9 +1,6 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["relationJoins"]
-  // binaryTargets   = ["native"]
-  // binaryTargets   = ["native", "rhel-openssl-1.0.x"]
-  // binaryTargets   = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
@@ -11,111 +8,94 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum MediaType {
-  image
-  video
-}
-
 model Convenio {
-  id       Int       @id @default(autoincrement())
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  createAt DateTime?  @default(now())
+  updateAt DateTime?  @updatedAt
   idImagen Int?
-  name     String    @unique
-  createAt DateTime? @default(now())
-  updateAt DateTime? @updatedAt
-
-  //relation
-
   imagen   Imagen?    @relation(fields: [idImagen], references: [id])
   Proyecto Proyecto[] @relation("ConvenioToProyecto")
 }
 
 model Autor {
   id       Int        @id @default(autoincrement())
-  createAt DateTime?  @default(now())
-  updateAt DateTime?  @updatedAt
   name     String
   email    String
+  createAt DateTime?  @default(now())
+  updateAt DateTime?  @updatedAt
   Proyecto Proyecto[]
 }
 
 model Region {
   id       Int        @id @default(autoincrement())
+  name     String     @unique
   createAt DateTime?  @default(now())
   updateAt DateTime?  @updatedAt
-  name     String     @unique
   Proyecto Proyecto[] @relation("ProyectoToRegion")
 }
 
 model Tag {
   id       Int        @id @default(autoincrement())
+  name     String     @unique
   createAt DateTime?  @default(now())
   updateAt DateTime?  @updatedAt
-  name     String     @unique
   Proyecto Proyecto[] @relation("ProyectoToTag")
 }
 
 model Sello {
-  id       Int       @id @default(autoincrement())
-  idImagen Int?
-  createAt DateTime? @default(now())
-  updateAt DateTime? @updatedAt
+  id       Int        @id @default(autoincrement())
   order    Int
-  name     String    @unique
-
-  // relations
-  Proyecto Proyecto[] @relation("ProyectoToSello")
+  name     String     @unique
+  createAt DateTime?  @default(now())
+  updateAt DateTime?  @updatedAt
+  idImagen Int?
   imagen   Imagen?    @relation(fields: [idImagen], references: [id])
+  Proyecto Proyecto[] @relation("ProyectoToSello")
 }
 
 model Programa {
-  id          Int       @id @default(autoincrement())
-  idImagen    Int?
-  createAt    DateTime? @default(now())
-  updateAt    DateTime? @updatedAt
-  preTitle    String?
-  baseColor   String?
-  name        String    @unique @default("")
+  id          Int        @id @default(autoincrement())
+  name        String     @unique @default("")
   order       Int
-  description String?   @default("")
-
-  // relations
-  Project Proyecto[]
-  Linea   Linea[]    @relation("LineaToPrograma")
-  imagen  Imagen?    @relation(fields: [idImagen], references: [id])
+  description String?    @default("")
+  baseColor   String?
+  preTitle    String?
+  createAt    DateTime?  @default(now())
+  updateAt    DateTime?  @updatedAt
+  idImagen    Int?
+  imagen      Imagen?    @relation(fields: [idImagen], references: [id])
+  Project     Proyecto[]
+  Linea       Linea[]    @relation("LineaToPrograma")
 }
 
 model Linea {
-  id          Int       @id @default(autoincrement())
-  idImagen    Int?
-  createAt    DateTime? @default(now())
-  updateAt    DateTime? @updatedAt
-  order       Int       @default(autoincrement())
-  preTitle    String?
+  id          Int        @id @default(autoincrement())
+  order       Int        @default(autoincrement())
+  name        String     @unique @default("")
+  description String?    @default("")
+  purpose     String?    @default("")
+  millestone1 String?    @default("")
+  millestone2 String?    @default("")
+  millestone3 String?    @default("")
   baseColor   String?
-  name        String    @unique @default("")
-  description String?   @default("")
-  purpose     String?   @default("")
-  millestone1 String?   @default("")
-  millestone2 String?   @default("")
-  millestone3 String?   @default("")
-
-  // relations
-  Project  Proyecto[]
-  Programa Programa[] @relation("LineaToPrograma")
-  imagen   Imagen?    @relation(fields: [idImagen], references: [id])
+  preTitle    String?
+  createAt    DateTime?  @default(now())
+  updateAt    DateTime?  @updatedAt
+  idImagen    Int?
+  imagen      Imagen?    @relation(fields: [idImagen], references: [id])
+  Project     Proyecto[]
+  Programa    Programa[] @relation("LineaToPrograma")
 }
 
 model Imagen {
-  id  Int    @id @default(autoincrement())
-  url String
-
-  // relations
-  Convenio   Convenio[]
-  Proyecto   Proyecto[]
-  Sello      Sello[]
-  Programa   Programa[]
-  Linea      Linea[]
-  proyectoId Int?
+  id       Int        @id @default(autoincrement())
+  url      String
+  Convenio Convenio[]
+  Linea    Linea[]
+  Programa Programa[]
+  Proyecto Proyecto[]
+  Sello    Sello[]
 }
 
 model ImagenIndicadores {
@@ -124,8 +104,8 @@ model ImagenIndicadores {
   subTitle   String?
   url        String?
   order      Int?      @default(0)
-  Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
   proyectoId Int?
+  Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
 }
 
 model MapasUbicacion {
@@ -133,9 +113,9 @@ model MapasUbicacion {
   title      String?
   subTitle   String?
   url        String?
+  proyectoId Int?
   order      Int?      @default(0)
   Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
-  proyectoId Int?
 }
 
 model ImagenDescripcion {
@@ -143,9 +123,9 @@ model ImagenDescripcion {
   title      String?
   subTitle   String?
   url        String?
+  proyectoId Int?
   order      Int?      @default(0)
   Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
-  proyectoId Int?
 }
 
 model ImagenAntecedentes {
@@ -153,9 +133,9 @@ model ImagenAntecedentes {
   title      String?
   subTitle   String?
   url        String?
+  proyectoId Int?
   order      Int?      @default(0)
   Proyecto   Proyecto? @relation(fields: [proyectoId], references: [id])
-  proyectoId Int?
 }
 
 model Multimedia {
@@ -165,37 +145,40 @@ model Multimedia {
   subTitle   String?
   url        String?
   order      Int?      @default(0)
-  Proyecto   Proyecto  @relation(fields: [proyectoId], references: [id])
   proyectoId Int
+  Proyecto   Proyecto  @relation(fields: [proyectoId], references: [id])
 
   @@index([mediaType])
 }
 
 model Proyecto {
-  id               Int       @id @default(autoincrement())
-  createAt         DateTime? @default(now())
-  updateAt         DateTime? @updatedAt
-  idLinea          Int?
-  idPrograma       Int?
-  idAtutor         Int?
-  idImagen         Int?
-  roleInvestigador String?
-  equipo           String?
-  completed        Boolean   @default(false)
-  year             Int       @default(2022)
-  name             String
-  objetivo         String?
-  products         String?
-  places           String?
-  importancia      String?
-  pertinencia      String?
-  impacto          String?
-  antecedentes     String?
-  descripcion      String?
-  actores          String?
-  beneficiarios    String?
-
-  // relations
+  id                   Int                  @id @default(autoincrement())
+  idLinea              Int?
+  idPrograma           Int?
+  idAtutor             Int?
+  completed            Boolean              @default(false)
+  year                 Int                  @default(2022)
+  name                 String
+  objetivo             String?
+  products             String?
+  places               String?
+  impacto              String?
+  importancia          String?
+  pertinencia          String?
+  createAt             DateTime?            @default(now())
+  updateAt             DateTime?            @updatedAt
+  equipo               String?
+  idImagen             Int?
+  actores              String?
+  beneficiarios        String?
+  descripcion          String?
+  roleInvestigador     String?
+  antecedentes         String?
+  imagenesAntecedentes ImagenAntecedentes[]
+  imagenesDescripcion  ImagenDescripcion[]
+  imagenesIndicadores  ImagenIndicadores[]
+  mapasUbicacion       MapasUbicacion[]
+  multimedias          Multimedia[]
   autor                Autor?               @relation(fields: [idAtutor], references: [id])
   imagen               Imagen?              @relation(fields: [idImagen], references: [id])
   linea                Linea?               @relation(fields: [idLinea], references: [id])
@@ -204,29 +187,22 @@ model Proyecto {
   regions              Region[]             @relation("ProyectoToRegion")
   sellos               Sello[]              @relation("ProyectoToSello")
   tags                 Tag[]                @relation("ProyectoToTag")
-  imagenesAntecedentes ImagenAntecedentes[]
-  imagenesDescripcion  ImagenDescripcion[]
-  imagenesIndicadores  ImagenIndicadores[]
-  mapasUbicacion       MapasUbicacion[]
-  multimedias          Multimedia[]
 }
 
-// * AUTH JS
 model Account {
   id                String  @id @default(uuid())
   userId            String
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -242,12 +218,12 @@ model Session {
 model User {
   id            String    @id @default(uuid())
   name          String?
-  password      String?
-  roles         String[]  @default(["user"])
-  isActive      Boolean   @default(true)
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  isActive      Boolean   @default(true)
+  roles         String[]  @default(["user"])
+  password      String?
   accounts      Account[]
   sessions      Session[]
 }
@@ -258,4 +234,9 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+enum MediaType {
+  image
+  video
 }
