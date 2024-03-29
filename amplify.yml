@@ -9,7 +9,7 @@ frontend:
         - env | grep -e DATABASE_URL -e CLOUDINARY_URL >> .env.production
         - npx prisma migrate deploy
         - npx prisma generate
-        - npm run build
+        - npm run build:simple
   artifacts:
     baseDirectory: .next
     files:
