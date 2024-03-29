@@ -39,6 +39,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 # RUN npx prisma migrate deploy
 RUN npx prisma generate
+RUN npx prisma migrate dev 
 RUN corepack enable pnpm && pnpm run build:simple
 
 # Production image, copy all the files and run next
