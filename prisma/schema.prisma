@@ -1,3 +1,7 @@
+// * https://www.prisma.io/docs/orm/prisma-client/deployment/caveats-when-deploying-to-aws-platforms 
+// * https://www.prisma.io/docs/orm/prisma-client/deployment/deploy-to-a-different-os
+// binaryTargets   = ["native", "linux-musl", "rhel-openssl-1.0.x", "linux-musl-openssl-3.0.x"]
+
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["relationJoins"]

@@ -1,0 +1,61 @@
+FROM node:20.10-bullseye-slim as base
+
+# Install dependencies only when needed
+FROM base AS deps
+WORKDIR /workspace
+
+# This is necessary to run sharp
+RUN npm install -g --arch=x64 --platform=linux --libc=glibc sharp@0.33.0-rc.2
+
+# Other dependencies...
+# Install dependencies based on the preferred package manager
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
+
+
+# Production image, copy all the files and run Next.js
+FROM base AS runner
+WORKDIR /workspace
+
+ENV NODE_ENV production
+# ENV NEXT_TELEMETRY_DISABLED 1
+# Path to global installation of sharp
+ENV NEXT_SHARP_PATH=/usr/local/lib/node_modules/sharp
+
+# Copy dependencies
+COPY --from=deps --chown=nextjs:nodejs /usr/local/lib/node_modules/sharp /usr/local/lib/node_modules/sharp
+RUN addgroup --system --gid 1001 nodejs && \ 
+    adduser --system --uid 1001 nextjs
+    
+# Set the correct permission for prerender cache
+RUN mkdir .next && \    
+    chown nextjs:nodejs .next && \    
+    mkdir -p ./apps/site/.next && \    
+    chown nextjs:nodejs ./apps/site/.next
+
+# Copy Next.js built artifacts
+COPY --chown=nextjs:nodejs ./apps/site/.next/standalone ./
+COPY --chown=nextjs:nodejs ./apps/site/.next/static ./.next/static
+COPY --chown=nextjs:nodejs ./apps/site/.next/static ./apps/site/.next/static
+
+# Include public directory
+
+COPY ./apps/site/public ./apps/site/public
+
+
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+
+# server.js is created by next build from the standalone output
+# https://nextjs.org/docs/pages/api-reference/next-config-js/output
+# CMD HOSTNAME="0.0.0.0" node server.js
+CMD ["node", "server.js"]
