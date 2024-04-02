@@ -1,14 +1,17 @@
+'use server'
+
 import bcrypt from 'bcryptjs'
 
 import prisma from '@/lib/prisma'
 export const signInEmailPassword = async (email: string, password: string) => {
   //sino recibo credenciales
+  
   if (!email || !password) {
     throw new Error('Email and password are required')
   }
 
   const user = await prisma.user.findUnique({ where: { email } })
-
+  console.log(user)
   // si no lo encuentro voy a crearlo
   if (!user) {
     // * create new

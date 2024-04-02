@@ -10,6 +10,8 @@ export const {
   handlers: { GET, POST },
   auth,
 } = NextAuth({
+  secret: process.env.AUTH_SECRET,
+  basePath: '/api/auth',
   trustHost: true,
   providers: [
     CredentialsProvider({
@@ -31,13 +33,15 @@ export const {
           placeholder: '_________',
         },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
+        console.log(credentials)
         // Add logic here to look up the user from the credentials supplied
 
         const user = await signInEmailPassword(
           credentials.email as string,
           credentials.password as string
         )
+        console.log(user)
 
         if (user) {
           // Any object returned will be saved in `user` property of the JWT
@@ -56,6 +60,7 @@ export const {
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
+
       return true
     },
     async jwt({ token, account, user, profile }) {
@@ -75,12 +80,16 @@ export const {
     },
     async session({ session, token, user }) {
       if (session && session.user) {
-        session.user.roles = token.roles
-        session.user.id = token.id as string
+        session.user.roles = user.roles
+        session.user.id = user.id as string
       }
       // console.log({ session })
 
       return session
     },
+    // async redirect({url, baseUrl}) {
+    //     return baseUrl
+    // },
+    
   },
 })
