@@ -11,7 +11,7 @@ export const {
   auth,
 } = NextAuth({
   secret: process.env.AUTH_SECRET,
-  basePath: '/api/auth',
+  // basePath: '/api/auth',
   trustHost: true,
   providers: [
     CredentialsProvider({
@@ -34,7 +34,7 @@ export const {
         },
       },
       async authorize(credentials) {
-        console.log(credentials)
+        // console.log(credentials)
         // Add logic here to look up the user from the credentials supplied
 
         const user = await signInEmailPassword(

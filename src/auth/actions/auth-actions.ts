@@ -11,7 +11,7 @@ export const signInEmailPassword = async (email: string, password: string) => {
   }
 
   const user = await prisma.user.findUnique({ where: { email } })
-  console.log(user)
+  // console.log(user)
   // si no lo encuentro voy a crearlo
   if (!user) {
     // * create new
