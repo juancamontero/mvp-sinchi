@@ -6,7 +6,7 @@ frontend:
         - npm install
     build:
       commands:
-        - env | grep -e DATABASE_URL -e CLOUDINARY_URL -e AUTH_SECRET >> .env.production
+        - env | grep -e DATABASE_URL -e CLOUDINARY_URL -e AUTH_SECRET -e AUTH_URL>> .env.production
         - npx prisma migrate deploy
         - npx prisma generate
         - npm run build:simple
