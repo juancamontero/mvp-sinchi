@@ -3,13 +3,13 @@
 import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 
-export const sleep = (seconds: number = 0): Promise<boolean> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true)
-    }, seconds * 1000)
-  })
-}
+// export const sleep = (seconds: number = 0): Promise<boolean> => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(true)
+//     }, seconds * 1000)
+//   })
+// }
 
 export const getLineaById = async (id: number) => {
   try {
