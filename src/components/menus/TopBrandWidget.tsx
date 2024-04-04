@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { GoProjectRoadmap } from 'react-icons/go'
 
 interface Props {
   widgetTitle?: string
@@ -24,6 +23,7 @@ export const TopBrandWidget = ({
           alt={'Logo SINCHI'}
           height={42}
           width={28}
+          className='w-auto'
         />
 
         <h1 className='text-left text-base lg:text-3xl font-light text-primary-100 leading-tight tracking-tight'>

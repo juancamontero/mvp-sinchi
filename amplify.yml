@@ -7,8 +7,8 @@ frontend:
     build:
       commands:
         - env | grep -e DATABASE_URL -e CLOUDINARY_URL -e AUTH_URL>> .env.production
-        - npx prisma migrate deploy
         - npx prisma generate
+        - npx prisma migrate deploy
         - npm run build:simple
   artifacts:
     baseDirectory: .next
