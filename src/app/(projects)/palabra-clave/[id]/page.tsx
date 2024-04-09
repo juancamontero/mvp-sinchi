@@ -39,14 +39,15 @@ export default async function TagPage({ params }: Props) {
   return (
     <main className={`pageDefault`}>
       <CustomHeroBanner
-        preTitle={`${proyectos.length}` ?? ''}
+        preTitle={`Palabra clave: `}
         title={tag?.name ?? 'PALABRA CLAVE'}
-        postTitle='Palabra clave'
+        postTitle={`${proyectos.length} proyectos` ?? ''}
       />
-
-      <Suspense fallback={<LoaderDefault />}>
-        <ProjectsCarousel proyectos={proyectos} />
-      </Suspense>
+      <section className='h-full flex flex-col justify-center items-center bg-bg-300 w-full'>
+        <Suspense fallback={<LoaderDefault />}>
+          <ProjectsCarousel proyectos={proyectos} />
+        </Suspense>
+      </section>
     </main>
   )
 }

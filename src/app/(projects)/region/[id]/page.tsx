@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const region = await getRegionById(Number(id))
 
     return {
-      title: `${region?.name ?? ''} |Proyectos`,
+      title: `${region?.name ?? ''} | Proyectos`,
       description: `Proyectos en el departamento ${region?.name ?? ''}`,
     }
   } catch (error) {
@@ -39,13 +39,15 @@ export default async function RegionPage({ params }: Props) {
   return (
     <main className={`pageDefault`}>
       <CustomHeroBanner
-        preTitle={`${proyectos.length} proyectos` ?? ''}
+        postTitle={`${proyectos.length} proyectos` ?? ''}
+        preTitle='Proyectos en'
         title={region?.name ?? 'REGION'}
       />
-
-      <Suspense fallback={<LoaderDefault />}>
-        <ProjectsCarousel proyectos={proyectos} />
-      </Suspense>
+      <section className='h-full flex flex-col justify-center items-center bg-bg-300 w-full'>
+        <Suspense fallback={<LoaderDefault />}>
+          <ProjectsCarousel proyectos={proyectos} />
+        </Suspense>
+      </section>
     </main>
   )
 }

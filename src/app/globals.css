@@ -79,24 +79,24 @@ p {
 }
 
 .long-html h1 {
-  @apply text-3xl leading-relaxed  font-bold
+  @apply text-3xl leading-tight  font-bold
 }
 
 .long-html h1 span {
-  @apply text-3xl leading-relaxed font-bold
+  @apply text-3xl leading-tight font-bold
 }
 
 .long-html h2 {
-  @apply text-2xl leading-relaxed font-semibold
+  @apply text-2xl leading-tight font-semibold
 }
 .long-html h2 span {
-  @apply text-2xl leading-relaxed font-semibold
+  @apply text-2xl leading-tight font-semibold
 }
 .long-html h3 {
-  @apply text-xl leading-relaxed  font-medium
+  @apply text-xl leading-tight  font-medium
 }
 .long-html h3 span {
-  @apply text-xl leading-relaxed font-medium
+  @apply text-xl leading-tight font-medium
 }
 
 

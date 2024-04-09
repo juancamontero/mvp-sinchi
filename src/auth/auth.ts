@@ -11,7 +11,7 @@ export const {
   handlers: { GET, POST },
   auth,
 } = NextAuth({
-  secret: '49f4886ff77c184a3c0334df655e229a',
+  secret: 'f343e2c5d6ca9de453a9a01f8411dc8a',
   // basePath: '/api/auth',
   trustHost: true,
   providers: [

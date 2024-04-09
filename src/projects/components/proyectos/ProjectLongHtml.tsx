@@ -13,7 +13,7 @@ interface Props {
     return (
       <div
         dangerouslySetInnerHTML={{ __html: html }}
-        className='text-base text-left text-text-200 leading-snug sinchi-list overflow-y-auto lg:max-h-[35vh] sm:max-h-[45vh] scroll-sinchi long-html'
+        className='text-base text-left text-text-200 leading-snug sinchi-list overflow-y-auto lg:max-h-[65vh] sm:max-h-[45vh] scroll-sinchi long-html px-1'
         style={{
           WebkitOverflowScrolling: 'touch',
           scrollbarColor: `${scrollBarColor} rgba(255, 255, 255, 0)`,

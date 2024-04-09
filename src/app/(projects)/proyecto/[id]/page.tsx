@@ -41,7 +41,9 @@ export default async function ProjectPage({ params }: Props) {
   })
 
   return (
-    <main className={`flex-1 w-full relative overflow-y-auto scroll-smooth lg:snap-y z-40`}>
+    <main
+      className={`flex-1 w-full relative overflow-y-auto scroll-smooth lg:snap-y z-40`}
+    >
       {/* <main className={`projectPage relative h-full`}> */}
       {/* banner start */}
       <ProjectBanner
@@ -55,12 +57,15 @@ export default async function ProjectPage({ params }: Props) {
       />
 
       {/* ANTECEDENTES START*/}
-      <ProjectPageSection 
+      <ProjectPageSection
         className='bg-bg-200'
         arrowRef='#description'
         linkStyle='text-primary-100'
       >
-        <div id='antecedentes'  className='flex flex-col justify-start items-center  p-4 gap-4 w-full'>
+        <div
+          id='antecedentes'
+          className='flex flex-col justify-start items-center  p-4 gap-4 w-full'
+        >
           <h2 className='text-4xl font-bold text-primary-200 mb-2 text-left w-full'>
             Antecedentes
           </h2>
@@ -73,19 +78,31 @@ export default async function ProjectPage({ params }: Props) {
       </ProjectPageSection>
 
       {/* descripcion & Aliados START*/}
-      <ProjectPageSection 
-      className='bg-text-100'
-      arrowRef='#regiones'
-      linkStyle='text-bg-100'
+      <ProjectPageSection
+        className='bg-text-100'
+        arrowRef='#regiones'
+        linkStyle='text-bg-100'
       >
         <div
           id='description'
           className='flex flex-col justify-start items-start  p-2 gap-4 w-full text-bg-100'
         >
+          {/* {proyecto.descripcion && proyecto.descripcion?.length > 0 && (
+            <>
+              <h2 className='text-4xl font-bold mb-1 text-left w-full'>
+                Descripción
+              </h2>
+
+              <ProjectColumnsHtml
+                html={proyecto.descripcion}
+                scrollBarColor='#0A3030'
+              />
+            </>
+          )} */}
           <h2 className='text-4xl font-bold mb-1 text-left w-full'>
             Descripción
           </h2>
-          {/* <p>{proyecto.objetivo}</p> */}
+
           <ProjectColumnsHtml
             html={proyecto.descripcion}
             scrollBarColor='#0A3030'
@@ -99,12 +116,15 @@ export default async function ProjectPage({ params }: Props) {
       </ProjectPageSection>
 
       {/* LOCALIZACIÓN GEOGRÁFICA START*/}
-      <ProjectPageSection 
-      className='bg-text-200'
-      arrowRef='#justification'
-      linkStyle='text-accent-50'
+      <ProjectPageSection
+        className='bg-text-200'
+        arrowRef='#justification'
+        linkStyle='text-accent-50'
       >
-        <div id='regiones' className='flex flex-col justify-start items-start  py-8 gap-2 w-full text-accent-50'>
+        <div
+          id='regiones'
+          className='flex flex-col justify-start items-start  py-8 gap-2 w-full text-accent-50'
+        >
           <h2 className='text-4xl font-bold text-left w-full lg:mt-8'>
             Localización geográfica
           </h2>
@@ -118,22 +138,28 @@ export default async function ProjectPage({ params }: Props) {
       </ProjectPageSection>
 
       {/* JUSTIFICACIÓN */}
-      <ProjectPageSection 
-      className='bg-bg-400'
-      arrowRef='#objetivo'
-      linkStyle='text-primary-300'
+      <ProjectPageSection
+        className='bg-bg-400'
+        arrowRef='#objetivo'
+        linkStyle='text-primary-300'
       >
-        <div id='justification' className='flex flex-col justify-center items-start  p-4 gap-4 w-full text-primary-300'>
+        <div
+          id='justification'
+          className='flex flex-col justify-center items-start  p-4 gap-4 w-full text-primary-300  lg:max-h-[90vh]'
+        >
           <h2 className='text-4xl font-extrabold text-left w-full mb-2'>
             Justificación
           </h2>
 
-          <div className='grid lg:grid-cols-3 sm:grid-cols-1 gap-6 overflow-y-auto w-full lg:max-h-[80vh]'>
+          <div className='grid lg:grid-cols-3 sm:grid-cols-1 gap-6 overflow-y-auto w-full'>
             {/* importancia */}
             <div className='flex flex-col justify-start items-stretch gap-4'>
               <h3 className='text-3xl font-semibold'>Importancia</h3>
               {proyecto.importancia && (
-                <ProjectLongHtml html={proyecto.importancia} scrollBarColor='#DFDED9'/>
+                <ProjectLongHtml
+                  html={proyecto.importancia}
+                  scrollBarColor='#fff'
+                />
               )}
             </div>
 
@@ -141,7 +167,10 @@ export default async function ProjectPage({ params }: Props) {
             <div className='flex flex-col justify-start items-stretch gap-4'>
               <h3 className='text-3xl font-semibold'>Pertinencia</h3>
               {proyecto.pertinencia && (
-                <ProjectLongHtml html={proyecto.pertinencia} scrollBarColor='#DFDED9'/>
+                <ProjectLongHtml
+                  html={proyecto.pertinencia}
+                  scrollBarColor='#fff'
+                />
               )}
             </div>
 
@@ -149,7 +178,10 @@ export default async function ProjectPage({ params }: Props) {
             <div className='flex flex-col justify-start items-stretch gap-4'>
               <h3 className='text-3xl font-semibold'>Impacto</h3>
               {proyecto.impacto && (
-               <ProjectLongHtml html={proyecto.pertinencia} scrollBarColor='#DFDED9'/>
+                <ProjectLongHtml
+                  html={proyecto.pertinencia}
+                  scrollBarColor='#fff'
+                />
               )}
             </div>
           </div>
@@ -157,19 +189,22 @@ export default async function ProjectPage({ params }: Props) {
       </ProjectPageSection>
 
       {/* OBJETIVO + PRODUCTOS */}
-      <ProjectPageSection 
-      className='bg-accent-100'
-      arrowRef='#actores'
-      linkStyle='text-bg-100'
+      <ProjectPageSection
+        className='bg-accent-100'
+        arrowRef='#actores'
+        linkStyle='text-bg-100'
       >
-        <div id='objetivo' className='flex flex-col justify-center items-center  p-4 gap-4 w-full text-bg-100'>
+        <div
+          id='objetivo'
+          className='flex flex-col justify-center items-center  p-4 gap-4 w-full text-bg-100'
+        >
           <h2 className='text-4xl font-extrabold text-center w-full mb-2'>
             Objetivo general
           </h2>
           {proyecto.objetivo && (
             <div
               dangerouslySetInnerHTML={{ __html: proyecto.objetivo }}
-              className='text-base text-center leading-snug lg:w-1/3 w-full'
+              className='text-base text-center leading-snug lg:w-5/6 w-full long-html  overflow-y-auto'
               style={{}}
             />
           )}
@@ -187,26 +222,34 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* ACTORES + BENEFICIARIOS + DEPARTAMENTOS + PALABRAS CLAVE  */}
       <div
-      
         className={`lg:sticky lg:top-0  h-fit flex flex-col items-start justify-start  gap-1 w-full  bg-bg-150`}
       >
         {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR  + FOTOS TITLE*/}
-        <div id='actores' className='flex flex-col justify-start p-0 bg-bg-300 text-primary-200 w-full'>
+        <div
+          id='actores'
+          className='flex flex-col justify-start p-0 bg-bg-300 text-primary-200 w-full'
+        >
           {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR */}
           <div className='xBannerPaddings grid lg:grid-cols-3 sm:grid-cols-1 gap-4  w-full lg:h-[50vh]  pt-12'>
             {/* Actores */}
-            <div className='flex flex-col justify-start items-stretch gap-4'>
+            <div className='flex flex-col justify-start items-stretch gap-4 lg:max-h-[45vh]'>
               <h3 className='text-4xl font-semibold'>Actores</h3>
               {proyecto.actores && (
-               <ProjectLongHtml html={proyecto.actores} scrollBarColor='#E9E8E4'/>
+                <ProjectLongHtml
+                  html={proyecto.actores}
+                  scrollBarColor='#E9E8E4'
+                />
               )}
             </div>
 
             {/* Beneficiarios */}
-            <div className='flex flex-col justify-start items-stretch gap-4'>
+            <div className='flex flex-col justify-start items-stretch gap-4 lg:max-h-[45vh]'>
               <h3 className='text-4xl font-semibold'>Beneficiarios</h3>
               {proyecto.beneficiarios && (
-                <ProjectLongHtml html={proyecto.beneficiarios} scrollBarColor='#E9E8E4'/>
+                <ProjectLongHtml
+                  html={proyecto.beneficiarios}
+                  scrollBarColor='#E9E8E4'
+                />
               )}
             </div>
             {/* Imagen indicadores */}

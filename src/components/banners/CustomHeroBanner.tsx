@@ -17,30 +17,32 @@ export const CustomHeroBanner = ({
 }: Props) => {
   return (
     <div
-      className={`xBannerPaddings sm:py-8 py-4 mx-auto w-full  lg:py-10 bg-accent-100 `}
+      className={`py-2 mx-auto w-full  bg-bg-300 my-1`}
     >
       {/* main content starts */}
-      <div className='grid gap-5 row-gap-8 sm:grid-cols-2'>
-        {/* left side starts */}
-        <div className='flex flex-col justify-center max-w-xl gap-2'>
-          <h2 className={`titleBanner text-text-200`}>{preTitle}</h2>
-          <h2 className={`titleBanner text-accent-200 `}>{title}</h2>
-          <h2 className={`titleBanner text-text-100 `}>{postTitle}</h2>
 
-          <p className='text-base text-text-200 md:text-lg'>{description}</p>
-        </div>
-
-        {/* right side starts */}
-        <div className='relative sm:block hidden  my-auto'>
+      <div className='flex flex-col justify-center items-center'>
+        <div className='rounded-full bg-bg-100 w-24 h-24 p-1 flex flex-col justify-center items-center'>
           <Image
-            src={urlImage}
-            alt='Bosque amazónico'
-            width={450}
-            height={400}
-            className='mx-auto'
+            src='/logo_nav.png'
+            alt='Logo instituto SINCHI'
+            width={48}
+            height={48}
+            className='m-auto'
           />
         </div>
+        <div className='max-w-xl'>
+          <h2 className={`titleBanner text-center text-primary-200 leading-none mt-1`}>
+          {preTitle}{` `}{title}
+          </h2>
+          <h3 className='text-base text-text-100 text-center font-light leading-tight mt-2'>
+            {postTitle}
+          </h3>
+        </div>
       </div>
+
+      {/* rounded logo starts*/}
+
       {/* todo: buscador */}
       {/* <div className='w-1/4 bg-bg-100 mt-2 sm:mt-4 lg:mt-6 mx-auto'>
         <h1>buscar</h1>

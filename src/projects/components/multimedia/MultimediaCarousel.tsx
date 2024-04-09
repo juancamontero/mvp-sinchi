@@ -101,7 +101,7 @@ export const MultimediaCarousel = ({ multimedias }: Props) => {
     >
       <div className='w-full'>
         <div
-          className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 xBannerPaddings  mt-1  scroll-container-sinchi-carousel`}
+          className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 xBannerPaddings  mt-1  scroll-container-sinchi-carousel z-50`}
           ref={scrollContainerRef}
         >
           <div className={`flex flex-row flex-nowrap gap-3 mt-2 mb-2 w-fit`}>
