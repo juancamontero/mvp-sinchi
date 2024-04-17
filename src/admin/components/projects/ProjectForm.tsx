@@ -468,6 +468,12 @@ export const ProjectForm = ({
             theme='snow'
             value={watch('objetivo')}
             onChange={(content) => onHtmlChange('objetivo', content)}
+            // modules={{
+            //   toolbar: {
+            //     container: [['bold', 'italic', 'underline', 'strike'],  [{ 'header': 1 }, { 'header': 2 }, , { 'header': 3 }],               // custom button values
+            //     [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }], ]
+            //   },
+            // }}
           />
           <HtmlContentPreview htmlContent={watch('objetivo')} />
         </AccordionForForm>

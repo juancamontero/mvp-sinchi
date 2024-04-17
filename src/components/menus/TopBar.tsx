@@ -16,9 +16,9 @@ const menuItems = [
   { text: 'Inicio | Líneas de investigación', path: '/', icon: <GoHome /> },
   // { text: 'Líneas de investigación', path: '/', icon: <GiArchiveResearch /> },
   { text: 'Programas', path: '/programas', icon: <CiLineHeight />},
-  { text: 'Investigadores', path: '/investigadores', icon: <IoPersonOutline />},
+  // { text: 'Investigadores', path: '/investigadores', icon: <IoPersonOutline />},
   { text: 'Regiones', path: '/regiones', icon: <TbWorldPin />},
-  { text: 'Convenios / Asociados', path: '/convenios', icon: <PiHandshakeLight /> },
+  // { text: 'Convenios / Asociados', path: '/convenios', icon: <PiHandshakeLight /> },
   { text: 'Palabras clave', path: '/palabras-clave', icon: <IoMdBook />  },
 ]
 
@@ -48,7 +48,7 @@ export const TopBar = () => {
           <div className='flex space-x-2'>
             
 
-            <Link href='/search' className='flex items-center justify-center w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200' title='Buscador'>
+            <Link href='/search' className='text-bg-200 flex items-center justify-center w-10 h-10 rounded-xl border bg-bg-200 focus:bg-gray-100 active:bg-gray-200' title='Buscador'>
               <CiSearch />
             </Link>
             
