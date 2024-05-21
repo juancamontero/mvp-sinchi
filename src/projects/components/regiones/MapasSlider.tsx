@@ -25,7 +25,7 @@ export const MapasSlider = ({ mapas }: Props) => {
   }
   if (mapas.length === 0) return
   return (
-    <div className='lg:h-[80vh] h-[40vh]  w-full'>
+    <div className='lg:h-[80vh] h-[40vh]  w-full p-0'>
       <div className='relative mx-auto w-full overflow-hidden  p-2 sm:p-4 h-full'>
         {/* Mapa index */}
         {mapas.length > 1 && (
@@ -52,30 +52,30 @@ export const MapasSlider = ({ mapas }: Props) => {
           </button>
         )}
 
-        <div className='relative w-full h-full '>
+        <div className='relative w-full h-full p-0'>
           {mapas.map((mapa, index) => (
             <div
               key={mapa.id}
               style={{ display: index + 1 === currentIndex ? 'block' : 'none' }}
-              className={`absolute top-0 w-full h-full  flex-col justify-evenly transition duration-500 `}
+              className={`absolute top-0 w-full h-full  flex-col justify-start transition duration-500 `}
             >
               <Image
                 src={mapa.url ?? '/images/placeholder-img.jpeg'}
                 alt='image'
-                className={`object-contain  mx-auto transition duration-1000 w-full  ${
-                  index + 1 === currentIndex ? 'h-5/6' : 'h-0 blur-sm'
+                className={`object-contain  mx-auto transition duration-1000 w-full p-0 ${
+                  index + 1 === currentIndex ? 'h-full lg:h-[90%]' : 'h-0 blur-sm'
                 }`}
                 width={1200}
                 height={800}
               />
-              <div className='flex flex-col gap-0 justify-end items-center mt-2'>
+              {/* <div className='flex flex-col gap-0 justify-end items-center mt-2'>
                 <h4 className='font-bold lg:text-xl text-base w-full text-center text-bg-100'>
                   {mapa.title}
                 </h4>
                 <h5 className='font-normal lg:text-base text-sm w-full text-center text-bg-100'>
                   {mapa.subTitle}
                 </h5>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

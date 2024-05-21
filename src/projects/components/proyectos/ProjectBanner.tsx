@@ -63,13 +63,15 @@ export const ProjectBanner = ({
             </h3>
           )}
           {/*MAIL INVESTIGADOR */}
-          <p className='text-center text-base text-bg-100  lg:leading-none leading-tight mt-1 font-light'>
-            {autor?.email}
-          </p>
+          <Link href={`mailto:${autor?.email}`}>
+            <p className='text-center text-base text-bg-100  lg:leading-none leading-tight mt-1 font-light'>
+              {autor?.email}
+            </p>
+          </Link>
           {/* EQUIPO */}
           {equipo && (
-            <h4 className='text-center text-base text-bg-100  lg:leading-none leading-tight mt-1 font-light'>
-              <span className='font-medium'>Equipo técnico SINCHI: </span>
+            <h4 className='text-center text-base text-bg-100   lg:w-2/3 lg:leading-tight  leading-tight mt-1 font-thin'>
+              <span className='font-semibold'>Equipo técnico SINCHI: </span>
               {equipo}
             </h4>
           )}

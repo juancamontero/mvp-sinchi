@@ -101,7 +101,7 @@ export const MultimediaCarousel = ({ multimedias }: Props) => {
     >
       <div className='w-full'>
         <div
-          className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 xBannerPaddings  mt-1  scroll-container-sinchi-carousel z-50`}
+          className={`overflow-x-scroll w-full mx-auto snap-x snap-mandatory py-2 xBannerPaddings  mt-1  scroll-container-sinchi-carousel z-50 `}
           ref={scrollContainerRef}
         >
           <div className={`flex flex-row flex-nowrap gap-3 mt-2 mb-2 w-fit`}>
@@ -112,7 +112,7 @@ export const MultimediaCarousel = ({ multimedias }: Props) => {
             ))}
           </div>
         </div>
-        <div className='mx-auto flex flex-row justify-center gap-4  w-full p-4'>
+        <div className='mx-auto flex flex-row justify-center gap-4  w-full p-4 '>
           <button onClick={() => scrollByDirection('left')}>
             <span
               className={`text-left opacity-50 saturate-200 hover:opacity-100  text-primary-200`}
@@ -129,7 +129,7 @@ export const MultimediaCarousel = ({ multimedias }: Props) => {
             </span>
           </button>
         </div>
-
+ 
         <MultimediaModalSlider />
       </div>
     </Provider>

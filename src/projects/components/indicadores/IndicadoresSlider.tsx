@@ -53,7 +53,7 @@ export const IndicadoresSlider = ({ indicadores }: Props) => {
           </button>
         )}
 
-        <div className='relative w-full h-full '>
+        <div className='relative w-full lg:h-full min-h-[50vh]'>
           {indicadores.map((indicador, index) => (
             <div
               key={indicador.id}
@@ -64,17 +64,17 @@ export const IndicadoresSlider = ({ indicadores }: Props) => {
                 src={indicador.url ?? '/images/placeholder-img.jpeg'}
                 alt='image'
                 className='object-contain  mx-auto  transition-transform duration-300 h-5/6'
-                width={500}
-                height={500}
+                width={800}
+                height={800}
               />
-              <div className='flex flex-col justify-end items-center gap-0'>
+              {/* <div className='flex flex-col justify-end items-center gap-0'>
                 <h4 className='font-bold lg:text-xl text-base w-full text-center text-primary-200 leading-none'>
                   {indicador.title}
                 </h4>
                 <h5 className='font-normal lg:text-base text-sm w-full text-center text-primary-200'>
                   {indicador.subTitle}
                 </h5>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

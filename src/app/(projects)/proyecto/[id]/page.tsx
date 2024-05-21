@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params
   const proyecto = await getProyectoById(Number(id))
   if (!proyecto) return { title: 'No encontrado' }
-  return { title: proyecto.name }
+  return { title: `${id}|${proyecto.name}` }
 }
 
 export default async function ProjectPage({ params }: Props) {
@@ -128,11 +128,26 @@ export default async function ProjectPage({ params }: Props) {
           <h2 className='text-4xl font-bold text-left w-full lg:mt-8'>
             Localización geográfica
           </h2>
-          {/* Places */}
-          <p className='text-bg-100 lg:w-1/2  w-full'>{proyecto.places}</p>
-          {/* Map */}
-          <div className='flex-1  flex flex-col justify-start items-center my-auto w-full'>
-            <MapasSlider mapas={proyecto.mapasUbicacion ?? []} />
+          {/* DEPARTAMENTOS + PLACES + MAPA */}
+          <div className='flex flex-col justify-start items-stretch gap-4 lg:flex-row w-full'>
+            {/* departamentos + places */}
+            <div className='text-bg-100 lg:w-1/5 pt-4 w-full lg:pt-8'>
+              {/* Departamentos */}
+              {/* <h3 className='text-2xl font-bold text-left w-full'>
+                {proyecto.regions.length > 1 ? 'Departamentos' : 'Departamento'}
+              </h3> */}
+              <TermsGrid items={proyecto.regions} className='mr-2 leading-tight text-2xl font-bold'/>
+              {/* Places */}
+              <hr className='w-3/4 lg:w-full mt-3 mb-1' />
+              <p className='text-bg-100 text-sm  w-full font-light '>
+                {proyecto.places}
+              </p>
+            </div>
+
+            {/* Map */}
+            <div className=' flex flex-col justify-start items-center my-auto w-full  lg:w-4/5 '>
+              <MapasSlider mapas={proyecto.mapasUbicacion ?? []} />
+            </div>
           </div>
         </div>
       </ProjectPageSection>
@@ -198,14 +213,20 @@ export default async function ProjectPage({ params }: Props) {
           id='objetivo'
           className='flex flex-col justify-center items-center  p-4 gap-4 w-full text-bg-100'
         >
-          <h2 className='text-4xl font-extrabold text-center w-full mb-2'>
+          <h2 className='text-4xl font-extrabold text-left lg:w-5/6 w-full mb-2'>
             Objetivo general
           </h2>
           {proyecto.objetivo && (
             <div
               dangerouslySetInnerHTML={{ __html: proyecto.objetivo }}
-              className='text-base text-center leading-snug lg:w-5/6 w-full long-html  overflow-y-auto'
-              style={{}}
+              className='text-base text-left leading-snug lg:w-5/6 w-full long-html  overflow-y-auto lg:max-h-80'
+              style={{
+                WebkitOverflowScrolling: 'touch',
+                scrollbarColor: `#EB9B78 rgba(255, 255, 255, 0)`,
+                scrollbarWidth: 'auto',
+                columnFill: 'balance',
+                /* Add media query for mobile screens */
+              }}
             />
           )}
 
@@ -230,7 +251,7 @@ export default async function ProjectPage({ params }: Props) {
           className='flex flex-col justify-start p-0 bg-bg-300 text-primary-200 w-full'
         >
           {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR */}
-          <div className='xBannerPaddings grid lg:grid-cols-3 sm:grid-cols-1 gap-4  w-full lg:h-[50vh]  pt-12'>
+          <div className='xBannerPaddings grid lg:grid-cols-3 sm:grid-cols-1 gap-2  w-full lg:h-[50vh] h-fit pt-12'>
             {/* Actores */}
             <div className='flex flex-col justify-start items-stretch gap-4 lg:max-h-[45vh]'>
               <h3 className='text-4xl font-semibold'>Actores</h3>
@@ -243,7 +264,7 @@ export default async function ProjectPage({ params }: Props) {
             </div>
 
             {/* Beneficiarios */}
-            <div className='flex flex-col justify-start items-stretch gap-4 lg:max-h-[45vh]'>
+            <div className='flex flex-col justify-start items-stretch gap-4 lg:max-h-[45vh]  '>
               <h3 className='text-4xl font-semibold'>Beneficiarios</h3>
               {proyecto.beneficiarios && (
                 <ProjectLongHtml
@@ -253,18 +274,23 @@ export default async function ProjectPage({ params }: Props) {
               )}
             </div>
             {/* Imagen indicadores */}
-            <div className='flex flex-col justify-start items-stretch'>
+            <div className='flex flex-col justify-start items-stretch lg:max-h-[45vh] h-auto'>
               <IndicadoresSlider indicadores={proyecto.imagenesIndicadores} />
             </div>
           </div>
-          <h3 className='xBannerPaddings text-4xl font-semibold mt-2 mb-10'>
+        </div>
+
+        {/* INICIA MULTIMEDIA */}
+        <div className='flex flex-col justify-start items-center p-0 bg-bg-150 text-primary-200 w-full h-fit mt-4'>
+          <h3 className='xBannerPaddings text-4xl font-semibold mt-2 mb-10 text-left w-full'>
             Fotografías y videos
           </h3>
         </div>
+
         <MultimediaCarousel multimedias={proyecto.multimedias} />
 
         {/* FILA CON FLECHA ⬇️  */}
-        <div className='flex h-24 flex-col justify-center items-center bg-bg-300 w-full'>
+        <div className='flex h-24 flex-col justify-center items-center bg-bg-150 w-full'>
           <span
             className={`text-left opacity-50 saturate-200 hover:opacity-100  text-primary-200`}
           >
@@ -284,20 +310,28 @@ export default async function ProjectPage({ params }: Props) {
         {/* DEPARTAMENTOS   */}
         <div className='flex flex-col justify-start items-center  py-4 bg-bg-300 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full flex flex-col sm:flex-row gap-1 justify-start items-stretch'>
-            <h3 className='text-4xl font-semibold mr-8 leading-none'>
+            <h3 className='text-3xl font-semibold mr-8 leading-none'>
               Departamento (s)
             </h3>
-            <TermsGrid items={proyecto.regions} urlBase='/region' />
+            <TermsGrid
+              items={proyecto.regions}
+              urlBase='/region'
+              className='mr-2 leading-none text-xl pt-1'
+            />
           </div>
         </div>
 
         {/* PALABRAS CLAVE   */}
         <div className='flex flex-col justify-start items-center  py-4 bg-bg-150 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full flex flex-col sm:flex-row gap-1 justify-start items-stretch'>
-            <h3 className='text-4xl font-semibold mr-8 leading-none'>
+            <h3 className='text-3xl font-semibold mr-8 leading-none'>
               Palabras clave
             </h3>
-            <TermsGrid items={proyecto.tags} urlBase='/palabra-clave' />
+            <TermsGrid
+              items={proyecto.tags}
+              urlBase='/palabra-clave'
+              className='mr-2 leading-none text-xl pt-1'
+            />
           </div>
         </div>
       </div>

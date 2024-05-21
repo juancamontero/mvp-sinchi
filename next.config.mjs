@@ -27,6 +27,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.youtube.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'lh7-us.googleusercontent.com',
+      },
     ],
   },
 }

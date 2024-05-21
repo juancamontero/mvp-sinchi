@@ -15,11 +15,11 @@ import Link from 'next/link'
 const menuItems = [
   { text: 'Inicio | Líneas de investigación', path: '/', icon: <GoHome /> },
   // { text: 'Líneas de investigación', path: '/', icon: <GiArchiveResearch /> },
-  { text: 'Programas', path: '/programas', icon: <CiLineHeight />},
+  { text: 'Programas de investigación', path: '/programas', icon: <CiLineHeight />},
   // { text: 'Investigadores', path: '/investigadores', icon: <IoPersonOutline />},
-  { text: 'Regiones', path: '/regiones', icon: <TbWorldPin />},
+  // { text: 'Regiones', path: '/regiones', icon: <TbWorldPin />},
   // { text: 'Convenios / Asociados', path: '/convenios', icon: <PiHandshakeLight /> },
-  { text: 'Palabras clave', path: '/palabras-clave', icon: <IoMdBook />  },
+  // { text: 'Palabras clave', path: '/palabras-clave', icon: <IoMdBook />  },
 ]
 
 export const TopBar = () => {
