@@ -1,6 +1,6 @@
-'use client'
+// 'use client'
 
-import { useState } from 'react'
+// import { useState } from 'react'
 
 import {  CiLineHeight, CiSearch } from 'react-icons/ci'
 import { TopBrandWidget, VerticalMenu } from '..'
@@ -23,15 +23,15 @@ const menuItems = [
 ]
 
 export const TopBar = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  // const [isOpen, setIsOpen] = useState(false)
 
-  const onToggle = () => {
-    setIsOpen(!isOpen)
-  }
+  // const onToggle = () => {
+  //   setIsOpen(!isOpen)
+  // }
 
   return (
     <>
-      <div className='sticky z-50 top-0 h-16 bg-bg-200'>
+      <div className='sticky z-50 top-0  h-16 bg-bg-200'>
         <div className='px-6 flex items-center justify-between space-x-4 py-2'>
 
           {/* Hamburger menu starts */}
@@ -45,14 +45,14 @@ export const TopBar = () => {
           <TopBrandWidget />
 
           {/* right side starts */}
-          <div className='flex space-x-2'>
+      
             
 
-            <Link href='/search' className='absolute right-2 top-3 text-bg-200 flex items-center justify-center w-10 h-10 rounded-xl border bg-bg-200 focus:bg-gray-100 active:bg-gray-200' title='Buscador'>
+            <Link href='/search' className='absolute right-2 lg:top-3 top-3 text-bg-200 flex items-center justify-center w-10 h-10 rounded-xl border bg-bg-200 focus:bg-gray-100 active:bg-gray-200' title='Buscador'>
               <CiSearch />
             </Link>
             
-          </div>
+        
           {/* right side ends */}
         </div>
 

@@ -16,7 +16,7 @@ export const TopBrandWidget = ({
       <Link
         href={baseUrl}
         title='ir al inicio'
-        className='m-auto flex flex-row gap-3 justify-center items-center h-6 sm:h-fit'
+        className='m-auto flex flex-row gap-3 justify-center items-center h-12 sm:h-fit'
       >
         <Image
           src={'/logo_nav.png'}
