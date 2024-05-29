@@ -8,16 +8,30 @@
     margin: 12px;
   }
 
-  .productos ul {
+  .previewText ul {
     list-style-type: disc;
     margin: 24px;
   }
 
-  .productos ol {
+  .previewText ol {
     list-style-type: decimal;
     margin: 24px;
   }
   
-  .productos li::marker {
+  .previewText li::marker {
       color: black;
   }
+
+  .previewText h1 {
+    @apply text-2xl font-bold
+  }
+  .previewText h2 {
+    @apply text-xl font-semibold
+  }
+  .previewText h3 {
+    @apply text-base font-medium
+  }
+  .previewText p {
+    @apply text-sm
+  }
+

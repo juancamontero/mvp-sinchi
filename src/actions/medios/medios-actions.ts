@@ -24,7 +24,7 @@ export const getMediosByProjectId = async (idProject: number) => {
         },
       },
       orderBy: {
-        order: 'asc',
+        order: 'desc',
       },
     })
 

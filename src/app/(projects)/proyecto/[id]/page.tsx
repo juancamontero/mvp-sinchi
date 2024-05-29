@@ -173,7 +173,7 @@ export default async function ProjectPage({ params }: Props) {
               {proyecto.importancia && (
                 <ProjectLongHtml
                   html={proyecto.importancia}
-                  scrollBarColor='#fff'
+                  scrollBarColor='#EFEDE8'
                 />
               )}
             </div>
@@ -184,7 +184,7 @@ export default async function ProjectPage({ params }: Props) {
               {proyecto.pertinencia && (
                 <ProjectLongHtml
                   html={proyecto.pertinencia}
-                  scrollBarColor='#fff'
+                  scrollBarColor='#EFEDE8'
                 />
               )}
             </div>
@@ -195,7 +195,7 @@ export default async function ProjectPage({ params }: Props) {
               {proyecto.impacto && (
                 <ProjectLongHtml
                   html={proyecto.pertinencia}
-                  scrollBarColor='#fff'
+                  scrollBarColor='#EFEDE8'
                 />
               )}
             </div>

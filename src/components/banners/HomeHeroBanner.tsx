@@ -1,19 +1,23 @@
 import Image from 'next/image'
-
-
-
+import Link from 'next/link'
 
 interface Props {
   title: string
   subTitle: string
+  children?: React.ReactNode
+  buttonText?: string
+  buttonLink?: string
 }
 
-export const HomeHeroBanner = ({title, subTitle}: Props) => {
-
+export const HomeHeroBanner = ({
+  title,
+  subTitle,
+  buttonText,
+  buttonLink,
+  children,
+}: Props) => {
   return (
-    <div
-      className={`py-2 mx-auto w-full  bg-bg-300 my-1`}
-    >
+    <div className={`py-2 mx-auto w-full  bg-bg-300 my-1`}>
       {/* main content starts */}
 
       <div className='flex flex-col justify-center items-center'>
@@ -27,13 +31,19 @@ export const HomeHeroBanner = ({title, subTitle}: Props) => {
           />
         </div>
         <div className='max-w-xl'>
-          <h2 className={`titleBanner text-center text-primary-200 leading-tight`}>
+          <h2
+            className={`titleBanner text-center text-primary-200 leading-tight`}
+          >
             {title}
           </h2>
           <h3 className='text-base text-text-100 text-center font-light leading-tight'>
             {subTitle}
           </h3>
         </div>
+        {
+          children && <>{children}</>
+          // <Link href={buttonLink} className='btn-banner'>{buttonText}</Link>
+        }
       </div>
 
       {/* rounded logo starts*/}

@@ -64,12 +64,12 @@ p {
 
 .sinchi-list ul {
   list-style-type: disc;
-  margin: 24px;
+  margin-left: 24px;
 }
 
 .sinchi-list ol {
   list-style-type: decimal;
-  margin: 24px;
+  margin-left: 24px;
 }
 
 /* LONG HTML STYLES */
@@ -79,18 +79,18 @@ p {
 }
 
 .long-html h1 {
-  @apply text-3xl leading-tight  font-bold
+  @apply text-3xl leading-tight  font-medium
 }
 
 .long-html h1 span {
-  @apply text-3xl leading-tight font-bold
+  @apply text-3xl leading-tight font-medium
 }
 
 .long-html h2 {
-  @apply text-2xl leading-tight font-semibold
+  @apply text-2xl leading-tight font-medium
 }
 .long-html h2 span {
-  @apply text-2xl leading-tight font-semibold
+  @apply text-2xl leading-tight font-medium
 }
 .long-html h3 {
   @apply text-xl leading-tight  font-medium
@@ -122,6 +122,8 @@ p {
 .btn-delete {
   @apply bg-accent-100 hover:bg-accent-200 text-bg-200 p-2 rounded-sm transition-all shadow-sm;
 }
+
+
 
 /* PAGES */
 
@@ -213,12 +215,12 @@ p {
 
 .scroll-sinchi ul {
   list-style-type: disc;
-  margin: 24px;
+  margin-left: 24px;
 }
 
 .scroll-sinchi ol {
   list-style-type: decimal;
-  margin: 24px;
+  margin-left: 24px;
 }
 
 
