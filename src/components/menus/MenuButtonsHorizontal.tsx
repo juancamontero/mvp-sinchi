@@ -16,7 +16,7 @@ export const MenuButtonsHorizontal = ({ menuItems }: Props) => {
       {menuItems.map((item, index) => (
         <>
           <MenuButtonsHorizontalItem
-            key={`${item.url}`}
+            key={`${item.url}-${crypto.randomUUID()}`}
             url={item.url}
             text={item.text}
           />
