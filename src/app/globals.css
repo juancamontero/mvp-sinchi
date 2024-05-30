@@ -192,7 +192,7 @@ p {
 
 .scroll-container-sinchi-carousel {
   -webkit-overflow-scrolling: touch;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .scroll-sinchi::-webkit-scrollbar {

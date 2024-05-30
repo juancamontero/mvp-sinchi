@@ -14,7 +14,7 @@ interface Props {
 export const LineaProgramaRowGrid = ({ terms, baseUrl }: Props) => {
   return (
 
-      <div className='flex flex-row flex-wrap  lg:gap-4 justify-evenly items-stretch my-auto mt-2'>
+      <div className='flex flex-row flex-wrap  lg:gap-6 justify-center items-stretch my-2'>
         {terms.map((term) => {
           return (
             <Link
@@ -27,10 +27,10 @@ export const LineaProgramaRowGrid = ({ terms, baseUrl }: Props) => {
                 alt={term.name}
                 width={160}
                 height={160}
-                className='lg:my-1 p-1 lg:h-20 lg:w-20 w-16 h-16 object-contain '
+                className='lg:h-16 lg:w-16 w-14 h-14 object-contain '
               />
               <h3 
-              className='text-center text-sm leading-snug text-text-100 lg:mt-5 mt-1 font-light hover:text-accent-100'
+              className='text-center text-sm leading-snug text-text-100 lg:mt-2 mt-1 font-light hover:text-accent-100'
               >
                 {term.name}
               </h3>

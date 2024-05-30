@@ -42,7 +42,7 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <main
-      className={`flex-1 w-full relative overflow-y-auto scroll-smooth lg:snap-y z-40`}
+      className={`flex-1 w-full relative overflow-y-auto scroll-smooth lg:snap-y z-50`}
     >
       {/* <main className={`projectPage relative h-full`}> */}
       {/* banner start */}

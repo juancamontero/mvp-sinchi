@@ -30,7 +30,7 @@ export const LineaProgramaBanner = ({
       <IconLinea urlIcon={urlIcon} name={name} size={62} />
 
       <h2
-        className={`text-2xl font-semibold text-center mx-1 text-wrap leading-none ${
+        className={`text-2xl font-semibold text-center text-wrap leading-none ${
           baseColor ? '' : 'text-primary-300'
         }`}
         style={{ color: baseColor ? baseColor : undefined }}
@@ -38,14 +38,14 @@ export const LineaProgramaBanner = ({
         {`Programa de investigación`}
       </h2>
       <h3
-        className={`text-xl font-medium text-primary-300 text-center mx-1 text-wrap leading-none max-w-screen-xl ${
+        className={`text-xl font-medium text-primary-300 text-center text-wrap leading-tight max-w-xl ${
           baseColor ? '' : 'text-primary-300'
         }`}
         style={{ color: baseColor ? baseColor : undefined }}
       >
         {`${name}`}
       </h3>
-      <h4 className='text-base text-primary-100 text-center mx-1 text-wrap leading-none mt-2'>
+      <h4 className='text-base text-primary-100 text-center text-wrap leading-none mt-2'>
         {subTitle}
       </h4>
       <div className='flex flex-col flex-1 w-full mt-1'>
