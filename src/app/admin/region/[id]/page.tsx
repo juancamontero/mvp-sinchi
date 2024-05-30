@@ -1,5 +1,5 @@
-import { getRegionById, getTagById } from "@/actions";
-import { CreateUpdateRegionForm, CreateUpdateTagForm, TitleAdmin } from "@/admin";
+import { getRegionById, } from "@/actions";
+import { CreateUpdateRegionForm, TitleAdmin } from "@/admin";
 
 
 interface Props {

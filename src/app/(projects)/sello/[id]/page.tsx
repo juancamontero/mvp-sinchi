@@ -1,15 +1,15 @@
 import { ProjectsCarousel } from '@/projects'
 
 import {
-  CustomHeroBanner,
   HomeHeroBanner,
   LoaderDefault,
   MenuButtonsHorizontal,
 } from '@/components'
 import { Suspense } from 'react'
 import { Metadata } from 'next'
-import { getConvenioById, getProjectsByConvenioId } from '@/actions'
 import Image from 'next/image'
+import { getSelloById } from '@/actions/sellos/sellos-actions'
+import { getProjectsBySelloId } from '@/actions/proyectos/proyectos-report'
 
 interface Props {
   params: {
@@ -20,11 +20,11 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { id } = params
-    const convenio = await getConvenioById(Number(id))
+    const sello = await getSelloById(Number(id))
 
     return {
-      title: `${convenio?.name ?? ''} |Proyectos`,
-      description: `Proyectos con ${convenio?.name ?? ''}`,
+      title: `${sello?.name ?? ''} |Proyectos`,
+      description: `Proyectos bajo sello ${sello?.name ?? ''}`,
     }
   } catch (error) {
     return {
@@ -34,34 +34,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ConvenioPage({ params }: Props) {
+export default async function SelloPage({ params }: Props) {
   const { id } = params
 
-  const [convenio, proyectos] = await Promise.all([
-    await getConvenioById(Number(id)),
-    await getProjectsByConvenioId(Number(id)),
+  const [sello, proyectos] = await Promise.all([
+    await getSelloById(Number(id)),
+    await getProjectsBySelloId(Number(id)),
   ])
 
   return (
     <main className={`pageDefault`}>
       <HomeHeroBanner
-        title={`Aliado: ${convenio?.name}`}
-        subTitle={`${proyectos.length} proyecto(s)` ?? ''}
+        title={`${proyectos.length} proyecto(s) con el sello:`} // ${sello?.name}
+        // subTitle={`${proyectos.length} proyecto(s)` ?? ''}
       >
+  
         <div className='flex flex-row justify-center gap-2 lg:max-w-sm max-w-xs mt-1'>
-          {convenio?.imagen && (
+          {sello?.imagen && (
             <div className=''>
               <Image
-                src={convenio?.imagen?.url}
-                alt={convenio?.name}
-                width={80}
-                height={80}
-                className='my-1 bg-bg-100 p-1 max-h-12 object-contain'
+                src={sello?.imagen?.url}
+                alt={sello?.name}
+                width={60}
+                height={60}
+                className='my-1'
               />
             </div>
           )}
           <h3 className='text-left text-sm text-text-100  leading-4 my-auto w-2/3'>
-            {convenio?.name}
+            {sello?.name}
           </h3>
         </div>
         <MenuButtonsHorizontal

@@ -1,6 +1,11 @@
 import { ProjectsCarousel } from '@/projects'
 
-import { CustomHeroBanner, LoaderDefault } from '@/components'
+import {
+  CustomHeroBanner,
+  HomeHeroBanner,
+  LoaderDefault,
+  MenuButtonsHorizontal,
+} from '@/components'
 import { Suspense } from 'react'
 import { Metadata } from 'next'
 import { getInvestigadorById, getProjectsByInvestigadorId } from '@/actions'
@@ -37,15 +42,24 @@ export default async function InvestigadorPage({ params }: Props) {
 
   return (
     <main className={`pageDefault`}>
-      <CustomHeroBanner
-        preTitle={`${proyectos.length}` ?? ''}
-        title={investigador?.name ?? 'INVESTIGADOR'}
-        postTitle='Investigador responsable'
-      />
 
-      <Suspense fallback={<LoaderDefault />}>
-        <ProjectsCarousel proyectos={proyectos} />
-      </Suspense>
+      <HomeHeroBanner
+        title={`${investigador?.name} | ${investigador?.email}`}
+        subTitle={`${proyectos.length} proyectos` ?? ''}
+      >
+        <MenuButtonsHorizontal
+          menuItems={[
+            { url: '/', text: 'Líneas de investigación' },
+            { url: '/programas', text: 'Programas de investigación' },
+            { url: '/buscar', text: 'Regresar a búsqueda' },
+          ]}
+        />
+      </HomeHeroBanner>
+      <section className='h-full flex flex-col justify-center items-center bg-bg-300 w-full'>
+        <Suspense fallback={<LoaderDefault />}>
+          <ProjectsCarousel proyectos={proyectos} />
+        </Suspense>
+      </section>
     </main>
   )
 }

@@ -3,17 +3,14 @@ import Link from 'next/link'
 
 interface Props {
   title: string
-  subTitle: string
+  subTitle?: string
   children?: React.ReactNode
-  buttonText?: string
-  buttonLink?: string
 }
 
 export const HomeHeroBanner = ({
   title,
   subTitle,
-  buttonText,
-  buttonLink,
+
   children,
 }: Props) => {
   return (
@@ -30,28 +27,18 @@ export const HomeHeroBanner = ({
             className='m-auto'
           />
         </div>
-        <div className='max-w-xl'>
+        <div className='max-w-xl mt-1'>
           <h2
-            className={`titleBanner text-center text-primary-200 leading-tight`}
+            className={`titleBanner text-center text-primary-200 leading-5 mt-1`}
           >
             {title}
           </h2>
-          <h3 className='text-base text-text-100 text-center font-light leading-tight'>
+          <h3 className='text-base text-text-100 text-center font-light leading-tight mt-1'>
             {subTitle}
           </h3>
         </div>
-        {
-          children && <>{children}</>
-          // <Link href={buttonLink} className='btn-banner'>{buttonText}</Link>
-        }
+        {children && <>{children}</>}
       </div>
-
-      {/* rounded logo starts*/}
-
-      {/* todo: buscador */}
-      {/* <div className='w-1/4 bg-bg-100 mt-2 sm:mt-4 lg:mt-6 mx-auto'>
-        <h1>buscar</h1>
-      </div> */}
     </div>
   )
 }

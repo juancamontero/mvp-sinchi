@@ -30,6 +30,7 @@ export const getProgramaById = async (id: number) => {
           select: {
             id: true,
             name: true,
+            imagen: true,
           },
         },
         imagen: true,

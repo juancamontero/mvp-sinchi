@@ -128,7 +128,7 @@ p {
 /* PAGES */
 
 .pageDefault {
-  @apply flex min-h-screen flex-col items-center justify-start z-10;
+  @apply flex min-h-screen flex-col items-start justify-start z-10;
 }
 
 .pageSectionGrid {
@@ -241,7 +241,7 @@ p {
   @apply text-sm font-light leading-tight;
 }
 .titleBanner {
-  @apply max-w-lg font-semibold font-sans text-2xl;
+  @apply max-w-lg font-semibold font-sans text-2xl leading-6;
 }
 
 .titleBannerFullWidth {
@@ -274,3 +274,5 @@ p {
 .term-item {
   @apply mr-2 leading-none text-xl hover:text-accent-100 pt-1 hover:underline;
 }
+
+

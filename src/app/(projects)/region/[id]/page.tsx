@@ -1,6 +1,11 @@
 import { ProjectsCarousel } from '@/projects'
 
-import { CustomHeroBanner, LoaderDefault } from '@/components'
+import {
+  CustomHeroBanner,
+  HomeHeroBanner,
+  LoaderDefault,
+  MenuButtonsHorizontal,
+} from '@/components'
 import { Suspense } from 'react'
 import { Metadata } from 'next'
 import { getRegionById, getProjectsByRegionId } from '@/actions'
@@ -38,11 +43,18 @@ export default async function RegionPage({ params }: Props) {
 
   return (
     <main className={`pageDefault`}>
-      <CustomHeroBanner
-        postTitle={`${proyectos.length} proyectos` ?? ''}
-        preTitle='Proyectos en'
-        title={region?.name ?? 'REGION'}
-      />
+      <HomeHeroBanner
+        title={`Proyectos en ${region?.name}`}
+        subTitle={`${proyectos.length} proyectos` ?? ''}
+      >
+        <MenuButtonsHorizontal
+          menuItems={[
+            { url: '/', text: 'Líneas de investigación' },
+            { url: '/programas', text: 'Programas de investigación' },
+            { url: '/buscar', text: 'Regresar a búsqueda' },
+          ]}
+        />
+      </HomeHeroBanner>
       <section className='h-full flex flex-col justify-center items-center bg-bg-300 w-full'>
         <Suspense fallback={<LoaderDefault />}>
           <ProjectsCarousel proyectos={proyectos} />

@@ -238,3 +238,41 @@ export const updateSellosByProjectId = async (
     return { ok: false, msg: `updateSellosByProjectId ${error}` }
   }
 }
+
+
+export const getAllSellos = async () => {
+  try {
+    const sellos = await prisma.sello.findMany({
+      include: {
+        _count: {
+          select: { Proyecto: true },
+        },
+        imagen: true,
+      },
+      orderBy: {
+        Proyecto: { _count: 'desc' },
+      },
+    })
+
+    return sellos
+  } catch (error) {
+    throw new Error(`getAllSellos ${error}`)
+  }
+}
+
+export const getSelloById = async (id: number) => {
+  try {
+    const convenio = await prisma.sello.findFirst({
+      where: {
+        id,
+      },
+      include: {
+        imagen: true,
+      },
+    })
+
+    return convenio
+  } catch (error) {
+    throw new Error(`getSelloById ${error}`)
+  }
+}

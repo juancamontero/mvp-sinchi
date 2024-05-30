@@ -127,6 +127,28 @@ export const getProjectsByConvenioId = async (idConvenio: number) => {
   }
 }
 
+export const getProjectsBySelloId = async (idSello: number) => {
+  try {
+    const projects = await prisma.proyecto.findMany({
+      where: {
+        sellos: {
+          some: {
+            id: idSello,
+          },
+        },
+      },
+      orderBy: {
+        year: 'desc',
+      },
+      include: {
+        imagen: true,
+      },
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getProjectsBySelloId ${error}`)
+  }
+}
 export const getProyectosByProgramaId = async (idPrograma: number) => {
   try {
     const proyectos = await prisma.proyecto.findMany({

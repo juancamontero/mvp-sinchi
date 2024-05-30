@@ -1,6 +1,11 @@
 import { ProjectsCarousel } from '@/projects'
 
-import { CustomHeroBanner, LoaderDefault } from '@/components'
+import {
+  CustomHeroBanner,
+  HomeHeroBanner,
+  LoaderDefault,
+  MenuButtonsHorizontal,
+} from '@/components'
 import { Suspense } from 'react'
 import { Metadata } from 'next'
 import { getTagById, getProjectsByTagId } from '@/actions'
@@ -38,11 +43,18 @@ export default async function TagPage({ params }: Props) {
 
   return (
     <main className={`pageDefault`}>
-      <CustomHeroBanner
-        preTitle={`Palabra clave: `}
-        title={tag?.name ?? 'PALABRA CLAVE'}
-        postTitle={`${proyectos.length} proyectos` ?? ''}
-      />
+      <HomeHeroBanner
+        title={`Palabra clave: ${tag?.name}`}
+        subTitle={`${proyectos.length} proyectos` ?? ''}
+      >
+        <MenuButtonsHorizontal
+          menuItems={[
+            { url: '/', text: 'Líneas de investigación' },
+            { url: '/programas', text: 'Programas de investigación' },
+            { url: '/buscar', text: 'Regresar a búsqueda' },
+          ]}
+        />
+      </HomeHeroBanner>
       <section className='h-full flex flex-col justify-center items-center bg-bg-300 w-full'>
         <Suspense fallback={<LoaderDefault />}>
           <ProjectsCarousel proyectos={proyectos} />

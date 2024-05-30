@@ -17,7 +17,7 @@ export default async function RegionesPage() {
   return (
     // todo: Create module styles por pages
     <main className={`pageDefault`}>
-      <CustomHeroBanner preTitle='REGIONES' title='DEPARTAMENTOS' />
+      <CustomHeroBanner  title='Regiones' />
 
       <div className='w-full flex flex-col gap-2 justify-start items-start mt-6 p-12'>
         <ul className='grid gap-y-8 gap-x-12 sm:grid-cols-2 lg:grid-cols-3 w-full'>

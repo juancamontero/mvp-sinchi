@@ -15,7 +15,7 @@ export const IconLinea = ({
   const urlImage = urlIcon ? urlIcon : '/images/placeholder-img.jpeg'
 
   return (
-    <div className='sm:w-24 sm:h-24 w-12 h-12'>
+    <div className='sm:w-24 sm:h-24 w-20 h-20'>
       <Image
         src={urlImage}
         alt={name}

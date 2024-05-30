@@ -48,7 +48,7 @@ export const TopBar = () => {
       
             
 
-            <Link href='/search' className='absolute right-2 lg:top-3 top-3 text-bg-200 flex items-center justify-center w-10 h-10 rounded-xl border bg-bg-200 focus:bg-gray-100 active:bg-gray-200' title='Buscador'>
+            <Link href='/buscar' className='absolute right-2 lg:top-3 top-3 text-text-200 flex items-center justify-center w-10 h-10 rounded-xl border bg-bg-300 focus:bg-gray-100 active:bg-gray-200 hover:bg-bg-100' title='Buscador'>
               <CiSearch />
             </Link>
             

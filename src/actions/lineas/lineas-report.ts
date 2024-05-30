@@ -2,6 +2,7 @@
 
 import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
+import { Programa } from '@prisma/client';
 
 // export const sleep = (seconds: number = 0): Promise<boolean> => {
 //   return new Promise((resolve) => {
@@ -18,14 +19,21 @@ export const getLineaById = async (id: number) => {
         id,
       },
       include: {
-        Programa: true,
+        Programa: {
+          select: {
+            id: true,
+            name: true,
+            imagen:true
+          }
+        },
         imagen: true,
+        
       },
     })
 
     return linea
   } catch (error) {
-    throw new Error('Error al obtener la linea' + error)
+    throw new Error('getLineaById - Error al obtener la linea' + error)
   }
 }
 

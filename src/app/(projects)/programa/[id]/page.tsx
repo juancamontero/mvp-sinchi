@@ -1,6 +1,8 @@
 import {
   AccordionFeature,
   IconLinea,
+  LineaProgramaBanner,
+  LineaProgramaRowGrid,
   ProjectsCarousel,
   TermsGrid,
 } from '@/projects'
@@ -49,34 +51,37 @@ export default async function ProgramaPage({ params }: Props) {
     )
   }
 
+  const lineasTerm = programa.Linea.map((term) => {
+    return {
+      id: term.id,
+      name: term.name,
+      imageUrl: term.imagen?.url,
+    }
+  })
+
   return (
     <main className={`pageDefault`}>
       {/* banner start */}
-      <div
-        className={`xBannerPaddings sm:sticky sm:top-0 h-fit flex flex-col gap-2 flex-wrap items-start bg-bg-200 w-full py-6  z-10 sm:mb-4`}
+      <LineaProgramaBanner
+        urlIcon={programa.imagen?.url}
+        name={programa.name}
+        baseUrl={'linea'}
+        terms={lineasTerm}
+        subTitle={`Líneas de investigación responsables:`}
+        baseColor={programa.baseColor ?? undefined}
       >
-        <IconLinea urlIcon={programa.imagen?.url} name={programa.name} size={62} />
-
-        <h2 className='text-2xl font-semibold text-primary-300 text-left mx-1 text-wrap'>
-          {programa?.name}
-        </h2>
-        <TermsGrid
-          items={programa.Linea.map(({ id, name }) => ({ id, name }))}
-          urlBase='/linea'
-        />
-
         <AccordionFeature
           title={'Descripción'}
           content={<p>{programa?.description}</p> ?? ''}
         />
+      </LineaProgramaBanner>
 
-        {/* hitos */}
-      </div>
       {/* banner end */}
-      <Suspense fallback={<LoaderDefault />}>
-        <ProjectsCarousel proyectos={proyectos} />
-      </Suspense>
-      {/* <ProjectsGrid proyectos={proyectos} /> */}
+      <section className='h-full flex flex-col justify-center items-center bg-bg-300 w-full mt-0'>
+        <Suspense fallback={<LoaderDefault />}>
+          <ProjectsCarousel proyectos={proyectos} />
+        </Suspense>
+      </section>
     </main>
   )
 }

@@ -9,6 +9,7 @@ export const getAllConvenios = async () => {
         _count: {
           select: { Proyecto: true },
         },
+        imagen: true,
       },
       orderBy: {
         Proyecto: { _count: 'desc' },
@@ -26,6 +27,9 @@ export const getConvenioById = async (id: number) => {
     const convenio = await prisma.convenio.findFirst({
       where: {
         id,
+      },
+      include: {
+        imagen: true,
       },
     })
 

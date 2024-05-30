@@ -1,6 +1,8 @@
 import {
   AccordionFeature,
   IconLinea,
+  LineaProgramaBanner,
+  LineaProgramaRowGrid,
   ProjectsCarousel,
   TermsGrid,
 } from '@/projects'
@@ -50,22 +52,25 @@ export default async function LineaPage({ params }: Props) {
     )
   }
 
+  const programasTerm = linea.Programa.map((term) => {
+    return {
+      id: term.id,
+      name: term.name,
+      imageUrl: term.imagen?.url,
+    }
+  })
+
   return (
     <main className={`pageDefault`}>
       {/* banner start */}
-      <div
-        className={`xBannerPaddings sm:sticky sm:top-0 h-fit flex flex-col gap-2 flex-wrap items-start bg-bg-200 w-full py-6  z-10 sm:mb-4`}
+      <LineaProgramaBanner
+        urlIcon={linea.imagen?.url}
+        name={linea.name}
+        baseUrl={'programa'}
+        terms={programasTerm}
+        subTitle={`Líneas de investigación responsables:`}
+        baseColor={linea.baseColor ?? undefined}
       >
-        <IconLinea urlIcon={linea.imagen?.url} name={linea.name} size={62} />
-
-        <h2 className='text-2xl font-semibold text-primary-300 text-left mx-1 text-wrap'>
-          {linea?.name}
-        </h2>
-        <TermsGrid
-          items={linea.Programa.map(({ id, name }) => ({ id, name }))}
-          urlBase='/programa'
-        />
-
         <AccordionFeature
           title={'Descripción'}
           content={<p>{linea?.description}</p> ?? ''}
@@ -100,14 +105,13 @@ export default async function LineaPage({ params }: Props) {
             ) ?? ''
           }
         />
-
-        {/* hitos */}
-      </div>
+      </LineaProgramaBanner>
       {/* banner end */}
-      <Suspense fallback={<LoaderDefault />}>
-        <ProjectsCarousel proyectos={proyectos} />
-      </Suspense>
-      {/* <ProjectsGrid proyectos={proyectos} /> */}
+      <section className='h-full flex flex-col justify-center items-center bg-bg-300 w-full mt-0'>
+        <Suspense fallback={<LoaderDefault />}>
+          <ProjectsCarousel proyectos={proyectos} />
+        </Suspense>
+      </section>
     </main>
   )
 }
