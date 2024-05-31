@@ -13,7 +13,7 @@ export const ProjectColumnsHtml = ({
   return (
     <div
       dangerouslySetInnerHTML={{ __html: html }}
-      className='lg:h-[35vh]  h-[40vh] p-2 columns-1 sm:columns-2 lg:columns-3  gap-12 overflow-x-auto snap-x snap-mandatory overflow-y-hidden  scroll-sinchi long-html' //scroll-sinchi
+      className='lg:h-[35vh]  h-[40vh] columns-1 sm:columns-2 lg:columns-3  gap-12 overflow-x-auto snap-x snap-mandatory overflow-y-hidden  scroll-sinchi long-html' //scroll-sinchi
       style={{
         WebkitOverflowScrolling: 'touch',
         scrollbarColor: `${scrollBarColor} rgba(255, 255, 255, 0)`,

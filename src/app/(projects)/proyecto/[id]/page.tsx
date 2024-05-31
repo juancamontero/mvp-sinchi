@@ -62,10 +62,7 @@ export default async function ProjectPage({ params }: Props) {
         arrowRef='#description'
         linkStyle='text-primary-100'
       >
-        <div
-          id='antecedentes'
-          className='flex flex-col justify-start items-center  p-4 gap-4 w-full'
-        >
+        <div id='antecedentes' className='projectColumnSection'>
           <h2 className='text-4xl font-bold text-primary-200 mb-2 text-left w-full'>
             Antecedentes
           </h2>
@@ -83,22 +80,7 @@ export default async function ProjectPage({ params }: Props) {
         arrowRef='#regiones'
         linkStyle='text-bg-100'
       >
-        <div
-          id='description'
-          className='flex flex-col justify-start items-start  p-2 gap-4 w-full text-bg-100'
-        >
-          {/* {proyecto.descripcion && proyecto.descripcion?.length > 0 && (
-            <>
-              <h2 className='text-4xl font-bold mb-1 text-left w-full'>
-                Descripción
-              </h2>
-
-              <ProjectColumnsHtml
-                html={proyecto.descripcion}
-                scrollBarColor='#0A3030'
-              />
-            </>
-          )} */}
+        <div id='description' className='projectColumnSection text-bg-100'>
           <h2 className='text-4xl font-bold mb-1 text-left w-full'>
             Descripción
           </h2>
@@ -111,7 +93,9 @@ export default async function ProjectPage({ params }: Props) {
           <h2 className='text-4xl font-bold mb-2 text-left w-full mt-4'>
             Aliados
           </h2>
-          <ConveniosGrid convenios={proyecto.convenios} />
+         
+            <ConveniosGrid convenios={proyecto.convenios} />
+   
         </div>
       </ProjectPageSection>
 
@@ -123,7 +107,7 @@ export default async function ProjectPage({ params }: Props) {
       >
         <div
           id='regiones'
-          className='flex flex-col justify-start items-start  py-8 gap-2 w-full text-accent-50'
+          className='projectColumnSection py-8  text-accent-50'
         >
           <h2 className='text-4xl font-bold text-left w-full lg:mt-8'>
             Localización geográfica
@@ -136,7 +120,10 @@ export default async function ProjectPage({ params }: Props) {
               {/* <h3 className='text-2xl font-bold text-left w-full'>
                 {proyecto.regions.length > 1 ? 'Departamentos' : 'Departamento'}
               </h3> */}
-              <TermsGrid items={proyecto.regions} className='mr-2 leading-tight text-2xl font-bold'/>
+              <TermsGrid
+                items={proyecto.regions}
+                className='mr-2 leading-tight text-2xl font-bold'
+              />
               {/* Places */}
               <hr className='w-3/4 lg:w-full mt-3 mb-1' />
               <p className='text-bg-100 text-sm  w-full font-light '>
@@ -160,7 +147,7 @@ export default async function ProjectPage({ params }: Props) {
       >
         <div
           id='justification'
-          className='flex flex-col justify-center items-start  p-4 gap-4 w-full text-primary-300  lg:max-h-[90vh]'
+          className='projectColumnSection text-primary-300  lg:max-h-[90vh]'
         >
           <h2 className='text-4xl font-extrabold text-left w-full mb-2'>
             Justificación
@@ -209,10 +196,7 @@ export default async function ProjectPage({ params }: Props) {
         arrowRef='#actores'
         linkStyle='text-bg-100'
       >
-        <div
-          id='objetivo'
-          className='flex flex-col justify-center items-center  p-4 gap-4 w-full text-bg-100'
-        >
+        <div id='objetivo' className='projectColumnSection text-bg-100'>
           <h2 className='text-4xl font-extrabold text-left lg:w-5/6 w-full mb-2'>
             Objetivo general
           </h2>
@@ -241,17 +225,11 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </ProjectPageSection>
 
-      {/* ACTORES + BENEFICIARIOS + DEPARTAMENTOS + PALABRAS CLAVE  */}
-      <div
-        className={`lg:sticky lg:top-0  h-fit flex flex-col items-start justify-start  gap-1 w-full  bg-bg-150`}
-      >
-        {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR  + FOTOS TITLE*/}
-        <div
-          id='actores'
-          className='flex flex-col justify-start p-0 bg-bg-300 text-primary-200 w-full'
-        >
+      {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR  + FOTOS TITLE*/}
+      <ProjectPageSection className='bg-bg-300' fullLgHeight={false}>
+        <div id='actores' className='projectColumnSection text-primary-200'>
           {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR */}
-          <div className='xBannerPaddings grid lg:grid-cols-3 sm:grid-cols-1 gap-2  w-full lg:h-[50vh] h-fit pt-12'>
+          <div className='grid lg:grid-cols-3 sm:grid-cols-1 gap-4  w-full lg:h-[50vh] h-fit pt-12'>
             {/* Actores */}
             <div className='flex flex-col justify-start items-stretch gap-4 lg:max-h-[45vh]'>
               <h3 className='text-4xl font-semibold'>Actores</h3>
@@ -279,10 +257,16 @@ export default async function ProjectPage({ params }: Props) {
             </div>
           </div>
         </div>
+      </ProjectPageSection>
 
-        {/* INICIA MULTIMEDIA */}
-        <div className='flex flex-col justify-start items-center p-0 bg-bg-150 text-primary-200 w-full h-fit mt-4'>
-          <h3 className='xBannerPaddings text-4xl font-semibold mt-2 mb-10 text-left w-full'>
+      {/* INICIA MULTIMEDIA */}
+      <ProjectPageSection
+        fullLgHeight={false}
+        enablePaddings={false}
+        className='bg-bg-150'
+      >
+        <div className=' xBannerPaddings flex flex-col justify-start items-center  text-primary-200 w-full h-fit mt-4'>
+          <h3 className='text-4xl font-semibold mt-2 mb-10 text-left w-full'>
             Fotografías y videos
           </h3>
         </div>
@@ -297,11 +281,16 @@ export default async function ProjectPage({ params }: Props) {
             <FaChevronDown size={20} />
           </span>
         </div>
+      </ProjectPageSection>
 
+      {/* ACTORES + BENEFICIARIOS + DEPARTAMENTOS + PALABRAS CLAVE  */}
+      <div
+        className={`lg:sticky lg:top-0  h-fit flex flex-col items-start justify-start  gap-1 w-full  bg-bg-150`}
+      >
         {/* DEPARTAMENTOS + PALABRAS CLAVE   */}
         <div className='flex flex-col justify-start items-center p-0 bg-bg-150 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full py-4'>
-            <h3 className='text-4xl font-semibold w-full'>
+            <h3 className='text-3xl font-semibold w-full'>
               Busca otros proyectos en la misma zona o de temas similares
             </h3>
           </div>
@@ -310,7 +299,7 @@ export default async function ProjectPage({ params }: Props) {
         {/* DEPARTAMENTOS   */}
         <div className='flex flex-col justify-start items-center  py-4 bg-bg-300 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full flex flex-col sm:flex-row gap-1 justify-start items-stretch'>
-            <h3 className='text-3xl font-semibold mr-8 leading-none'>
+            <h3 className='text-2xl font-semibold mr-8 leading-none'>
               Departamento (s)
             </h3>
             <TermsGrid
@@ -324,7 +313,7 @@ export default async function ProjectPage({ params }: Props) {
         {/* PALABRAS CLAVE   */}
         <div className='flex flex-col justify-start items-center  py-4 bg-bg-150 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full flex flex-col sm:flex-row gap-1 justify-start items-stretch'>
-            <h3 className='text-3xl font-semibold mr-8 leading-none'>
+            <h3 className='text-2xl font-semibold mr-8 leading-none'>
               Palabras clave
             </h3>
             <TermsGrid

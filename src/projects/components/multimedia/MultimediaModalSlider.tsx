@@ -80,14 +80,14 @@ export const MultimediaModalSlider = () => {
               {/* IMAGEN O VIDEO */}
               {multimedia.mediaType === 'image' ? (
                 <Image
-                  className={`w-11/12 sm:h-[50vh] h-auto lg:object-cover object-contain object-center z-50 transition duration-1000  ${
+                  className={`w-11/12 sm:h-[50vh] lg:h-[80vh] h-auto  object-contain object-center z-50 transition duration-1000  ${
                     index + 1 === currentIndex
                       ? 'block  translate-y-0 blur-0'
                       : 'blur-md translate-y-full'
                   }`}
                   src={multimedia.url ?? '/images/placeholder-img.jpeg'}
                   width={1200}
-                  height={1200}
+                  height={800}
                   alt={multimedia.title}
                 />
               ) : (
