@@ -19,7 +19,7 @@ export default async function Home() {
     <main className={`pageDefault`}>
       <HomeHeroBanner
         title={'Conoce nuestros proyectos en ejecución'}
-        subTitle={'Proyectos de 2023 a 2024'}
+        subTitle={'Proyectos a 2024'}
       >
         <MenuButtonsHorizontal
           menuItems={[

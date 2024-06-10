@@ -19,7 +19,7 @@ export const VideoBg = ({ url, width = 144, height = 144, className }: VideoBg) 
           height={height}
           src={url}
           title='YouTube video player'
-          allowFullScreen
+     
         />
       </Suspense>
     </div>

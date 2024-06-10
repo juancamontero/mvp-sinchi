@@ -74,7 +74,7 @@ export default async function BuscarPage() {
         />
       </HomeHeroBanner>
 
-      <div className={`w-full flex flex-col gap-1 justify-start items-start bg-bg-100 flex-grow`}>
+      <div className={`w-full h-full lg:h-[70%] flex flex-col gap-1 justify-between items-start lg:items-stretch`}>
         <TermRowStats
           baseUrl='region'
           terms={regionTerms}
@@ -93,7 +93,7 @@ export default async function BuscarPage() {
         <TermRowStats
           baseUrl='sello'
           terms={sellosTerms}
-          title='Proyectos por sello'
+          title='Proyectos por impacto y ODS'
         />
         <TermRowStats
           baseUrl='investigador'

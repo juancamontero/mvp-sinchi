@@ -19,7 +19,7 @@ export default async function ProgramasPage() {
     <main className={`pageDefault`}>
       <HomeHeroBanner
         title={'Conoce nuestros programas de investigación'}
-        subTitle={'Proyectos agrupados por programa de 2023 a 2024'}
+        subTitle={'Proyectos agrupados por programa a 2024'}
       >
         <MenuButtonsHorizontal
           menuItems={[

@@ -24,6 +24,7 @@ export const ConveniosGrid = ({ convenios }: Props) => {
                 width={150}
                 height={150}
                 alt={convenio.name}
+                className='max-h-14 w-auto '
               />
             ) : (
               <span

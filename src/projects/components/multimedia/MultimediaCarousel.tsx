@@ -9,8 +9,6 @@ import { MultimediaModalSlider } from './MultimediaModalSlider'
 import { useMultimedia } from './useMultimedia'
 import { Multimedia } from '@prisma/client'
 
-
-
 interface Props {
   multimedias: Multimedia[]
 }
@@ -21,12 +19,14 @@ export interface MultimediaContextProps {
   isOpen: boolean
   currentIndex: number
   multimedias: Multimedia[]
+  isPlaying: boolean
 
   toggleGallery: (index?: number) => void
   previous: () => void
   forward: () => void
   getIndexById: (id: number) => number
   setIndex: (index: number) => void
+  handlePlay: () => void
 }
 
 export const MultimediaContext = createContext({} as MultimediaContextProps)
@@ -71,18 +71,20 @@ export const MultimediaCarousel = ({ multimedias }: Props) => {
 
   const {
     isOpen,
+    isPlaying,
     toggleGallery,
     previous,
     forward,
     getIndexById,
     setIndex,
     currentIndex,
+    handlePlay,
   } = useMultimedia({
     isOpen: false,
     currentIndex: 1,
     multimedias,
+    isPlaying: false,
   })
-
 
   if (multimedias.length === 0) return <></>
 
@@ -92,11 +94,13 @@ export const MultimediaCarousel = ({ multimedias }: Props) => {
         isOpen,
         currentIndex,
         multimedias,
+        isPlaying,
         toggleGallery,
         previous,
         forward,
         getIndexById,
         setIndex,
+        handlePlay,
       }}
     >
       <div className='w-full'>
@@ -129,7 +133,7 @@ export const MultimediaCarousel = ({ multimedias }: Props) => {
             </span>
           </button>
         </div>
- 
+
         <MultimediaModalSlider />
       </div>
     </Provider>

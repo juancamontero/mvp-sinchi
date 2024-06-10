@@ -14,7 +14,7 @@ export const TermsGrid = ({ items, urlBase, className='' }: TermGridProps) => {
   items.sort((a, b) => a.name.localeCompare(b.name))
   return (
     <>
-      <div className={`flex flex-row flex-wrap items-center justify-start `}>
+      <div className={`flex flex-row flex-wrap items-center justify-start`}>
         {items.map((item, index) => (
           <Link
             key={item.id}

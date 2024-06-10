@@ -30,7 +30,7 @@ export const LineaProgramaRowGrid = ({ terms, baseUrl }: Props) => {
                 className='lg:h-16 lg:w-16 w-14 h-14 object-contain '
               />
               <h3 
-              className='text-center text-sm leading-snug text-text-100 lg:mt-2 mt-1 font-light hover:text-accent-100'
+              className='text-center text-xs leading-snug text-text-100 lg:mt-2 mt-1 font-light hover:text-accent-100'
               >
                 {term.name}
               </h3>

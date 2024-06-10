@@ -107,7 +107,7 @@ export default async function LineaPage({ params }: Props) {
         />
       </LineaProgramaBanner>
       {/* banner end */}
-      <section className='h-full flex flex-col justify-center items-center bg-bg-300 w-full mt-0'>
+      <section className='h-full flex flex-col lg:justify-start justify-center items-center bg-bg-300 w-full  mt-0 '>
         <Suspense fallback={<LoaderDefault />}>
           <ProjectsCarousel proyectos={proyectos} />
         </Suspense>

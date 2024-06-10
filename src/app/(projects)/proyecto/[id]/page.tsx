@@ -215,7 +215,7 @@ export default async function ProjectPage({ params }: Props) {
           )}
 
           <div className='flex flex-col justify-start items-center overflow-y-auto w-full mt-8'>
-            <h3 className='text-3xl font-semibold mb-4'>Alcance</h3>
+            <h2 className='text-4xl font-extrabold text-left mb-4 w-full'>Alcance</h2>
 
             <ProjectColumnsHtml
               html={proyecto.products}
@@ -290,7 +290,7 @@ export default async function ProjectPage({ params }: Props) {
         {/* DEPARTAMENTOS + PALABRAS CLAVE   */}
         <div className='flex flex-col justify-start items-center p-0 bg-bg-150 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full py-4'>
-            <h3 className='text-3xl font-semibold w-full'>
+            <h3 className='text-2xl font-semibold w-full'>
               Busca otros proyectos en la misma zona o de temas similares
             </h3>
           </div>
@@ -299,13 +299,13 @@ export default async function ProjectPage({ params }: Props) {
         {/* DEPARTAMENTOS   */}
         <div className='flex flex-col justify-start items-center  py-4 bg-bg-300 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full flex flex-col sm:flex-row gap-1 justify-start items-stretch'>
-            <h3 className='text-2xl font-semibold mr-8 leading-none'>
-              Departamento (s)
+            <h3 className='text-xl font-semibold mr-8 leading-none'>
+              Departamento(s)
             </h3>
             <TermsGrid
               items={proyecto.regions}
               urlBase='/region'
-              className='mr-2 leading-none text-xl pt-1'
+              className='mr-2 leading-none pt-1 text-base'
             />
           </div>
         </div>
@@ -313,13 +313,13 @@ export default async function ProjectPage({ params }: Props) {
         {/* PALABRAS CLAVE   */}
         <div className='flex flex-col justify-start items-center  py-4 bg-bg-150 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full flex flex-col sm:flex-row gap-1 justify-start items-stretch'>
-            <h3 className='text-2xl font-semibold mr-8 leading-none'>
+            <h3 className='text-xl font-semibold mr-8 leading-none'>
               Palabras clave
             </h3>
             <TermsGrid
               items={proyecto.tags}
               urlBase='/palabra-clave'
-              className='mr-2 leading-none text-xl pt-1'
+              className='mr-2 leading-none text-base pt-1'
             />
           </div>
         </div>
