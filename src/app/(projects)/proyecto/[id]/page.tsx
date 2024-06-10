@@ -93,9 +93,8 @@ export default async function ProjectPage({ params }: Props) {
           <h2 className='text-4xl font-bold mb-2 text-left w-full mt-4'>
             Aliados
           </h2>
-         
-            <ConveniosGrid convenios={proyecto.convenios} />
-   
+
+          <ConveniosGrid convenios={proyecto.convenios} />
         </div>
       </ProjectPageSection>
 
@@ -215,7 +214,9 @@ export default async function ProjectPage({ params }: Props) {
           )}
 
           <div className='flex flex-col justify-start items-center overflow-y-auto w-full mt-8'>
-            <h2 className='text-4xl font-extrabold text-left mb-4 w-full'>Alcance</h2>
+            <h2 className='text-4xl font-extrabold text-left mb-4 w-full'>
+              Alcance
+            </h2>
 
             <ProjectColumnsHtml
               html={proyecto.products}
@@ -281,14 +282,10 @@ export default async function ProjectPage({ params }: Props) {
             <FaChevronDown size={20} />
           </span>
         </div>
-      </ProjectPageSection>
 
-      {/* ACTORES + BENEFICIARIOS + DEPARTAMENTOS + PALABRAS CLAVE  */}
-      <div
-        className={`lg:sticky lg:top-0  h-fit flex flex-col items-start justify-start  gap-1 w-full  bg-bg-150`}
-      >
         {/* DEPARTAMENTOS + PALABRAS CLAVE   */}
-        <div className='flex flex-col justify-start items-center p-0 bg-bg-150 text-primary-200 w-full h-fit'>
+        <div className='flex flex-col justify-end w-full'>
+        <div className='flex flex-col justify-start items-center p-0 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full py-4'>
             <h3 className='text-2xl font-semibold w-full'>
               Busca otros proyectos en la misma zona o de temas similares
@@ -311,7 +308,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
 
         {/* PALABRAS CLAVE   */}
-        <div className='flex flex-col justify-start items-center  py-4 bg-bg-150 text-primary-200 w-full h-fit'>
+        <div className='flex flex-col justify-end items-end  py-4 bg-bg-150 text-primary-200 w-full h-fit'>
           <div className='xBannerPaddings w-full flex flex-col sm:flex-row gap-1 justify-start items-stretch'>
             <h3 className='text-xl font-semibold mr-8 leading-none'>
               Palabras clave
@@ -323,7 +320,13 @@ export default async function ProjectPage({ params }: Props) {
             />
           </div>
         </div>
-      </div>
+        </div>
+   
+      </ProjectPageSection>
+
+      {/* ACTORES + BENEFICIARIOS + DEPARTAMENTOS + PALABRAS CLAVE  */}
+
     </main>
   )
 }
+

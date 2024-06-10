@@ -1,6 +1,6 @@
 'use client'
 
-import {  useContext } from 'react'
+import { useContext } from 'react'
 
 import { MultimediaContext } from './MultimediaCarousel'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
@@ -23,7 +23,7 @@ export const MultimediaModalSlider = () => {
     <>
       {true && (
         <div
-          className={`z-[999] fixed top-0 left-0  w-screen h-screen overscroll-none bg-bg-300 sm:px-16 p-8 flex-col justify-evenly items-center transition flex duration-700 ease-in-out  ${
+          className={`z-[999] fixed top-0 left-0  w-screen h-screen overscroll-none bg-bg-300 sm:px-16 p-8 flex-col justify-center items-center transition flex duration-700 ease-in-out  ${
             !isOpen
               ? 'translate-x-full z-0 bg-opacity-0'
               : 'translate-x-0 z-[999] bg-opacity-100'
@@ -58,16 +58,12 @@ export const MultimediaModalSlider = () => {
             {/* INICIAL SLIDER */}
             <div className='relative w-full h-full'>
               {multimedias.map((multimedia, index) => (
-                
-         
-                    <MultimediaPlayer
-                      key={multimedia.id}
-                      index={index}
-                      currentIndex={currentIndex}
-                      multimedia={multimedia}
-                    />
-             
-                
+                <MultimediaPlayer
+                  key={multimedia.id}
+                  index={index}
+                  currentIndex={currentIndex}
+                  multimedia={multimedia}
+                />
               ))}
             </div>
           </div>
