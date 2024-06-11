@@ -1,10 +1,12 @@
 'use client'
 
+import { Suspense, useContext } from 'react'
+
 import { LoaderDefault } from '@/components'
 import { Multimedia } from '@prisma/client'
 // import { VideoPlayer } from './VideoPlayer'
 import Image from 'next/image'
-import { Suspense } from 'react'
+import { MultimediaContext } from './MultimediaCarousel'
 
 interface Props {
   index: number
@@ -17,6 +19,8 @@ export const MultimediaPlayer = ({
   currentIndex,
   multimedia,
 }: Props) => {
+  const { isOpen } = useContext(MultimediaContext)
+
   if (index + 1 !== currentIndex) {
     return <></>
   }
@@ -41,24 +45,26 @@ export const MultimediaPlayer = ({
       </div>
 
       {/* IMAGEN O VIDEO */}
-      <Suspense fallback={<LoaderDefault/>}>
-        {multimedia.mediaType === 'image' ? (
-          <Image
-            className={`lg:p-3 w-11/12 sm:h-[50vh] lg:h-[80vh] h-auto  object-scale-down object-center z-50 transition duration-1000  ${
-              index + 1 === currentIndex
-                ? 'block  translate-y-0 blur-0'
-                : 'blur-md translate-y-full'
-            }`}
-            src={multimedia.url ?? '/images/placeholder-img.jpeg'}
-            width={1200}
-            height={800}
-            alt={multimedia.title}
-          />
-        ) : (
-          // <VideoPlayer url={multimedia.url} />
-          <Video url={multimedia.url} />
-        )}
-      </Suspense>
+      {isOpen && (
+        <Suspense fallback={<LoaderDefault />}>
+          {multimedia.mediaType === 'image' ? (
+            <Image
+              className={`lg:p-3 w-11/12 sm:h-[50vh] lg:h-[80vh] h-auto  object-scale-down object-center z-50 transition duration-1000  ${
+                index + 1 === currentIndex
+                  ? 'block  translate-y-0 blur-0'
+                  : 'blur-md translate-y-full'
+              }`}
+              src={multimedia.url ?? '/images/placeholder-img.jpeg'}
+              width={1200}
+              height={800}
+              alt={multimedia.title}
+            />
+          ) : (
+            // <VideoPlayer url={multimedia.url} />
+            <Video url={multimedia.url} />
+          )}
+        </Suspense>
+      )}
     </div>
   )
 }

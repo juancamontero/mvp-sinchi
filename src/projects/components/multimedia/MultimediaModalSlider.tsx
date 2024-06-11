@@ -21,7 +21,7 @@ export const MultimediaModalSlider = () => {
 
   return (
     <>
-      {isOpen && (
+      {true && (
         <div
           className={`z-[999] fixed top-0 left-0  w-screen h-screen overscroll-none bg-bg-300 sm:px-16 p-8 flex-col justify-center items-center transition flex duration-700 ease-in-out  ${
             !isOpen
