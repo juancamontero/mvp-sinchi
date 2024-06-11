@@ -21,7 +21,7 @@ export const MultimediaModalSlider = () => {
 
   return (
     <>
-      {true && (
+      {isOpen && (
         <div
           className={`z-[999] fixed top-0 left-0  w-screen h-screen overscroll-none bg-bg-300 sm:px-16 p-8 flex-col justify-center items-center transition flex duration-700 ease-in-out  ${
             !isOpen
@@ -69,7 +69,7 @@ export const MultimediaModalSlider = () => {
           </div>
           <button
             onClick={() => toggleGallery()}
-            className={`z-50 text-center hover:opacity-70  mx-auto text-text-100 absolute sm:left-1/2 bottom-20 sm:bottom-12 lg:bottom-2 hover:text-accent-100`}
+            className={`z-50 text-center hover:opacity-70  mx-auto text-text-100 absolute sm:left-1/2 bottom-20 sm:bottom-2 lg:bottom-2 hover:text-accent-100`}
           >
             <MdClose size={28} />
           </button>

@@ -72,7 +72,7 @@ const Video = ({ url }: VideoProps) => {
   return (
     <iframe
       // id='videoIframe'
-      className='w-5/6 mx-auto h-auto  sm:h-[30vh] lg:h-[70vh]  z-30 '
+      className='w-5/6 mx-auto h-auto  sm:h-[50vh] lg:h-[70vh]  z-30 '
       src={url ?? ''}
       title='YouTube video player'
       allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'

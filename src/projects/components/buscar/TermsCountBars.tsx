@@ -24,14 +24,14 @@ export const TermsCountBars = ({ terms, baseUrl }: Props) => {
         if (term.count === 0) return
 
         const titleContent = (
-          <div className='flex flex-col justify-start items-start ml-1 w-32 lg:w-1/3 h-fit'>
+          <div className='flex flex-col justify-start items-start ml-1 w-32 lg:w-1/3 h-fit my-auto'>
             {term.imageUrl && (
-              <div className='p-2'>
+              <div className='p-1'>
                 <Image
                   src={term.imageUrl}
                   width={75}
                   height={75}
-                  className='max-h-10 w-auto'
+                  className='max-h-10 w-auto object-cover p-0'
                   alt={term.name}
                 />
               </div>
@@ -56,7 +56,7 @@ export const TermsCountBars = ({ terms, baseUrl }: Props) => {
             title='ver proyectos'
           >
             {titleContent}
-            <div className='flex flex-row justify-end lg:w-full w-2/3 '>
+            <div className='flex flex-row justify-end lg:w-full w-2/3 my-auto'>
               <p
                 className={`lg:h-8 h-6 text-xs bg-primary-100  content-center text-right pr-2 text-bg-150 group-hover:bg-primary-200  my-auto rounded flex-grow`}
                 style={{ flexGrow: currentFlexGrow }}

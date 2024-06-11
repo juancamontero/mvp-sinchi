@@ -19,7 +19,7 @@ export const AdminSideBarItem = ({ title, path, icon }: Props) => {
       <li>
         <Link
           href={path}
-          className={`p-2 flex items-center space-x-2 rounded-e-sm text-text-200 group
+          className={`p-2 text-sm flex items-center space-x-2 rounded-e-sm text-text-200 group
             hover:bg-gradient-to-r hover:bg-text-200 hover:text-white
             ${
               pathName === path

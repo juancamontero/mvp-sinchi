@@ -84,9 +84,9 @@ export const AdminSidebar = async () => {
   const urlImage = session?.user?.image ?? '/images/dummie_user.webp'
   return (
     <>
-      <aside className='ml-[-100%] fixed top-20 z-10 pb-3 px-6 flex flex-col justify-between h-[85vh] border-r bg-bg-300 transition duration-300 w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]'>
+      <aside className='ml-[-100%] fixed top-20 z-10 pb-3 px-3 flex flex-col justify-between h-[85vh] border-r bg-bg-300 transition duration-300 w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]'>
         <div>
-          <div className='mt-8 text-center'>
+          <div className='mt-4 text-center'>
             {/* Next/Image */}
             <Image
               src={urlImage}
