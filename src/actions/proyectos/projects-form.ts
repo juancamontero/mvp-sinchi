@@ -49,7 +49,7 @@ const projectSchema = z.object({
 })
 
 // * CREAR | ACTUALIZAR PROYECTO
-export const createUpdateProduct = async (formData: FormData) => {
+export const createUpdateProject = async (formData: FormData) => {
   const data = Object.fromEntries(formData)
 
   const projectParsed = projectSchema.safeParse(data)
@@ -131,6 +131,8 @@ export const createUpdateProduct = async (formData: FormData) => {
 
     revalidatePath(`admin/proyecto/${project.id}`)
     revalidatePath(`/proyecto/${project.id}`)
+    revalidatePath(`/`)
+    revalidatePath(`/admin/proyectos`)
 
     return {
       ok: true,

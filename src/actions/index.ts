@@ -15,7 +15,7 @@ export { createUpdateLinea, getAllLineasForm, getLineaByIdForm, getLineaByIdProg
 export { createUpdateMapa, deleteMapaById, getMapaById, getMapasByProjectId } from './mapas/mapas-actions'
 export { createUpdateMedio, deleteMedioById, getMedioById, getMediosByProjectId } from './medios/medios-actions'
 export { createUpdatePrograma, deletePrograma, getAllProgramasForm, getAllProgramasSimple, getProgramaByIdForm } from './programas/programas-form'
-export { createUpdateProduct, deleteProject, getAllProjectsForm, getProyectoByIdSimple } from './proyectos/projects-form'
+export { createUpdateProject, deleteProject, getAllProjectsForm, getProyectoByIdSimple } from './proyectos/projects-form'
 export { createUpdateRegion, deleteRegionById, getAllRegionsForm, getRegionsByProjectIdForm, updateRegionesByProjectId } from './regiones/regiones-form'
 export { createUpdateSello, deleteSelloById, getAllSellosForm, getAllSellosFormSimple, getSelloByIdForm, getSellosByProjectIdForm, updateSellosByProjectId } from './sellos/sellos-actions'
 export { createUpdateTag, deleteTagById, getAllTagsForm, getTagsByProjectIdForm, updateTagsByProjectId } from './tags/tags-form'

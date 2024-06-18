@@ -18,7 +18,7 @@ import 'react-quill/dist/quill.snow.css' // Import the styles
 import styles from '../AdminStyles.module.css'
 
 import {
-  createUpdateProduct,
+  createUpdateProject,
   deleteProject,
   deleteProjectImage,
 } from '@/actions'
@@ -154,7 +154,7 @@ export const ProjectForm = ({
       formData.append('image', image[0])
     }
 
-    const { ok, project: updatedProject } = await createUpdateProduct(formData)
+    const { ok, project: updatedProject } = await createUpdateProject(formData)
 
     if (ok) {
       router.replace(`/admin/proyecto/${updatedProject!.id}`)
