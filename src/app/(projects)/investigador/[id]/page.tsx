@@ -44,7 +44,8 @@ export default async function InvestigadorPage({ params }: Props) {
     <main className={`pageDefault`}>
 
       <HomeHeroBanner
-        title={`${investigador?.name} | ${investigador?.email}`}
+        title={`${investigador?.name}`}
+        email={investigador?.email}
         subTitle={`${proyectos.length} proyectos` ?? ''}
       >
         <MenuButtonsHorizontal
@@ -55,7 +56,7 @@ export default async function InvestigadorPage({ params }: Props) {
           ]}
         />
       </HomeHeroBanner>
-      <section className='h-full flex flex-col justify-center items-center bg-bg-300 w-full'>
+      <section className='h-full flex flex-col lg:justify-start justify-center items-center bg-bg-300 w-full mt-0 pt-10'>
         <Suspense fallback={<LoaderDefault />}>
           <ProjectsCarousel proyectos={proyectos} />
         </Suspense>

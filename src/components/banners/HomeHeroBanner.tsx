@@ -5,14 +5,10 @@ interface Props {
   title: string
   subTitle?: string
   children?: React.ReactNode
+  email?: string
 }
 
-export const HomeHeroBanner = ({
-  title,
-  subTitle,
-
-  children,
-}: Props) => {
+export const HomeHeroBanner = ({ title, subTitle, email, children }: Props) => {
   return (
     <div className={`py-2 mx-auto w-full  bg-bg-300 my-1`}>
       {/* main content starts */}
@@ -33,6 +29,13 @@ export const HomeHeroBanner = ({
           >
             {title}
           </h2>
+          {email && (
+            <Link className='w-full' href={`mailto:${email}`}>
+              <p className='text-primary-100 text-xs text-center w-full hover:text-accent-100'>
+                {email}
+              </p>
+            </Link>
+          )}
           <h3 className='text-base text-text-100 text-center font-light leading-tight mt-1'>
             {subTitle}
           </h3>

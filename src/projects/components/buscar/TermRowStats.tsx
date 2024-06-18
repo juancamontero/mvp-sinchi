@@ -2,12 +2,13 @@ import { TermsCountBars } from '@/projects'
 import { Term } from './TermsCountBars'
 
 interface Props {
-  terms: Term[]
-  baseUrl: string
+  terms?: Term[]
+  baseUrl?: string
   title: string
+  children?: React.ReactNode
 }
 
-export const TermRowStats = ({ terms, baseUrl , title}: Props) => {
+export const TermRowStats = ({ terms, baseUrl, title, children }: Props) => {
   return (
     <div className='w-full flex flex-col justify-start items-start flex-grow  bg-bg-200'>
       <div
@@ -17,7 +18,10 @@ export const TermRowStats = ({ terms, baseUrl , title}: Props) => {
           <summary className='text-text-200 font-semibold font-sans text-xl text-left mt-1 text-wrap leading-none lg:max-w-2xl sm:max-w-x hover:text-primary-100 hover:cursor-pointer w-full p-2'>
             {title}
           </summary>
-          <TermsCountBars baseUrl={baseUrl} terms={terms} />
+          {terms && baseUrl && (
+            <TermsCountBars baseUrl={baseUrl} terms={terms} />
+          )}
+          {children}
         </details>
       </div>
     </div>

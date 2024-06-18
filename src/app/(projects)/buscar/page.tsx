@@ -1,12 +1,13 @@
 import {
   getAllConvenios,
   getAllInvestigadores,
+  getAllProjectsForm,
   getAllRegiones,
   getAllTags,
 } from '@/actions'
 import { getAllSellos } from '@/actions/sellos/sellos-actions'
 import { HomeHeroBanner, MenuButtonsHorizontal } from '@/components'
-import { TermRowStats, TermsCountBars } from '@/projects'
+import { ProjectsListSearch, TermRowStats, TermsCountBars } from '@/projects'
 
 export function generateMetadata() {
   return {
@@ -16,13 +17,15 @@ export function generateMetadata() {
 }
 
 export default async function BuscarPage() {
-  const [regiones, tags, aliados, sellos, investigadores] = await Promise.all([
-    getAllRegiones(),
-    getAllTags(),
-    getAllConvenios(),
-    getAllSellos(),
-    getAllInvestigadores(),
-  ])
+  const [regiones, tags, aliados, sellos, investigadores, proyectos] =
+    await Promise.all([
+      getAllRegiones(),
+      getAllTags(),
+      getAllConvenios(),
+      getAllSellos(),
+      getAllInvestigadores(),
+      getAllProjectsForm(),
+    ])
 
   const regionTerms = regiones.map((term) => {
     return {
@@ -63,18 +66,32 @@ export default async function BuscarPage() {
     }
   })
 
+  const projectsToRender = proyectos.map((project) => {
+    return {
+      id: project.id,
+      name: project.name,
+      imageUrl: project.imagen?.url,
+    }
+  })
+
   return (
     <main className={`pageDefault`}>
-      <HomeHeroBanner title={'Proyectos de 2023 a 2024'} subTitle={'Búsqueda'}>
-        <MenuButtonsHorizontal
+      <HomeHeroBanner title={'Proyectos a 2024'} subTitle={'Búsqueda'}>
+        {/* <MenuButtonsHorizontal
           menuItems={[
             { url: '/', text: 'Líneas de investigación' },
             { url: '/programas', text: 'Programas de investigación' },
           ]}
-        />
+        /> */}
       </HomeHeroBanner>
 
-      <div className={`w-full h-full lg:h-[70%] flex flex-col gap-1 justify-between items-start lg:items-stretch`}>
+      <div
+        className={`w-full h-full lg:h-[70%] flex flex-col gap-1 justify-between items-start lg:items-stretch`}
+      >
+        {/* <ProjectsListSearch /> */}
+        <TermRowStats title='Búsqueda de proyectos por nombre'>
+          <ProjectsListSearch proyectos={projectsToRender} />
+        </TermRowStats>
         <TermRowStats
           baseUrl='region'
           terms={regionTerms}

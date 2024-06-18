@@ -1,3 +1,4 @@
+
 // * Components
 export { AccordionFeature } from './components/ui/AccordionFeature'
 export { ArrowDown } from './components/ui/ArrowDown'
@@ -20,6 +21,7 @@ export { ProgramasListProjectsSection } from './components/linea-programa/Progra
 export { ProjectBanner } from './components/proyectos/ProjectBanner'
 export { ProjectCard } from './components/proyectos/ProjectCard'
 export { ProjectColumnsHtml } from './components/proyectos/ProjectColumnsHtml'
+export { ProjectsListSearch } from './components/buscar/ProjectsListSearch'
 export { ProjectLongHtml } from './components/proyectos/ProjectLongHtml'
 export { ProjectPageSection } from './components/proyectos/ProjectPageSection'
 export { ProjectsCarousel } from './components/proyectos/ProjectsCarousel'
@@ -36,3 +38,5 @@ export { TermsGrid } from './components/terms/TermsGrid'
 // * Helpers
 
 export * from './helpers/uiHelpers'
+
+

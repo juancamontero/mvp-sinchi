@@ -37,7 +37,7 @@ export const TermsCountBars = ({ terms, baseUrl }: Props) => {
               </div>
             )}
             <p
-              className={` text-text-100 text-left content-center my-auto  whitespace-normal truncate text-ellipsis ${
+              className={` text-text-100 text-left content-center my-auto whitespace-normal truncate text-ellipsis ${
                 term.imageUrl
                   ? 'text-[10px] leading-tight h-6'
                   : 'lg:text-base text-xs'
@@ -62,7 +62,6 @@ export const TermsCountBars = ({ terms, baseUrl }: Props) => {
                 style={{ flexGrow: currentFlexGrow }}
               >{`${term.count}`}</p>
             </div>
-
             <p className=' text-[10px] lg:text-xs font-extralight text-primary-100 lg:p-1 text-center content-center group-hover:text-text-100 group-hover:font-normal'>
               ver proyectos
             </p>
