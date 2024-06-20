@@ -152,7 +152,7 @@ export default async function ProjectPage({ params }: Props) {
             Justificación
           </h2>
 
-          <div className='grid lg:grid-cols-3 sm:grid-cols-1 gap-6 overflow-y-auto w-full'>
+          <div className='grid lg:grid-cols-3 sm:grid-cols-1 lg:gap-10 overflow-y-auto w-full'>
             {/* importancia */}
             <div className='flex flex-col justify-start items-stretch gap-4'>
               <h3 className='text-3xl font-semibold'>Importancia</h3>
@@ -230,8 +230,8 @@ export default async function ProjectPage({ params }: Props) {
       <ProjectPageSection className='bg-bg-300' fullLgHeight={false}>
         <div id='actores' className='projectColumnSection text-primary-200'>
           {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR */}
-          <div className='grid lg:grid-cols-3 sm:grid-cols-1 gap-6  w-full lg:h-[50vh] h-fit pt-12'>
-            {/* 'grid lg:grid-cols-3 sm:grid-cols-1 gap-6 overflow-y-auto w-full' */}
+          <div className='grid lg:grid-cols-3 sm:grid-cols-1 lg:gap-10  w-full lg:h-[50vh] h-fit pt-12'>
+         
             {/* Actores */}
             <div className='flex flex-col justify-start items-stretch gap-4 lg:max-h-[45vh]'>
               <h3 className='text-4xl font-semibold'>Actores</h3>
