@@ -6,7 +6,7 @@ import {
   getAllTags,
 } from '@/actions'
 import { getAllSellos } from '@/actions/sellos/sellos-actions'
-import { HomeHeroBanner, MenuButtonsHorizontal } from '@/components'
+import { HomeHeroBanner,  } from '@/components'
 import { ProjectsListSearch, TermRowStats, TermsCountBars } from '@/projects'
 
 export function generateMetadata() {
@@ -17,14 +17,14 @@ export function generateMetadata() {
 }
 
 export default async function BuscarPage() {
-  const [regiones, tags, aliados, sellos, investigadores, proyectos] =
+  const [regiones, tags, aliados, sellos, investigadores] =
     await Promise.all([
       getAllRegiones(),
       getAllTags(),
       getAllConvenios(),
       getAllSellos(),
       getAllInvestigadores(),
-      getAllProjectsForm(),
+      
     ])
 
   const regionTerms = regiones.map((term) => {
@@ -66,13 +66,13 @@ export default async function BuscarPage() {
     }
   })
 
-  const projectsToRender = proyectos.map((project) => {
-    return {
-      id: project.id,
-      name: project.name,
-      imageUrl: project.imagen?.url,
-    }
-  })
+  // const projectsToRender = proyectos.map((project) => {
+  //   return {
+  //     id: project.id,
+  //     name: project.name,
+  //     imageUrl: project.imagen?.url,
+  //   }
+  // })
 
   return (
     <main className={`pageDefault`}>
@@ -86,12 +86,12 @@ export default async function BuscarPage() {
       </HomeHeroBanner>
 
       <div
-        className={`w-full h-full lg:h-[70%] flex flex-col gap-1 justify-between items-start lg:items-stretch`}
+        className={`w-full h-full  flex flex-col gap-1 justify-start items-stretch lg:items-stretch`}
       >
         {/* <ProjectsListSearch /> */}
-        <TermRowStats title='Búsqueda de proyectos por nombre'>
+        {/* <TermRowStats title='Búsqueda de proyectos por nombre'>
           <ProjectsListSearch proyectos={projectsToRender} />
-        </TermRowStats>
+        </TermRowStats> */}
         <TermRowStats
           baseUrl='region'
           terms={regionTerms}

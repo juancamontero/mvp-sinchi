@@ -424,6 +424,7 @@ export const ProjectForm = ({
           <div className='flex flex-col mt-1 w-full'>
             <AccordionForForm title='Importancia'>
               <ReactQuill
+                className='long-html'
                 theme='snow'
                 value={watch('importancia')}
                 onChange={(content) => onHtmlChange('importancia', content)}

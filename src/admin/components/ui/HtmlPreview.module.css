@@ -35,3 +35,7 @@
     @apply text-sm
   }
 
+  .previewText em {
+    @apply italic
+  }
+

@@ -180,7 +180,7 @@ export default async function ProjectPage({ params }: Props) {
               <h3 className='text-3xl font-semibold'>Impacto</h3>
               {proyecto.impacto && (
                 <ProjectLongHtml
-                  html={proyecto.pertinencia}
+                  html={proyecto.impacto}
                   scrollBarColor='#EFEDE8'
                 />
               )}
@@ -202,7 +202,7 @@ export default async function ProjectPage({ params }: Props) {
           {proyecto.objetivo && (
             <div
               dangerouslySetInnerHTML={{ __html: proyecto.objetivo }}
-              className='text-base text-left leading-snug lg:w-5/6 w-full long-html  overflow-y-auto lg:max-h-80'
+              className='text-base text-left leading-snug lg:w-5/6 w-full long-html overflow-y-auto lg:max-h-80 scroll-sinchi long-html'
               style={{
                 WebkitOverflowScrolling: 'touch',
                 scrollbarColor: `#EB9B78 rgba(255, 255, 255, 0)`,
@@ -230,7 +230,8 @@ export default async function ProjectPage({ params }: Props) {
       <ProjectPageSection className='bg-bg-300' fullLgHeight={false}>
         <div id='actores' className='projectColumnSection text-primary-200'>
           {/* ACTORES + BENEFICIARIOS + IMAGEN INDICADOR */}
-          <div className='grid lg:grid-cols-3 sm:grid-cols-1 gap-4  w-full lg:h-[50vh] h-fit pt-12'>
+          <div className='grid lg:grid-cols-3 sm:grid-cols-1 gap-6  w-full lg:h-[50vh] h-fit pt-12'>
+            {/* 'grid lg:grid-cols-3 sm:grid-cols-1 gap-6 overflow-y-auto w-full' */}
             {/* Actores */}
             <div className='flex flex-col justify-start items-stretch gap-4 lg:max-h-[45vh]'>
               <h3 className='text-4xl font-semibold'>Actores</h3>

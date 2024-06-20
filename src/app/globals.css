@@ -99,6 +99,10 @@ p {
   @apply text-xl leading-tight font-medium
 }
 
+.long-html em {
+  @apply italic
+}
+
 
 
 /* BUTTONS */
