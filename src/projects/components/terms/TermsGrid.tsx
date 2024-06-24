@@ -24,6 +24,7 @@ export const TermsGrid = ({ items, urlBase, className='' }: TermGridProps) => {
                 : `  cursor-default`
             }`}
             href={urlBase ? `${urlBase}/${item.id}` : '#'}
+            
           >
             {item.name}
             {index + 1 < items.length ? `, ` : ''}

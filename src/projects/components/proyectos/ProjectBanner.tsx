@@ -24,6 +24,8 @@ export const ProjectBanner = ({
   equipo,
   sellosArray,
 }: Props) => {
+
+
   return (
     <div className={`group w-full lg:h-full h-fit lg:sticky  top-0`}>
       {/* CONTENT DIV */}
@@ -43,10 +45,9 @@ export const ProjectBanner = ({
           />
           {/* Title */}
           <h2
-            className={` text-bg-100 lg:text-[1.8rem] sm:text-2xl text-xl font-semibold lg:w-5/6 w-full text-center lg:leading-[1.15] leading-tight mt-2`}
-          >
-            {name}
-          </h2>
+            className={` text-bg-100 lg:text-[1.8rem] sm:text-2xl text-xl font-semibold lg:w-5/6 w-full text-center lg:leading-[1.15] leading-tight mt-2 title-italic`}
+            dangerouslySetInnerHTML={{ __html: name }}
+          />
           {/* year*/}
           <h2 className='text-center text-2xl  font-normal text-bg-200 leading-none mt-2'>
             {year}

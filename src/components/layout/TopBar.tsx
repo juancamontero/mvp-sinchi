@@ -1,15 +1,10 @@
-// 'use client'
 
-// import { useState } from 'react'
 
 import {  CiLineHeight, CiSearch } from 'react-icons/ci'
 import { TopBrandWidget, VerticalMenu } from '..'
-import { IoCloseSharp,  IoPersonOutline } from 'react-icons/io5'
-import {  GiHamburgerMenu } from 'react-icons/gi'
+
 import { GoHome } from 'react-icons/go'
-import { IoMdBook } from 'react-icons/io'
-import { PiHandshakeLight } from 'react-icons/pi'
-import { TbWorldPin } from 'react-icons/tb'
+
 import Link from 'next/link'
 
 const menuItems = [

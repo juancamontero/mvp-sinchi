@@ -132,7 +132,7 @@ p {
 /* PAGES */
 
 .pageDefault {
-  @apply flex min-h-screen flex-col items-start justify-start z-10;
+  @apply flex  flex-col items-start justify-start z-10;
 }
 
 .pageSectionGrid {
@@ -140,7 +140,7 @@ p {
 }
 
 .lineaProgramProjectsSection {
-  @apply w-full flex flex-col gap-1 justify-start items-start bg-bg-100;
+  @apply w-full flex flex-col gap-1 justify-start items-start bg-bg-100 z-0;
 }
 
 
@@ -258,6 +258,10 @@ p {
 
 .projectColumnSection {
   @apply flex flex-col justify-start items-center  gap-4 w-full
+}
+
+.title-italic em {
+  @apply italic
 }
 
 /* TERMS */

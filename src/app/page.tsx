@@ -1,5 +1,5 @@
 import { getAllLineas } from '@/actions'
-import { HomeHeroBanner, MenuButtonsHorizontal } from '@/components'
+import { Footer, HomeHeroBanner, MenuButtonsHorizontal } from '@/components'
 // import { lineasSeed } from '@/projects/helpers/dataSeed'
 import { LineasListProjectsSection } from '@/projects'
 
@@ -29,6 +29,7 @@ export default async function Home() {
         />
       </HomeHeroBanner>
       <LineasListProjectsSection lineas={lineas} />
+      <Footer />
     </main>
   )
 }

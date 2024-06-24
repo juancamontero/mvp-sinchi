@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const MultimediaCard = ({ multimedia }: Props) => {
-  const { id, mediaType: type, title, url } = multimedia
+  const { id, mediaType: type, title, url, subTitle } = multimedia
   const { toggleGallery, getIndexById, setIndex, currentIndex } =
     useContext(MultimediaContext)
 
@@ -62,17 +62,22 @@ export const MultimediaCard = ({ multimedia }: Props) => {
       {/* Acá termina contenido que se ve sin hover */}
 
       {/* Acá va el bloque que sube al hover */}
-      <div className='bg-bg-100 bg-opacity-85 sm:flex sm:flex-col sm:justify-between bottom-0 inset-x-0 h-full mt-auto px-4 py-2 translate-y-28  transition duration-300 ease-in-out  absolute group-hover:bg-opacity-95'>
+      <div className='bg-bg-100 bg-opacity-85 sm:flex sm:flex-col sm:justify-between bottom-0 inset-x-0 h-full mt-auto px-4 py-2 translate-y-28  transition duration-300 ease-in-out  absolute group-hover:bg-opacity-95 group-hover:translate-y-0'>
         {/* <TagsGrid idProject={id} /> */}
 
         {/* Objetivo */}
         <div className='flex flex-col justify-start items-start '>
           {/* TITLE */}
           <h2
-            className={`text-base leading-[1.2] text-text-200 font-medium mt-1 mb-2 h-14 whitespace-normal truncate text-ellipsis group-hover:whitespace-normal group-hover:h-fit `}
-          >
-            {title}
-          </h2>
+            className={`text-base leading-[1.2] text-text-200 font-medium mt-1 line-clamp-1 group-hover:line-clamp-none group-hover:h-fit  title-italic`} //whitespace-normal truncate text-ellipsis
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+          {subTitle && (
+            <h3
+              className={`text-xs leading-[1.2] text-text-200 font-medium mt-1 line-clamp-1 group-hover:line-clamp-none group-hover:h-fit  title-italic`} 
+              dangerouslySetInnerHTML={{ __html: subTitle }}
+            />
+          )}
 
           {/* objetivo starts */}
           <h2 className='text-left text-2xl font-black  text-text-100 leading-none'>

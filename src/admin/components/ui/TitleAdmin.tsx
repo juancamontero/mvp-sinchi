@@ -6,8 +6,8 @@ interface Props {
 
 export const TitleAdmin = ({ title, subTitle, className = '' }: Props) => {
   return (
-    <div className={`admin-title-banner ${className}`}>
-      <h1 className={``}>{title}</h1>
+    <div className={`admin-title-banner title-italic ${className}`}>
+      <h1 className={``} dangerouslySetInnerHTML={{__html: title}}/>
       {subTitle && <h3 className={``}>{subTitle}</h3>}
     </div>
   )

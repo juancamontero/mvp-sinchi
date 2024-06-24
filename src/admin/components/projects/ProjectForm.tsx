@@ -184,6 +184,7 @@ export const ProjectForm = ({
         subTitle={`Proyecto ID: ${
           project?.id ? project.id : 'Sin id'
         } | Edición / Eliminación`}
+        className=' bg-primary-100 text-bg-100 p-2'
       />
       <div className='flex flex-row justify-start items-stretch w-full gap-3'>
         {/* YEAR */}
@@ -217,8 +218,13 @@ export const ProjectForm = ({
       <div className='flex flex-row justify-start items-stretch w-full gap-3'>
         {/* NOMBRE */}
         <div className='flex flex-col mb-2 w-3/5'>
-          <label htmlFor='name' className={`${styles['form-label']}`}>
-            Nombre del proyecto
+          <label
+            htmlFor='name'
+            className={`${styles['form-label']} title-italic`}
+          >
+            Nombre del proyecto | {`<em>`}
+            <em>itálicas</em>
+            {`</em>`}
           </label>
           <textarea
             className={`${styles['form-input']} h-full`}

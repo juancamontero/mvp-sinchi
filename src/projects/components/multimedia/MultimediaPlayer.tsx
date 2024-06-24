@@ -34,13 +34,15 @@ export const MultimediaPlayer = ({
     >
       {/* TITLE + SUBTITLE */}
       <div className='flex flex-col justify-start items-center sm:items-start gap-0  w-11/12 mx-auto mb-2 lg:mb-12'>
-        <h4 className='lg:text-2xl text-xl font-medium sm:text-left text-center text-primary-300 leading-tight'>
-          {multimedia.title}
-        </h4>
+        <h4
+          className='lg:text-2xl text-xl font-medium sm:text-left text-center text-primary-300 leading-tight  title-italic'
+          dangerouslySetInnerHTML={{ __html: multimedia.title }}
+        />
         {multimedia.subTitle && (
-          <h4 className='lg:text-base text-sm font-normal sm:text-left text-center text-primary-300 italic leading-tight'>
-            {multimedia.subTitle}
-          </h4>
+          <h4
+            className='lg:text-base text-sm font-normal sm:text-left text-center text-primary-300  leading-tigh  title-italic'
+            dangerouslySetInnerHTML={{ __html: multimedia.subTitle }}
+          />
         )}
       </div>
 
