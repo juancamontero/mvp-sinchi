@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} bg-bg-100 flex flex-col h-screen`}>
+      <body className={`${inter.className} bg-bg-400 flex flex-col h-screen`}>
         <TopBar />
         {children}
       </body>
