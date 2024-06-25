@@ -42,7 +42,7 @@ export default async function RegionPage({ params }: Props) {
   ])
 
   return (
-    <main className={`pageDefault`}>
+    <main className={`pageTermDefault`}>
       <HomeHeroBanner
         title={`Proyectos en ${region?.name}`}
         subTitle={`${proyectos.length} proyectos` ?? ''}

@@ -43,7 +43,7 @@ export default async function ConvenioPage({ params }: Props) {
   ])
 
   return (
-    <main className={`pageDefault`}>
+    <main className={`pageTermDefault`}>
       <HomeHeroBanner
         title={`Aliado: ${convenio?.name}`}
         subTitle={`${proyectos.length} proyecto(s)` ?? ''}

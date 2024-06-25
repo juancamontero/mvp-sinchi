@@ -36,8 +36,6 @@ export default function RootLayout({
       <body className={`${inter.className} bg-bg-100 flex flex-col h-screen`}>
         <TopBar />
         {children}
-        <Footer />
-
       </body>
     </html>
   )

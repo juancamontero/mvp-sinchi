@@ -75,7 +75,7 @@ export default async function BuscarPage() {
   })
 
   return (
-    <main className={`pageDefault`}>
+    <main className={`pageTermDefault`}>
       <HomeHeroBanner title={'Proyectos a 2024'} subTitle={'Búsqueda'}>
         {/* <MenuButtonsHorizontal
           menuItems={[
@@ -86,12 +86,12 @@ export default async function BuscarPage() {
       </HomeHeroBanner>
 
       <div
-        className={`w-full h-full  min-h-screen  flex flex-col gap-1 justify-between items-start lg:items-stretch`}
+        className={`w-full h-full  flex flex-col gap-2 justify-between items-start lg:items-stretch mt-1`}
       >
         {/* <ProjectsListSearch /> */}
-        <TermRowStats title='Búsqueda de proyectos por nombre'>
+        {/* <TermRowStats title='Búsqueda de proyectos por nombre'>
           <ProjectsListSearch proyectos={projectsToRender} />
-        </TermRowStats>
+        </TermRowStats> */}
         <TermRowStats
           baseUrl='region'
           terms={regionTerms}

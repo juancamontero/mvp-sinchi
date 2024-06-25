@@ -53,10 +53,9 @@ export const ProjectCard = ({ proyecto }: Props) => {
           <div className='flex flex-col justify-start items-start '>
             {/* TITLE */}
             <h2
-              className={`text-base leading-[1.2] text-text-100 mt-1 mb-2 h-14 line-clamp-3 group-hover:whitespace-normal group-hover:h-fit group-hover:line-clamp-none`}
-            >
-              {name}
-            </h2>
+              className={`text-base leading-[1.2] text-text-100 mt-1 mb-2 h-14 line-clamp-3 group-hover:whitespace-normal group-hover:h-fit group-hover:line-clamp-none title-italic`}
+              dangerouslySetInnerHTML={{__html: name}}
+            />
 
             {/* objetivo starts */}
             <h2 className='text-left text-2xl font-black  text-text-100 leading-none'>

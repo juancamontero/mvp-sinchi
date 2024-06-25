@@ -42,7 +42,7 @@ export default async function TagPage({ params }: Props) {
   ])
 
   return (
-    <main className={`pageDefault`}>
+    <main className={`pageTermDefault`}>
       <HomeHeroBanner
         title={`Palabra clave: ${tag?.name}`}
         subTitle={`${proyectos.length} proyectos` ?? ''}

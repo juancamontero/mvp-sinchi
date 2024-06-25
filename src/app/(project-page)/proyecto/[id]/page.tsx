@@ -337,7 +337,7 @@ export default async function ProjectPage({ params }: Props) {
       </ProjectPageSection>
 
       {/* ACTORES + BENEFICIARIOS + DEPARTAMENTOS + PALABRAS CLAVE  */}
-      <Footer/>
+  <Footer/>
     </main>
   )
 }

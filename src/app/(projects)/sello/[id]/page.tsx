@@ -43,7 +43,7 @@ export default async function SelloPage({ params }: Props) {
   ])
 
   return (
-    <main className={`pageDefault`}>
+    <main className={`pageTermDefault`}>
       <HomeHeroBanner
         title={`${proyectos.length} proyecto(s) con el sello:`} // ${sello?.name}
         // subTitle={`${proyectos.length} proyecto(s)` ?? ''}

@@ -29,7 +29,6 @@ export default async function Home() {
         />
       </HomeHeroBanner>
       <LineasListProjectsSection lineas={lineas} />
-      <Footer />
     </main>
   )
 }

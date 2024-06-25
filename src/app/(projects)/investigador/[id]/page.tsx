@@ -41,7 +41,7 @@ export default async function InvestigadorPage({ params }: Props) {
   ])
 
   return (
-    <main className={`pageDefault`}>
+    <main className={`pageTermDefault`}>
 
       <HomeHeroBanner
         title={`${investigador?.name}`}
