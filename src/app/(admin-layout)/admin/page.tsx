@@ -1,5 +1,12 @@
 import { auth } from '@/auth'
 
+export function generateMetadata() {
+  return {
+    title: `ADMIN | Proyectos SINCHI`,
+    description: `Administración de proyectos`,
+  }
+}
+
 export default async function AdminPage() {
   const session = await auth()
   // const { user } = session

@@ -19,7 +19,7 @@ export const ProjectPageSection = ({
 }: Props) => {
   return (
     <div
-      className={` lg:sticky lg:top-0 snap-end  h-fit  flex flex-col items-center justify-center lg:gap-8 w-full lg:py-0 py-8 ${className}  ${
+      className={`lg:sticky lg:top-0 snap-end  h-fit  flex flex-col items-center justify-center lg:gap-8 w-full lg:py-0 py-8 ${className}  ${
         fullLgHeight ? ' lg:h-full' : ''
       } ${enablePaddings ? 'xBannerPaddings' : ''}`}
     >

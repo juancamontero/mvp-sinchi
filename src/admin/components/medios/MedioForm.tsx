@@ -104,7 +104,9 @@ export const MedioForm = ({ proyectoId, medio }: Props) => {
       {/* TITLE */}
       <div className='flex flex-col gap-2 items-stretch w-full'>
         <label htmlFor='title' className={`${styles['form-label']}`}>
-          Título(min:3 caracteres, max:200 caracteres)
+          Título(min:3 caracteres, max:200 caracteres) | {`<em>`}
+            <em>itálicas</em>
+            {`</em>`}
         </label>
         <input
           className={`${styles['form-input']}`}
@@ -125,7 +127,9 @@ export const MedioForm = ({ proyectoId, medio }: Props) => {
         {/* SUBTITLE */}
         <div className='flex flex-col gap-2 items-stretch w-full'>
           <label htmlFor='subTitle' className={`${styles['form-label']}`}>
-            Subtítulo (min:3 caracteres, max:100 caracteres)
+            Subtítulo (min:3 caracteres, max:100 caracteres)  | {`<em>`}
+            <em>itálicas</em>
+            {`</em>`}
           </label>
           <input
             className={`${styles['form-input']}`}
